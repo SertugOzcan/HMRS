@@ -1,0 +1,41 @@
+.yonetici-container {
+    padding: 20px;
+}
+
+.yonetici-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.calisan-listesi,
+.finansal-bilgiler {
+    background-color: #929292;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.calisan-listesi h3,
+.finansal-bilgiler h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.calisan-listesi p,
+.finansal-bilgiler p {
+    margin-bottom: 5px;
+}
+
+.finansal-bilgiler .finansal-kutular {
+    display: flex;
+    flex-direction: column;
+}
+
+.finansal-bilgiler .finansal-kutu {
+    background-color: #585858;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
