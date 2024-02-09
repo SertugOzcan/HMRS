@@ -1,27 +1,35 @@
+
+
+/* ADMİN LOGİN  */
+
 .admin-login-container {
+    position: absolute;
     width: 300px;
-    margin: 0 auto;
+    height: 300px;
+    margin-top: 100px;
+    margin-left: 80px;
+    padding-top: 100px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #767676;
     border-radius: 5px;
-    background-color: #000000;
-  }
-  
-  .admin-login-container h2 {
+    background-color: #fbfbfb;
+}
+
+.admin-login-container h2 {
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .admin-login-container input {
+}
+
+.admin-login-container input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-  }
-  
-  .admin-login-container button {
+}
+
+.admin-login-container button {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
@@ -29,15 +37,14 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .admin-login-container button:hover {
+}
+
+.admin-login-container button:hover {
     background-color: #45a049;
-  }
-  
-  .error-message {
+}
+
+.error-message {
     color: red;
     margin-top: 10px;
     text-align: center;
-  }
-  
+}

@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import "./YoneticiPage.css";
+import axios from "axios";
 
 const YoneticiPage = () => {
   const [financialData, setFinancialData] = useState({});
 
   useEffect(() => {
-    
-    fetch('backend-url')
-      .then(response => response.json())
-      .then(data => {
-        
+    axios
+      .get("api/v1/test/????")
+      .then((response) => response.json())
+      .then((data) => {
         setFinancialData(data.financialData);
       })
-      .catch(error => console.error('Error fetching data:', error));
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
@@ -26,24 +26,38 @@ const YoneticiPage = () => {
         <h3>Finansal Bilgiler</h3>
         <div className="finansal-kutular">
           <div className="finansal-kutu">
-            <p><strong>Kar/Zarar Bilgileri:</strong> {financialData.profitLoss}</p>
+            <p>
+              <strong>Kar/Zarar Bilgileri:</strong> {financialData.profitLoss}
+            </p>
           </div>
           <div className="finansal-kutu">
-            <p><strong>Toplam Gider Bilgisi:</strong> {financialData.totalExpenses}</p>
+            <p>
+              <strong>Toplam Gider Bilgisi:</strong>{" "}
+              {financialData.totalExpenses}
+            </p>
           </div>
           <div className="finansal-kutu">
-            <p><strong>Yaklaşan Ödeme Bilgileri:</strong> {financialData.upcomingPayments}</p>
+            <p>
+              <strong>Yaklaşan Ödeme Bilgileri:</strong>{" "}
+              {financialData.upcomingPayments}
+            </p>
           </div>
           <div className="finansal-kutu">
-            <p><strong>Resmi Tatil Bilgileri:</strong> {financialData.holidayInfo}</p>
+            <p>
+              <strong>Resmi Tatil Bilgileri:</strong>{" "}
+              {financialData.holidayInfo}
+            </p>
           </div>
           <div className="finansal-kutu">
-            <p><strong>Personel İzin Hakkı:</strong> {financialData.employeeLeave} gün</p>
+            <p>
+              <strong>Personel İzin Hakkı:</strong>{" "}
+              {financialData.employeeLeave} gün
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default YoneticiPage;

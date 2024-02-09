@@ -7,12 +7,20 @@ import ZiyaretciPage from './pages/ZiyaretciPage';
 import PersonelPage from './pages/PersonelPage';
 import RegisterPage from './pages/RegisterPage';
 
+
 import "./App.css";
+import { UserPreferencesContext } from './context/UserPreferencesContext';
+import { useContext } from 'react';
 
 function App() {
+
+
+const {theme} = useContext(UserPreferencesContext)
+
   return (
+    
     <Router>
-      <div className="nav">
+      <div className={`nav ${theme}`}>
         <Link to="/admin-login"><button>Admin Login</button></Link>
         <Link to="/login"><button>Login</button></Link>
         <Link to="/admin-page"><button>Admin page</button></Link>
@@ -32,6 +40,7 @@ function App() {
         <Route path="/register-page" element={<RegisterPage />} />
       </Routes>
     </Router>
+    
   );
 }
 

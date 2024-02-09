@@ -1,15 +1,20 @@
+/* Kayıt Sayfası */
 .register-container {
-  width: 400px;
-  margin: 0 auto;
+  position: absolute;
+  width: 300px;
+  height: auto; /* Yükseklik otomatik olarak ayarlanacak */
+  margin-top: 20px;
+  margin-left: 80px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #767676;
   border-radius: 5px;
-  background-color: #848484;
+  background-color: #fbfbfb;
 }
 
 .register-container h2 {
   text-align: center;
   margin-bottom: 20px;
+  color: #333; /* Metin rengi */
 }
 
 .register-container form {
@@ -17,12 +22,26 @@
   flex-direction: column;
 }
 
-.register-container input {
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"],
+.register-container input[type="date"] {
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+.register-container textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; 
+  height: 100px; /* Başlangıçta belirli bir yükseklik */
+  resize: vertical;
+}
+
 
 .register-container button {
   padding: 10px;
@@ -33,15 +52,32 @@
   cursor: pointer;
 }
 
+.register-container button:hover {
+  background-color: #45a049;
+}
+
 .role-selector {
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 .role-selector label {
   margin-right: 10px;
+  color: #333; /* Metin rengi */
 }
 
 .role-selector input[type="radio"] {
   margin-right: 5px;
+}
+
+/* Date Picker */
+.register-container input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #333; /* Metin rengi */
+}
+
+/* Radio Buttons */
+.role-selector input[type="radio"] {
+  margin-right: 5px;
+  color: #333; /* Metin rengi */
 }

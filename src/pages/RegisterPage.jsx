@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "./RegisterPage.css";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 const RegisterPage = () => {
   const [isManager, setIsManager] = useState(false);
@@ -14,6 +15,34 @@ const RegisterPage = () => {
   const [companyName, setCompanyName] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:9090/api/v1/auth/register-guest")
+      .then((response) => response.data)
+      .then((data) => {
+        setName(data.financialData);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+
+
+  
+  // ****************** Adres alanının boyutunu ayarlamak ******************
+  useEffect(() => {
+    adjustTextareaHeight();
+  }, [adress]);
+
+  const adjustTextareaHeight = () => {
+    const textarea = document.getElementById("address");
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  };
+
+
+
+
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -64,16 +93,18 @@ const RegisterPage = () => {
           onChange={(e) => setRepassword(e.target.value)}
           required
         />
-        <input
-          type="adress"
-          placeholder="Adress"
+        <textarea
+          id="address"
+          name="address"
+          placeholder="Adres"
           value={adress}
           onChange={(e) => setAdress(e.target.value)}
+          
           required
         />
         <div className="date-picker">
           <DatePicker
-          dateFormat={"dd/MM/yyyy"}
+            dateFormat={"dd/MM/yyyy"}
             selected={date}
             onChange={(date) => setDate(date)}
             placeholderText="Date of Birth"

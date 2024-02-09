@@ -1,45 +1,46 @@
+
+/* PERSONEL PAGE */
 .personel-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-  }
-  
-  .personel-info,
-  .company-info,
-  .personel-photo {
-    width: 30%;
-  }
-  
-  .personel-info,
-  .company-info {
-    background-color: #6a6969;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .personel-info h2,
-  .company-info h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .personel-info p,
-  .company-info p {
-    margin-bottom: 5px;
-  }
-  
-  .personel-photo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .personel-photo img {
-    max-width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.personel-info,
+.company-info,
+.personel-photo {
+  width: 30%;
+}
+
+.personel-info,
+.company-info {
+  background-color: #6a6969;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.personel-info h2,
+.company-info h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.personel-info p,
+.company-info p {
+  margin-bottom: 5px;
+}
+
+.personel-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personel-photo img {
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
