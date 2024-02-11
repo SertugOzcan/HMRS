@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./AdminLoginPage.css";
 
 const AdminLoginPage = () => {
@@ -17,25 +17,50 @@ const AdminLoginPage = () => {
     }
   };
 
+
+
+
+  // LOGIN INPUT FONSIYONU 
+  useEffect(() => {
+    const labels = document.querySelectorAll('.form-control label');
+    labels.forEach(label => {
+      label.innerHTML = label.innerText
+        .split('')
+        .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+        .join('');
+    });
+  }, []);
+
+
   return (
-    <div className="admin-login-container">
+    <div className="container">
       <h2>Admin Login</h2>
+      <form>
+        <div className="form-control">
       <input
         type="text"
-        placeholder="Email"
+        required
         value={email}
         onChange={(e) => setemail(e.target.value)}
+        
       />
+      <label>Email</label>
+      </div>
+      <div className="form-control">
       <input
         type="password"
-        placeholder="Şifre"
+        required
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Giriş</button>
+      <label>Password</label>
+      </div>
+      <button className="btn" onClick={handleLogin}>Giriş</button>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
+      </form>
     </div>
   );
 };
+
 
 export default AdminLoginPage;

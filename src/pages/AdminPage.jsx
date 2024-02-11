@@ -27,6 +27,11 @@ const AdminPage = () => {
     console.log(`Approving manager request with ID: ${id}`);
   };
 
+
+
+
+  
+
   return (
     <div className="admin-container">
       <div className="registered-users-container">

@@ -11,6 +11,9 @@ import RegisterPage from './pages/RegisterPage';
 import "./App.css";
 import { UserPreferencesContext } from './context/UserPreferencesContext';
 import { useContext } from 'react';
+import ThemeSlider from './components/ThemeSlider';
+
+
 
 function App() {
 
@@ -28,6 +31,7 @@ const {theme} = useContext(UserPreferencesContext)
         <Link to="/ziyaretci-page"><button>Ziyaretçi page</button></Link>
         <Link to="/personel-page"><button>Personel page</button></Link>
         <Link to="/register-page"><button>Register page</button></Link>
+        <ThemeSlider/>
       </div>
 
       <Routes>
