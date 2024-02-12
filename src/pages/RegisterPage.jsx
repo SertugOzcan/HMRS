@@ -11,11 +11,13 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
-  const [adress, setAdress] = useState("");
+  const [address, setAddress] = useState(""); // Changed 'adress' to 'address'
   const [companyName, setCompanyName] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [date, setDate] = useState(new Date());
+  const [strength, setStrength] = useState(""); // Added state for password strength
 
+  // Fetch data from the server when the component mounts
   useEffect(() => {
     axios
       .post("http://localhost:9090/api/v1/auth/register-guest")
@@ -28,12 +30,12 @@ const RegisterPage = () => {
 
 
 
-  
-  // ****************** Adres alanının boyutunu ayarlamak ******************
+  // Adjust textarea height dynamically
   useEffect(() => {
     adjustTextareaHeight();
-  }, [adress]);
+  }, [address]);
 
+  
   const adjustTextareaHeight = () => {
     const textarea = document.getElementById("address");
     textarea.style.height = "auto";
@@ -44,13 +46,30 @@ const RegisterPage = () => {
 
 
 
+  const getStrength = (password) => {
+    let indicator = 0;
+    
+    if (/[a-z]/.test(password)) indicator++;
+    if (/[A-Z]/.test(password)) indicator++;
+    if (/\d/.test(password)) indicator++;
+    if (/[^a-zA-Z0-9]/.test(password)) indicator++;
+    if (password.length >= 16) indicator++;
+
+    return ["empty", "weak", "medium", "strong"][indicator];
+  };
+
+  const handleChange = (e) => {
+    const newPassword = e.target.value;
+    setStrength(getStrength(newPassword));
+    setPassword(newPassword);
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
     if (password !== repassword) {
       setPasswordError("Passwords do not match");
       return;
     }
-
     console.log("Registering...");
   };
 
@@ -81,11 +100,15 @@ const RegisterPage = () => {
         />
         <input
           type="password"
+          spellCheck="false"
+          className="control"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handleChange}
           required
         />
+        <div className={`bars ${strength}`}><div></div></div>
+        <div className="strength">{strength && `${strength} password`}</div>
         <input
           type="password"
           placeholder="Re-enter Password"
@@ -96,15 +119,14 @@ const RegisterPage = () => {
         <textarea
           id="address"
           name="address"
-          placeholder="Adres"
-          value={adress}
-          onChange={(e) => setAdress(e.target.value)}
-          
+          placeholder="Address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
           required
         />
         <div className="date-picker">
           <DatePicker
-            dateFormat={"dd/MM/yyyy"}
+            dateFormat="dd/MM/yyyy"
             selected={date}
             onChange={(date) => setDate(date)}
             placeholderText="Date of Birth"
@@ -112,15 +134,13 @@ const RegisterPage = () => {
         </div>
         {passwordError && <p className="error-message">{passwordError}</p>}
         {isManager && (
-          <>
-            <input
-              type="text"
-              placeholder="Company Name"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-              required
-            />
-          </>
+          <input
+            type="text"
+            placeholder="Company Name"
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
+            required
+          />
         )}
         <button type="submit">Register</button>
       </form>

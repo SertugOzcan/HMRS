@@ -37,15 +37,16 @@
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   height: 100px; /* Başlangıçta belirli bir yükseklik */
-  resize: vertical;
+  resize: none; /* Manuel büyütme kaldırıldı */
+  max-height: 100px;
 }
 
 
 .register-container button {
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -81,3 +82,53 @@
   margin-right: 5px;
   color: #333; /* Metin rengi */
 }
+
+input.control::placeholder {
+  color: #9f9d9e;
+}
+.strength {
+  text-align: left;
+  height: 30px;
+  text-transform: capitalize;
+  color: #868b94;
+}
+.bars {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 6px;
+  border-radius: 3px;
+  background: #181919;
+}
+
+.bars div {
+  height: 6px;
+  border-radius: 3px;
+  transition: 0.4s;
+  width: 0%;
+}
+.bars.weak div {
+  background: #e24c71;
+  width: 33.33%;
+}
+.bars.medium div {
+  background: #f39845;
+  width: 66.66%;
+}
+.bars.strong div {
+  background: #57c558;
+  width: 100%;
+}
+
+
+
+textarea::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+
