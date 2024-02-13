@@ -6,27 +6,33 @@ import axios from "axios";
 
 const RegisterPage = () => {
   const [isManager, setIsManager] = useState(false);
+
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
+  const [gender, setGender] = useState(false);
+
   const [address, setAddress] = useState(""); // Changed 'adress' to 'address'
   const [companyName, setCompanyName] = useState("");
+
+
   const [passwordError, setPasswordError] = useState("");
   const [date, setDate] = useState(new Date());
   const [strength, setStrength] = useState(""); // Added state for password strength
 
   // Fetch data from the server when the component mounts
-  useEffect(() => {
-    axios
-      .post("http://localhost:9090/api/v1/auth/register-guest")
-      .then((response) => response.data)
-      .then((data) => {
-        setName(data.financialData);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .post("http://localhost:9090/api/v1/auth/register-guest")
+  //     .then((response) => response.data)
+  //     .then((data) => {
+  //       setName(data.financialData);
+  //       console.log(data);
+  //     })
+  //     .catch((error) => console.error("Error fetching data:", error));
+  // }, []);
 
 
 
@@ -41,11 +47,11 @@ const RegisterPage = () => {
     textarea.style.height = "auto";
     textarea.style.height = textarea.scrollHeight + "px";
   };
+// ---------------------------------------------
 
 
 
-
-
+// -------------------PASWORD STRENGHT--------------------------
   const getStrength = (password) => {
     let indicator = 0;
     
@@ -58,20 +64,42 @@ const RegisterPage = () => {
     return ["empty", "weak", "medium", "strong"][indicator];
   };
 
+// ---------------------------------------------
+
+
+
+
   const handleChange = (e) => {
     const newPassword = e.target.value;
     setStrength(getStrength(newPassword));
     setPassword(newPassword);
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== repassword) {
       setPasswordError("Passwords do not match");
       return;
     }
-    console.log("Registering...");
+  
+    try {
+      const response = await axios.post('http://localhost:9090/api/v1/auth/register-guest', {
+        name,
+        surname,
+        email,
+        password,
+        address,
+        dateOfBirth: date,
+        // Diğer isteğe dahil edilmesi gereken verileri ekleyin
+      });
+  
+      console.log(response.data); // Yanıtı konsola yazdırabilirsiniz, başka bir işlem de yapabilirsiniz.
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
   };
+  
+
 
   return (
     <div className="register-container">
@@ -116,6 +144,33 @@ const RegisterPage = () => {
           onChange={(e) => setRepassword(e.target.value)}
           required
         />
+
+
+        <div className="gender-selector">
+        <label className="gender-label">
+          <input
+            type="radio"
+            name="radio"
+            value="male"
+            checked={!gender}
+            onChange={() => setGender(false)}
+          />
+          <span>Male</span>
+        </label>
+        <label className="gender-label">
+          <input
+            type="radio"
+            name="radio"
+            value="female"
+            checked={gender}
+            onChange={() => setGender(true)}
+          />
+          <span className="gender-span">Female</span>
+        </label>
+        </div>
+
+
+
         <textarea
           id="address"
           name="address"
@@ -145,10 +200,12 @@ const RegisterPage = () => {
         <button type="submit">Register</button>
       </form>
       <div className="role-selector">
+        
         <label>
           <input
             type="radio"
             value="visitor"
+            name="radio"
             checked={!isManager}
             onChange={() => setIsManager(false)}
           />
