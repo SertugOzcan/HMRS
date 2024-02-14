@@ -26,6 +26,10 @@ const AdminPage = () => {
     // Onay işlemi gerçekleştir
     console.log(`Approving manager request with ID: ${id}`);
   };
+  const handleDecline = (id) => {
+    // Onay işlemi gerçekleştir
+    console.log(`Declining manager request with ID: ${id}`);
+  };
 
 
 
@@ -55,7 +59,8 @@ const AdminPage = () => {
               <p>Email: {request.email}</p>
               <p>Company: {request.companyName}</p>
               <p>Position: {request.position}</p>
-              <button onClick={() => handleApprove(request.id)}>Approve</button>
+              <button className='approve-btn' onClick={() => handleApprove(request.id)}>Approve</button>
+              <button className='decline-btn' onClick={() => handleDecline(request.id)}>Decline</button>
             </div>
           ))}
         </div>

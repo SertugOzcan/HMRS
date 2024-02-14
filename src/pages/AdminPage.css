@@ -44,7 +44,15 @@ button {
   border-radius: 3px;
   cursor: pointer;
 }
+/* .approve-btn */
+
+.decline-btn {
+  background-color: red;
+}
 
 button:hover {
   background-color: #45a049;
+}
+.decline-btn:hover {
+  background-color: #890303;
 }
