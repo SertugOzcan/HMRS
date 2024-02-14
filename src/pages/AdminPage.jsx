@@ -1,37 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import "./AdminPage.css";
+import axios from 'axios';
 
 const AdminPage = () => {
   const [managerRequests, setManagerRequests] = useState([]);
   const [registeredUsers, setRegisteredUsers] = useState([]);
-
+  // const fakeManagerRequests = [
+  //   { id: 1, name: 'John Doe', email: 'john@example.com', companyName: 'ABC Inc.', position: 'Manager', status: 'pending' },
+  //   { id: 2, name: 'Jane Smith', email: 'jane@example.com', companyName: 'XYZ Corp.', position: 'Manager', status: 'pending' }
+  // ];
+  // const fakeRegisteredUsers = [
+  //   { id: 1, name: 'Alice', email: 'alice@example.com' },
+  //   { id: 2, name: 'Bob', email: 'bob@example.com' }
+  // ];
+  // const [updatedArray,setUpdatedArray] = useState(fakeManagerRequests)
   // Simüle edilmiş veri
-  useEffect(() => {
-    // API'den veya veritabanından yönetici başvurularını getir
-    const fakeManagerRequests = [
-      { id: 1, name: 'John Doe', email: 'john@example.com', companyName: 'ABC Inc.', position: 'Manager' },
-      { id: 2, name: 'Jane Smith', email: 'jane@example.com', companyName: 'XYZ Corp.', position: 'Manager' }
-    ];
-    setManagerRequests(fakeManagerRequests);
-
-    // Kayıtlı kullanıcıları getir
-    const fakeRegisteredUsers = [
-      { id: 1, name: 'Alice', email: 'alice@example.com' },
-      { id: 2, name: 'Bob', email: 'bob@example.com' }
-    ];
-    setRegisteredUsers(fakeRegisteredUsers);
-  }, []);
+  
+  
 
   const handleApprove = (id) => {
     // Onay işlemi gerçekleştir
+    // const updatedArray = fakeManagerRequests.map(item => {
+    //   if (item.id === id) {
+    //     // İstenilen objenin alanını güncelle
+    //     return { ...item, status: 'approved' };
+    //   }
+    //   return item;
+    // });
+    setManagerRequests(updatedArray)
+    console.log(updatedArray);
     console.log(`Approving manager request with ID: ${id}`);
   };
   const handleDecline = (id) => {
-    // Onay işlemi gerçekleştir
+    // Red işlemi gerçekleştir
+    
     console.log(`Declining manager request with ID: ${id}`);
   };
 
+  useEffect(() => {
+    const getData = async () =>{
 
+      try {
+        const managerRequestsResponse = await axios.get('http://localhost:9093/api/v1/admin/getallregisteredsupervisors')
+        const managerRequestsData = managerRequestsResponse.data
+        setManagerRequests(managerRequestsData);
+        
+        // Kayıtlı kullanıcıları getir
+        const registeredUsersResponse = await axios.get('http://localhost:9090/api/v1/getall')
+        const userDatas = registeredUsersResponse.data
+        setRegisteredUsers(userDatas);
+      } catch (error) {
+          console.log('Error while fetching the data');   
+      }
+    }
+    // API'den veya veritabanından yönetici başvurularını getir
+    getData();
+
+  }, [handleApprove,handleDecline]);
 
 
   
@@ -53,7 +78,7 @@ const AdminPage = () => {
       <div className="manager-requests-container">
         <h2>Manager Requests</h2>
         <div className="manager-requests">
-          {managerRequests.map((request) => (
+          {managerRequests.filter((request)=>request.status==='pending').map((request) => (
             <div key={request.id} className="manager-request">
               <p>Name: {request.name}</p>
               <p>Email: {request.email}</p>
