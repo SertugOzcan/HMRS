@@ -8,16 +8,17 @@ const RegisterPage = () => {
   const [isManager, setIsManager] = useState(false);
 
   const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
+  const [surName, setSurName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [repassword, setRepassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
   const [gender, setGender] = useState(false);
 
   const [address, setAddress] = useState(""); // Changed 'adress' to 'address'
   const [companyName, setCompanyName] = useState("");
+  const [identityNumber,setIdentityNumber] = useState("");
 
-
+  const [identityNumberError,setIdentityNumberError]=useState("");
   const [passwordError, setPasswordError] = useState("");
   const [date, setDate] = useState(new Date());
   const [strength, setStrength] = useState(""); // Added state for password strength
@@ -43,7 +44,7 @@ const RegisterPage = () => {
 
   
   const adjustTextareaHeight = () => {
-    const textarea = document.getElementById("address");
+    const textarea = document.getElementById("identity-number");
     textarea.style.height = "auto";
     textarea.style.height = textarea.scrollHeight + "px";
   };
@@ -77,23 +78,32 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (password !== repassword) {
+    if (password !== rePassword) {
       setPasswordError("Passwords do not match");
       return;
     }
-  
+    if(identityNumber.length!=11){
+      setIdentityNumberError("Identity number must be 11 character");
+      return;
+    }
     try {
-      const response = await axios.post('http://localhost:9090/api/v1/auth/register-guest', {
-        name,
-        surname,
-        email,
-        password,
-        address,
-        dateOfBirth: date,
-        // Diğer isteğe dahil edilmesi gereken verileri ekleyin
-      });
-  
-      console.log(response.data); // Yanıtı konsola yazdırabilirsiniz, başka bir işlem de yapabilirsiniz.
+      if(!isManager){
+        const stringGender = gender ? 'MALE' : 'FEMALE'
+        const payload = {
+            name: name.trim(),
+            surName: surName.trim(),
+            email: email.trim(),
+            password: password,
+            rePassword: rePassword,
+            identityNumber: identityNumber,
+            dateOfBirth: date,
+            phone: phone,
+            gender: stringGender
+        }
+        const response = await axios.post('http://localhost:9090/api/v1/auth/register-guest',payload);
+        const data = response.data
+        console.log(data);
+    }      
     } catch (error) {
       console.error('Registration error:', error);
     }
@@ -115,8 +125,8 @@ const RegisterPage = () => {
         <input
           type="text"
           placeholder="Surname"
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
+          value={surName}
+          onChange={(e) => setSurName(e.target.value)}
           required
         />
         <input
@@ -140,8 +150,8 @@ const RegisterPage = () => {
         <input
           type="password"
           placeholder="Re-enter Password"
-          value={repassword}
-          onChange={(e) => setRepassword(e.target.value)}
+          value={rePassword}
+          onChange={(e) => setRePassword(e.target.value)}
           required
         />
 
@@ -170,13 +180,12 @@ const RegisterPage = () => {
         </div>
 
 
-
         <textarea
-          id="address"
-          name="address"
-          placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          id="identity-number"
+          name="identity-number"
+          placeholder="Identity Number"
+          value={identityNumber}
+          onChange={(e) => setIdentityNumber(e.target.value)}
           required
         />
         <div className="date-picker">
@@ -186,8 +195,10 @@ const RegisterPage = () => {
             onChange={(date) => setDate(date)}
             placeholderText="Date of Birth"
           />
+          <label>Date of Birth</label>
         </div>
         {passwordError && <p className="error-message">{passwordError}</p>}
+        {identityNumberError && <p className="error-message">{identityNumberError}</p>}
         {isManager && (
           <input
             type="text"
