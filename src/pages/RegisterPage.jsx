@@ -10,6 +10,7 @@ const RegisterPage = () => {
   const [name, setName] = useState("");
   const [surName, setSurName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [gender, setGender] = useState(false);
@@ -44,9 +45,11 @@ const RegisterPage = () => {
 
   
   const adjustTextareaHeight = () => {
-    const textarea = document.getElementById("identity-number");
-    textarea.style.height = "auto";
-    textarea.style.height = textarea.scrollHeight + "px";
+    if(isManager){
+      const textarea = document.getElementById("address");
+      textarea.style.height = "auto";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
   };
 // ---------------------------------------------
 
@@ -87,23 +90,29 @@ const RegisterPage = () => {
       return;
     }
     try {
+      const stringGender = gender ? 'MALE' : 'FEMALE'
+      const payload = {
+        name: name.trim(),
+        surName: surName.trim(),
+        email: email.trim(),
+        password: password,
+        rePassword: rePassword,
+        identityNumber: identityNumber,
+        dateOfBirth: date,
+        phone: phone,
+        gender: stringGender,
+        address: address,
+        companyName: companyName.trim()
+      } 
       if(!isManager){
-        const stringGender = gender ? 'MALE' : 'FEMALE'
-        const payload = {
-            name: name.trim(),
-            surName: surName.trim(),
-            email: email.trim(),
-            password: password,
-            rePassword: rePassword,
-            identityNumber: identityNumber,
-            dateOfBirth: date,
-            phone: phone,
-            gender: stringGender
-        }
         const response = await axios.post('http://localhost:9090/api/v1/auth/register-guest',payload);
         const data = response.data
         console.log(data);
-    }      
+        }else{
+          const response = await axios.post('http://localhost:9090/api/v1/auth/register-supervisor',payload);
+        const data = response.data
+        console.log(data);
+        } 
     } catch (error) {
       console.error('Registration error:', error);
     }
@@ -112,125 +121,132 @@ const RegisterPage = () => {
 
 
   return (
-    <div className="register-container">
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Surname"
-          value={surName}
-          onChange={(e) => setSurName(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          spellCheck="false"
-          className="control"
-          placeholder="Password"
-          value={password}
-          onChange={handleChange}
-          required
-        />
-        <div className={`bars ${strength}`}><div></div></div>
-        <div className="strength">{strength && `${strength} password`}</div>
-        <input
-          type="password"
-          placeholder="Re-enter Password"
-          value={rePassword}
-          onChange={(e) => setRePassword(e.target.value)}
-          required
-        />
-
-
-        <div className="gender-selector">
-        <label className="gender-label">
-          <input
-            type="radio"
-            name="radio"
-            value="male"
-            checked={!gender}
-            onChange={() => setGender(false)}
-          />
-          <span>Male</span>
-        </label>
-        <label className="gender-label">
-          <input
-            type="radio"
-            name="radio"
-            value="female"
-            checked={gender}
-            onChange={() => setGender(true)}
-          />
-          <span className="gender-span">Female</span>
-        </label>
-        </div>
-
-
-        <textarea
-          id="identity-number"
-          name="identity-number"
-          placeholder="Identity Number"
-          value={identityNumber}
-          onChange={(e) => setIdentityNumber(e.target.value)}
-          required
-        />
-        <div className="date-picker">
-          <DatePicker
-            dateFormat="dd/MM/yyyy"
-            selected={date}
-            onChange={(date) => setDate(date)}
-            placeholderText="Date of Birth"
-          />
-          <label>Date of Birth</label>
-        </div>
-        {passwordError && <p className="error-message">{passwordError}</p>}
-        {identityNumberError && <p className="error-message">{identityNumberError}</p>}
-        {isManager && (
+    <div className="register-page-major-container">
+      <div className="register-container">
+        <h2>Register</h2>
+        <form onSubmit={handleRegister}>
           <input
             type="text"
-            placeholder="Company Name"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
-        )}
-        <button type="submit">Register</button>
-      </form>
-      <div className="role-selector">
-        
-        <label>
           <input
-            type="radio"
-            value="visitor"
-            name="radio"
-            checked={!isManager}
-            onChange={() => setIsManager(false)}
+            type="text"
+            placeholder="Surname"
+            value={surName}
+            onChange={(e) => setSurName(e.target.value)}
+            required
           />
-          Visitor
-        </label>
-        <label>
+          {isManager && (
+            <input
+              type="text"
+              placeholder="Company Name"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+              required
+            />
+          )}
           <input
-            type="radio"
-            value="manager"
-            checked={isManager}
-            onChange={() => setIsManager(true)}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
-          Manager
-        </label>
+          <input type="text"
+          placeholder="Phone"
+          value={phone}
+          onChange={(e)=>setPhone(e.target.value)} />
+          <input
+            type="password"
+            spellCheck="false"
+            className="control"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+          <div className={`bars ${strength}`}></div>
+          <div className="strength">{strength && `${strength} password`}</div>
+          <input
+            type="password"
+            placeholder="Re-enter Password"
+            value={rePassword}
+            onChange={(e) => setRePassword(e.target.value)}
+            required
+          />
+          {passwordError && <p className="error-message">{passwordError}</p>}
+          <div className="gender-selector">
+          <label className="gender-label">
+            <input
+              type="radio"
+              name="radio"
+              value="male"
+              checked={!gender}
+              onChange={() => setGender(false)}
+            />
+            <span>Male</span>
+          </label>
+          <label className="gender-label">
+            <input
+              type="radio"
+              name="radio"
+              value="female"
+              checked={gender}
+              onChange={() => setGender(true)}
+            />
+            <span className="gender-span">Female</span>
+          </label>
+          </div>
+          <input type="text" className="identity-number" 
+          value={identityNumber}
+          onChange={(e) => setIdentityNumber(e.target.value)}
+          placeholder="Identity Number"
+          required/>
+          {identityNumberError && <p className="error-message">{identityNumberError}</p>}
+          {isManager && (<textarea
+            id="address"
+            name="address"
+            placeholder="Your Address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />)}
+          <div className="date-picker">
+          <div className="dob-label"><label >Birthday:</label></div>
+            <div className="dob-input">
+              <DatePicker
+                dateFormat="dd/MM/yyyy"
+                selected={date}
+                onChange={(date) => setDate(date)}
+              />
+            </div>
+          </div>
+          <button type="submit">Register</button>
+        </form>
+        <div className="role-selector">
+          <label>
+            <input
+              type="radio"
+              value="visitor"
+              name="radio"
+              checked={!isManager}
+              onChange={() => setIsManager(false)}
+            />
+            Visitor
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="manager"
+              checked={isManager}
+              onChange={() => setIsManager(true)}
+            />
+            Manager
+          </label>
+        </div>
       </div>
     </div>
   );
