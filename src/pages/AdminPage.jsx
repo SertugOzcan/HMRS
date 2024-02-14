@@ -41,12 +41,12 @@ const AdminPage = () => {
     const getData = async () =>{
 
       try {
-        const managerRequestsResponse = await axios.get('http://localhost:9093/api/v1/admin/getallregisteredsupervisors')
+        const managerRequestsResponse = await axios.get('http://localhost:9093/api/v1/admin/getallregisteredsupervisors','asdfasdf')
         const managerRequestsData = managerRequestsResponse.data
         setManagerRequests(managerRequestsData);
         
         // Kayıtlı kullanıcıları getir
-        const registeredUsersResponse = await axios.get('http://localhost:9090/api/v1/getall')
+        const registeredUsersResponse = await axios.get('http://localhost:9090/api/v1/auth/getall','asdfasdf')
         const userDatas = registeredUsersResponse.data
         setRegisteredUsers(userDatas);
       } catch (error) {
