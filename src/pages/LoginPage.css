@@ -4,13 +4,18 @@
     box-sizing: border-box;
 }
 
-
+.guest-login-major-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+}
 
 .container {
     background-color: rgba(0, 0, 0, 0.4);
     padding: 20px 40px;
     border-radius: 5px;
-    width: 320px; /* Örnek bir genişlik, ihtiyaca göre ayarlayın */
+    width: 320px;
 }
 
 .container h1 {
