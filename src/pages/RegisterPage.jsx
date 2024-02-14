@@ -88,7 +88,7 @@ const RegisterPage = () => {
     }
     try {
       if(!isManager){
-        const stringGender = gender ? 'MALE' : 'FEMALE'
+        const stringGender = gender ? 'FEMALE' : 'MALE'
         const payload = {
             name: name.trim(),
             surName: surName.trim(),
@@ -97,7 +97,7 @@ const RegisterPage = () => {
             rePassword: rePassword,
             identityNumber: identityNumber,
             dateOfBirth: date,
-            phone: phone,
+            phone: "12345678911",
             gender: stringGender
         }
         const response = await axios.post('http://localhost:9090/api/v1/auth/register-guest',payload);
