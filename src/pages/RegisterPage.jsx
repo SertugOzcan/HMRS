@@ -90,7 +90,7 @@ const RegisterPage = () => {
       return;
     }
     try {
-      const stringGender = gender ? 'MALE' : 'FEMALE'
+      const stringGender = gender ? 'FEMALE' : 'MALE'
       const payload = {
         name: name.trim(),
         surName: surName.trim(),
