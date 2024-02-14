@@ -41,13 +41,15 @@ const AdminPage = () => {
     const getData = async () =>{
 
       try {
-        const managerRequestsResponse = await axios.get('http://localhost:9093/api/v1/admin/getallregisteredsupervisors','asdfasdf')
+        const managerRequestsResponse = await axios.get('http://localhost:9093/api/v1/admin/getallregisteredsupervisors')
         const managerRequestsData = managerRequestsResponse.data
+        console.log(managerRequestsData);
         setManagerRequests(managerRequestsData);
         
         // Kayıtlı kullanıcıları getir
-        const registeredUsersResponse = await axios.get('http://localhost:9090/api/v1/auth/getall','asdfasdf')
+        const registeredUsersResponse = await axios.get('http://localhost:9090/api/v1/auth/getallregistered')
         const userDatas = registeredUsersResponse.data
+        console.log(userDatas);
         setRegisteredUsers(userDatas);
       } catch (error) {
           console.log('Error while fetching the data');   
@@ -56,7 +58,7 @@ const AdminPage = () => {
     // API'den veya veritabanından yönetici başvurularını getir
     getData();
 
-  }, [handleApprove,handleDecline]);
+  }, []);
 
 
   
@@ -77,13 +79,13 @@ const AdminPage = () => {
 
       <div className="manager-requests-container">
         <h2>Manager Requests</h2>
-        <div className="manager-requests">
-          {managerRequests.filter((request)=>request.status==='pending').map((request) => (
+        <div id="managerRequest" className="manager-requests">
+          {managerRequests.map((request) => (
             <div key={request.id} className="manager-request">
               <p>Name: {request.name}</p>
               <p>Email: {request.email}</p>
               <p>Company: {request.companyName}</p>
-              <p>Position: {request.position}</p>
+              <p>Gender: {request.gender}</p>
               <button className='approve-btn' onClick={() => handleApprove(request.id)}>Approve</button>
               <button className='decline-btn' onClick={() => handleDecline(request.id)}>Decline</button>
             </div>
