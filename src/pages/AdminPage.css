@@ -3,6 +3,14 @@
   padding-left: 20px;
   display: flex;
   justify-content: space-between;
+  /* background-image: url("https://wallpapercave.com/wp/wp2508257.jpg");
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: cover; */
+}
+
+.admin-container h2 {
+  text-align: center;
 }
 
 .registered-users-container, 

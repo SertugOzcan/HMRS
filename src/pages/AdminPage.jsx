@@ -11,14 +11,14 @@ const AdminPage = () => {
   return (
     <div className="admin-container">
       <div className="registered-users-container">
-        <h2>Registered Active Users</h2>
+        <h2>Active Users</h2>
         <div className="registered-users">
           {activeUsers.map((user) => (
             <div key={user.id} className="registered-user">
-              <p>Email: {user.email}</p>
-              <p>Phone: {user.phone}</p>
-              <p>Password: {user.password}</p>
-              <p>Role: {user.role}</p>
+              <p><b>Email:</b> {user.email}</p>
+              <p><b>Phone:</b> {user.phone}</p>
+              <p><b>Password:</b> {user.password}</p>
+              <p><b>Role:</b> {user.role}</p>
             </div>
           ))}
         </div>
