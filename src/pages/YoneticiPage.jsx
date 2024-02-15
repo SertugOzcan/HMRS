@@ -1,78 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./YoneticiPage.css";
 import axios from "axios";
-import EmployeeCard from "../components/EmployeeCard";
-import EmployeeList from "../components/EmployeeList";
+import SupervisorPageIfCompanyUpdated from './SupervisorPageIfCompanyUpdated'
+import UpdateCompanyForTheFirstTimePage from "./UpdateCompanyForTheFirstTimePage";
 
 const YoneticiPage = () => {
-  const [financialData, setFinancialData] = useState({});
-  const [employeeData, setEmployeeData] = useState({})
-
+  const [companyData, setCompanyData] = useState({});
+  // const [personnelData, setPersonnelData] = useState({});
+  const [companyStatus,setCompanyStatus] = useState('');
+  const {isAuthenticated} = useContext(AuthContext);
   useEffect(() => {
-    axios
-      .get("api/v1/test/????")
+    function getDataForSupervisor(){
+      axios
+      .get(`http://localhost:9095/api/v1/company/findbysupervizortoken/${isAuthenticated.token}`)
       .then((response) => response.json())
       .then((data) => {
-        setFinancialData(data.financialData);
+        setCompanyData(data);
+        if(data.status==="ACTIVE"){
+          setCompanyStatus('ACTIVE')
+        }
       })
-      .catch((error) => console.error("Error fetching data:", error));
-
-      axios.get('controller/method/?')
-      .then(response => response.json())
-      .then(data => {
-        setEmployeeData(data.employeeData);
-      })
-      .catch(error => console.log("Error fetching data: ", error));
+      .catch((error) => console.error("Error while fetching the company data:", error));
+    }
+    getDataForSupervisor();
   }, []);
 
-  
-
-  return (
-    <div className="yonetici-container">
-      <h2>Yönetici Sayfası</h2>
-      <div className="calisan-listesi">
-        <h3>Personnels</h3>
-        {/*<EmployeeList employeeData={employeeData}/>*/}
-        {/* Çalışan listesi   */}
-        <EmployeeList />
-      </div>
-      
-      <div className="finansal-bilgiler">
-        <h3>Finansal Bilgiler</h3>
-        <div className="finansal-kutular">
-          <div className="finansal-kutu">
-            <p>
-              <strong>Kar/Zarar Bilgileri:</strong> {financialData.profitLoss}
-            </p>
-          </div>
-          <div className="finansal-kutu">
-            <p>
-              <strong>Toplam Gider Bilgisi:</strong>{" "}
-              {financialData.totalExpenses}
-            </p>
-          </div>
-          <div className="finansal-kutu">
-            <p>
-              <strong>Yaklaşan Ödeme Bilgileri:</strong>{" "}
-              {financialData.upcomingPayments}
-            </p>
-          </div>
-          <div className="finansal-kutu">
-            <p>
-              <strong>Resmi Tatil Bilgileri:</strong>{" "}
-              {financialData.holidayInfo}
-            </p>
-          </div>
-          <div className="finansal-kutu">
-            <p>
-              <strong>Personel İzin Hakkı:</strong>{" "}
-              {financialData.employeeLeave} gün
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return (  <>
+    { companyStatus==='ACTIVE' && (<SupervisorPageIfCompanyUpdated value={{companyData}}/>)}
+    { companyStatus==='PENDING' && (<UpdateCompanyForTheFirstTimePage value={companyData.companyName}/>)}
+  </>);
 };
 
 export default YoneticiPage;
