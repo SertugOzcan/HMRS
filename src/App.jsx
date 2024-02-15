@@ -11,6 +11,7 @@ import "./App.css";
 import { UserPreferencesContext } from './context/UserPreferencesContext';
 import { useContext } from 'react';
 import ThemeSlider from './components/ThemeSlider';
+import { AdminPageAPIContextProvider } from './context/AdminPageAPIContext';
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -32,7 +33,11 @@ function App() {
         <Routes>
           <Route path="/admin-login" element={<AdminLoginPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin-page" element={<AdminPage />} />
+          <Route path="/admin-page" element={
+            <AdminPageAPIContextProvider>
+              <AdminPage />
+            </AdminPageAPIContextProvider>
+          }/>
           <Route path="/yonetici-page" element={<YoneticiPage />} />
           <Route path="/ziyaretci-page" element={<ZiyaretciPage />} />
           <Route path="/personel-page" element={<PersonelPage />} />
