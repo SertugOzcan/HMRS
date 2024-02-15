@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./YoneticiPage.css";
 import axios from "axios";
+import EmployeeCard from "../components/EmployeeCard";
+import EmployeeList from "../components/EmployeeList";
 
 const YoneticiPage = () => {
   const [financialData, setFinancialData] = useState({});
+  const [employeeData, setEmployeeData] = useState({})
 
   useEffect(() => {
     axios
@@ -13,15 +16,27 @@ const YoneticiPage = () => {
         setFinancialData(data.financialData);
       })
       .catch((error) => console.error("Error fetching data:", error));
+
+      axios.get('controller/method/?')
+      .then(response => response.json())
+      .then(data => {
+        setEmployeeData(data.employeeData);
+      })
+      .catch(error => console.log("Error fetching data: ", error));
   }, []);
+
+  
 
   return (
     <div className="yonetici-container">
       <h2>Yönetici Sayfası</h2>
       <div className="calisan-listesi">
-        <h3>Çalışan Listesi</h3>
+        <h3>Personnels</h3>
+        {/*<EmployeeList employeeData={employeeData}/>*/}
         {/* Çalışan listesi   */}
+        <EmployeeList />
       </div>
+      
       <div className="finansal-bilgiler">
         <h3>Finansal Bilgiler</h3>
         <div className="finansal-kutular">
