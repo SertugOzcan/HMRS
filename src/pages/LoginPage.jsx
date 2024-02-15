@@ -1,19 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "./LoginPage.css";
-import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+import {AuthContext} from '../context/AuthContext'
 
 const LoginPage = () => {
   const [identity, setIdentity] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:9090/api/v1/auth/login',{identity: identity,
-      password: password})
+      const {login} = useContext(AuthContext)
+      const response = login(identity,password)
       const data = response.data
-      console.log(response)
-      console.log(data)
+      switch (data.role) {
+        case 'SUPERVISOR':
+          navigate("/yonetici-page")
+          break;
+        case 'PERSONNEL':
+          navigate("/personel-page")
+          break;
+        case 'GUEST':
+          navigate("/ziyaretci-page")
+          break;  
+        default:
+          navigate("/login")
+          break;
+      }
     } catch (error) {
       setErrorMessage('Kullanıcı adı veya şifre yanlış!')
     }
