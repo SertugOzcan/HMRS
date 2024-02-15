@@ -5,7 +5,7 @@ export const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
 
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isAuthenticated, setIsAuthenticated] = useState('')
 
     const login = async (identity,password) => {
 
@@ -13,18 +13,34 @@ export const AuthContextProvider = ({children}) => {
             const resData = await AuthService.loginService(identity,password)
             console.log(resData);
             if(resData.role){
-                setIsAuthenticated(AuthService.getCurrentUser())
+                switch (resData.role) {
+                    case 'ADMIN':
+                        setIsAuthenticated('ADMIN')
+                        break;
+                    case 'SUPERVISOR':
+                        setIsAuthenticated('SUPERVISOR')
+                        break;
+                    case 'PERSONNEL':
+                        setIsAuthenticated('PERSONNEL')
+                        break;    
+                    case 'GUEST':
+                        setIsAuthenticated('GUEST')
+                        break;    
+                    default:
+                        setIsAuthenticated('')
+                        break;
+                }
             }
-            return true
+            return isAuthenticated
         } catch (error) {
-            setIsAuthenticated(false)
+            setIsAuthenticated('')
             throw new Error(error)
         }
     }
 
     const logout = () => {
         AuthService.logoutService()
-        setIsAuthenticated(false)
+        setIsAuthenticated('')
     }
 
     return(
