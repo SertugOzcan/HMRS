@@ -18,7 +18,7 @@ const AdminLoginPage = () => {
       console.log(`BİZİM RESPONSE ${response}`)
       const user = AuthService.getCurrentUser();
       console.log(`BİZİM KOYDUGUMUZ : ${user.role}`)
-      if(response && user.role === 'ADMIN'){
+      if(response==='ADMIN' && user.role === 'ADMIN'){
         navigate("/admin-page")
       }
     } catch (error) {
