@@ -1,23 +1,23 @@
 import React from 'react'
 import "./EmployeeCard.css"
 
-const EmployeeCard = ({image,name, surName, identityNumber, email, phones, address, salary, dateOfBirt}) => {
+const EmployeeCard = ({image,name, surName, email, phone, salary, dayOff}) => {
   return (
     <div className='card'>
         
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6SR5emlvKa5Trq207GwkpiamFuQFskm8zLniDY04frA&s" alt="" />
+        <img src={image} alt="personnel-image" />
         
         <div className='card-values'>
             <div>
-                <p>name : {name}</p>
-                <p>surName : </p>
-                <p>email :</p>
+                <p>Name : {name}</p>
+                <p>Surname : {surName} </p>
+                <p>E-mail : {email}</p>
                 
             </div>
             <div>
-                <p>phone :</p>
-                <p>salary :</p>
-                <p>izin hakkı :</p>
+                <p>Phone : {phone}</p>
+                <p>Salary : {salary}</p>
+                <p>Dayoffs : {dayOff}</p>
             </div>
         </div>
     </div>
