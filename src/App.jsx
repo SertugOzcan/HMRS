@@ -58,7 +58,8 @@ function App() {
                   </AdminPageAPIContextProvider>
                 }/>}/>
               <Route path="/yonetici-page" element={<PrivateRoute element={<YoneticiPage />} /> }/>
-              <Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />
+              {/*<Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />*/}
+              <Route path="/ziyaretci-page" element= {<ZiyaretciPage />} />
               <Route path="/personel-page" element={<PrivateRoute element={<PersonelPage />}/>} />
               <Route path="/register-page" element={<RegisterPage />}/>
             </Routes>
