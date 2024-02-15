@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import "./AdminLoginPage.css";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AdminLoginPage = () => {
   const [identity, setIdentity] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:9090/api/v1/auth/login',{identity,password})
+      const {login} = useContext(AuthContext)
+      const response = login(identity,password)
       const data = response.data
-      console.log(data);
-
+      if(data.role==='ADMIN'){
+        navigate("/admin-page")
+      }
     } catch (error) {
       setErrorMessage('Kullanıcı adı veya şifre yanlış!');
     }
