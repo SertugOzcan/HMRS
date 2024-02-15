@@ -168,8 +168,7 @@ const RegisterPage = () => {
             onChange={handleChange}
             required
           />
-          <div className={`bars ${strength}`}></div>
-          <div className="strength">{strength && `${strength} password`}</div>
+          
           <input
             type="password"
             placeholder="Re-enter Password"
@@ -178,6 +177,9 @@ const RegisterPage = () => {
             required
           />
           {passwordError && <p className="error-message">{passwordError}</p>}
+
+          <div className={`bars ${strength}`}></div>
+          <div className="strength">{strength && `${strength} password`}</div>
           <div className="gender-selector">
           <label className="gender-label">
             <input
