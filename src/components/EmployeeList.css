@@ -1,0 +1,7 @@
+.employee-list-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-left: 50px;
+}
