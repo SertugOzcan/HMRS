@@ -16,22 +16,18 @@ export const AuthContextProvider = ({children}) => {
                 switch (resData.role) {
                     case 'ADMIN':
                         setIsAuthenticated('ADMIN')
-                        break;
+                        return isAuthenticated;
                     case 'SUPERVISOR':
                         setIsAuthenticated('SUPERVISOR')
-                        break;
+                        return isAuthenticated
                     case 'PERSONNEL':
                         setIsAuthenticated('PERSONNEL')
-                        break;    
-                    case 'GUEST':
-                        setIsAuthenticated('GUEST')
-                        break;    
+                        return isAuthenticated    
                     default:
-                        setIsAuthenticated('')
-                        break;
+                        setIsAuthenticated('GUEST')
+                        return isAuthenticated    
                 }
             }
-            return isAuthenticated
         } catch (error) {
             setIsAuthenticated('')
             throw new Error(error)
