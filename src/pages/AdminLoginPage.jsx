@@ -15,17 +15,16 @@ const AdminLoginPage = () => {
     e.preventDefault();
     try { 
       const response = await login(identity,password)
-      console.log(`BİZİM RESPONSE ${response}`)
       const user = AuthService.getCurrentUser();
       console.log(`BİZİM KOYDUGUMUZ : ${user.role}`)
-      if(response==='ADMIN' && user.role === 'ADMIN'){
+      
+      if(response && user.role === 'ADMIN'){
         navigate("/admin-page")
       }
     } catch (error) {
       setErrorMessage('Kullanıcı adı veya şifre yanlış!');
     }
   };
-
   // LOGIN INPUT FONSIYONU 
   useEffect(() => {
     const labels = document.querySelectorAll('.form-control label');
@@ -36,8 +35,6 @@ const AdminLoginPage = () => {
         .join('');
     });
   }, []);
-
-
   return (
     <div className="admin-login-major-container">
       <div className="container">
@@ -69,6 +66,4 @@ const AdminLoginPage = () => {
     </div>
   );
 };
-
-
 export default AdminLoginPage;

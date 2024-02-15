@@ -7,7 +7,6 @@ const AuthService = {
             "identity": identity,
             "password": password
         })
-        console.log(response.data);
         if(response.data.role){
             sessionStorage.setItem("user", JSON.stringify(response.data))
         }

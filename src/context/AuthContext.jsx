@@ -13,32 +13,18 @@ export const AuthContextProvider = ({children}) => {
             const resData = await AuthService.loginService(identity,password)
             console.log(resData);
             if(resData.role){
-                switch (resData.role) {
-                    case 'ADMIN':
-                        setIsAuthenticated('ADMIN')
-                        return isAuthenticated;
-                    case 'SUPERVISOR':
-                        setIsAuthenticated('SUPERVISOR')
-                        return isAuthenticated
-                    case 'PERSONNEL':
-                        setIsAuthenticated('PERSONNEL')
-                        return isAuthenticated    
-                    default:
-                        setIsAuthenticated('GUEST')
-                        return isAuthenticated    
-                }
+                setIsAuthenticated(AuthService.getCurrentUser())
             }
+            return true
         } catch (error) {
-            setIsAuthenticated('')
+            setIsAuthenticated(false)
             throw new Error(error)
         }
     }
-
     const logout = () => {
         AuthService.logoutService()
-        setIsAuthenticated('')
+        setIsAuthenticated(false)
     }
-
     return(
         <AuthContext.Provider value={{isAuthenticated,login,logout}}>
             {children}

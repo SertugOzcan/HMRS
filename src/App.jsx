@@ -8,8 +8,9 @@ import PersonelPage from "./pages/PersonelPage";
 import RegisterPage from "./pages/RegisterPage";
 
 import "./App.css";
-import PrivateRouteUsers from './services/PrivateRouteUsers';
-import PrivateRouteAdmin from './services/PrivateRouteAdmin';
+// import PrivateRouteUsers from './services/PrivateRouteUsers';
+// import PrivateRouteAdmin from './services/PrivateRouteAdmin';
+import PrivateRoute from './services/PrivateRoute';
 import { UserPreferencesContext } from "./context/UserPreferencesContext";
 import { useContext } from "react";
 import ThemeSlider from "./components/ThemeSlider";
@@ -51,14 +52,14 @@ function App() {
             <Routes>
               <Route path="/admin-login" element={<AdminLoginPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/admin-page" element={<PrivateRouteAdmin element={
+              <Route path="/admin-page" element={<PrivateRoute element={
                   <AdminPageAPIContextProvider>
                     <AdminPage />
                   </AdminPageAPIContextProvider>
-              }/>}/>
-              <Route path="/yonetici-page" element={<PrivateRouteUsers element={<YoneticiPage />} /> }/>
-              <Route path="/ziyaretci-page" element={<PrivateRouteUsers element={<ZiyaretciPage />}/>} />
-              <Route path="/personel-page" element={<PrivateRouteUsers element={<PersonelPage />}/>} />
+                }/>}/>
+              <Route path="/yonetici-page" element={<PrivateRoute element={<YoneticiPage />} /> }/>
+              <Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />
+              <Route path="/personel-page" element={<PrivateRoute element={<PersonelPage />}/>} />
               <Route path="/register-page" element={<RegisterPage />}/>
             </Routes>
           </div>
