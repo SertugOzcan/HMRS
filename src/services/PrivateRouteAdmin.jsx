@@ -2,10 +2,10 @@ import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { Navigate } from "react-router-dom"
 
-const PrivateRoute = ({element}) => {
+const PrivateRouteAdmin = ({element}) => {
     const {isAuthenticated} = useContext(AuthContext)
 
-    return isAuthenticated ? element : <Navigate to="/login"/>
+    return isAuthenticated ? element : <Navigate to="/admin-login"/>
 }
 
-export default PrivateRoute;
+export default PrivateRouteAdmin;
