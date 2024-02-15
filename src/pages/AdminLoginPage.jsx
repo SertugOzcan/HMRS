@@ -14,7 +14,8 @@ const AdminLoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try { 
-      const response = login(identity,password)
+      const response = await login(identity,password)
+      console.log(`BİZİM RESPONSE ${response}`)
       const user = AuthService.getCurrentUser();
       console.log(`BİZİM KOYDUGUMUZ : ${user.role}`)
       if(response && user.role === 'ADMIN'){

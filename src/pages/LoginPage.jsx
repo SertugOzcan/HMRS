@@ -2,31 +2,35 @@ import React, { useContext, useEffect, useState } from 'react';
 import "./LoginPage.css";
 import {useNavigate} from 'react-router-dom';
 import {AuthContext} from '../context/AuthContext'
+import AuthService from '../services/AuthService'
 
 const LoginPage = () => {
   const [identity, setIdentity] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const {login} = useContext(AuthContext);
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-      const {login} = useContext(AuthContext)
-      const response = login(identity,password)
-      const data = response.data
-      switch (data.role) {
-        case 'SUPERVISOR':
-          navigate("/yonetici-page")
-          break;
-        case 'PERSONNEL':
-          navigate("/personel-page")
-          break;
-        case 'GUEST':
-          navigate("/ziyaretci-page")
-          break;  
-        default:
-          navigate("/login")
-          break;
+      const response = await login(identity,password)
+      const user = AuthService.getCurrentUser();
+      if(response) {
+        switch (user.role) {
+          case 'SUPERVISOR':
+            navigate("/yonetici-page")
+            break;
+          case 'PERSONNEL':
+            navigate("/personel-page")
+            break;
+          case 'GUEST':
+            navigate("/ziyaretci-page")
+            break;  
+          default:
+            navigate("/login")
+            break;
+        }
       }
     } catch (error) {
       setErrorMessage('Kullanıcı adı veya şifre yanlış!')

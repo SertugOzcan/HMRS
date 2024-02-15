@@ -10,7 +10,6 @@ export const AuthContextProvider = ({children}) => {
     const login = async (identity,password) => {
 
         try {
-            console.log(`${identity} ve ${password}`)
             const resData = await AuthService.loginService(identity,password)
             console.log(resData);
             if(resData.role){
