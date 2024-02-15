@@ -3,7 +3,7 @@ import axios from 'axios'
 const AuthService = {
   
     loginService: async (identity, password) => {
-        const response = await axios.post("https://localhost:9090/api/v1/auth/login", {
+        const response = await axios.post("http://localhost:9090/api/v1/auth/login", {
             "identity": identity,
             "password": password
         })

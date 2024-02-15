@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import "./AdminLoginPage.css";
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext'
+import AuthService from '../services/AuthService'
 
 const AdminLoginPage = () => {
   const [identity, setIdentity] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const {login} = useContext(AuthContext);
 
-  const handleLogin = async () => {
-    try {
-      const {login} = useContext(AuthContext)
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try { 
       const response = login(identity,password)
-      const data = response.data
-      if(data.role==='ADMIN'){
+      const user = AuthService.getCurrentUser();
+      console.log(`BİZİM KOYDUGUMUZ : ${user.role}`)
+      if(response && user.role === 'ADMIN'){
         navigate("/admin-page")
       }
     } catch (error) {

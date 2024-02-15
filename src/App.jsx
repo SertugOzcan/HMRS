@@ -50,11 +50,11 @@ function App() {
             <Routes>
               <Route path="/admin-login" element={<AdminLoginPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/admin-page" element={<PrivateRoute element={
+              <Route path="/admin-page" element={
                   <AdminPageAPIContextProvider>
                     <AdminPage />
                   </AdminPageAPIContextProvider>
-                } />}/>
+              }/>
               <Route path="/yonetici-page" element={<PrivateRoute element={<YoneticiPage />} /> }/>
               <Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />
               <Route path="/personel-page" element={<PrivateRoute element={<PersonelPage />}/>} />
