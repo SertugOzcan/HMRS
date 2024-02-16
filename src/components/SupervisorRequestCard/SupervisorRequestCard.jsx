@@ -10,12 +10,12 @@ const SupervisorRequestCard = ({request}) => {
 
 
     const handleApprove = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         handleSupervisorRequest(request.authId, true);
     }
 
     const handleDecline = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         handleSupervisorRequest(request.authId, false);
     }
 

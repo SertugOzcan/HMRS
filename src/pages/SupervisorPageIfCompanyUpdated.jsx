@@ -1,29 +1,37 @@
-import { useEffect, useState } from "react";
-import React from "react";
+import { useEffect, useState, useContext } from "react";
 import EmployeeList from "../components/EmployeeList";
 import HolidayList from '../components/HolidayList'
-const SupervisorPageIfCompanyUpdated = ({ companyData }) => {
+import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
+
+const SupervisorPageIfCompanyUpdated = () => {
+
+  const {companyData} = useContext(SupervisorPageAPIContext);
+  console.log("companyData.holidays:", companyData.holidays);
+
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
   const [profitOrLoss, setProfitOrLoss] = useState(0);
 
   function calculateProfitLoss() {
-    let calculatedIncome;
-    companyData.incomes.map((income) => {
+    let calculatedIncome = 0;
+    companyData.incomes.forEach((income) => {
       calculatedIncome += income.amount;
     });
     setTotalIncome(calculatedIncome);
-    let calculatedExpense;
-    companyData.expenses.map((expense) => {
+
+    let calculatedExpense = 0;
+    companyData.expenses.forEach((expense) => {
       calculatedExpense += expense.amount;
     });
     setTotalExpense(calculatedExpense);
-    const calculatedProfitLoss = totalIncome - totalExpense;
+
+    const calculatedProfitLoss = calculatedIncome - calculatedExpense;
     setProfitOrLoss(calculatedProfitLoss);
   }
   useEffect(()=>{
     calculateProfitLoss();
-  })
+  },[companyData]);
+
   return (
     <div className="yonetici-container">
       <h2>Yönetici Sayfası</h2>
@@ -42,6 +50,11 @@ const SupervisorPageIfCompanyUpdated = ({ companyData }) => {
           </div>
           <div className="finansal-kutu">
             <p>
+              <strong>Toplam Gelir Bilgisi:</strong> {totalIncome}
+            </p>
+          </div>
+          <div className="finansal-kutu">
+            <p>
               <strong>Toplam Gider Bilgisi:</strong> {totalExpense}
             </p>
           </div>
@@ -52,7 +65,7 @@ const SupervisorPageIfCompanyUpdated = ({ companyData }) => {
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>Resmi Tatil Bilgileri:</strong> {<HolidayList value={companyData.holidays}/>}
+              <strong>Resmi Tatil Bilgileri:</strong> {<HolidayList holidays={companyData.holidays}/>}
             </p>
           </div>
         </div>

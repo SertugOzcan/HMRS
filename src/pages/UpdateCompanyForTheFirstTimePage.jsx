@@ -1,8 +1,16 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
+import { AuthContext } from "../context/AuthContext"
+import './UpdatedCompanyForTheFirstTimePage.css'
 
-const UpdateCompanyForTheFirstTimePage = (companyName) => {
+const UpdateCompanyForTheFirstTimePage = () => {
+
+  const {companyData} = useContext(SupervisorPageAPIContext);
+  const {isAuthenticated} = useContext(AuthContext);
+
+
   const [establishmentDate, setEstablishmentDate] = useState("");
   const [companyLogo, setCompanyLogo] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
@@ -11,16 +19,27 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
   const [companyHolidays,setCompanyHolidays] = useState([]);
   const [companyIncomes , setCompanyIncomes] = useState([]);
   const [companyExpenses, setCompanyExpenses] = useState([]);
+
   const [hrInfoName, setHRInfoName] = useState("");
   const [hrInfoSurname, setHRInfoSurname] = useState("");
   const [hrInfoEmail, setHRInfoEmail] = useState("");
   const [hrInfoPhone, setHRInfoPhone] = useState("");
+
   const [departmentName,setDepartmentName] = useState('');
   const [departmentShifts,setDepartmentShifts] = useState('');
   const [departmentBreaks,setDepartmentBreaks] = useState('');
+
   const [holidayName,setHolidayName] = useState('');
   const [holidayDuration,setHolidayDuration] = useState(0);
-  const handleAddHRInfo = () => {
+
+  const [incomeDescription, setIncomeDescription] = useState('');
+  const [incomeAmount, setIncomeAmount] = useState(0);
+
+  const [expenseDescription, setExpenseDescription] = useState('');
+  const [expenseAmount, setExpenseAmount] = useState(0);
+
+  const handleAddHRInfo = (e) => {
+    e.preventDefault();
     setHrInfoList((prevhrinfolist) => [
       ...prevhrinfolist,
       {
@@ -30,12 +49,14 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
         phone: hrInfoPhone,
       },
     ]);
+    console.log(hrInfoList);
     setHRInfoName('');
     setHRInfoSurname('');
     setHRInfoEmail('');
     setHRInfoPhone('');
   };
-  const handleAddDepartment = () => {
+  const handleAddDepartment = (e) => {
+    e.preventDefault();
     setCompanyDepartments((prevDepartments)=>[
         ...prevDepartments, {
             name: departmentName,
@@ -47,7 +68,8 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
     setDepartmentShifts('');
     setDepartmentBreaks('');
   }
-  const handleAddHoliday = () => {
+  const handleAddHoliday = (e) => {
+    e.preventDefault();
     setCompanyHolidays((prevHolidays)=>[
         ...prevHolidays,{
             name: holidayName,
@@ -57,7 +79,8 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
     setHolidayName('');
     setHolidayDuration('');
   }
-  const handleAddIncome = () => {
+  const handleAddIncome = (e) => {
+    e.preventDefault();
     setCompanyIncomes((prevIncomes)=> [
         ...prevIncomes,{
             description: incomeDescription,
@@ -67,57 +90,71 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
     setIncomeDescription('');
     setIncomeAmount(0);
   }
-  const handleAddExpense = () => {
+  const handleAddExpense = (e) => {
+    e.preventDefault();
     setCompanyExpenses((prevExpenses)=> [
         ...prevExpenses,{
             description: expenseDescription,
             amount: expenseAmount
         }
     ]);
-    setExpenseDescrition('');
+    setExpenseDescription('');
     setExpenseAmount(0);
   }
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    const payload = {}; //buraya company update icin payload gelecek
-    const response = await axios.post('http://localhost:9095/api/v1/company/update-for-first-time',payload)
-    // if(response.status===200){
-    //     navigate("/yonetici-page")
-    // }   bunun gibi bir kontrol ile istek await edildikten ve basarili olduktan sonra yonetici-sayfasina yonlendirilebilir.
+    const payload = {
+      token: isAuthenticated.token,
+      establishmentDate: establishmentDate,
+      companyLogo: companyLogo,
+      address: companyAddress,
+      hrInfos: hrInfoList,
+      departments: companyDepartments,
+      holidays: companyHolidays,
+      incomes: companyIncomes,
+      expenses: companyExpenses
+    };
+    console.log(payload);
+    const response = await axios.put('http://localhost:9095/api/v1/company/update-for-first-time', payload)
+    console.log(response);
+    if(response === true){
+        navigate("/yonetici-page");
+    }
   };
 
-//   hic css yapmadim, gece calismak isteyen ugrasabilir isterse :)
-
   return (
-    <form className="update-company-form" onSubmit={handleSubmit}>
-      <label>{companyName}</label>
-      <input
-        type="text"
-        name="establishment-date"
-        id="establishment-date"
-        value={establishmentDate}
-        onChange={(event) => setEstablishmentDate(event.target.value)}
-        placeholder="Establishment Date"
-        required
-      />
-      <input
-        type="text"
-        name="company-logo"
-        id="company-logo"
-        value={companyLogo}
-        onChange={(event) => setCompanyLogo(event.target.value)}
-        placeholder="Company Logo URL"
-        required
-      />
-      <input
-        type="text"
-        name="company-address"
-        id="company-address"
-        value={companyAddress}
-        onChange={(event) => setCompanyAddress(event.target.value)}
-        required
-      />
+    <form className="update-company-form">
+      <label>{companyData.companyName}</label>
+      <div className="company-core-info">
+        <input
+          type="text"
+          name="establishment-date"
+          id="establishment-date"
+          value={establishmentDate}
+          onChange={(event) => setEstablishmentDate(event.target.value)}
+          placeholder="Establishment Date"
+          required
+        />
+        <input
+          type="text"
+          name="company-logo"
+          id="company-logo"
+          value={companyLogo}
+          onChange={(event) => setCompanyLogo(event.target.value)}
+          placeholder="Company Logo URL"
+          required
+        />
+        <input
+          type="text"
+          name="company-address"
+          id="company-address"
+          value={companyAddress}
+          onChange={(event) => setCompanyAddress(event.target.value)}
+          placeholder="Company Address"
+          required
+        />
+      </div>
       <div className="hr-info-list-container">
         <div className="hr-info-container">
           <div className="hr-info-name">
@@ -139,7 +176,7 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
             />
           </div>
           <div className="hr-info-email">
-            <label>Name</label>
+            <label>Email</label>
             <input
               type="text"
               value={hrInfoEmail}
@@ -148,7 +185,7 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
             />
           </div>
           <div className="hr-info-phone">
-            <label>Name</label>
+            <label>Phone</label>
             <input
               type="text"
               value={hrInfoPhone}
@@ -158,9 +195,8 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
           </div>
         </div>
         <button onClick={handleAddHRInfo}>Add HRInfo</button>
-        <textarea name="hr-info-list" id="hr-info-list" cols="30" rows="10">
-          {...hrInfoList}
-        </textarea>
+        {/* <textarea name="hr-info-list" id="hr-info-list" cols="30" rows="10" value={JSON.stringify(hrInfoList)} readOnly>
+        </textarea> */}
       </div>
 
       <div className="company-department-list-container">
@@ -194,7 +230,7 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
           </div>
         </div>
         <button onClick={handleAddDepartment}>Add Department</button>
-        <textarea name="department-list" id="department-list" cols="30" rows="10">{...companyDepartments}</textarea>
+        {/* <textarea name="department-list" id="department-list" cols="30" rows="10" value={JSON.stringify(companyDepartments)} readOnly></textarea> */}
       </div>
 
       <div className="company-holiday-list-container">
@@ -209,7 +245,7 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
             </div>
         </div>
         <button onClick={handleAddHoliday}>Add Holiday</button>
-        <textarea name="company-holidays" id="company-holidays" cols="30" rows="10">{...companyHolidays}</textarea>
+        {/* <textarea name="company-holidays" id="company-holidays" cols="30" rows="10" value={JSON.stringify(companyHolidays)} readOnly></textarea> */}
       </div>
 
       <div className="company-income-list-container">
@@ -218,20 +254,20 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
                 <label>Income Description:</label>
                 <input type="text" value={incomeDescription} onChange={(event)=>setIncomeDescription(event.target.value)} required/>
             </div>
-            <div className="holiday-duration">
-                <label>Holiday Duration:</label>
+            <div className="income-amount">
+                <label>Income Amount:</label>
                 <input type="number" value={incomeAmount} onChange={(event)=>setIncomeAmount(event.target.value)} required/>
             </div>
         </div>
         <button onClick={handleAddIncome}>Add Income</button>
-        <textarea name="company-incomes" id="company-incomes" cols="30" rows="10">{...companyIncomes}</textarea>
+        {/* <textarea name="company-incomes" id="company-incomes" cols="30" rows="10" value={JSON.stringify(companyIncomes)} readOnly></textarea> */}
       </div>
 
       <div className="company-expense-list-container">
         <div className="company-expense-container">
             <div className="expense-description">
                 <label>Expense Description:</label>
-                <input type="text" value={expenseDescription} onChange={(event)=>setExpenseDescrition(event.target.value)} required/>
+                <input type="text" value={expenseDescription} onChange={(event)=>setExpenseDescription(event.target.value)} required/>
             </div>
             <div className="expense-amount">
                 <label>Expense Amount:</label>
@@ -239,9 +275,12 @@ const UpdateCompanyForTheFirstTimePage = (companyName) => {
             </div>
         </div>
         <button onClick={handleAddExpense}>Add Expense</button>
-        <textarea name="company-expenses" id="company-expenses" cols="30" rows="10">{...companyExpenses}</textarea>
+        {/* <textarea name="company-expenses" id="company-expenses" cols="30" rows="10" value={JSON.stringify(companyExpenses)} readOnly></textarea> */}
       </div>
-      <button type="submit">Save Company</button>
+      <div className="last-buttons">
+        <button onClick={handleSubmit}>Save Company</button>
+        <button type="reset">Reset Form</button>
+      </div>
     </form>
   );
 };

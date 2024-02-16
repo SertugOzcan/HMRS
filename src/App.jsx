@@ -16,6 +16,7 @@ import { useContext } from "react";
 import ThemeSlider from "./components/ThemeSlider";
 import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
 import { AuthContextProvider } from "./context/AuthContext";
+import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -56,8 +57,12 @@ function App() {
                   <AdminPageAPIContextProvider>
                     <AdminPage />
                   </AdminPageAPIContextProvider>
-                }/>}/>
-              <Route path="/yonetici-page" element={<PrivateRoute element={<YoneticiPage />} /> }/>
+                } /> }/>
+              <Route path="/yonetici-page" element={<PrivateRoute element={
+                  <SupervisorPageAPIContextProvider>
+                    <YoneticiPage />
+                  </SupervisorPageAPIContextProvider>
+                } /> }/>
               {/*<Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />*/}
               <Route path="/ziyaretci-page" element= {<ZiyaretciPage />} />
               <Route path="/personel-page" element={<PrivateRoute element={<PersonelPage />}/>} />

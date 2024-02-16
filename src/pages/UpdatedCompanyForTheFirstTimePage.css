@@ -1,0 +1,95 @@
+.update-company-form {
+  height: 90rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  background-image: linear-gradient(
+    to top, 
+    #E4FFFA,
+    #B6A6E0,
+    #ecedf3,
+    #f7f4f8
+  );
+  padding: 15px;
+}
+
+.update-company-form div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.update-company-form > label:first-child {
+  font-weight: 700;
+  font-size: xx-large;
+  font-style: italic;
+  text-decoration: underline;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  color: #ee9015;
+  padding-top: 1rem;
+}
+
+.last-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.last-buttons > button {
+  font-size: x-large;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.last-buttons > button:first-child {
+  background-color: #20bf6b;
+  color: #ffffff;
+}
+
+.last-buttons > button:last-child {
+  background-color: #ad1d35;
+  color: #def5f5;
+}
+
+.last-buttons > button:hover {
+  transform: scale(1.05);
+  transition: 0.5s ease-in;
+}
+
+.company-core-info,
+.hr-info-list-container,
+.company-department-list-container,
+.company-holiday-list-container,
+.company-income-list-container,
+.company-expense-list-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin-bottom: 1rem; */
+}
+
+.company-core-info input,
+.hr-info-container input,
+.company-department-container input,
+.company-holiday-container input,
+.company-income-container input,
+.company-expense-container input {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.company-core-info input,
+.company-core-info input,
+.company-core-info input {
+  width: 100%;
+}
