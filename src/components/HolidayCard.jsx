@@ -1,10 +1,10 @@
-import React from 'react'
 
-const HolidayCard = ({name,duration}) => {
+
+const HolidayCard = ({holiday}) => {
   return (
     <div>
-        <p>Holiday Name: {name}</p>
-        <span>Duration: {duration}</span>
+        <p>Holiday Name: {holiday.name}</p>
+        <span>Duration: {holiday.duration}</span>
     </div>
   )
 }

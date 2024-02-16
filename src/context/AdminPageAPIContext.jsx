@@ -39,6 +39,10 @@ export const AdminPageAPIContextProvider = ({children}) => {
             try {
               const response = await axios.post("http://localhost:9093/api/v1/admin/handle-supervisor-registration", payload)
               console.log(response);
+              setSupervisorRequests(prevRequest => {
+                const updateRequests = prevRequest.filter(request => request.authId !== authId)
+                return updateRequests;
+              });
               getAdminPageData();
             } catch (error) {
               console.log(error)
