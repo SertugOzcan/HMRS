@@ -39,7 +39,11 @@
 }
 
 .guest-companies-container{
-  
+  padding: 40px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .guest-companies-container h1{

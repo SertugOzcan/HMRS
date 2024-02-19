@@ -1,0 +1,19 @@
+.comment-card-container{
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background-color: rgba(43, 153, 226, 0.048);
+}
+.comment-card-img-div{
+    width: 75px;
+    flex-shrink: 0;
+}
+.comment-card-img-div img{
+    width: 100%;
+    height: 75px;
+    border-radius: 100%;
+}
+.comment-card-texts p{
+    overflow-wrap: break-word;
+    white-space: normal;
+}
