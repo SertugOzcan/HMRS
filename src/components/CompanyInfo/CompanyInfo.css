@@ -1,0 +1,60 @@
+.company-page-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px;
+}
+.company-infos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+.company-img-div{
+    width: 15%;
+}
+.company-img-div img{
+    width: 100%;
+}
+.company-infos-texts{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.company-infos-texts p {
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+/********************************************************/
+
+.main-div{
+    display: flex;
+    gap: 15px;
+}
+.main-infos{
+    display: flex;
+    width: 600px;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    
+}
+.hr-info{
+    width: 100%;
+    
+    
+}
+
+/******************/
+
+.personnel-info{
+    width: 100%;
+}
+.comment-info{
+    width: 100%;
+    
+}

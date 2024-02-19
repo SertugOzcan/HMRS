@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import "./ZiyaretciPage.css";
 import axios from 'axios';
+import CompanyList from '../components/CompanyCardAndList/CompanyList';
+import CompanyInfo from '../components/CompanyInfo/CompanyInfo';
 
 // ???????
 
@@ -36,10 +38,13 @@ const ZiyaretciPage = () => {
 
     <div className='guest-companies-container'>
         <h1>companies working with us</h1>
-        <div>{/*CompanyList Componenti*/ }</div>
+        <div>
+          <CompanyList />
+        </div>
+        
     </div>
-
-
+    
+    <CompanyInfo />
 
       {/*<h2>About Us</h2>
       <div className="site-info">
