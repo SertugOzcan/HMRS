@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import EmployeeList from "../components/EmployeeList";
 import HolidayList from '../components/HolidayList'
 import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
@@ -50,7 +50,7 @@ const SupervisorPageIfCompanyUpdated = () => {
             <h2>Yönetici Sayfası</h2>
             <div className="calisan-listesi">
                 <h3>Personnels</h3>
-                <EmployeeList personnelData={employees} />
+                <EmployeeList />
             </div>
 
             <div className= "calisan-ekle">
