@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from 'axios';
+import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const AdminPageAPIContext = createContext();
 
@@ -9,8 +11,13 @@ export const AdminPageAPIContextProvider = ({children}) => {
     const [supervisorRequests, setSupervisorRequests] = useState([]);
     const [activeUsers, setActiveUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const {isAuthenticated} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        if(isAuthenticated.role!=="ADMIN"){
+            navigate("/login")
+        }
         const getRequests = async () => {
             try {
                 const response1 = await axios.get('http://localhost:9093/api/v1/admin/getallregisteredsupervisors')
