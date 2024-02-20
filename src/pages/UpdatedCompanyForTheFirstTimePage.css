@@ -1,36 +1,45 @@
-/* Genel sayfa düzeni */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
-}
-
 /* Ana bileşenler */
+
+
 .update-company-page {
   display: flex;
+  justify-content: center; 
+  width: 850px;
 }
-
 .sidebar {
+  width: 180px;
+  padding: 20px;
+  background-color: #f9f9f9;
+   /* Diğer öğelerin üstünde olması için gerektiğinde z-index'i ayarlayabilirsiniz */
+  color: #fff;
+  height: 380px;
   position: fixed;
   top: 50%;
-  left: 0;
+  left: 0; /* Sol tarafta başlayacak şekilde ayarlandı */
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  background-color: #333;
-  padding: 20px;
-  z-index: 1;
+  align-items: center;
+  
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .sidebar button {
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 15px; 
   border: none;
-  background-color: #555;
-  color: #fff;
+  background-color: #eeeeee;
+  color: #000000;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 100%; 
+  max-width: 150px; 
+  height: auto; 
+  text-align: center; 
+  font-size: 16px; 
+  line-height: 1.5; 
+  border-radius: 5px; 
 }
 
 .sidebar button:hover {
@@ -40,11 +49,24 @@ body {
 .update-company-form {
   width: 50%;
   padding: 20px;
-  margin-left: 200px; /* Sidebar genişliği kadar */
-  
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.company-name-header{
+  padding: auto;
+  border: 1px solid;
+  border-color: #000000;
+  border-radius: 5px;
+  text-align: center;
+  background: #a9abaa;
+  color: white;
+  font-size: 30px;
+  
+}
+
+
+
 
 /* Form elementleri */
 .company-core-info,
@@ -55,9 +77,23 @@ body {
 .company-expense-list-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; 
   margin-bottom: 20px;
 }
+
+.company-core-info input {
+  margin: 8px 0; 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  
+  max-width: 60%; 
+  box-sizing: border-box; 
+  font-size: 16px; 
+  line-height: 1.5; 
+}
+
+
 
 .company-core-info input,
 .hr-info-container input,
@@ -72,17 +108,8 @@ body {
   width: 100%;
 }
 
-/* Ana başlık */
-.update-company-form > label:first-child {
-  font-weight: 700;
-  font-size: 28px;
-  font-style: italic;
-  text-decoration: underline;
-  color: #ee9015;
-  padding-top: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-}
+
+
 
 /* Son düğmeler */
 .last-buttons {
@@ -115,7 +142,6 @@ body {
 .last-buttons > button:hover {
   transform: scale(1.05);
 }
-
 
 .buttonas {
   display: block;
@@ -180,12 +206,16 @@ body {
   width: 20px;
   height: 20px;
   margin: 17px 18px 0 18px;
+
   transform: rotate(180deg);
-  fill: #f0eeef;
+  fill: #676667;
+}
+.buttonas {
+  rotate: 180deg;
 }
 
 .buttonas:hover .buttonas-box,
 .buttonas:focus .buttonas-box {
-  transition: 0.4s;
+  transition: 0.5s;
   transform: translateX(-56px);
 }
