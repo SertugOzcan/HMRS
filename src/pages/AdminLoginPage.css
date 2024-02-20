@@ -3,6 +3,9 @@
     justify-content: center;
     align-items: center;
     height: 800px;
+    background-image: url(images/back2.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .admin-login-message {
@@ -38,9 +41,7 @@
     border-radius: 5px;
 }
 
-.admin-login-button:focus {
-    outline: 0;
-}
+
 
 .admin-login-button:active {
     transform: scale(0.98);
