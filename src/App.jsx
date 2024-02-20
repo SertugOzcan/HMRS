@@ -17,6 +17,7 @@ import ThemeSlider from "./components/ThemeSlider";
 import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
 import { AuthContextProvider } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
+import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -64,7 +65,14 @@ function App() {
                   </SupervisorPageAPIContextProvider>
                 } /> }/>
               {/*<Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />*/}
-              <Route path="/ziyaretci-page" element= {<ZiyaretciPage />} />
+              <Route
+                path="/ziyaretci-page"
+                element={(
+                <GuestPageAPIContextProvider>
+                  <ZiyaretciPage />
+                </GuestPageAPIContextProvider>
+                )}
+                />
               <Route path="/personel-page" element={<PrivateRoute element={<PersonelPage />}/>} />
               <Route path="/register-page" element={<RegisterPage />}/>
             </Routes>

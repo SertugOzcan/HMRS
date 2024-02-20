@@ -1,14 +1,25 @@
-import React from 'react'
-import "./CompanyCard.css"
-const CompanyCard = ({image,companyName}) => {
-  return (
-    <div className='company-card-container'>
-        <div className='company-card-img-div'>
-            <img src="https://www.candanofset.com/files/hizmetlerimiz/trendyol_sticker.png" alt="" />
-        </div>
-        <h5>{companyName}FourMusketeers A.Ş Ş.T.İ{/* 37 karakterden sonra div bozuluyor company ismi alırken sınır koyulabilir ..  */ }</h5>
-    </div>
-  )
-}
+import React, { useContext } from "react";
+import "./CompanyCard.css";
+import { GuestPageAPIContext } from "../../context/GuestPageAPIContext";
 
-export default CompanyCard
+const CompanyCard = ({ company }) => {
+  const { setSelectedCompanyId } = useContext(GuestPageAPIContext);
+
+  const handleCardClick = () => {
+    setSelectedCompanyId(company.id);
+  };
+
+  return (
+    <div className="company-card-container" onClick={handleCardClick}>
+      <div className="company-card-img-div">
+        <img src={company.logo} alt="" />
+      </div>
+      <h5>
+        {company.name}FourMusketeers A.Ş Ş.T.İ
+        {/* 37 karakterden sonra div bozuluyor company ismi alırken sınır koyulabilir ..  */}
+      </h5>
+    </div>
+  );
+};
+
+export default CompanyCard;
