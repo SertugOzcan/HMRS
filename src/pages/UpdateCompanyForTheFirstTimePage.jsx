@@ -156,7 +156,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
           <h2>Core Info</h2>
 
           <div className="company-core-info">
-            <label>{companyData.companyName}</label>
+            <label className="company-name-header">{companyData.companyName}</label>
             <input
               type="text"
               name="establishment-date"
