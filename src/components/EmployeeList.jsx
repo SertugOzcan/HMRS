@@ -1,11 +1,17 @@
-import React from 'react'
+import { useContext } from 'react'
 import EmployeeCard from './EmployeeCard'
 import "./EmployeeList.css"
+import { SupervisorPageAPIContext } from '../context/SupervisorPageAPIContext';
 
-const EmployeeList = ({personnelData}) => {
+const EmployeeList = () => {
+
+  const { companyPersonnel } = useContext(SupervisorPageAPIContext);
+
   return (
     <div className='employee-list-container'>
-      {personnelData.map((personnel)=>{ <EmployeeCard personnel={{...personnel}}/>})}
+      {companyPersonnel.map((personnel)=> (
+        <EmployeeCard key={personnel.id} personnel={personnel} />
+      ))}
     </div>
   )
 }

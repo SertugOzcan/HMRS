@@ -8,6 +8,7 @@ export const SupervisorPageAPIContext = createContext();
 export const SupervisorPageAPIContextProvider = ({children}) => {
     const [companyData, setCompanyData] = useState({});
     const [companyStatus,setCompanyStatus] = useState('PENDING');
+    const [companyPersonnel, setCompanyPersonnel] = useState([]);
     const {isAuthenticated} = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -18,6 +19,8 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
                 setCompanyData(response.data);
                 if(response.data.companyStatus === "ACTIVE"){
                     setCompanyStatus("ACTIVE");
+                    const response2 = await axios.get(`http://localhost:9091/api/v1/personnel/get-all-by-company/${isAuthenticated.token}`)
+                    setCompanyPersonnel(response2.data);
                 }
             } catch (error) {
                 console.error("Error while fetching the company data:", error);
@@ -29,7 +32,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
     }, []);
 
     return (
-        <SupervisorPageAPIContext.Provider value={{companyData, setCompanyData, companyStatus, setCompanyStatus}}>
+        <SupervisorPageAPIContext.Provider value={{companyData, companyStatus, companyPersonnel}}>
             {isLoading ? (
                 <h1>Loading...</h1>
             ) : (
