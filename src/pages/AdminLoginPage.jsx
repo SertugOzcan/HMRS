@@ -68,7 +68,7 @@ const AdminLoginPage = () => {
         />
         <label>Password</label>
         </div>
-        <button type='submit' className="btn">Giriş</button>
+        <button type='submit' className="admin-login-button">Giriş</button>
         <div className={`admin-login-message ${visible ? 'show' : ''} ${isSuccess ? "success" : "error"}`}>
           {errorMessage}
         </div>

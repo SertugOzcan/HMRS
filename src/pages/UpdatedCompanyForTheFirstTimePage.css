@@ -1,56 +1,109 @@
+/* Genel sayfa düzeni */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+/* Ana bileşenler */
+.update-company-page {
+  display: flex;
+}
+
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  padding: 20px;
+  z-index: 1;
+}
+
+.sidebar button {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+  background-color: #777;
+}
+
 .update-company-form {
-  height: 90rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  align-items: center;
-  background-image: linear-gradient(
-    to top, 
-    #E4FFFA,
-    #B6A6E0,
-    #ecedf3,
-    #f7f4f8
-  );
-  padding: 15px;
-}
-
-.update-company-form div {
-  display: flex;
-  flex-direction: column;
   width: 50%;
+  padding: 20px;
+  margin-left: 200px; /* Sidebar genişliği kadar */
+  
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Form elementleri */
+.company-core-info,
+.hr-info-list-container,
+.company-department-list-container,
+.company-holiday-list-container,
+.company-income-list-container,
+.company-expense-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.company-core-info input,
+.hr-info-container input,
+.company-department-container input,
+.company-holiday-container input,
+.company-income-container input,
+.company-expense-container input {
+  margin: 8px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Ana başlık */
 .update-company-form > label:first-child {
   font-weight: 700;
-  font-size: xx-large;
+  font-size: 28px;
   font-style: italic;
   text-decoration: underline;
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
   color: #ee9015;
-  padding-top: 1rem;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
+/* Son düğmeler */
 .last-buttons {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-top: 20px;
 }
 
 .last-buttons > button {
-  font-size: x-large;
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
+  font-size: 18px;
+  margin: 10px;
+  padding: 10px 20px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  transition: transform 0.5s;
 }
 
 .last-buttons > button:first-child {
-  background-color: #20bf6b;
+  background-color: #0e1913;
   color: #ffffff;
 }
 
@@ -61,35 +114,78 @@
 
 .last-buttons > button:hover {
   transform: scale(1.05);
-  transition: 0.5s ease-in;
 }
 
-.company-core-info,
-.hr-info-list-container,
-.company-department-list-container,
-.company-holiday-list-container,
-.company-income-list-container,
-.company-expense-list-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* margin-bottom: 1rem; */
+
+.buttonas {
+  display: block;
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
 }
 
-.company-core-info input,
-.hr-info-container input,
-.company-department-container input,
-.company-holiday-container input,
-.company-income-container input,
-.company-expense-container input {
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.buttonas:before,
+.buttonas:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
 }
 
-.company-core-info input,
-.company-core-info input,
-.company-core-info input {
-  width: 100%;
+.buttonas:before {
+  border: 4px solid #696969;
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.buttonas:after {
+  border: 4px solid #96daf0;
+  transform: scale(1.3);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.buttonas:hover:before,
+.buttonas:focus:before {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.buttonas:hover:after,
+.buttonas:focus:after {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.buttonas-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.buttonas-elem {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 17px 18px 0 18px;
+  transform: rotate(180deg);
+  fill: #f0eeef;
+}
+
+.buttonas:hover .buttonas-box,
+.buttonas:focus .buttonas-box {
+  transition: 0.4s;
+  transform: translateX(-56px);
 }
