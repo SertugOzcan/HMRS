@@ -9,6 +9,7 @@ const AdminPage = () => {
   const {activeUsers} = useContext(AdminPageAPIContext);
 
   return (
+    <>
     <div className="admin-container">
       <div className="registered-users-container">
         <h2>Active Users</h2>
@@ -29,6 +30,7 @@ const AdminPage = () => {
         <SupervisorRequestList />
       </div>
     </div>
+    </>
   );
 }
 

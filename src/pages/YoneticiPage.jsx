@@ -12,10 +12,12 @@ const YoneticiPage = () => {
 
   return (
     <>
-      {companyStatus === 'ACTIVE' ? (
-        <SupervisorPageIfCompanyUpdated />
-      ) : (
+      {companyStatus === '' ? (
+        <h1>LOADING</h1>
+      ) : companyStatus === 'PENDING' ? (
         <UpdateCompanyForTheFirstTimePage />
+      ) : (
+        <SupervisorPageIfCompanyUpdated />
       )}
     </>
   );

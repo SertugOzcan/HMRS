@@ -15,30 +15,20 @@ const RegisterPage = () => {
   const [rePassword, setRePassword] = useState("");
   const [gender, setGender] = useState(false);
 
-  const [address, setAddress] = useState(""); // Changed 'adress' to 'address'
+  const [address, setAddress] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [identityNumber,setIdentityNumber] = useState("");
 
   const [identityNumberError,setIdentityNumberError]=useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [phoneNumberError,setPhoneNumberError]=useState("");
   const [date, setDate] = useState(new Date());
-  const [strength, setStrength] = useState(""); // Added state for password strength
+  const [strength, setStrength] = useState("");
 
-  // Fetch data from the server when the component mounts
-  // useEffect(() => {
-  //   axios
-  //     .post("http://localhost:9090/api/v1/auth/register-guest")
-  //     .then((response) => response.data)
-  //     .then((data) => {
-  //       setName(data.financialData);
-  //       console.log(data);
-  //     })
-  //     .catch((error) => console.error("Error fetching data:", error));
-  // }, []);
+  const [message, setMessage] = useState("");
+  const [visible, setVisible] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-
-
-  // Adjust textarea height dynamically
   useEffect(() => {
     adjustTextareaHeight();
   }, [address]);
@@ -51,9 +41,6 @@ const RegisterPage = () => {
       textarea.style.height = textarea.scrollHeight + "px";
     }
   };
-// ---------------------------------------------
-
-
 
 // -------------------PASWORD STRENGHT--------------------------
   const getStrength = (password) => {
@@ -68,11 +55,6 @@ const RegisterPage = () => {
     return ["empty", "weak", "medium", "strong"][indicator];
   };
 
-// ---------------------------------------------
-
-
-
-
   const handleChange = (e) => {
     const newPassword = e.target.value;
     setStrength(getStrength(newPassword));
@@ -81,14 +63,30 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setPasswordError("");
+    setIdentityNumberError("");
+    setPhoneNumberError("");
+    let hasError = false;
+
     if (password !== rePassword) {
       setPasswordError("Passwords do not match");
-      return;
+      hasError = true;
     }
-    if(identityNumber.length!=11){
+
+    if(identityNumber.length !== 11){
       setIdentityNumberError("Identity number must be 11 character");
+      hasError = true;
+    }
+
+    if(phone.length !== 11){
+      setPhoneNumberError("Phone number must be 11 character");
+      hasError = true;
+    }
+
+    if(hasError) {
       return;
     }
+
     try {
       const stringGender = gender ? 'FEMALE' : 'MALE'
       const payload = {
@@ -104,18 +102,48 @@ const RegisterPage = () => {
         address: address,
         companyName: companyName.trim()
       } 
-      if(!isManager){
-        const response = await axios.post('http://localhost:9090/api/v1/auth/register-guest',payload);
-        const data = response.data
-        console.log(data);
-        }else{
-          const response = await axios.post('http://localhost:9090/api/v1/auth/register-supervisor',payload);
-        const data = response.data
-        console.log(data);
-        } 
+      let response;
+      if(!isManager) {
+        response = await axios.post('http://localhost:9090/api/v1/auth/register-guest',payload);
+        console.log(response);
+      } else {
+        response = await axios.post('http://localhost:9090/api/v1/auth/register-supervisor',payload);
+        console.log(response);
+      } 
+
+      setMessage("Registration successful!");   
+      setIsSuccess(true);
+           
+      // setName("");
+      // setSurName("");
+      // setEmail("");
+      // setPhone("");          // FINAL VERSIYONUNDA OLACAK...
+      // setPassword("");
+      // setRePassword("");
+      // setGender(false);
+      // setIdentityNumber("");
+      // setAddress("");
+      // setCompanyName("");
+      // setDate(new Date());
+      // setStrength("");
+      // setPasswordError("");
+      // setIdentityNumberError("");
+  
     } catch (error) {
       console.error('Registration error:', error);
+      setPasswordError("");
+      setIdentityNumberError("");
+      setPhoneNumberError("");
+      setMessage(error.response.data.message)       // setMessage("Registration failed!")
+      setIsSuccess(false);
     }
+
+    setVisible(true);
+
+    setTimeout(() => {
+      setVisible(false);
+    }, 4000);
+
   };
   
 
@@ -159,6 +187,7 @@ const RegisterPage = () => {
           placeholder="Phone"
           value={phone}
           onChange={(e)=>setPhone(e.target.value)} />
+          {phoneNumberError && <p className="registration-error-messages">{phoneNumberError}</p>}
           <input
             type="password"
             spellCheck="false"
@@ -176,7 +205,7 @@ const RegisterPage = () => {
             onChange={(e) => setRePassword(e.target.value)}
             required
           />
-          {passwordError && <p className="error-message">{passwordError}</p>}
+          {passwordError && <p className="registration-error-messages">{passwordError}</p>}
 
           <div className={`bars ${strength}`}></div>
           <div className="strength">{strength && `${strength} password`}</div>
@@ -207,7 +236,7 @@ const RegisterPage = () => {
           onChange={(e) => setIdentityNumber(e.target.value)}
           placeholder="Identity Number"
           required/>
-          {identityNumberError && <p className="error-message">{identityNumberError}</p>}
+          {identityNumberError && <p className="registration-error-messages">{identityNumberError}</p>}
           {isManager && (<textarea
             id="address"
             name="address"
@@ -248,6 +277,9 @@ const RegisterPage = () => {
             />
             Manager
           </label>
+        </div>
+        <div className={`registration-message ${visible ? 'show' : ''} ${isSuccess ? "success" : "error"}`}>
+          {message}
         </div>
       </div>
     </div>

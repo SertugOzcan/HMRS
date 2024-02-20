@@ -8,6 +8,8 @@ const LoginPage = () => {
   const [identity, setIdentity] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [visible, setVisible] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
   const {login} = useContext(AuthContext);
 
@@ -33,13 +35,18 @@ const LoginPage = () => {
         }
       }
     } catch (error) {
-      setErrorMessage('Kullanıcı adı veya şifre yanlış!')
+      setErrorMessage('Wrong email or password!')
+      setIsSuccess(false);
+      setVisible(true);
     }
+
+    setTimeout(() => {
+      setVisible(false);
+      setIsSuccess(false);
+    }, 4000);
+
   };
 
-
-  
-  // LOGIN INPUT FONSIYONU 
   useEffect(() => {
     const labels = document.querySelectorAll('.form-control label');
     labels.forEach(label => {
@@ -75,7 +82,9 @@ const LoginPage = () => {
         <label>Password</label>
         </div>
         <button type='submit' className="btn">Giriş</button>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        <div className={`login-message ${visible ? 'show' : ''} ${isSuccess ? "success" : "error"}`}>
+          {errorMessage}
+        </div>
         </form>
       </div>
     </div>

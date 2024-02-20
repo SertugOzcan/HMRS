@@ -160,8 +160,33 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 
+.registration-message {
+  font-weight: bold;
+  font-size: large;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  text-align: center;
+}
 
+.registration-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
+.registration-message.success {
+  color: green;
+}
+
+.registration-message.error {
+  color: red;
+}
+
+.registration-error-messages {
+  text-align: center;
+  color: red;
+}
 
 
 

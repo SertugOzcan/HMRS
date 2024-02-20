@@ -1,14 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import AuthService from "../services/AuthService";
 
 export const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
 
-    const [isAuthenticated, setIsAuthenticated] = useState('')
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        const storedUser = AuthService.getCurrentUser();
+        return storedUser;
+    });
+
+    useEffect(() => {
+        const storedUser = AuthService.getCurrentUser();
+        setIsAuthenticated(storedUser);
+    }, []);
 
     const login = async (identity,password) => {
-
         try {
             const resData = await AuthService.loginService(identity,password)
             console.log(resData);
@@ -25,6 +32,7 @@ export const AuthContextProvider = ({children}) => {
         AuthService.logoutService()
         setIsAuthenticated(false)
     }
+
     return(
         <AuthContext.Provider value={{isAuthenticated,login,logout}}>
             {children}
