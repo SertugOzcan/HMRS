@@ -3,15 +3,13 @@ import EmployeeList from "../components/EmployeeList";
 import HolidayList from "../components/HolidayList";
 import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
 import AddEmployeeForm from "../components/AddEmployee";
-import axios from "axios";
 
 const SupervisorPageIfCompanyUpdated = () => {
-  const { companyData } = useContext(SupervisorPageAPIContext);
+  const { companyData, isAddingEmployee, setIsAddingEmployee } = useContext(SupervisorPageAPIContext);
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
   const [profitOrLoss, setProfitOrLoss] = useState(0);
-  const [employees, setEmployees] = useState([]);
-  const [isAddingEmployee, setIsAddingEmployee] = useState(false); // Yeni satır
+
 
   useEffect(() => {
     calculateProfitLoss();
@@ -34,22 +32,7 @@ const SupervisorPageIfCompanyUpdated = () => {
     setProfitOrLoss(calculatedProfitLoss);
   };
 
-  const handleAddEmployee = async (newEmployee) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:9091/api/v1/personnel/create",
-        newEmployee
-      );
-
-      const data = response.data;
-      console.log("Yeni çalışan eklendi:", data);
-      setEmployees([...employees, data]);
-      setIsAddingEmployee(false);
-    } catch (error) {
-      console.error("Error adding employee:", error);
-    }
-  };
-
+  
   return (
     <div className="yonetici-container">
       <h2>Yönetici Sayfası</h2>
@@ -65,7 +48,7 @@ const SupervisorPageIfCompanyUpdated = () => {
         >
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h3>Çalışan Ekle</h3>
-            <AddEmployeeForm onAddEmployee={handleAddEmployee} />
+            <AddEmployeeForm />
           </div>
         </div>
       )}
