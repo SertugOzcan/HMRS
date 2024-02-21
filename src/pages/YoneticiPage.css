@@ -2,7 +2,9 @@
 /* YONETİCİ PAGE  */
 
 .yonetici-container {
+    margin:50px 0;
     padding: 20px;
+    margin-left: 200px;
 }
 
 .yonetici-container h2 {
