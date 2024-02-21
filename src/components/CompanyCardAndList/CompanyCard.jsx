@@ -15,7 +15,7 @@ const CompanyCard = ({ company }) => {
         <img src={company.logo} alt="" />
       </div>
       <h5>
-        {company.name}FourMusketeers A.Ş Ş.T.İ
+        {company.name}
         {/* 37 karakterden sonra div bozuluyor company ismi alırken sınır koyulabilir ..  */}
       </h5>
     </div>

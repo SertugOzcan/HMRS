@@ -1,0 +1,17 @@
+.supervisor-card{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 35px;
+    padding: 30px;
+    background-color: rgba(255, 123, 47, 0.062);
+}
+.supervisor-card img{
+    width: 40%;
+    border-radius: 100%;
+}
+.supervisor-card-texts{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
