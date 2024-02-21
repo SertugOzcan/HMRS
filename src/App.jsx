@@ -6,84 +6,89 @@ import YoneticiPage from "./pages/YoneticiPage";
 import ZiyaretciPage from "./pages/ZiyaretciPage";
 import PersonelPage from "./pages/PersonelPage";
 import RegisterPage from "./pages/RegisterPage";
-
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 // import PrivateRouteUsers from './services/PrivateRouteUsers';
 // import PrivateRouteAdmin from './services/PrivateRouteAdmin';
-import PrivateRoute from './services/PrivateRoute';
-import { UserPreferencesContext } from "./context/UserPreferencesContext";
+import PrivateRoute from "./services/PrivateRoute";
+import {
+  UserPreferencesContext,
+  UserPreferencesProvider,
+} from "./context/UserPreferencesContext";
 import { useContext } from "react";
 import ThemeSlider from "./components/ThemeSlider";
 import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
-import { AuthContextProvider } from "./context/AuthContext";
+import { AuthContext, AuthContextProvider } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
 import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
 import { PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
+import HomePageSideBar from "./components/SideBars/HomePageSideBar/HomePageSideBar";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
-
   return (
-    <AuthContextProvider>
+    <UserPreferencesProvider>
+      <AuthContextProvider>
         <Router>
           <div className={`app-container ${theme}`}>
-            <div className="nav">
-              <Link to="/admin-login">
-                <button>Admin Login</button>
-              </Link>
-              <Link to="/login">
-                <button>Login</button>
-              </Link>
-              <Link to="/admin-page">
-                <button>Admin page</button>
-              </Link>
-              <Link to="/yonetici-page">
-                <button>Yönetici page</button>
-              </Link>
-              <Link to="/ziyaretci-page">
-                <button>Ziyaretçi page</button>
-              </Link>
-              <Link to="/personel-page">
-                <button>Personel page</button>
-              </Link>
-              <Link to="/register-page">
-                <button>Register page</button>
-              </Link>
-              <ThemeSlider />
-            </div>
-
+            <NavBar theme={`${theme}`}/>
+            <Footer />
             <Routes>
+              <Route path="/" element={<LoginPage />} />
               <Route path="/admin-login" element={<AdminLoginPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/admin-page" element={<PrivateRoute element={
-                  <AdminPageAPIContextProvider>
-                    <AdminPage />
-                  </AdminPageAPIContextProvider>
-                } /> }/>
-              <Route path="/yonetici-page" element={<PrivateRoute element={
-                  <SupervisorPageAPIContextProvider>
-                    <YoneticiPage />
-                  </SupervisorPageAPIContextProvider>
-                } /> }/>
+              <Route
+                path="/admin-page"
+                element={
+                  <PrivateRoute
+                    element={
+                      <AdminPageAPIContextProvider>
+                        <AdminPage />
+                      </AdminPageAPIContextProvider>
+                    }
+                  />
+                }
+              />
+              <Route
+                path="/yonetici-page"
+                element={
+                  <PrivateRoute
+                    element={
+                      <SupervisorPageAPIContextProvider>
+                        <YoneticiPage />
+                      </SupervisorPageAPIContextProvider>
+                    }
+                  />
+                }
+              />
               {/*<Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />*/}
               <Route
                 path="/ziyaretci-page"
-                element={(
-                <GuestPageAPIContextProvider>
-                  <ZiyaretciPage />
-                </GuestPageAPIContextProvider>
-                )}
-                />
-              <Route path="/personel-page" element={<PrivateRoute element={
-                <PersonnelPageAPIContextProvider>
-                  <PersonelPage />
-                </PersonnelPageAPIContextProvider>
-              }/>} />
-              <Route path="/register-page" element={<RegisterPage />}/>
+                element={
+                  <GuestPageAPIContextProvider>
+                    <ZiyaretciPage />
+                  </GuestPageAPIContextProvider>
+                }
+              />
+              <Route
+                path="/personel-page"
+                element={
+                  <PrivateRoute
+                    element={
+                      <PersonnelPageAPIContextProvider>
+                        <PersonelPage />
+                      </PersonnelPageAPIContextProvider>
+                    }
+                  />
+                }
+              />
+              <Route path="/register-page" element={<RegisterPage />} />
             </Routes>
           </div>
         </Router>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </UserPreferencesProvider>
   );
 }
 
