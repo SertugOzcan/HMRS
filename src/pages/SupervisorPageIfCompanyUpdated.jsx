@@ -35,12 +35,11 @@ const SupervisorPageIfCompanyUpdated = () => {
   
   return (
     <div className="yonetici-container">
-      <h2>Yönetici Sayfası</h2>
+      <h2>Supervisor Page</h2>
       <div className="calisan-listesi">
-        <h3>Personnels</h3>
+        <h3>Personnel List</h3>
         <EmployeeList />
       </div>
-
       {isAddingEmployee && (
         <div
           className="modal-background"
@@ -52,8 +51,6 @@ const SupervisorPageIfCompanyUpdated = () => {
           </div>
         </div>
       )}
-
-      {/* Çalışan Ekle butonu buraya taşındı */}
       {!isAddingEmployee && (
         <button
           type="button"
@@ -80,7 +77,6 @@ const SupervisorPageIfCompanyUpdated = () => {
           </span>
         </button>
       )}
-
       <div className="finansal-bilgiler">
         <h3>Finansal Bilgiler</h3>
         <div className="finansal-kutular">

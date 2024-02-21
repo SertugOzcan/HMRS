@@ -1,22 +1,22 @@
-
-
-
 /* Kayıt Sayfası */
 .register-page-major-container {
   width: 100%;
-  max-width: 1200px; /* Sayfa genişliğinin maksimum değeri */
   margin: 0 auto; /* Sayfayı ortalamak için */
   padding: 20px; /* Kenar boşluğu eklemek için */
-  max-height: 800px; /* Sabit yükseklik */
+  height: 950px; /* Sabit yükseklik */
   overflow-y: auto; /* Gerekirse dikey kaydırma çubuğunu etkinleştir */
   display: flex;
   justify-content: center;
   align-items: flex-start; /* İçeriğin üstten başlamasını sağlar */
+  background-image: url(images/register.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 .register-container {
   position: absolute;
   width: 300px;
+  top: 100px;
   height: auto; /* Yükseklik otomatik olarak ayarlanacak */
   margin-left: 80px;
   padding: 20px;
@@ -58,7 +58,6 @@
   max-height: 60px;
 }
 
-
 .register-container button {
   padding: 10px;
   background-color: #4caf50;
@@ -88,7 +87,7 @@
 }
 
 /* Date Picker */
-.date-picker{
+.date-picker {
   display: flex;
   justify-content: space-between;
   align-items: first baseline;
@@ -96,12 +95,12 @@
 .register-container input[type="date"]::-webkit-calendar-picker-indicator {
   color: #333; /* Metin rengi */
 }
-.dob-label{
+.dob-label {
   font-family: Arial, Helvetica, sans-serif;
   color: #9f9d9e;
 }
 
-.identity-number{
+.identity-number {
   margin-top: 25px;
 }
 /* Radio Buttons */
@@ -115,14 +114,11 @@ input.control::placeholder {
   color: #9f9d9e;
 }
 
-
-
 .strength {
   text-align: left;
   height: 20px;
   text-transform: capitalize;
   color: #777879;
-  
 }
 .bars {
   display: flex;
@@ -146,10 +142,6 @@ input.control::placeholder {
   width: 100%;
 }
 
-
-
-
-
 textarea::-webkit-scrollbar {
   width: 6px;
   background-color: #f5f5f5;
@@ -158,7 +150,6 @@ textarea::-webkit-scrollbar {
 textarea::-webkit-scrollbar-thumb {
   background-color: #000000;
 }
-
 
 .registration-message {
   font-weight: bold;
@@ -188,8 +179,6 @@ textarea::-webkit-scrollbar-thumb {
   color: red;
 }
 
-
-
 :focus {
   outline: 0;
   border-color: #2260ff;
@@ -202,7 +191,6 @@ textarea::-webkit-scrollbar-thumb {
   margin-top: 0.5rem;
   justify-content: center;
   padding-top: 5px;
-  ;
 }
 
 .gender-selector input[type="radio"] {
@@ -224,24 +212,24 @@ textarea::-webkit-scrollbar-thumb {
 
 .gender-label span {
   top: 5px;
-  
+
   display: block;
   cursor: pointer;
   background-color: #fff;
-  padding: 0.375em .75em;
+  padding: 0.375em 0.75em;
   position: relative;
-  margin-left: .0625em;
+  margin-left: 0.0625em;
   box-shadow: 0 0 0 0.0625em #b5bfd9;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   color: #3e4963;
   text-align: center;
-  transition: background-color .5s ease;
+  transition: background-color 0.5s ease;
 }
 
 .gender-label:first-child span {
-  border-radius: .375em 0 0 .375em;
+  border-radius: 0.375em 0 0 0.375em;
 }
 
 .gender-label:last-child span {
-  border-radius: 0 .375em .375em 0;
+  border-radius: 0 0.375em 0.375em 0;
 }
