@@ -11,6 +11,7 @@ const SupervisorPageIfCompanyUpdated = () => {
     const [totalExpense, setTotalExpense] = useState(0);
     const [profitOrLoss, setProfitOrLoss] = useState(0);
     const [employees, setEmployees] = useState([]);
+    const [isAddingEmployee, setIsAddingEmployee] = useState(false); // Yeni satır
 
     useEffect(() => {
         calculateProfitLoss();
@@ -40,6 +41,7 @@ const SupervisorPageIfCompanyUpdated = () => {
             const data = response.data;
             console.log("Yeni çalışan eklendi:", data);
             setEmployees([...employees, data]); 
+            setIsAddingEmployee(false);
         } catch (error) {
             console.error('Error adding employee:', error);
         }
@@ -53,10 +55,19 @@ const SupervisorPageIfCompanyUpdated = () => {
                 <EmployeeList />
             </div>
 
-            <div className= "calisan-ekle">
-                <h3>Çalışan Ekle</h3>
-                <AddEmployeeForm onAddEmployee={handleAddEmployee} />
-            </div>
+            {isAddingEmployee && (
+                <div className="modal-background" onClick={() => setIsAddingEmployee(false)}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <h3>Çalışan Ekle</h3>
+                        <AddEmployeeForm onAddEmployee={handleAddEmployee} />
+                    </div>
+                </div>
+            )}
+
+            {/* Çalışan Ekle butonu buraya taşındı */}
+            {!isAddingEmployee && (
+                <button type="button" className="button-add-employee" onClick={() => setIsAddingEmployee(true)}>Çalışan Ekle</button>
+            )}
 
             <div className="finansal-bilgiler">
                 <h3>Finansal Bilgiler</h3>
@@ -88,7 +99,7 @@ const SupervisorPageIfCompanyUpdated = () => {
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     );
 };
 
