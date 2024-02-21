@@ -6,6 +6,7 @@ export const GuestPageAPIContextProvider = ({ children }) => {
   const [companyData, setCompanyData] = useState([]);
   const [selectedCompanyId, setSelectedCompanyId] = useState(null);
   const [selectedCompanyInfo, setSelectedCompanyInfo] = useState({});
+  const [comments, setComments] = useState([])
 
   useEffect(() => {
     const getRequests = async () => {
@@ -23,7 +24,7 @@ export const GuestPageAPIContextProvider = ({ children }) => {
 
   return (
     <GuestPageAPIContext.Provider
-      value={{ companyData, selectedCompanyId, setSelectedCompanyId ,selectedCompanyInfo, setSelectedCompanyInfo}}
+      value={{ companyData, selectedCompanyId, setSelectedCompanyId ,selectedCompanyInfo, setSelectedCompanyInfo, setComments,comments}}
     >
       {children}
     </GuestPageAPIContext.Provider>
