@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const SupervisorPageAPIContext = createContext();
 
@@ -11,8 +12,13 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
     const [companyPersonnel, setCompanyPersonnel] = useState([]);
     const {isAuthenticated} = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        if(isAuthenticated.role!=="SUPERVISOR"){
+            return navigate("/login")
+        }
+        setIsLoading(true);
         const getRequests = async () => {
             try {
                 const response = await axios.get(`http://localhost:9095/api/v1/company/findbysupervizortoken/${isAuthenticated.token}`)
@@ -34,7 +40,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
     return (
         <SupervisorPageAPIContext.Provider value={{companyData, companyStatus, companyPersonnel}}>
             {isLoading ? (
-                <h1>Loading...</h1>
+                <h1 className="loading-h1-tags">Loading...</h1>
             ) : (
                 children
             )}

@@ -3,6 +3,7 @@ import AuthService from "../services/AuthService";
 
 export const AuthContext = createContext()
 
+// eslint-disable-next-line react/prop-types
 export const AuthContextProvider = ({children}) => {
 
     const [isAuthenticated, setIsAuthenticated] = useState(() => {

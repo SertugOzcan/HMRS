@@ -16,7 +16,7 @@ export const AdminPageAPIContextProvider = ({children}) => {
 
     useEffect(() => {
         if(isAuthenticated.role!=="ADMIN"){
-            navigate("/login")
+            return navigate("/login")
         }
         const getRequests = async () => {
             try {
@@ -61,7 +61,7 @@ export const AdminPageAPIContextProvider = ({children}) => {
     return (
         <AdminPageAPIContext.Provider value={{supervisorRequests, activeUsers, handleSupervisorRequest}}>
             {isLoading ? (
-                <h1>Loading...</h1>
+                <h1 className="loading-h1-tags">Loading...</h1>
             ) : (
                 children
             )}

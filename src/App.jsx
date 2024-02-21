@@ -18,6 +18,7 @@ import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
 import { AuthContextProvider } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
 import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
+import { PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -73,7 +74,11 @@ function App() {
                 </GuestPageAPIContextProvider>
                 )}
                 />
-              <Route path="/personel-page" element={<PrivateRoute element={<PersonelPage />}/>} />
+              <Route path="/personel-page" element={<PrivateRoute element={
+                <PersonnelPageAPIContextProvider>
+                  <PersonelPage />
+                </PersonnelPageAPIContextProvider>
+              }/>} />
               <Route path="/register-page" element={<RegisterPage />}/>
             </Routes>
           </div>

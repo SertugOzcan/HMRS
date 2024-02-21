@@ -266,7 +266,7 @@ const RegisterPage = () => {
               checked={!isManager}
               onChange={() => setIsManager(false)}
             />
-            Visitor
+            Guest
           </label>
           <label>
             <input
@@ -275,7 +275,7 @@ const RegisterPage = () => {
               checked={isManager}
               onChange={() => setIsManager(true)}
             />
-            Manager
+            Supervisor
           </label>
         </div>
         <div className={`registration-message ${visible ? 'show' : ''} ${isSuccess ? "success" : "error"}`}>
