@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 800px;
-    background-image: url(images/back2.jpg);
+    height: 950px;
+    background-image: url(images/admin-login.jpg);
     background-position: center;
     background-size: cover;
 }

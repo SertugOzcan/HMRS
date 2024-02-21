@@ -1,0 +1,17 @@
+.registered-users-container {
+  position: relative;
+  left: 300px;
+  top: 100px;
+  order: 1;
+  width: 45%;  
+}
+.registered-users{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+} 
+.registered-user{
+  margin-bottom: 10px;
+  background-color: #7f7f7f;
+  padding: 10px;
+} 

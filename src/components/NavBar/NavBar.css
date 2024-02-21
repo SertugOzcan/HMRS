@@ -1,0 +1,102 @@
+.header-major-container{
+    width: 100%;
+    height: 60px;
+    padding-right: 2rem;
+    position: fixed;
+    z-index: 98;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(3px);
+}
+
+.header-major-container button{
+    border: none;
+    /* background-color: transparent; */
+    font-size: larger;
+    font-weight: 400;
+    justify-content: center;
+    color: #000;
+} 
+
+.log-actions-div {
+    margin-right: 0.25rem;
+    display: flex;
+    font-size: larger;
+    font-weight: 400;
+    gap: 0.25rem;
+    background-color: rgba(95, 252, 173, 0.719);
+    border-radius: 2rem;
+    padding: 1rem;
+    &&:hover{
+        cursor: pointer;
+        background-color: rgb(43, 221, 87);
+        transition: 0.25s ease-in;
+    }
+}
+
+.nav-register-button {
+    padding: 1rem;
+    margin-right: 0.25rem;  /* ŞURAYI BEN EKLEDİM AMA DAHA GENEL GEÇER ÇÖZÜM BULUNABİLİRSE DÜZELTİN, personnel-supervisor geçişi yapan buton için de lazım */
+    border-radius: 2rem;
+    background-color: rgb(194, 194, 61);
+    &&:hover{
+        cursor: pointer;
+        background-color: rgb(194, 194, 61);
+        transition: 0.25s ease-in;
+    }
+}
+
+.authenticated {
+    background-color: rgb(252, 156, 100);
+    &&:hover{
+        cursor: pointer;
+        background-color: rgb(236, 55, 10);
+        transition: 0.25s ease-in;
+    }
+}
+
+.log-actions-div img {
+    width: 1.25rem;
+}
+
+.switch-tabbing-button {
+    margin-right: 0.25rem;
+    font-size: larger;
+    font-weight: 400;
+    gap: 0.25rem;
+    background-color: rgba(95, 252, 173, 0.719);
+    border-radius: 2rem;
+    padding: 1rem;
+    &&:hover{
+        cursor: pointer;
+        background-color: rgb(43, 221, 87);
+        transition: 0.25s ease-in;
+    }
+}
+
+.switch-tabbing-button.guest {
+    background-color: rgb(100, 171, 252);
+    &&:hover{
+        cursor: pointer;
+        background-color: rgb(10, 115, 236);
+        transition: 0.25s ease-in;
+    }
+}
+
+.header-major-container{
+    color: #fff;
+}
+.switch-tabbing-button {
+    background-color: rgb(96, 201, 70);
+}
+  
+
+
+
+

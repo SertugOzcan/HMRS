@@ -1,0 +1,20 @@
+.manager-requests-container {
+  position: relative;
+  top: 100px;
+  left: 300px;  
+  width: 45%;
+  order: 2;
+}
+  
+.manager-requests {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.manager-request {
+  margin-bottom: 10px;
+  background-color: #7f7f7f;
+  padding: 10px;
+}
+  

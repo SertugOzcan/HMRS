@@ -2,7 +2,9 @@
 /* YONETİCİ PAGE  */
 
 .yonetici-container {
+    margin:50px 0;
     padding: 20px;
+    margin-left: 200px;
 }
 
 .yonetici-container h2 {
@@ -43,3 +45,85 @@
     padding: 10px;
     margin-bottom: 10px;
 }
+
+/* styles.css */
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.button-add-employee {
+    position: relative;
+    width: 160px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #34974d;
+    background-color: #3aa856;
+  }
+  
+  .button-add-employee, .button-icon-add-employee, .button-text-add-employee {
+    transition: all 0.3s;
+  }
+  
+  .button-add-employee .button-text-add-employee {
+    transform: translateX(30px);
+    margin-left: -20px;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button-add-employee .button-icon-add-employee {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 50px;
+    background-color: #34974d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button-add-employee .svg {
+    width: 30px;
+    stroke: #fff;
+  }
+  
+  .button-add-employee:hover {
+    background: #34974d;
+  }
+  
+  .button-add-employee:hover .button-text-add-employee {
+    color: transparent;
+  }
+  
+  .button-add-employee:hover .button-icon-add-employee {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .button-add-employee:active .button-icon-add-employee {
+    background-color: #2e8644;
+  }
+  
+  .button-add-employee:active {
+    border: 1px solid #2e8644;
+  }

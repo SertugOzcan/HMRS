@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { SupervisorPageAPIContext } from '../context/SupervisorPageAPIContext';
 
-const AddEmployeeForm = ({ onAddEmployee }) => {
+const AddEmployeeForm = () => {
+
+    const { handleAddEmployee } = useContext(SupervisorPageAPIContext);
+
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -27,22 +31,30 @@ const AddEmployeeForm = ({ onAddEmployee }) => {
             salary.trim() &&
             department.trim()
         ) {
+            if(identityNumber.length !== 11) {
+                alert("Check personnel's identity number!");
+                return;
+            }
+            if(phone.length !== 11) {
+                alert("Check personnel's phone number!");
+                return;
+            }
             const newEmployee = {
                 name: name.trim(),
                 lastName: lastName.trim(),
-                email: email.trim(),
-                phone: phone.trim(),
                 gender: gender ? "Female" : "Male",
                 identityNumber: identityNumber.trim(),
+                email: email.trim(),
+                image: img.trim(),
                 address: address.trim(),
-                img: img.trim(),
-                salary: salary.trim(),
-                department: department.trim(),
-                dateOfBirth: dateOfBirth,
+                phone: phone.trim(),
+                departmentId: department.trim(),
                 dateOfEmployment: dateOfEmployment,
+                dateOfBirth: dateOfBirth,
+                salary: salary.trim(),
             };
 
-            onAddEmployee(newEmployee);
+            handleAddEmployee(newEmployee);
         }
     };
 

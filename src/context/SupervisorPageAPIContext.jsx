@@ -10,6 +10,8 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
     const [companyData, setCompanyData] = useState({});
     const [companyStatus,setCompanyStatus] = useState('PENDING');
     const [companyPersonnel, setCompanyPersonnel] = useState([]);
+    const [isAddingEmployee, setIsAddingEmployee] = useState(false); // Yeni satır
+    // const [employees, setEmployees] = useState([]);   // aynı galiba...
     const {isAuthenticated} = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
@@ -22,6 +24,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             try {
                 const response = await axios.get(`http://localhost:9095/api/v1/company/findbysupervizortoken/${isAuthenticated.token}`)
+                console.log("COMPANY-DATASI: ", response.data)
                 setCompanyData(response.data);
                 if(response.data.companyStatus === "ACTIVE"){
                     setCompanyStatus("ACTIVE");
@@ -37,8 +40,35 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
         getRequests();
     }, []);
 
+
+    const handleAddEmployee = async (newEmployee) => {
+        const selectedDepartment = companyData.departments.find(department => department.name === newEmployee.departmentId)
+        // console.log("Selected-department: " , selectedDepartment);
+        if(!selectedDepartment) {
+            alert("Department not found!");
+            return;
+        }
+        const payload = { ...newEmployee,
+          companyId: companyData.id,
+          departmentId: selectedDepartment.id,
+          position: "Software Developer",
+        };
+        // console.log("HAZIRLANAN PAYLOAD: ", payload);
+        try {
+          const response = await axios.post("http://localhost:9091/api/v1/personnel/create", payload);
+          console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
+          if (response.status === 200) {
+            // setEmployees(prevEmployees => [...prevEmployees, response.data]);
+            setIsAddingEmployee(false);
+            window.location.reload(true);
+          }
+        } catch (error) {
+          console.error("Error adding employee:", error);
+        }
+      };
+
     return (
-        <SupervisorPageAPIContext.Provider value={{companyData, companyStatus, companyPersonnel}}>
+        <SupervisorPageAPIContext.Provider value={{companyData, companyStatus, companyPersonnel, handleAddEmployee, isAddingEmployee, setIsAddingEmployee}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (
