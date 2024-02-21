@@ -5,6 +5,7 @@ import ThemeSlider from "../ThemeSlider";
 
 const NavBar = ({theme}) => {
   return (
+    //loggedin
     <div className={`header-major-container ${theme}`}>
       <Link to="/login">
         <button>Login</button>
