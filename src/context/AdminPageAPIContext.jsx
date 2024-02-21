@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 export const AdminPageAPIContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export const AdminPageAPIContextProvider = ({children}) => {
     const [supervisorRequests, setSupervisorRequests] = useState([]);
     const [activeUsers, setActiveUsers] = useState([]);
@@ -63,8 +62,32 @@ export const AdminPageAPIContextProvider = ({children}) => {
         }
     }
 
+    const handleCommentRequest = async (commentId, decision) => {
+        setIsLoading(true);
+        const payload = {
+            "token": "token",
+            "commentId": commentId,
+            "decision": decision.toString() 
+        };
+        try {
+            const response = await axios.post("http://localhost:9093/api/v1/admin/handle-pending-comment", payload)
+            if (response.status === 200) {
+                setPendingComments(prevRequest => 
+                    prevRequest.filter(request => request.commentId !== commentId)
+                );
+                window.location.reload(true);
+            }    
+            const updatePendingComments = await axios.get("http://localhost:9090/api/v1/auth/get-all-pending-comments")
+            setPendingComments(updatePendingComments.data)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
     return (
-        <AdminPageAPIContext.Provider value={{supervisorRequests, activeUsers, handleSupervisorRequest, pendingComments}}>
+        <AdminPageAPIContext.Provider value={{supervisorRequests, activeUsers, handleSupervisorRequest, pendingComments,handleCommentRequest}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (

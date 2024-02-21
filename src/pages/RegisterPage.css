@@ -3,7 +3,7 @@
   width: 100%;
   margin: 0 auto; /* Sayfayı ortalamak için */
   padding: 20px; /* Kenar boşluğu eklemek için */
-  height: 950px; /* Sabit yükseklik */
+  height: 1000px; /* Sabit yükseklik */
   overflow-y: auto; /* Gerekirse dikey kaydırma çubuğunu etkinleştir */
   display: flex;
   justify-content: center;
@@ -11,6 +11,7 @@
   background-image: url(images/register.jpg);
   background-position: center;
   background-size: cover;
+  box-sizing: border-box;
 }
 
 .register-container {

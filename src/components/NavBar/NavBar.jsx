@@ -31,6 +31,7 @@ const NavBar = ({theme}) => {
   }
 
   return (
+    //loggedin
     <div className={`header-major-container ${theme}`}>
       {isAuthenticated && isAuthenticated.role === "SUPERVISOR" 
       ? 

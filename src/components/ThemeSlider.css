@@ -23,7 +23,7 @@
 }
 
 /* The slider */
-.slider {
+.slider:before {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -36,7 +36,7 @@
     z-index: 1; /* Make sure it's above the checkbox */
 }
 
-.slider:before {
+.slider {
     position: absolute;
     content: "";
     height: var(--size-of-icon,1.4em);
@@ -49,11 +49,11 @@
     transition: .4s;
 }
 
-input:checked + .slider {
+input:checked + .slider:before {
     background-color: #303136;
 }
 
-input:checked + .slider:before {
+input:checked + .slider {
     left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
     background: #303136;
     box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;

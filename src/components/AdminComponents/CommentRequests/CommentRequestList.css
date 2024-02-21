@@ -1,0 +1,22 @@
+.comment-request-list-section > h1 {
+    text-align: center;
+}
+  
+.comment-request-list-article {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeIn 0.75s ease-out forwards;
+    gap: 2rem;
+    /* border: 2px solid green; */
+}
+  
+@keyframes fadeIn {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}
