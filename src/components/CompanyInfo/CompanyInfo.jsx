@@ -1,18 +1,17 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./CompanyInfo.css";
 import CommentCard from "./CommentCard";
 import { GuestPageAPIContext } from "../../context/GuestPageAPIContext";
 import SupervisorCardList from "./SupervisorCardList";
 
 const CompanyInfo = ({ selectedCompanyInfo, setFilteredCompanies }) => {
-  const { selectedCompanyId, setSelectedCompanyId } =
-    useContext(GuestPageAPIContext);
+  const { setSelectedCompanyId, comments } = useContext(GuestPageAPIContext);
 
   if (!selectedCompanyInfo) {
     return <div>Expected company information not found.</div>;
   }
 
-  const { hrInfos } = selectedCompanyInfo;
+  const hrInfos = selectedCompanyInfo.hrInfos;
 
   const handleClose = () => {
     setSelectedCompanyId(null);
@@ -55,8 +54,9 @@ const CompanyInfo = ({ selectedCompanyInfo, setFilteredCompanies }) => {
           </div>
         </div>
         <div className="comment-info">
-          <CommentCard />
-          <CommentCard />
+          {comments.map((comment) => (
+              <CommentCard key={comment.commentId} comment={comment} />
+          ))}
         </div>
       </div>
       <button className="close-button" onClick={handleClose}>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "./NavBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import ThemeSlider from "../ThemeSlider";
@@ -36,13 +36,13 @@ const NavBar = ({theme}) => {
       {isAuthenticated && isAuthenticated.role === "SUPERVISOR" 
       ? 
       <Link to={supervisorCurrentPage === "supervisor" ? "/personel-page" : "/yonetici-page"}>
-        <button onClick={handleChange} className={`switch-tabbing-button ${supervisorCurrentPage !== 'supervisor' ? 'guest' : ''}`} >{supervisorCurrentPage === "supervisor" ? "Personnel" : "Supervisor"}</button>
+        <div onClick={handleChange} className={`switch-tabbing-button ${supervisorCurrentPage !== 'supervisor' ? 'guest' : ''}`} >{supervisorCurrentPage === "supervisor" ? "Personnel" : "Supervisor"}</div>
       </Link>
       :
       ""
       }
       {!isAuthenticated && <Link to="/register-page">
-        <button className="nav-register-button">Register</button>
+        <div className="nav-register-button">Register</div>
       </Link>}
       <div className={`log-actions-div ${isAuthenticated ? 'authenticated' : ''}`} onClick={isAuthenticated ? handleLogout : handleLogin}>     
           <span>{isAuthenticated ? "Logout" : "Login"}</span>

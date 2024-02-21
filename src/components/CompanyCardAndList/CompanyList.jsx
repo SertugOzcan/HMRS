@@ -7,7 +7,7 @@ import CompanyInfo from "../CompanyInfo/CompanyInfo"
 import axios from "axios";
 
 const CompanyList = () => {
-  const { companyData, selectedCompanyId ,selectedCompanyInfo, setSelectedCompanyInfo, setSelectedCompanyId,setComments} = useContext(GuestPageAPIContext);
+  const { companyData, selectedCompanyId ,selectedCompanyInfo, setSelectedCompanyInfo, setSelectedCompanyId, setComments} = useContext(GuestPageAPIContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [loading,setLoading] = useState(true)
@@ -19,19 +19,16 @@ const CompanyList = () => {
     const getCompanyInfo = async () => {
       if (selectedCompanyId) {
         try {
-
           setLoading(true)
           const response1 = await axios.get(
             `http://localhost:9095/api/v1/company/get-company-detailed-info-for-guest/${selectedCompanyId}`
           );
-          // console.log("Company info:", response.data);
           setSelectedCompanyInfo(response1.data)
           console.log("Company info:", response1.data);
           const response2 = await axios.get(
             `http://localhost:9097/api/v1/comment/get-all-by-company/${selectedCompanyId}`
           );
-          console.log("Company active comments:", response2);
-          console.log("Company active comments data:", response2.data);
+          console.log("Company active comments:", response2.data);
           if(response2.status === 200) {
             setComments(response2.data);
           }

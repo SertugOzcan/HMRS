@@ -19,6 +19,7 @@ export const AdminPageAPIContextProvider = ({children}) => {
             return navigate("/login")
         }
         const getRequests = async () => {
+            setIsLoading(true);
             try {
                 const response1 = await axios.get('http://localhost:9093/api/v1/admin/getallregisteredsupervisors')
                 setSupervisorRequests(response1.data)
@@ -27,6 +28,9 @@ export const AdminPageAPIContextProvider = ({children}) => {
                 setActiveUsers(response2.data)
 
                 const response3 = await axios.get('http://localhost:9093/api/v1/admin/get-all-pending-comments')
+                // console.log("GETALLPENDINGSUPERVISORS: ", response1);
+                // console.log("GETALLACTIVE: ", response2);
+                console.log("AdminContext GetPendingComments Response Data: ", response3);
                 setPendingComments(response3.data)
             } catch (error) {
                 console.log('Error while fetching the data', error);   
@@ -65,7 +69,6 @@ export const AdminPageAPIContextProvider = ({children}) => {
     const handleCommentRequest = async (commentId, decision) => {
         setIsLoading(true);
         const payload = {
-            "token": "token",
             "commentId": commentId,
             "decision": decision.toString() 
         };

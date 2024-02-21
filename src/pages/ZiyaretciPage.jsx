@@ -27,7 +27,7 @@ const ZiyaretciPage = () => {
     </div>
 
     <div className='guest-companies-container'>
-        <h1>companies working with us</h1>
+        <h1>Companies Working With Us</h1>
         <div>
           <CompanyList />
         </div>

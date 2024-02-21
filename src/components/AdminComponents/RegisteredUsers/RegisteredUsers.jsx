@@ -10,7 +10,7 @@ const RegisteredUsers = () => {
         <h2>Active Users</h2>
         <div className="registered-users">
           {activeUsers.map((user) => (
-            <div key={user.id} className="registered-user">
+            <div key={user.email} className="registered-user">
               <p><b>Email:</b> {user.email}</p>
               <p><b>Phone:</b> {user.phone}</p>
               <p><b>Password:</b> {user.password}</p>

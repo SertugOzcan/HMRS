@@ -11,7 +11,7 @@ const LoginPage = () => {
   const [visible, setVisible] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
-  const {login} = useContext(AuthContext);
+  const {logout, login} = useContext(AuthContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -48,6 +48,7 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
+    logout();
     const labels = document.querySelectorAll('.form-control label');
     labels.forEach(label => {
       label.innerHTML = label.innerText

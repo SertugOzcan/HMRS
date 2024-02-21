@@ -8,8 +8,8 @@ const PersonelPage = () => {
 
   const {personnel} = useContext(PersonnelPageAPIContext);
 
-  const image = "https://www.newvisiontheatres.com/wp-content/uploads/2023/06/Dwayne-Johnson.jpg";
-  const compyImage = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/company-logo-design-template-e089327a5c476ce5c70c74f7359c5898_screen.jpg?ts=1672291305";
+  // const image = "https://www.newvisiontheatres.com/wp-content/uploads/2023/06/Dwayne-Johnson.jpg";
+  // const compyImage = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/company-logo-design-template-e089327a5c476ce5c70c74f7359c5898_screen.jpg?ts=1672291305";
 
   return (
     <div className ="personnel-page-container">
@@ -22,8 +22,8 @@ const PersonelPage = () => {
       </main>
       <div className="personnel-container">
           <div className="personnel-photo">
-            <img src={image}></img>
-            {/* <img src={personnel.image}></img> */}
+            {/* <img src={image}></img> */}
+            <img src={personnel.image}></img>
           </div>
           <div className="personnel-info">
             <p><strong>Name:</strong> {personnel.name} {personnel.lastName}</p>
@@ -34,8 +34,8 @@ const PersonelPage = () => {
             <p><strong>Break:</strong> {personnel.department.break}</p>
             <p><strong>Salary:</strong> {personnel.salary}</p>
             <div className="personnel-company-summary">
-              <img src={compyImage}></img>
-              {/* <img src={personnel.companyLogo}></img> */}
+              {/* <img src={compyImage}></img> */}
+              <img src={personnel.companyLogo}></img>
               <div className="personnel-company-info">
                 <h2>{personnel.companyName}</h2>
                 <p>Şirket İletişim Bilgileri: info@xyzcompany.com</p>

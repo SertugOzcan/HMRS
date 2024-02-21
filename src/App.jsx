@@ -48,7 +48,7 @@ function App() {
                     }
                   />
                 }
-              />
+              /> {/* Volkan: bu üstteki route'u silip, AdminLoginPage'de navigationı "/registered-users" yapınca hiçbirşey farketmiyor bu arada, haber olsun */}
               <Route
                 path="/admin-page/registered-users"
                 element={

@@ -11,7 +11,7 @@ const AdminLoginPage = () => {
   const [visible, setVisible] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
-  const {login} = useContext(AuthContext);
+  const {logout, login} = useContext(AuthContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const AdminLoginPage = () => {
       const user = AuthService.getCurrentUser();
       
       if(response && user.role === 'ADMIN'){
-        navigate("/admin-page")
+        navigate("/admin-page") /* burayı yani "/admin-page/registered-users" yapınca birşey farketmiyor */
       }
     } catch (error) {
       setErrorMessage('Wrong email or password!');
@@ -36,6 +36,7 @@ const AdminLoginPage = () => {
   };
 
   useEffect(() => {
+    logout();
     const labels = document.querySelectorAll('.form-control label');
     labels.forEach(label => {
       label.innerHTML = label.innerText
