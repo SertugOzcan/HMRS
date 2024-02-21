@@ -6,14 +6,19 @@ const CommentCard = ( {comment} ) => {
   //   return null; 
   // }
 
-  const imageUrl = comment.personnel.image;
-  const name = comment.personnel.name;
-  const surName = comment.personnel.lastName;
+  
+  const {image} = comment.personnel;
+  const {name} = comment.personnel;
+  const {surName} = comment.personnel;
+
+  // const imageUrl = comment.personnel.image;
+  // const name = comment.personnel.name;
+  // const surName = comment.personnel.lastName;
 
   return (
     <div className="comment-card-container">
       <div className="comment-card-img-div">
-        <img src={imageUrl} alt="" />
+        <img src={image} alt="" />
       </div>
       <div className="comment-card-texts">
         <h4>
