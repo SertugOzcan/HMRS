@@ -52,7 +52,8 @@ export const AdminPageAPIContextProvider = ({children}) => {
                 setSupervisorRequests(prevRequest => 
                     prevRequest.filter(request => request.authId !== authId)
                 );
-            }
+                window.location.reload(true);
+            }    
             const updatedActiveUsers = await axios.get("http://localhost:9090/api/v1/auth/get-all-active")
             setActiveUsers(updatedActiveUsers.data)
         } catch (error) {

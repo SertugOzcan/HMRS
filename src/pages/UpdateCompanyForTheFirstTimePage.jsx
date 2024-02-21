@@ -133,8 +133,8 @@ const UpdateCompanyForTheFirstTimePage = () => {
       payload
     );
     console.log(response);
-    if (response === true) {
-      navigate("/yonetici-page");
+    if (response.status === 200) {
+      window.location.reload(true);
     }
   };
 

@@ -50,9 +50,6 @@ const SupervisorPageIfCompanyUpdated = () => {
     }
   };
 
-
-
-  
   return (
     <div className="yonetici-container">
       <h2>Yönetici Sayfası</h2>
