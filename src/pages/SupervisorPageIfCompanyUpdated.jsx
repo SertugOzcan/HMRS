@@ -52,14 +52,14 @@ const SupervisorPageIfCompanyUpdated = () => {
 
     return (
         <div className="yonetici-container">
-            <h2>Yönetici Sayfası</h2>
+            <h2>Supervisor Page</h2>
             <div className="calisan-listesi">
-                <h3>Personnels</h3>
+                <h3>Personnel List</h3>
                 <EmployeeList />
             </div>
 
             <div className= "calisan-ekle">
-                <h3>Çalışan Ekle</h3>
+                <h3>Add Personnel</h3>
                 <AddEmployeeForm onAddEmployee={handleAddEmployee} />
             </div>
 
