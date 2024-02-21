@@ -1,0 +1,95 @@
+.comment-card-div{
+    display: flex;
+    height: 10rem;
+    flex-direction: row;
+    border: 2px solid rgba(211, 189, 64, 0.822);
+    border-radius: 2%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.comment-image-div {
+    display: flex;
+    width: 15rem;
+    height: 100%;
+}
+
+.comment-image-div img {
+    max-width: 97%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    border-radius: 0.25rem;
+}
+
+.comment-details-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.comment-description-div {
+    justify-content: space-between
+}
+
+.comment-difficulty-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 0.25rem;
+    height: 2rem;
+    align-items: center;
+}
+
+.comment-difficulty-div > p {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #36a794;
+}
+
+.comment-button-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    font-size: large;
+}
+
+.comment-button-div img {
+    width: 1rem;
+}
+
+.comment-add-to-fav-div {
+    cursor: pointer;
+    display: flex;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    color: #17b948;
+    font-weight: 700;
+    gap: 0.25rem;
+}
+
+.comment-add-to-fav-div:hover {
+    background-color: aquamarine;
+    transition: 0.5s ease-in;
+}
+
+.comment-remove-from-fav-div {
+    cursor: pointer;
+    display: flex;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    color: #c00313;
+    font-weight: 700;
+    gap: 0.25rem;
+}
+
+.comment-remove-from-fav-div:hover {
+    background-color: rgba(173, 29, 53, 0.829);
+    color: rgba(222, 245, 245, 0.87);
+    transition: 0.5s ease-in;
+}
+

@@ -1,37 +1,35 @@
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import LoginPage from "./pages/LoginPage";
-import AdminPage from "./pages/AdminPage";
 import YoneticiPage from "./pages/YoneticiPage";
 import ZiyaretciPage from "./pages/ZiyaretciPage";
 import PersonelPage from "./pages/PersonelPage";
 import RegisterPage from "./pages/RegisterPage";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
-// import PrivateRouteUsers from './services/PrivateRouteUsers';
-// import PrivateRouteAdmin from './services/PrivateRouteAdmin';
 import PrivateRoute from "./services/PrivateRoute";
-import {
-  UserPreferencesContext,
-  UserPreferencesProvider,
-} from "./context/UserPreferencesContext";
+import {UserPreferencesContext} from "./context/UserPreferencesContext";
 import { useContext } from "react";
-import ThemeSlider from "./components/ThemeSlider";
 import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
-import { AuthContext, AuthContextProvider } from "./context/AuthContext";
+import { AuthContext } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
 import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
 import { PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
-import HomePageSideBar from "./components/SideBars/HomePageSideBar/HomePageSideBar";
+import HomePageSideBar from "./components/HomePageSideBar/HomePageSideBar";
 import NavBar from "./components/NavBar/NavBar";
+import RegisteredUsers from './components/AdminComponents/RegisteredUsers/RegisteredUsers'
+import ManagerRequests from './components/AdminComponents/ManagerRequests/ManagerRequests'
+import CommentRequests from './components/AdminComponents/CommentRequests/CommentRequests'
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
+  const {isAuthenticated} = useContext(AuthContext);
+  
   return (
-    <UserPreferencesProvider>
-      <AuthContextProvider>
+    
         <Router>
           <div className={`app-container ${theme}`}>
+          {isAuthenticated && <HomePageSideBar />}
             <NavBar theme={`${theme}`}/>
             <Footer />
             <Routes>
@@ -44,7 +42,43 @@ function App() {
                   <PrivateRoute
                     element={
                       <AdminPageAPIContextProvider>
-                        <AdminPage />
+                        <RegisteredUsers />
+                      </AdminPageAPIContextProvider>
+                    }
+                  />
+                }
+              />
+              <Route
+                path="/admin-page/registered-users"
+                element={
+                  <PrivateRoute
+                    element={
+                      <AdminPageAPIContextProvider>
+                        <RegisteredUsers />
+                      </AdminPageAPIContextProvider>
+                    }
+                  />
+                }
+              />
+              <Route
+                path="/admin-page/manager-requests"
+                element={
+                  <PrivateRoute
+                    element={
+                      <AdminPageAPIContextProvider>
+                        <ManagerRequests />
+                      </AdminPageAPIContextProvider>
+                    }
+                  />
+                }
+              />
+              <Route
+                path="/admin-page/comment-requests"
+                element={
+                  <PrivateRoute
+                    element={
+                      <AdminPageAPIContextProvider>
+                        <CommentRequests />
                       </AdminPageAPIContextProvider>
                     }
                   />
@@ -87,8 +121,7 @@ function App() {
             </Routes>
           </div>
         </Router>
-      </AuthContextProvider>
-    </UserPreferencesProvider>
+      
   );
 }
 
