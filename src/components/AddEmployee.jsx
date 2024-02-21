@@ -48,7 +48,7 @@ const AddEmployeeForm = () => {
                 image: img.trim(),
                 address: address.trim(),
                 phone: phone.trim(),
-                department: department.trim(),
+                departmentId: department.trim(),
                 dateOfEmployment: dateOfEmployment,
                 dateOfBirth: dateOfBirth,
                 salary: salary.trim(),

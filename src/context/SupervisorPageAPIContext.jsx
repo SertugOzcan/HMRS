@@ -42,7 +42,8 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
 
 
     const handleAddEmployee = async (newEmployee) => {
-        const selectedDepartment = companyData.departments.filter(department => department.name === newEmployee.department)
+        const selectedDepartment = companyData.departments.find(department => department.name === newEmployee.departmentId)
+        // console.log("Selected-department: " , selectedDepartment);
         if(!selectedDepartment) {
             alert("Department not found!");
             return;
@@ -52,7 +53,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
           departmentId: selectedDepartment.id,
           position: "Software Developer",
         };
-        console.log("HAZIRLANAN PAYLOAD: ", payload);
+        // console.log("HAZIRLANAN PAYLOAD: ", payload);
         try {
           const response = await axios.post("http://localhost:9091/api/v1/personnel/create", payload);
           console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
