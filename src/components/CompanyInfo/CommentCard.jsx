@@ -1,14 +1,14 @@
 import React from "react";
 import "./CommentCard.css";
-const CommentCard = ({ comment }) => {
+const CommentCard = ( {comment} ) => {
 
-  if (!comment || !comment.personnel) {
-    return null; 
-  }
+  // if (!comment || !comment.personnel) {
+  //   return null; 
+  // }
 
-  const imageUrl = comment.personnel.image || "";
-  const name = comment.personnel.name || "";
-  const surName = comment.personnel.lastName || "";
+  const imageUrl = comment.personnel.image;
+  const name = comment.personnel.name;
+  const surName = comment.personnel.lastName;
 
   return (
     <div className="comment-card-container">
