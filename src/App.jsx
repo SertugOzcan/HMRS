@@ -24,6 +24,7 @@ import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
 import { PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
 import HomePageSideBar from "./components/SideBars/HomePageSideBar/HomePageSideBar";
 import NavBar from "./components/NavBar/NavBar";
+import NoPage from "./pages/NoPage";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -84,6 +85,7 @@ function App() {
                 }
               />
               <Route path="/register-page" element={<RegisterPage />} />
+              <Route path="*" element={<NoPage />} />
             </Routes>
           </div>
         </Router>
