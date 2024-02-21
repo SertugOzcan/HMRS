@@ -10,6 +10,7 @@ const CompanyList = () => {
   const { companyData, selectedCompanyId ,selectedCompanyInfo, setSelectedCompanyInfo, setSelectedCompanyId,setComments} = useContext(GuestPageAPIContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
+  const [loading,setLoading] = useState(true)
 
   // const { companyData, selectedCompanyId } = useContext(GuestPageAPIContext);
   // const [ selectedCompanyComments, setSelectedCompanyComments ] = useState([]);
@@ -18,6 +19,8 @@ const CompanyList = () => {
     const getCompanyInfo = async () => {
       if (selectedCompanyId) {
         try {
+
+          setLoading(true)
           const response1 = await axios.get(
             `http://localhost:9095/api/v1/company/get-company-detailed-info-for-guest/${selectedCompanyId}`
           );
@@ -34,6 +37,8 @@ const CompanyList = () => {
           }
         } catch (error) {
           console.error("Error while fetching company info:", error);
+        }finally{
+          setLoading(false)
         }
       }
     };
@@ -77,7 +82,7 @@ const CompanyList = () => {
           : companyData.map((company) => (
               <CompanyCard key={company.id} company={company} />
             ))}
-            {selectedCompanyId && <CompanyInfo companyId={selectedCompanyId} selectedCompanyInfo={selectedCompanyInfo} setFilteredCompanies={setFilteredCompanies}/>}
+            {selectedCompanyId && !loading && <CompanyInfo companyId={selectedCompanyId} selectedCompanyInfo={selectedCompanyInfo} setFilteredCompanies={setFilteredCompanies}/>}
       </div>
 
       
