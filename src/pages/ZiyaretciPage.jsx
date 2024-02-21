@@ -33,8 +33,6 @@ const ZiyaretciPage = () => {
         </div>
         
     </div>
-    
-    <CompanyInfo />
 
       {/*<h2>About Us</h2>
       <div className="site-info">

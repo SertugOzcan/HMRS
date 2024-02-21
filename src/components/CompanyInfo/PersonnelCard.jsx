@@ -1,13 +1,17 @@
 import React from 'react'
 import "./PersonnelCard.css"
-const PersonnelCard = () => {
+const PersonnelCard = ({personnelInfo}) => {
+ 
   return (
     <div className='personnel-card'>
-        <img src="https://www.newvisiontheatres.com/wp-content/uploads/2023/06/Dwayne-Johnson.jpg" alt="" />
+        <img src={personnelInfo.image} alt="" />
         <div className='personnel-card-texts'>
-            <p>The Rock</p>
-            <p>01.01.1964</p>
-            <p>aaaaaaaaaaa</p>
+            <p>{personnelInfo.name}</p>
+            <p>{personnelInfo.lastName}</p>
+            <p>{personnelInfo.email}</p>
+            <p>
+            {personnelInfo.phones[0].phoneType} - {personnelInfo.phones[0].phoneNumber}
+            </p>
         </div>
     </div>
   )

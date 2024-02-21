@@ -3,6 +3,7 @@
     gap: 15px;
     padding: 20px;
     background-color: rgba(43, 153, 226, 0.048);
+    position: relative;
 }
 .comment-card-img-div{
     width: 75px;
@@ -16,4 +17,9 @@
 .comment-card-texts p{
     overflow-wrap: break-word;
     white-space: normal;
+}
+.creation-date{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }

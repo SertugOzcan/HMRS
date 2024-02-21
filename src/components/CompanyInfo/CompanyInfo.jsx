@@ -1,43 +1,69 @@
-import React from 'react'
-import "./CompanyInfo.css"
-import PersonnelCard from './PersonnelCard'
-import HrCard from './HrCard'
-import CommentCard from './CommentCard'
-const CompanyInfo = () => {
+import React, { useContext } from "react";
+import "./CompanyInfo.css";
+import CommentCard from "./CommentCard";
+import { GuestPageAPIContext } from "../../context/GuestPageAPIContext";
+import SupervisorCardList from "./SupervisorCardList";
+
+const CompanyInfo = ({ selectedCompanyInfo, setFilteredCompanies }) => {
+  const { selectedCompanyId, setSelectedCompanyId } =
+    useContext(GuestPageAPIContext);
+
+  if (!selectedCompanyInfo) {
+    return <div>Expected company information not found.</div>;
+  }
+
+  const { hrInfos } = selectedCompanyInfo;
+
+  const handleClose = () => {
+    setSelectedCompanyId(null);
+    setFilteredCompanies([]);
+  };
+
   return (
-    <div className='company-page-container'>
-        <div className='company-infos'>
-            
-                <div className='company-img-div'>
-                    <img src="https://www.candanofset.com/files/hizmetlerimiz/trendyol_sticker.png" alt="" />
-                </div>
-                <div className='company-infos-texts'>
-                    <p>Company Name  : FourMusketeers</p>
-                    <p>Date          : 2023</p>
-                    <p>Address : Ankara/ kızılay</p>
-                    <p>Personnel Count : 257</p>
-                </div>
-            
+    <div className="company-page-container">
+      <div className="company-infos">
+        <div className="company-img-div">
+          <img
+            src={selectedCompanyInfo.companyLogo || "default-logo-url"}
+            alt=""
+          />
         </div>
-
-
-
-        <div className='main-div'>
-            <div className='main-infos'>
-                <div className='hr-info'>
-                <HrCard />
-                </div>
-                <div className='personnel-info'>
-                <PersonnelCard />
-                </div>
-            </div>
-            <div className='comment-info'>
-                <CommentCard />
-                <CommentCard />
-            </div>
+        <div className="company-infos-texts">
+          <p>Company Name : {selectedCompanyInfo.companyName}</p>
+          <p>Date : {selectedCompanyInfo.establishmentDate}</p>
+          <p>Address : {selectedCompanyInfo.address}</p>
+          <p>Personnel Count : {selectedCompanyInfo.personnelCount}</p>
         </div>
+      </div>
+
+      <div className="main-div">
+        <div className="main-infos">
+          <div className="hr-info">
+            <h3>HR INFO</h3>
+            {hrInfos &&
+              hrInfos.map((hrInfo, index) => (
+                <div key={index}>
+                  <p>FirstName: {hrInfo.firstName}</p>
+                  <p>LastName: {hrInfo.lastName}</p>
+                  <p>Email: {hrInfo.email}</p>
+                  <p>Phone: {hrInfo.phone}</p>
+                </div>
+              ))}
+          </div>
+          <div className="personnel-info">
+            <SupervisorCardList selectedCompanyInfo={selectedCompanyInfo} />
+          </div>
+        </div>
+        <div className="comment-info">
+          <CommentCard />
+          <CommentCard />
+        </div>
+      </div>
+      <button className="close-button" onClick={handleClose}>
+        Close
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default CompanyInfo
+export default CompanyInfo;

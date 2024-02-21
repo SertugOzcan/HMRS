@@ -1,13 +1,18 @@
 import React from 'react'
 import "./HrCard.css"
-const HrCard = () => {
+const HrCard = ({hrInfo}) => {
+
+
   return (
     <div className='hr-card'>
-        <img src="https://www.newvisiontheatres.com/wp-content/uploads/2023/06/Dwayne-Johnson.jpg" alt="" />
+        <img src={hrInfo.image} alt="" />
         <div className='hr-card-texts'>
-            <p>The Rock</p>
-            <p>01.01.1964</p>
-            <p>aaaaaaaaaaa</p>
+            <p>{hrInfo.name}</p>
+            <p>{hrInfo.lastName}</p>
+            <p>{hrInfo.email}</p>
+            <p>
+            {hrInfo.phones[0].phoneType} - {hrInfo.phones[0].phoneNumber}
+            </p>
         </div>
     </div>
   )
