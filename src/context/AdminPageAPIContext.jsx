@@ -10,6 +10,7 @@ export const AdminPageAPIContext = createContext();
 export const AdminPageAPIContextProvider = ({children}) => {
     const [supervisorRequests, setSupervisorRequests] = useState([]);
     const [activeUsers, setActiveUsers] = useState([]);
+    const [pendingComments, setPendingComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -25,8 +26,11 @@ export const AdminPageAPIContextProvider = ({children}) => {
 
                 const response2 = await axios.get('http://localhost:9090/api/v1/auth/get-all-active')
                 setActiveUsers(response2.data)
+
+                const response3 = await axios.get('http://localhost:9093/api/v1/admin/get-all-pending-comments')
+                setPendingComments(response3.data)
             } catch (error) {
-                console.log('Error while fetching the data');   
+                console.log('Error while fetching the data', error);   
             } finally {
                 setIsLoading(false);
             }
@@ -59,7 +63,7 @@ export const AdminPageAPIContextProvider = ({children}) => {
     }
 
     return (
-        <AdminPageAPIContext.Provider value={{supervisorRequests, activeUsers, handleSupervisorRequest}}>
+        <AdminPageAPIContext.Provider value={{supervisorRequests, activeUsers, handleSupervisorRequest, pendingComments}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (
