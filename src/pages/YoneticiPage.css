@@ -69,8 +69,16 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.employee-list-upper-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-
+.employee-list-upper-container h3{
+  position: relative;
+  left: 40%;
+}
 
 .button-add-employee {
     position: relative;
