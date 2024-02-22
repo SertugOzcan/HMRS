@@ -76,7 +76,6 @@ const SupervisorPageIfCompanyUpdated = () => {
           onClick={() => setIsAddingEmployee(false)}
         >
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            
             <AddEmployeeForm />
           </div>
         </div>
