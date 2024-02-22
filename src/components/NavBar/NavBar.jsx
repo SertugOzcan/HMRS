@@ -50,7 +50,7 @@ const NavBar = ({theme}) => {
               <img src={isAuthenticated ? LogoutIcon : LoginIcon}></img>
           </div> 
       </div>
-      <ThemeSlider/>
+      {isAuthenticated && <ThemeSlider/>}
     </div>
   );
 };
