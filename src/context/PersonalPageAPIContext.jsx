@@ -37,31 +37,27 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
     }, []);
 
 
-    // const handleSupervisorRequest = async (authId, decision) => {
-    //     setIsLoading(true);
-    //     const payload = {
-    //         "token": "token",
-    //         "supervisorAuthId": authId,
-    //         "decision": decision.toString() 
-    //     };
-    //     try {
-    //         const response = await axios.post("http://localhost:9093/api/v1/admin/handle-supervisor-registration", payload)
-    //         if (response.status === 200) {
-    //             setSupervisorRequests(prevRequest => 
-    //                 prevRequest.filter(request => request.authId !== authId)
-    //             );
-    //         }
-    //         const updatedActiveUsers = await axios.get("http://localhost:9090/api/v1/auth/get-all-active")
-    //         setActiveUsers(updatedActiveUsers.data)
-    //     } catch (error) {
-    //         console.log(error)
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // }
+    const handleEditMyInfo = async (newPersonnelInfo) => {
+        const payload = { ...newPersonnelInfo,
+          token: isAuthenticated.token,
+        };
+        console.log("HAZIRLANAN PAYLOAD: ", payload);
+        try {
+          const response = await axios.put("http://localhost:9091/api/v1/personnel/update", payload);
+          console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
+          if (response.status === 200) {
+            // setEmployees(prevEmployees => [...prevEmployees, response.data]);
+            // setIsAddingEmployee(false);
+            window.location.reload(true);
+          }
+        } catch (error) {
+          console.error("Error adding employee:", error);
+        }
+    };
+
 
     return (
-        <PersonnelPageAPIContext.Provider value={{personnel}}>
+        <PersonnelPageAPIContext.Provider value={{personnel, handleEditMyInfo}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (

@@ -65,7 +65,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
         } catch (error) {
           console.error("Error adding employee:", error);
         }
-      };
+    };
 
     return (
         <SupervisorPageAPIContext.Provider value={{companyData, companyStatus, companyPersonnel, handleAddEmployee, isAddingEmployee, setIsAddingEmployee}}>

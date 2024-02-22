@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { PersonnelPageAPIContext } from "../../context/PersonalPageAPIContext";
 import "./EditMyInfoForm.css";
 
 const EditMyInfoForm = () => {
-  const { handleEditMyInfo } = useContext(PersonnelPageAPIContext);
+  const { personnel, handleEditMyInfo } = useContext(PersonnelPageAPIContext);
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -14,17 +14,14 @@ const EditMyInfoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      name.trim() &&
-      lastName.trim() &&
-      email.trim() &&
-      phone.trim()
-      //   img.trim() &&
-    ) {
-      if (phone.length !== 11) {
-        alert("Check personnel's phone number!");
-        return;
-      }
+    if (phone.length !== 11) {
+      alert("Check personnel's phone number!");
+      return;
+    }
+    let newName = name.trim() === "" ? personnel.name : name.trim();
+    let newLastName = lastName.trim() === "" ? personnel.lastName : lastName.trim();
+    let newEmail = email.trim() === "" ? personnel.email : email.trim();
+    let newPersonalPhone = phone.trim() === "" ? personnel.phones[0].phoneNumber : phone.trim();
     //   let newImg;
     //   if (img === "") {
     //     newImg = gender
@@ -33,17 +30,15 @@ const EditMyInfoForm = () => {
     //   } else {
     //     newImg = img.trim();
     //   }
+    const newPersonnelInfo = {
+      name: newName,
+      lastName: newLastName,
+      email: newEmail,
+      // image: newImg,
+      phones: [newPersonalPhone]
+    };
 
-      const newPersonnelInfo = {
-        name: name.trim(),
-        lastName: lastName.trim(),
-        email: email.trim(),
-        // image: newImg,
-        phone: phone.trim()
-      };
-
-      handleEditMyInfo(newPersonnelInfo);
-    }
+    handleEditMyInfo(newPersonnelInfo);
   };
 
   return (
@@ -57,7 +52,7 @@ const EditMyInfoForm = () => {
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Name"
+            placeholder={personnel.name}
             required
           />
           <input
@@ -66,7 +61,7 @@ const EditMyInfoForm = () => {
             name="lastName"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            placeholder="Last Name"
+            placeholder={personnel.lastName}
             required
           />
           <input
@@ -75,7 +70,7 @@ const EditMyInfoForm = () => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            placeholder={personnel.email}
             required
           />
           <input
@@ -84,7 +79,7 @@ const EditMyInfoForm = () => {
             name="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="Phone"
+            placeholder={personnel.phones[0].phoneNumber}
             required
           />
           <input
