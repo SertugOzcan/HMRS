@@ -39,27 +39,14 @@ function App() {
 
     resizeObserver.observe(appContainer);
 
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
-    const appContainer = appContainerRef.current;
-
     const contentObserver = new MutationObserver(() => {
-      const resizeObserver = new ResizeObserver(() => {
-        if (appContainer) {
-          appContainer.style.height = `${appContainer.scrollHeight}px`;
-        }
-      });
-
       resizeObserver.observe(appContainer);
     });
 
     contentObserver.observe(appContainer, { childList: true, subtree: true });
 
     return () => {
+      resizeObserver.disconnect();
       contentObserver.disconnect();
     };
   }, []);
@@ -73,19 +60,6 @@ function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/admin-login" element={<AdminLoginPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/admin-page"
-            element={
-              <PrivateRoute
-                element={
-                  <AdminPageAPIContextProvider>
-                    <RegisteredUsers />
-                  </AdminPageAPIContextProvider>
-                }
-              />
-            }
-          />{" "}
-          {/* Volkan: bu üstteki route'u silip, AdminLoginPage'de navigationı "/registered-users" yapınca hiçbirşey farketmiyor bu arada, haber olsun */}
           <Route
             path="/admin-page/registered-users"
             element={
