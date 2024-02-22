@@ -27,7 +27,6 @@ button:focus, input:focus{
 
 .app-container{
   position: relative;
-  height: 1800px;
   background-image: url(./pages/images/all-pages-wall.jpg);
   background-repeat: no-repeat;
   background-size: cover;
