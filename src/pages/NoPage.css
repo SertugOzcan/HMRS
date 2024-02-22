@@ -6,7 +6,7 @@
     align-items: center;
     flex-direction: column;
     gap: 3rem;
-    background: url("https://i.imgur.com/B9svkIo.jpeg");
+    background: url(images/noPage.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
 }
