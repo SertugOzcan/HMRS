@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import "./PersonelPage.css";
 import { PersonnelPageAPIContext } from '../context/PersonalPageAPIContext';
+import AddComment from '../components/AddCommentComponent/AddComment';
 
 
 
 const PersonelPage = () => {
 
   const {personnel} = useContext(PersonnelPageAPIContext);
+  
 
   // const image = "https://www.newvisiontheatres.com/wp-content/uploads/2023/06/Dwayne-Johnson.jpg";
   // const compyImage = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/company-logo-design-template-e089327a5c476ce5c70c74f7359c5898_screen.jpg?ts=1672291305";
@@ -48,6 +50,7 @@ const PersonelPage = () => {
       <div className="personel-photo">
         <img src="personel-photo.jpg" alt="Personel Fotoğrafı" />
       </div>
+      <AddComment />
     </div>
   );
 };
