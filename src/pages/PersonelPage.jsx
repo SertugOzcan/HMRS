@@ -45,9 +45,6 @@ const PersonelPage = () => {
           </div>
 
       </div>
-      <div className="personel-photo">
-        <img src="personel-photo.jpg" alt="Personel Fotoğrafı" />
-      </div>
     </div>
   );
 };

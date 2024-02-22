@@ -7,10 +7,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 900px;
+    height: 100vh;
     position: relative;
     z-index: 90;
-    background-image: url(images/login.jpg);
+    background-image: url(images/login-wall.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -25,9 +25,10 @@
     backdrop-filter: blur(5px);
 }
 
-.container h1 {
+.container h2 {
     text-align: center;
     margin-bottom: 30px;
+    color: #fff;
 }
 
 .container a {
@@ -40,7 +41,7 @@
     cursor: pointer;
     display: inline-block;
     width: 100%;
-    background: lightblue;
+    background: rgb(88, 135, 151);
     padding: 15px;
     font-family: inherit;
     font-size: 16px;
@@ -86,6 +87,7 @@
     top: 15px;
     left: 0;
     pointer-events: none;
+    color: #fff;
 }
 
 .form-control label span {
@@ -97,7 +99,7 @@
 
 .form-control input:focus + label span,
 .form-control input:valid + label span {
-    color: rgb(11, 85, 110);
+    color: rgb(255, 255, 255);
     transform: translateY(-30px);
 }
 
@@ -119,4 +121,12 @@
 
 .login-message.error {
     color: red;
+}
+
+.login-username-input:focus, .login-pwd-input:focus {
+    box-shadow: 0 0 0 4px #545966;
+}
+
+.login-pwd-input, .login-username-input{
+    border-radius: 5px;
 }

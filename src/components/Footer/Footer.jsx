@@ -3,7 +3,7 @@ import "./Footer.css"
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="footer-container">
+    <footer className="footer-container">
       <div className="footer-left">
         <Link to="/">
           <button>Home</button>
@@ -18,12 +18,12 @@ const Footer = () => {
       <div className="footer-right">
         <p className="copyright text-center">
           © {new Date().getFullYear()}{"  "}
-          <Link to="http://localhost:5173">
-            Musketeers Human Resource Management System
+          <Link className="footer-link" to="http://localhost:5173">
+             Musketeers Human Resource Management System
           </Link>
         </p>
       </div>
-    </div>
+    </footer>
   );
 };
 
