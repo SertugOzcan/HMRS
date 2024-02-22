@@ -1,4 +1,3 @@
-import React from 'react'
 import SupervisorRequestList from '../../../components/SupervisorRequestList/SupervisorRequestList';
 import './ManagerRequests.css'
 
