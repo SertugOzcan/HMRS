@@ -27,7 +27,7 @@ const AddEmployeeForm = () => {
       phone.trim() &&
       identityNumber.trim() &&
       address.trim() &&
-      img.trim() &&
+    //   img.trim() &&
       salary.trim() &&
       department.trim()
     ) {
@@ -39,13 +39,20 @@ const AddEmployeeForm = () => {
         alert("Check personnel's phone number!");
         return;
       }
+      let newImg;
+      if(img === "") {
+        newImg = (gender ? "https://i.imgur.com/BNXkMgI.png" : "https://i.imgur.com/ltRBj9D.png");
+      } else {
+        newImg = img.trim();
+      }
+
       const newEmployee = {
         name: name.trim(),
         lastName: lastName.trim(),
         gender: gender ? "Female" : "Male",
         identityNumber: identityNumber.trim(),
         email: email.trim(),
-        image: img.trim(),
+        image: newImg,
         address: address.trim(),
         phone: phone.trim(),
         departmentId: department.trim(),
@@ -53,9 +60,9 @@ const AddEmployeeForm = () => {
         dateOfBirth: dateOfBirth,
         salary: salary.trim(),
       };
-
-            handleAddEmployee(newEmployee);          
-        }
+        console.log("GÖNDERİLEN PERSONEL PAYLOAD: ", newEmployee);
+        handleAddEmployee(newEmployee);          
+    }
     };
 
   return (
