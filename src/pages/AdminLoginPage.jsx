@@ -20,7 +20,7 @@ const AdminLoginPage = () => {
       const user = AuthService.getCurrentUser();
       
       if(response && user.role === 'ADMIN'){
-        navigate("/admin-page") /* burayı yani "/admin-page/registered-users" yapınca birşey farketmiyor */
+        navigate("/admin-page/registered-users") /* burayı yani "/admin-page/registered-users" yapınca birşey farketmiyor */
       }
     } catch (error) {
       setErrorMessage('Wrong email or password!');
