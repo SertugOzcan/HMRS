@@ -20,7 +20,7 @@ const CommentCard = ( {comment} ) => {
           {name} {surName}
         </h4>
         <p>{comment.content}</p>
-        <p className="creation-date">Creation Date: {comment.creationDate}</p>
+        <p className="creation-date">{comment.creationDate}</p>
       </div>
     </div>
   );

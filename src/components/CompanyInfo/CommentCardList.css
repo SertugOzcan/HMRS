@@ -1,0 +1,19 @@
+.comment-card-list{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    height: 400px; /* İstenilen sabit yükseklik */
+    overflow-y: auto;
+
+    
+}
+
+.comment-card-list::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;    
+}
+  
+.comment-card-list::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+  }
