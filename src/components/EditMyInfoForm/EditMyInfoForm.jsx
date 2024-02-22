@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
-import "./AddEmployee.css";
+import { PersonnelPageAPIContext } from "../../context/PersonalPageAPIContext";
+import "./EditMyInfoForm.css";
 
 const EditMyInfoForm = () => {
-  const { handleEditMyInfo } = useContext(SupervisorPageAPIContext);
+  const { handleEditMyInfo } = useContext(PersonnelPageAPIContext);
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -97,7 +97,7 @@ const EditMyInfoForm = () => {
           />
           <br />
           <button className="button-edit-info" type="submit">
-            <span className="button-text-edit-info">Add Employee</span>
+            <span className="button-text-edit-info">Update My Info</span>
             <span className="button-icon-edit-info">
               <svg
                 className="svg"

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./PersonelPage.css";
 import { PersonnelPageAPIContext } from "../context/PersonalPageAPIContext";
 import AddComment from "../components/AddCommentComponent/AddComment";
+import EditMyInfoForm from "../components/EditMyInfoForm/EditMyInfoForm";
 
 const PersonelPage = () => {
   const { personnel } = useContext(PersonnelPageAPIContext);
