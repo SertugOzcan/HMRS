@@ -9,7 +9,7 @@ const CommentRequestCard = ({request}) => {
   return (
     <div className='comment-card-div'>
             <div className='comment-image-div'>
-                <img src={request.companyLogo} />
+                <img src={request.personnelImage} />
             </div>
             <div className='comment-details-div'>
                 <div className='comment-description-div'>
