@@ -26,5 +26,10 @@ button:focus, input:focus{
 }
 
 .app-container{
-  height: 100vh;
+  position: relative;
+  height: 1800px;
+  background-image: url(./pages/images/all-pages-wall.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
