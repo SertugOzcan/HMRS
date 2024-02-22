@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 950px;
-    background-image: url(images/admin-login.jpg);
+    background-image: url(images\admin-login-wall.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -45,4 +45,12 @@
 
 .admin-login-button:active {
     transform: scale(0.98);
+}
+
+.admin-login-username-input:focus, .admin-login-pwd-input:focus {
+    box-shadow: 0 0 0 4px #555c63;
+}
+
+.admin-login-pwd-input, .admin-login-username-input{
+    border-radius: 5px;
 }

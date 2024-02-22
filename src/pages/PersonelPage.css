@@ -10,10 +10,10 @@
     #ecedf3,
     #f7f4f8
   ); */
-  background-image: url("https://i.imgur.com/ZYCukO1.jpeg");
+  /* background-image: url(images/all-pages-wall.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center; */
   animation: fadeIn 0.75s ease-out forwards;
   height: 1080px;
 }
@@ -52,7 +52,7 @@
   padding-bottom: 1.5rem;
   display: flex;
   flex-direction: row;
-  width: 97%;
+  width: 80%;
   margin-top: 2rem;
   background-color: rgba(172, 255, 47, 0.116);
   border-radius: 2rem;
@@ -70,7 +70,7 @@
   min-width: 80%;
   max-width: 80%;
   object-fit: cover;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode: multiply; */
   border-radius: 2rem;
 }
 

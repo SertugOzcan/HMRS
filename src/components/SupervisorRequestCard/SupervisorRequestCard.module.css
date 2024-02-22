@@ -23,7 +23,7 @@
 .recipe-image-div img {
     max-width: 97%;
     object-fit: cover;
-    mix-blend-mode: multiply;
+    /* mix-blend-mode: multiply; */
     border-radius: 0.25rem;
 }
 

@@ -1,26 +1,29 @@
 .card{
     display: flex;
     padding: 20px;
-    gap: 35px;
+    gap: 15px;
     background-color: #929292;
     border-radius: 5px;
-    width: 47%;
+    width: 40%;
     border: 1px solid rgba(255, 255, 255, 0.623);
 }
 .card img{
     border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    /* mix-blend-mode: color */
 }
 .card-values{
     display: flex;
-    width: 100%;
+    width: 70%;
+    justify-content: space-around;
     align-items: center;
-    gap: 250px;
     text-align: start;
 }
 .card-values :nth-child(1){
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
 }
 .card-values :nth-child(1) p{
     font-weight: 600;
@@ -28,7 +31,7 @@
 .card-values :nth-child(2){
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
 }
 .card-values :nth-child(2) p{
     font-weight: 600;

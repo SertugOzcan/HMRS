@@ -2,14 +2,23 @@
 /* YONETİCİ PAGE  */
 
 .yonetici-container {
-    margin:50px 0;
-    padding: 20px;
-    margin-left: 200px;
+  width: 80%;
+  position: relative;
+  left: 250px;
+  top: 100px;
+  padding: 20px;
 }
 
 .yonetici-container h2 {
     font-size: 24px;
     margin-bottom: 20px;
+}
+
+.employee-list-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .calisan-listesi,
@@ -19,11 +28,12 @@
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .calisan-listesi h3,
 .finansal-bilgiler h3 {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     margin-bottom: 15px;
 }
@@ -66,8 +76,22 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.employee-list-upper-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.employee-list-upper-container button{
+  position: relative;
+  top: -7px;
+  right: -7px;
+}
 
+.employee-list-upper-container h3{
+  position: relative;
+  left: 40%;
+}
 
 .button-add-employee {
     position: relative;

@@ -20,7 +20,7 @@ const AdminLoginPage = () => {
       const user = AuthService.getCurrentUser();
       
       if(response && user.role === 'ADMIN'){
-        navigate("/admin-page") /* burayı yani "/admin-page/registered-users" yapınca birşey farketmiyor */
+        navigate("/admin-page/registered-users") /* burayı yani "/admin-page/registered-users" yapınca birşey farketmiyor */
       }
     } catch (error) {
       setErrorMessage('Wrong email or password!');
@@ -52,6 +52,7 @@ const AdminLoginPage = () => {
         <form onSubmit={handleLogin}>
           <div className="form-control">
         <input
+        className='admin-login-username-input'
           type="text"
           required
           value={identity}
@@ -62,6 +63,7 @@ const AdminLoginPage = () => {
         </div>
         <div className="form-control">
         <input
+        className='admin-login-pwd-input'
           type="password"
           required
           value={password}
@@ -69,7 +71,7 @@ const AdminLoginPage = () => {
         />
         <label>Password</label>
         </div>
-        <button type='submit' className="admin-login-button">Giriş</button>
+        <button type='submit' className="admin-login-button">Login</button>
         <div className={`admin-login-message ${visible ? 'show' : ''} ${isSuccess ? "success" : "error"}`}>
           {errorMessage}
         </div>

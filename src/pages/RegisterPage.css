@@ -8,10 +8,6 @@
   display: flex;
   justify-content: center;
   align-items: flex-start; /* İçeriğin üstten başlamasını sağlar */
-  background-image: url(images/register.jpg);
-  background-position: center;
-  background-size: cover;
-  box-sizing: border-box;
 }
 
 .register-container {
@@ -183,7 +179,6 @@ textarea::-webkit-scrollbar-thumb {
 :focus {
   outline: 0;
   border-color: #2260ff;
-  box-shadow: 0 0 0 4px #b5c9fc;
 }
 
 .gender-selector div {

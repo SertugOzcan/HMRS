@@ -66,6 +66,7 @@ const LoginPage = () => {
         <form onSubmit={handleLogin}>
           <div className="form-control">
         <input
+        className='login-username-input'
           type="text"
           required
           value={identity}
@@ -75,6 +76,7 @@ const LoginPage = () => {
         </div>
         <div className="form-control">
         <input
+        className='login-pwd-input'
           type="password"
           required
           value={password}

@@ -2,9 +2,13 @@
 
 
 .update-company-page {
+  position: relative;
+  left: 350px;
+  top: 100px;
   display: flex;
   justify-content: center; 
   width: 850px;
+  height: 1650px;
 }
 .sidebar {
   width: 180px;
@@ -15,7 +19,7 @@
   height: 380px;
   position: fixed;
   top: 50%;
-  left: 0; /* Sol tarafta başlayacak şekilde ayarlandı */
+  left: 300px; /* Sol tarafta başlayacak şekilde ayarlandı */
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -130,7 +134,7 @@
 }
 
 .last-buttons > button:first-child {
-  background-color: #0e1913;
+  background-color: #33c23a;
   color: #ffffff;
 }
 
