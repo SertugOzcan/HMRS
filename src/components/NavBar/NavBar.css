@@ -85,7 +85,7 @@
     background-color: rgba(95, 252, 173, 0.719);
     border-radius: 2rem;
     padding: 1rem;
-    color: #fff;
+    color: #000;
     &&:hover{
         cursor: pointer;
         background-color: rgb(43, 221, 87);
@@ -103,7 +103,7 @@
 }
 
 .header-major-container{
-    color: #fff;
+    color: #000;
 }
 .switch-tabbing-button {
     background-color: rgb(96, 201, 70);
