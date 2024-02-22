@@ -59,6 +59,7 @@ const AddEmployeeForm = () => {
     };
 
   return (
+    <div className="form-container">
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -192,6 +193,7 @@ const AddEmployeeForm = () => {
         </span>
       </button>
     </form>
+    </div>
   );
 };
 
