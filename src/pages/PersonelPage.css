@@ -10,7 +10,7 @@
     #ecedf3,
     #f7f4f8
   ); */
-  background-image: url("https://i.imgur.com/ZYCukO1.jpeg");
+  background-image: url(images/all-pages-wall.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -52,7 +52,7 @@
   padding-bottom: 1.5rem;
   display: flex;
   flex-direction: row;
-  width: 97%;
+  width: 80%;
   margin-top: 2rem;
   background-color: rgba(172, 255, 47, 0.116);
   border-radius: 2rem;
