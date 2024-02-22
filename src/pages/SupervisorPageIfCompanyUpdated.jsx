@@ -37,7 +37,7 @@ const SupervisorPageIfCompanyUpdated = () => {
     <div className="yonetici-container">
       <h2>Supervisor Page</h2>
       <div className="calisan-listesi">
-        <div className="employee-list-upper">
+        <div className="employee-list-upper-container">
           <h3>Personnel List</h3>
           {!isAddingEmployee && (
           <button
@@ -66,7 +66,9 @@ const SupervisorPageIfCompanyUpdated = () => {
           </button>
                 )}
         </div>
-        <EmployeeList />
+        <div className="employee-list-container">
+          <EmployeeList />
+        </div>
       </div>
       {isAddingEmployee && (
         <div
