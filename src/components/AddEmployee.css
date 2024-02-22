@@ -1,6 +1,6 @@
 .form-container {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 450px;
+  margin: 10px 30px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -9,6 +9,9 @@
   z-index: 1000000000;
   overflow-y: auto;
   max-height: calc(80vh - 100px);
+}
+.add_employee_name{
+  text-align: center;
 }
 
 .add_employee_input,

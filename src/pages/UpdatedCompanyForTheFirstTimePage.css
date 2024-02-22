@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center; 
   width: 850px;
+  height: 1650px;
 }
 .sidebar {
   width: 180px;
@@ -133,7 +134,7 @@
 }
 
 .last-buttons > button:first-child {
-  background-color: #0e1913;
+  background-color: #33c23a;
   color: #ffffff;
 }
 
