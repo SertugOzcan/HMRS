@@ -39,6 +39,7 @@ const AddEmployeeForm = () => {
                 alert("Check personnel's phone number!");
                 return;
             }
+
             const newEmployee = {
                 name: name.trim(),
                 lastName: lastName.trim(),
@@ -54,7 +55,15 @@ const AddEmployeeForm = () => {
                 salary: salary.trim(),
             };
 
-            handleAddEmployee(newEmployee);
+            // if(!newEmployee.image) {
+            //     newEmployee.gender === "Female" 
+            //     ? 
+            //     newEmployee.image === "https://w7.pngwing.com/pngs/924/414/png-transparent-woman-illustration-user-profile-avatar-woman-icon-girl-avatar-face-fashion-girl-heroes.png"
+            //     :
+            //     newEmployee.image === "https://w7.pngwing.com/pngs/550/997/png-transparent-user-icon-foreigners-avatar-child-face-heroes.png"
+            // }
+
+            handleAddEmployee(newEmployee);          
         }
     };
 
