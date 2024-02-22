@@ -9,7 +9,7 @@ import Footer from "./components/Footer/Footer";
 import "./App.css";
 import PrivateRoute from "./services/PrivateRoute";
 import { UserPreferencesContext } from "./context/UserPreferencesContext";
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
 import { AuthContext } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
@@ -26,9 +26,47 @@ function App() {
   const { theme } = useContext(UserPreferencesContext);
   const { isAuthenticated } = useContext(AuthContext);
 
+  const appContainerRef = useRef(null);
+
+  useEffect(() => {
+    const appContainer = appContainerRef.current;
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (appContainer) {
+        appContainer.style.height = `${appContainer.scrollHeight}px`;
+      }
+    });
+
+    resizeObserver.observe(appContainer);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const appContainer = appContainerRef.current;
+
+    const contentObserver = new MutationObserver(() => {
+      const resizeObserver = new ResizeObserver(() => {
+        if (appContainer) {
+          appContainer.style.height = `${appContainer.scrollHeight}px`;
+        }
+      });
+
+      resizeObserver.observe(appContainer);
+    });
+
+    contentObserver.observe(appContainer, { childList: true, subtree: true });
+
+    return () => {
+      contentObserver.disconnect();
+    };
+  }, []);
+
   return (
     <Router>
-      <div className={`app-container ${theme}`}>
+      <div ref={appContainerRef} className={`app-container ${theme}`}>
         {isAuthenticated && <HomePageSideBar />}
         <NavBar theme={`${theme}`} />
         <Routes>
