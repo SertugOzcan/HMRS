@@ -26,34 +26,9 @@ function App() {
   const { theme } = useContext(UserPreferencesContext);
   const { isAuthenticated } = useContext(AuthContext);
 
-  const appContainerRef = useRef(null);
-
-  useEffect(() => {
-    const appContainer = appContainerRef.current;
-
-    const resizeObserver = new ResizeObserver(() => {
-      if (appContainer) {
-        appContainer.style.height = `${appContainer.scrollHeight}px`;
-      }
-    });
-
-    resizeObserver.observe(appContainer);
-
-    const contentObserver = new MutationObserver(() => {
-      resizeObserver.observe(appContainer);
-    });
-
-    contentObserver.observe(appContainer, { childList: true, subtree: true });
-
-    return () => {
-      resizeObserver.disconnect();
-      contentObserver.disconnect();
-    };
-  }, []);
-
   return (
     <Router>
-      <div ref={appContainerRef} className={`app-container ${theme}`}>
+      <div className={`app-container ${theme}`}>
         {isAuthenticated && <HomePageSideBar />}
         <NavBar theme={`${theme}`} />
         <Routes>
