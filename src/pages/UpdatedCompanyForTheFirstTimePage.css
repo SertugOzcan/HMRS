@@ -223,3 +223,12 @@
   transition: 0.5s;
   transform: translateX(-56px);
 }
+
+
+.holiday-duration {
+  display: flex; /* Yatay olarak sıralamak için flexbox kullanın */
+}
+
+.react-datepicker-wrapper {
+  margin-right: 10px; /* Tarih seçiciler arasında boşluk ekleyin */
+}

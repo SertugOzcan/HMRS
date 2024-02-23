@@ -275,7 +275,7 @@ const RegisterPage = () => {
               checked={isManager}
               onChange={() => setIsManager(true)}
             />
-            Supervisor
+            Manager
           </label>
         </div>
         <div className={`registration-message ${visible ? 'show' : ''} ${isSuccess ? "success" : "error"}`}>

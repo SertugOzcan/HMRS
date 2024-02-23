@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
 import { AuthContext } from "../context/AuthContext";
 import "./UpdatedCompanyForTheFirstTimePage.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const UpdateCompanyForTheFirstTimePage = () => {
   const { companyData } = useContext(SupervisorPageAPIContext);
@@ -28,13 +30,16 @@ const UpdateCompanyForTheFirstTimePage = () => {
   const [departmentBreaks, setDepartmentBreaks] = useState("");
 
   const [holidayName, setHolidayName] = useState("");
-  const [holidayDuration, setHolidayDuration] = useState(0);
 
   const [incomeDescription, setIncomeDescription] = useState("");
   const [incomeAmount, setIncomeAmount] = useState(0);
 
   const [expenseDescription, setExpenseDescription] = useState("");
   const [expenseAmount, setExpenseAmount] = useState(0);
+
+  const [date, setDate] = useState(new Date());
+  const [startDate, setHolidayStartDate] = useState();
+  const [endDate, setHolidayEndDate] = useState();
 
   const navigate = useNavigate();
 
@@ -82,11 +87,13 @@ const UpdateCompanyForTheFirstTimePage = () => {
       ...prevHolidays,
       {
         name: holidayName,
-        duration: holidayDuration,
+        startDate: startDate,
+        endDate: endDate,
       },
     ]);
     setHolidayName("");
-    setHolidayDuration("");
+    setHolidayStartDate("");
+    setHolidayEndDate("");
   };
 
   const handleAddIncome = (e) => {
@@ -113,6 +120,12 @@ const UpdateCompanyForTheFirstTimePage = () => {
     ]);
     setExpenseDescription("");
     setExpenseAmount(0);
+  };
+
+  const handleChange = (range) => {
+    const [startDate, endDate] = range;
+    setHolidayStartDate(startDate);
+    setHolidayEndDate(endDate);
   };
 
   const handleSubmit = async () => {
@@ -156,7 +169,9 @@ const UpdateCompanyForTheFirstTimePage = () => {
           <h2>Core Info</h2>
 
           <div className="company-core-info">
-            <label className="company-name-header">{companyData.companyName}</label>
+            <label className="company-name-header">
+              {companyData.companyName}
+            </label>
             <input
               type="text"
               name="establishment-date"
@@ -319,14 +334,26 @@ const UpdateCompanyForTheFirstTimePage = () => {
                 />
               </div>
               <div className="holiday-duration">
-                <label>Holiday Duration:</label>
-                <input
-                  className="input"
-                  type="number"
-                  value={holidayDuration}
-                  onChange={(event) => setHolidayDuration(event.target.value)}
-                  required
-                />
+                <div className="date-picker-wrapper">
+                  <DatePicker
+                    placeholderText="Start Date"
+                    selectsStart
+                    selected={startDate}
+                    onChange={(date) => setHolidayStartDate(date)}
+                    startDate={startDate}
+                  />
+                </div>
+                <div className="date-picker-wrapper">
+                  <DatePicker
+                    placeholderText="End Date"
+                    selectsEnd
+                    selected={endDate}
+                    onChange={(date) => setHolidayEndDate(date)}
+                    endDate={endDate}
+                    startDate={startDate}
+                    minDate={startDate}
+                  />
+                </div>
               </div>
             </div>
             <button className="buttonas" onClick={handleAddHoliday}>
