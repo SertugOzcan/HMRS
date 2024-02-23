@@ -8,6 +8,9 @@
   display: flex;
   justify-content: center;
   align-items: flex-start; /* İçeriğin üstten başlamasını sağlar */
+  background-image: url(images/register.jpg);
+  background-repeat: no-repeat;
+   background-size: cover;
 }
 
 .register-container {
