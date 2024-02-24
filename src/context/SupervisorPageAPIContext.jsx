@@ -15,6 +15,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
     const {isAuthenticated} = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
+    const [dayoffRequests, setDayoffRequests] = useState({})
 
     useEffect(() => {
         if(isAuthenticated.role!=="SUPERVISOR"){
@@ -67,8 +68,20 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
         }
     };
 
+    useEffect(()=>
+       { const getDayOffRequests = async () => {
+            try {
+                //getting dayoffrequests
+                setDayoffRequests();
+            } catch (error) {
+                console.log("Error while fetching dayoff data");
+            }
+        }
+        getDayOffRequests();
+    },[]);
+
     return (
-        <SupervisorPageAPIContext.Provider value={{companyData, companyStatus, companyPersonnel, handleAddEmployee, isAddingEmployee, setIsAddingEmployee}}>
+        <SupervisorPageAPIContext.Provider value={{companyData, companyStatus, companyPersonnel, handleAddEmployee, isAddingEmployee, setIsAddingEmployee,dayoffRequests}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (

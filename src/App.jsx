@@ -23,6 +23,7 @@ import CommentRequests from "./components/AdminComponents/CommentRequests/Commen
 import NoPage from "./pages/NoPage";
 import SupervisorPageEmployeeList from "./components/SupervisorPageEmployeeList/SupervisorPageEmployeeList";
 import SupervisorPageCompanyData from "./components/SupervisorPageCompanyData/SupervisorPageCompanyData";
+import SupervisorPageDayOffRequests from "./components/SupervisorPageDayOffRequests/SupervisorPageDayOffRequests";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -104,6 +105,18 @@ function App() {
                 element={
                   <SupervisorPageAPIContextProvider>
                     <SupervisorPageCompanyData />
+                  </SupervisorPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="/yonetici-page/dayoff-requests"
+            element={
+              <PrivateRoute
+                element={
+                  <SupervisorPageAPIContextProvider>
+                    <SupervisorPageDayOffRequests />
                   </SupervisorPageAPIContextProvider>
                 }
               />
