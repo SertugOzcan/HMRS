@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
 import "./AddEmployee.css";
 
@@ -13,7 +13,7 @@ const AddEmployeeForm = () => {
   const [department, setDepartment] = useState("");
   const [identityNumber, setIdentityNumber] = useState("");
   const [address, setAddress] = useState("");
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState("");  /* VOLKAN: ALTTAKI INPUT IMAGE KISMI SİLİNİNCE BUNA DA GEREK YOK SİL GİTSİN */
   const [salary, setSalary] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [dateOfEmployment, setDateOfEmployment] = useState(new Date());
@@ -27,7 +27,6 @@ const AddEmployeeForm = () => {
       phone.trim() &&
       identityNumber.trim() &&
       address.trim() &&
-      //   img.trim() &&
       salary.trim() &&
       department.trim()
     ) {
@@ -39,22 +38,14 @@ const AddEmployeeForm = () => {
         alert("Check personnel's phone number!");
         return;
       }
-      let newImg;
-      if (img === "") {
-        newImg = gender
-          ? "https://i.imgur.com/BNXkMgI.png"
-          : "https://i.imgur.com/ltRBj9D.png";
-      } else {
-        newImg = img.trim();
-      }
 
       const newEmployee = {
         name: name.trim(),
         lastName: lastName.trim(),
-        gender: gender ? "Female" : "Male",
+        gender: gender ? "FEMALE" : "MALE",
         identityNumber: identityNumber.trim(),
         email: email.trim(),
-        image: newImg,
+        image: gender ? "https://i.imgur.com/BNXkMgI.png" : "https://i.imgur.com/ltRBj9D.png",
         address: address.trim(),
         phone: phone.trim(),
         departmentId: department.trim(),
@@ -159,6 +150,7 @@ const AddEmployeeForm = () => {
             onChange={(e) => setAddress(e.target.value)}
             required
           />
+          {/* VOLKAN: ADDPERSONELDE IMAGE ALINMAYACAK SİLİNECEK... PERSONEL DAHA SONRA KENDİSİ UPDATE EDECEK DEFAULT IMAGE'I (sadece alttaki input silinecek) */}
           <input
             className="add_employee_input"
             type="text"
