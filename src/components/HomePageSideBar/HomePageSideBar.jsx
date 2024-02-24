@@ -22,6 +22,8 @@ const HomePageSideBar = () => {
           <Link to='/yonetici-page/employee-list'><button>Employee List</button></Link>
           <br />
           <Link to='/yonetici-page/company-data'><button>Company Data</button></Link>
+          <br />
+          <Link to='/yonetici-page/dayoff-requests'><button>Dayoff Requests</button></Link>
         </div>
         break;
       case "PERSONNEL":
