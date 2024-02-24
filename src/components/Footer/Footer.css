@@ -36,3 +36,7 @@
     color: #000;
     text-decoration: none;
 }
+
+.footer-container.dark, .footer-left.dark button, .footer-link.dark{
+    color: #fff;
+}
