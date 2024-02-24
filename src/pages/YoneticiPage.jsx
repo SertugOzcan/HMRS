@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import "./YoneticiPage.css";
-import SupervisorPageIfCompanyUpdated from './SupervisorPageIfCompanyUpdated'
 import UpdateCompanyForTheFirstTimePage from "./UpdateCompanyForTheFirstTimePage";
 import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
+import SupervisorPageEmployeeList from "../components/SupervisorPageEmployeeList/SupervisorPageEmployeeList";
 
 
 const YoneticiPage = () => {
@@ -11,15 +11,15 @@ const YoneticiPage = () => {
 
 
   return (
-    <>
+    <div className="yonetici-page-container">
       {companyStatus === '' ? (
         <h1>LOADING</h1>
       ) : companyStatus === 'PENDING' ? (
         <UpdateCompanyForTheFirstTimePage />
       ) : (
-        <SupervisorPageIfCompanyUpdated />
+        <SupervisorPageEmployeeList />
       )}
-    </>
+    </div>
   );
 }
 

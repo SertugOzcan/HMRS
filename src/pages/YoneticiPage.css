@@ -151,3 +151,9 @@
   .button-add-employee:active {
     border: 1px solid #2e8644;
   }
+
+  .yonetici-page-container h1{
+    position: relative;
+    left: 45%;
+    top: 10%;
+  }

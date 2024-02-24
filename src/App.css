@@ -27,4 +27,6 @@ button:focus, input:focus{
 
 .app-container{
   position: relative;
+  height: auto;
+  min-height: 1000px;
 }

@@ -9,7 +9,7 @@ import Footer from "./components/Footer/Footer";
 import "./App.css";
 import PrivateRoute from "./services/PrivateRoute";
 import { UserPreferencesContext } from "./context/UserPreferencesContext";
-import { useContext, useRef, useEffect } from "react";
+import { useContext } from "react";
 import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
 import { AuthContext } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
@@ -21,6 +21,8 @@ import RegisteredUsers from "./components/AdminComponents/RegisteredUsers/Regist
 import ManagerRequests from "./components/AdminComponents/ManagerRequests/ManagerRequests";
 import CommentRequests from "./components/AdminComponents/CommentRequests/CommentRequests";
 import NoPage from "./pages/NoPage";
+import SupervisorPageEmployeeList from "./components/SupervisorPageEmployeeList/SupervisorPageEmployeeList";
+import SupervisorPageCompanyData from "./components/SupervisorPageCompanyData/SupervisorPageCompanyData";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -83,6 +85,30 @@ function App() {
               />
             }
           />
+          <Route
+            path="/yonetici-page/employee-list"
+            element={
+              <PrivateRoute
+                element={
+                  <SupervisorPageAPIContextProvider>
+                    <SupervisorPageEmployeeList />
+                  </SupervisorPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="/yonetici-page/company-data"
+            element={
+              <PrivateRoute
+                element={
+                  <SupervisorPageAPIContextProvider>
+                    <SupervisorPageCompanyData />
+                  </SupervisorPageAPIContextProvider>
+                }
+              />
+            }
+          />
           {/*<Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />*/}
           <Route
             path="/ziyaretci-page"
@@ -108,7 +134,7 @@ function App() {
           <Route path="*" element={<NoPage />} />
         </Routes>
       </div>
-      <Footer />
+      <Footer theme={theme}/>
     </Router>
   );
 }
