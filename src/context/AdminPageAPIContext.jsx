@@ -21,7 +21,7 @@ export const AdminPageAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             setIsLoading(true);
             try {
-                const response1 = await axios.get('http://localhost:9093/api/v1/admin/getallregisteredsupervisors')
+                const response1 = await axios.get('http://localhost:9093/api/v1/admin/get-all-pending-supervisors')
                 setSupervisorRequests(response1.data)
 
                 const response2 = await axios.get('http://localhost:9090/api/v1/auth/get-all-active')
