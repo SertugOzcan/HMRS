@@ -1,3 +1,4 @@
+
 /* Kayıt Sayfası */
 .register-page-major-container {
   width: 100%;
@@ -71,35 +72,22 @@
   background-color: #45a049;
 }
 
-.role-selector {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-.role-selector label {
-  margin-right: 10px;
-  color: #333; /* Metin rengi */
-}
-
-.role-selector input[type="radio"] {
-  margin-right: 5px;
-}
-
 /* Date Picker */
 .date-picker {
   display: flex;
-  justify-content: space-between;
-  align-items: first baseline;
+  align-items: center;
 }
 .register-container input[type="date"]::-webkit-calendar-picker-indicator {
   color: #333; /* Metin rengi */
 }
 .dob-label {
+  margin-right: 10px;
+}
+
+.dob-label label {
   font-family: Arial, Helvetica, sans-serif;
   color: #9f9d9e;
 }
-
 .identity-number {
   margin-top: 25px;
 }
@@ -183,12 +171,10 @@ textarea::-webkit-scrollbar-thumb {
   outline: 0;
   border-color: #2260ff;
 }
-
-.gender-selector div {
+.gender-selector {
   display: flex;
   flex-wrap: wrap;
   margin-top: 0.5rem;
-  justify-content: center;
   padding-top: 5px;
 }
 
@@ -211,11 +197,10 @@ textarea::-webkit-scrollbar-thumb {
 
 .gender-label span {
   top: 5px;
-
   display: block;
   cursor: pointer;
   background-color: #fff;
-  padding: 0.375em 0.75em;
+  padding: 0.25em 0.5em; 
   position: relative;
   margin-left: 0.0625em;
   box-shadow: 0 0 0 0.0625em #b5bfd9;
@@ -232,3 +217,35 @@ textarea::-webkit-scrollbar-thumb {
 .gender-label:last-child span {
   border-radius: 0 0.375em 0.375em 0;
 }
+
+
+
+
+.register-container.expanded {
+  width: 600px; 
+  transition: width 0.5s ease;
+}
+
+.role-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.role-selector .role-button {
+  padding: 10px 20px;
+  background-color: #949494;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.role-selector .role-button:hover {
+  background-color: #525252;
+}
+.role-button.active {
+  background-color: #525252;
+  color: white;
+}
+
