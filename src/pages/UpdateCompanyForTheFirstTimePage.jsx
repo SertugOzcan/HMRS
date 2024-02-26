@@ -79,8 +79,8 @@ const UpdateCompanyForTheFirstTimePage = () => {
       ...prevDepartments,
       {
         name: departmentName,
-        shifts: departmentShiftStart.toString()+" - "+departmentShiftEnd.toString(),
-        breaks: departmentBreakStart.toString()+" - "+departmentBreakEnd.toString(),
+        shiftHour: `${departmentShiftStart} - ${departmentShiftEnd}`,
+        breakHour: `${departmentBreakStart} - ${departmentBreakEnd}`,
       },
     ]);
     setDepartmentName("");
