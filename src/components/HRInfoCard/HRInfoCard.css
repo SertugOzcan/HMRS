@@ -1,0 +1,22 @@
+.hr-info-card-container{
+    position: relative;
+    border: 1px dotted blue;
+    border-radius: 20px;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hr-info-card-container-details{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.hr-info-card-container img{
+    width: 90px;
+    position: relative;
+    left: 0px;
+}
