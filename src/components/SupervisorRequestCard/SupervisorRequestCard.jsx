@@ -19,7 +19,11 @@ const SupervisorRequestCard = ({request}) => {
                     <p>Gender: {request.gender}</p>
                     <p>Mail: {request.email}</p>
                     <p>Phone: {request.phones[0].split(' ')[1]}</p>
-                    <p>Company Name:{request.companyName}</p>
+                    <p>Company Name: {request.companyName}</p>
+                    <p>Contract Name: {request.contractName}</p>
+                    <p>Contract Duration: {request.contractDuration}</p>
+                    <p>Contract Currency: {request.contractCurrency}</p>
+                    <p>Contract Cost: {request.contractCost}</p>
                 </div>
                 <div className={styles['recipe-difficulty-div']}>              
                     <div className={styles['button-div']}> 
