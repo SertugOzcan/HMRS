@@ -81,7 +81,7 @@
   color: #333; /* Metin rengi */
 }
 .dob-label {
-  margin-right: 10px;
+  margin-right: 10px; /* Add spacing between Date of Birth label and input */
 }
 
 .dob-label label {
@@ -178,6 +178,7 @@ textarea::-webkit-scrollbar-thumb {
   padding-top: 5px;
 }
 
+
 .gender-selector input[type="radio"] {
   clip: rect(0 0 0 0);
   clip-path: inset(100%);
@@ -217,8 +218,6 @@ textarea::-webkit-scrollbar-thumb {
 .gender-label:last-child span {
   border-radius: 0 0.375em 0.375em 0;
 }
-
-
 
 
 .register-container.expanded {

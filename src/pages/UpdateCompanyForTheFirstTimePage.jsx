@@ -24,23 +24,28 @@ const UpdateCompanyForTheFirstTimePage = () => {
   const [hrInfoSurname, setHRInfoSurname] = useState("");
   const [hrInfoEmail, setHRInfoEmail] = useState("");
   const [hrInfoPhone, setHRInfoPhone] = useState("");
+  const [hrGender, setHrGender] = useState(false);
 
   const [departmentName, setDepartmentName] = useState("");
-  const [departmentShifts, setDepartmentShifts] = useState("");
-  const [departmentBreaks, setDepartmentBreaks] = useState("");
+  const [departmentShiftStart, setDepartmentShiftStart] = useState("");
+  const [departmentShiftEnd, setDepartmentShiftEnd] = useState("");
+  const [departmentBreakStart, setDepartmentBreakStart] = useState("");
+  const [departmentBreakEnd, setDepartmentBreakEnd] = useState("");
 
   const [holidayName, setHolidayName] = useState("");
 
   const [incomeDescription, setIncomeDescription] = useState("");
-  const [incomeAmount, setIncomeAmount] = useState(0);
+  const [incomeAmount, setIncomeAmount] = useState();
 
   const [expenseDescription, setExpenseDescription] = useState("");
-  const [expenseAmount, setExpenseAmount] = useState(0);
+  const [expenseAmount, setExpenseAmount] = useState();
 
   const [date, setDate] = useState(new Date());
   const [startDate, setHolidayStartDate] = useState();
   const [endDate, setHolidayEndDate] = useState();
 
+  const [incomeRecipeDate,setIncomeRecipeDate] = useState(); 
+  const [expenseRecipeDate, setExpenseRecipeDate] = useState();
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState("coreInfo");
@@ -58,12 +63,14 @@ const UpdateCompanyForTheFirstTimePage = () => {
         lastName: hrInfoSurname,
         email: hrInfoEmail,
         phone: hrInfoPhone,
+        gender: hrGender ? "FEMALE" : "MALE"
       },
     ]);
     setHRInfoName("");
     setHRInfoSurname("");
     setHRInfoEmail("");
     setHRInfoPhone("");
+    setHrGender(false)
   };
 
   const handleAddDepartment = (e) => {
@@ -72,13 +79,15 @@ const UpdateCompanyForTheFirstTimePage = () => {
       ...prevDepartments,
       {
         name: departmentName,
-        shifts: departmentShifts,
-        breaks: departmentBreaks,
+        shiftHour: `${departmentShiftStart} - ${departmentShiftEnd}`,
+        breakHour: `${departmentBreakStart} - ${departmentBreakEnd}`,
       },
     ]);
     setDepartmentName("");
-    setDepartmentShifts("");
-    setDepartmentBreaks("");
+    setDepartmentShiftStart("");
+    setDepartmentShiftEnd("");
+    setDepartmentBreakStart("");
+    setDepartmentBreakEnd("");
   };
 
   const handleAddHoliday = (e) => {
@@ -103,10 +112,12 @@ const UpdateCompanyForTheFirstTimePage = () => {
       {
         description: incomeDescription,
         amount: incomeAmount,
+        incomeDate: incomeRecipeDate
       },
     ]);
     setIncomeDescription("");
     setIncomeAmount(0);
+    setIncomeRecipeDate("")
   };
 
   const handleAddExpense = (e) => {
@@ -116,10 +127,12 @@ const UpdateCompanyForTheFirstTimePage = () => {
       {
         description: expenseDescription,
         amount: expenseAmount,
+        expenseDate: expenseRecipeDate
       },
     ]);
     setExpenseDescription("");
     setExpenseAmount(0);
+    setExpenseRecipeDate("");
   };
 
   const handleChange = (range) => {
@@ -246,6 +259,28 @@ const UpdateCompanyForTheFirstTimePage = () => {
                   required
                 />
               </div>
+              <div className="hr-gender-selector">
+                <label className="hr-gender-label">
+                  <input
+                    type="radio"
+                    name="radio"
+                    value="MALE"
+                    checked={!hrGender}
+                    onChange={() => setHrGender(false)}
+                  />
+                  <span>Male</span>
+                </label>
+                <label className="hr-gender-label">
+                  <input
+                    type="radio"
+                    name="radio"
+                    value="FEMALE"
+                    checked={hrGender}
+                    onChange={() => setHrGender(true)}
+                  />
+                  <span className="hr-gender-span">Female</span>
+                </label>
+              </div>
             </div>
             <button className="buttonas" onClick={handleAddHRInfo}>
               <div className="buttonas-box">
@@ -283,20 +318,36 @@ const UpdateCompanyForTheFirstTimePage = () => {
               <div className="department-shifts">
                 <input
                   className="input"
-                  placeholder="Shifts"
+                  placeholder="Shift Start Hour (09:00)"
                   type="text"
-                  value={departmentShifts}
-                  onChange={(event) => setDepartmentShifts(event.target.value)}
+                  value={departmentShiftStart}
+                  onChange={(event) => setDepartmentShiftStart(event.target.value)}
+                  required
+                />
+                 <input
+                  className="input"
+                  placeholder="Shift End Hour (17:00)"
+                  type="text"
+                  value={departmentShiftEnd}
+                  onChange={(event) => setDepartmentShiftEnd(event.target.value)}
                   required
                 />
               </div>
               <div className="department-breaks">
                 <input
                   className="input"
-                  placeholder="Breaks"
+                  placeholder="Break Start Hour (12:30)"
                   type="text"
-                  value={departmentBreaks}
-                  onChange={(event) => setDepartmentBreaks(event.target.value)}
+                  value={departmentBreakStart}
+                  onChange={(event) => setDepartmentBreakStart(event.target.value)}
+                  required
+                />
+                <input
+                  className="input"
+                  placeholder="Break End Hour (13:30)"
+                  type="text"
+                  value={departmentBreakEnd}
+                  onChange={(event) => setDepartmentBreakEnd(event.target.value)}
                   required
                 />
               </div>
@@ -399,6 +450,16 @@ const UpdateCompanyForTheFirstTimePage = () => {
                   required
                 />
               </div>
+              <div className="date-picker">
+              <div className="dob-input">
+                <DatePicker
+                  placeholderText="Recipe Date"
+                  dateFormat="dd/MM/yyyy"
+                  selected={incomeRecipeDate}
+                  onChange={(incomeRecipeDate) => setIncomeRecipeDate(incomeRecipeDate)}
+                />
+              </div>
+            </div>
             </div>
             <button className="buttonas" onClick={handleAddIncome}>
               <div className="buttonas-box">
@@ -431,7 +492,6 @@ const UpdateCompanyForTheFirstTimePage = () => {
                 />
               </div>
               <div className="expense-amount">
-                <label>Expense Amount:</label>
                 <input
                   className="input"
                   placeholder="Expense Amount"
@@ -441,6 +501,16 @@ const UpdateCompanyForTheFirstTimePage = () => {
                   required
                 />
               </div>
+              <div className="date-picker">
+              <div className="ird-input">
+                <DatePicker
+                  placeholderText="Recipe Date"
+                  dateFormat="dd/MM/yyyy"
+                  selected={expenseRecipeDate}
+                  onChange={(expenseRecipeDate) => setExpenseRecipeDate(expenseRecipeDate)}
+                />
+              </div>
+            </div>
             </div>
             <button className="buttonas" onClick={handleAddExpense}>
               <div className="buttonas-box">
