@@ -19,7 +19,7 @@ const RegisterPage = () => {
   const [address, setAddress] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [identityNumber, setIdentityNumber] = useState("");
-  const [isRegisterFirstTime,setIsRegisterFirstTime] = useState(false)
+  const [isRegisterFirstTime,setIsRegisterFirstTime] = useState(true)
   const [identityNumberError, setIdentityNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
