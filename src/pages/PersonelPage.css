@@ -98,9 +98,12 @@
 .personnel-company-info > h2{
   text-align: center;
 }
-
-.edit-info-button {
-  width: 10%;
+.btn-container{
+  display: flex;
+  gap: 5px;
+}
+.edit-info-button, .add-comment-button{
+  width: 12%;
   padding: 10px;
   background-color: #007bff;
   color: #fff;
@@ -120,12 +123,29 @@
   justify-content: center;
   align-items: center;
 }
-
 .edit-info-content {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+.add-comment-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-comment-content{
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

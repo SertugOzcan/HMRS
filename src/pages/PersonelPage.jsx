@@ -7,10 +7,15 @@ import EditMyInfoForm from "../components/EditMyInfoForm/EditMyInfoForm";
 const PersonelPage = () => {
   const { personnel } = useContext(PersonnelPageAPIContext);
   const [isEditInfoClicked, setIsEditInfoClicked] = useState(false);
+  const [isAddCommentClicked, setIsAddCommentClicked] = useState(false);
 
   const handleEditInfoClick = (e) => {
     e.preventDefault();
     setIsEditInfoClicked(true);
+  };
+  const handleAddCommentClick = (e) => {
+    e.preventDefault();
+    setIsAddCommentClicked(true);
   };
 
   return (
@@ -58,25 +63,50 @@ const PersonelPage = () => {
           <br />
           <br />
           <br />
-          <button
-            className="edit-info-button"
-            onClick={(e) => handleEditInfoClick(e)}
-          >
-            Edit My Info
-          </button>
-          {isEditInfoClicked && (
-            <div
-              className="edit-info-background"
-              onClick={() => setIsEditInfoClicked(false)}
+          <div className="btn-container">
+            <button
+              className="edit-info-button"
+              onClick={(e) => handleEditInfoClick(e)}
             >
+              Edit My Info
+            </button>
+            {isEditInfoClicked && (
               <div
-                className="edit-info-content"
-                onClick={(e) => e.stopPropagation()}
+                className="edit-info-background"
+                onClick={() => setIsEditInfoClicked(false)}
               >
-                <EditMyInfoForm />
+                <div
+                  className="edit-info-content"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <EditMyInfoForm />
+                </div>
               </div>
+            )}
+
+
+            <button
+              className="add-comment-button"
+              onClick={(e) => handleAddCommentClick(e)}
+            >
+              Add Comment
+            </button>
             </div>
-          )}
+            {isAddCommentClicked && (
+              <div
+                className="add-comment-background"
+                onClick={() => setIsAddCommentClicked(false)}
+              >
+                <div
+                  className="add-comment-content"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <AddComment setIsAddCommentClicked={setIsAddCommentClicked}/>
+                </div>
+              </div>
+            )}
+
+
           <div className="personnel-company-summary">
             {/* <img src={compyImage}></img> */}
             <img src={personnel.companyLogo}></img>
@@ -88,7 +118,7 @@ const PersonelPage = () => {
           </div>
         </div>
       </div>
-      <AddComment />
+      {/* <AddComment /> */}
     </div>
   );
 };

@@ -22,7 +22,6 @@ const RegisterPage = () => {
   
   const [identityNumber, setIdentityNumber] = useState("");
 
-  
   const [identityNumberError, setIdentityNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
