@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import "./AddComment.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import RatingComponent from "./RatingComponent";
 
-const AddComment = () => {
+const AddComment = ({setIsAddCommentClicked}) => {
     const {isAuthenticated} = useContext(AuthContext);
 
   const [content, setContent] = useState("");
   const [header, setHeader] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
 
 
   const handleChangeContent = (e) => {
@@ -19,9 +20,6 @@ const AddComment = () => {
     setHeader(e.target.value);
   };
 
-  const handleChangeRating = (e) => {
-    setRating(parseInt(e.target.value));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,38 +45,39 @@ const AddComment = () => {
   
     setContent('');
     setHeader('');
-    setRating(0);
+    setRating(1);
+    setIsAddCommentClicked(false)
+    // alert("Succesfully")
   };
 
   return (
     <div className="add-comment-container">
-      <input
-        type="text"
-        value={header}
-        onChange={handleChangeHeader}
-        placeholder="Header.."
-        className="header-input"
-      />
-      <textarea
-        placeholder="Content..."
-        value={content}
-        onChange={handleChangeContent}
-        className="comment-input"
-      />
-      <label htmlFor="rating">Rating:</label>
-      <input
-        type="number"
-        id="rating"
-        min="1"
-        max="5"
-        value={rating}
-        className="rating-input"
-        onChange={handleChangeRating}
-        required
-      />
-      <button onClick={handleSubmit} className="submit-button">
-        Add Comment
-      </button>
+      <div className="second-container">
+        <div className="input-box">
+          <input
+            type="text"
+            value={header}
+            onChange={handleChangeHeader}
+            className="header-input"
+            required="required"
+          />
+          <span>Header</span>
+        </div>
+        <div className="input-box">
+          <textarea
+            value={content}
+            onChange={handleChangeContent}
+            className="comment-input"
+            required="required"
+          />
+          <span>Content</span>
+        </div>
+        
+        <RatingComponent rating={rating} setRating={setRating}/>
+        <button onClick={handleSubmit} className="submit-button">
+          Add Comment
+        </button>
+      </div>
     </div>
   );
 };
