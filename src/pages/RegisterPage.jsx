@@ -1,12 +1,14 @@
+// RegisterPage.jsx
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "./RegisterPage.css";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
-  const [isManager, setIsManager] = useState(false);
-  const [showAdditionalInputs, setShowAdditionalInputs] = useState(false);
+ 
+  
 
   const [name, setName] = useState("");
   const [surName, setSurName] = useState("");
@@ -16,10 +18,11 @@ const RegisterPage = () => {
   const [rePassword, setRePassword] = useState("");
   const [gender, setGender] = useState(false);
 
-  const [address, setAddress] = useState("");
-  const [companyName, setCompanyName] = useState("");
+ 
+  
   const [identityNumber, setIdentityNumber] = useState("");
-  const [isRegisterFirstTime,setIsRegisterFirstTime] = useState(true)
+
+  const [isRegisterFirstTime,setIsRegisterFirstTime] = useState(t main
   const [identityNumberError, setIdentityNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
@@ -29,33 +32,6 @@ const RegisterPage = () => {
   const [message, setMessage] = useState("");
   const [visible, setVisible] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
-  // State tanımı
-  const [currency, setCurrency] = useState("TL"); // Varsayılan olarak USD seçili
-
-  // Para birimi seçiciyi güncelleyen fonksiyon
-  const handleCurrencyChange = (e) => {
-    setCurrency(e.target.value);
-  };
-
-  // JSX içinde para birimi seçiciyi ekleyin
-
-  const handleManagerClick = () => {
-    setIsManager(true);
-    setShowAdditionalInputs(true);
-  };
-
-  useEffect(() => {
-    adjustTextareaHeight();
-  }, [address]);
-
-  const adjustTextareaHeight = () => {
-    if (isManager) {
-      const textarea = document.getElementById("address");
-      textarea.style.height = "auto";
-      textarea.style.height = textarea.scrollHeight + "px";
-    }
-  };
 
   // -------------------PASWORD STRENGHT--------------------------
   const getStrength = (password) => {
@@ -110,36 +86,26 @@ const RegisterPage = () => {
         email: email.trim(),
         password: password,
         rePassword: rePassword,
-        address: address,
+        
         identityNumber: identityNumber,
         dateOfBirth: date,
         gender: stringGender,
         phone: phone,
-        companyName: companyName.trim(),
-        isCompanyFirstRegistration: isRegisterFirstTime,
-        contractName: "SILVER", // FRONTTAN GELECEK
-        contractDuration: 30,   // DEGISTIRMEYI UNUTMA
-        contractCost: 300,      // !!!!!!!!!!!!!!!!
-        contractCurrency: currency,
+      
+        
+    
       };
-      let response;
-      if (!isManager) {
-        response = await axios.post(
-          "http://localhost:9090/api/v1/auth/register-guest",
-          payload
-        );
-        console.log(response);
-      } else {
-        response = await axios.post(
-          "http://localhost:9090/api/v1/auth/register-supervisor",
-          payload
-        );
-        console.log(response);
-      }
-
+      
+      const response = await axios.post(
+        "http://localhost:9090/api/v1/auth/register-guest",
+        payload
+      );
+      
+      console.log(response);
       setMessage("Registration successful!");
       setIsSuccess(true);
 
+      // Resetting the form fields
       // setName("");
       // setSurName("");
       // setEmail("");
@@ -172,31 +138,13 @@ const RegisterPage = () => {
 
   return (
     <div className="register-page-major-container">
-      <div
-        className={`register-container ${
-          showAdditionalInputs ? "expanded" : ""
-        }`}
-      >
+      <div className={"register-container"}>
         <h2>Register</h2>
-        <div className="role-selector">
-          <button
-            className={`role-button ${!isManager ? "active" : ""}`}
-            onClick={() => {
-              setIsManager(false);
-              setShowAdditionalInputs(false);
-            }}
-          >
-            Guest
-          </button>
-          <button
-            className={`role-button ${isManager ? "active" : ""}`}
-            onClick={handleManagerClick}
-          >
-            Manager
-          </button>
-        </div>
+        <div className="role-selector"></div>
+
+
         <form onSubmit={handleRegister}>
-          <div className="input-group">
+          
             <input
               type="text"
               placeholder="Name"
@@ -211,8 +159,8 @@ const RegisterPage = () => {
               onChange={(e) => setSurName(e.target.value)}
               required
             />
-          </div>
-          <div className="input-group">
+          
+          
             <input
               type="email"
               placeholder="Email"
@@ -220,17 +168,7 @@ const RegisterPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            {isManager && (
-              <input
-                type="text"
-                placeholder="Company Name"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                required
-              />
-            )}
-          </div>
-          <div className="input-group">
+           
             <input
               type="text"
               placeholder="Phone"
@@ -253,8 +191,7 @@ const RegisterPage = () => {
                 {identityNumberError}
               </p>
             )}
-          </div>
-          <div className="input-group">
+          
             <input
               type="password"
               spellCheck="false"
@@ -278,62 +215,42 @@ const RegisterPage = () => {
 
             <div className={`bars ${strength}`}></div>
             <div className="strength">{strength && `${strength} password`}</div>
-          </div>
-          <div className="gender-selector">
-            <label className="gender-label">
-              <input
-                type="radio"
-                name="radio"
-                value="male"
-                checked={!gender}
-                onChange={() => setGender(false)}
-              />
-              <span>Male</span>
-            </label>
-            <label className="gender-label">
-              <input
-                type="radio"
-                name="radio"
-                value="female"
-                checked={gender}
-                onChange={() => setGender(true)}
-              />
-              <span className="gender-span">Female</span>
-            </label>
-          </div>
-          <div className="input-group">
-            <div className="date-picker">
-              <div className="dob-label">
-                <label>Date of Birth:</label>
-              </div>
-              <div className="dob-input">
-                <DatePicker
-                  placeholderText="Birthday"
-                  dateFormat="dd/MM/yyyy"
-                  selected={date}
-                  onChange={(date) => setDate(date)}
-                />
-              </div>
+          
+          
+            <div className="dob-label">
+              <label>Date of Birth:</label>
             </div>
-            {isManager && (
-              <textarea
-                id="address"
-                name="address"
-                placeholder="Your Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                required
+            <div className="dob-input">
+              <DatePicker
+                placeholderText="Birthday"
+                dateFormat="dd/MM/yyyy"
+                selected={date}
+                onChange={(date) => setDate(date)}
               />
-            )}
-          </div>
-          <div className="input-group">
-            {isManager && (
-              <select value={currency} onChange={handleCurrencyChange}>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="TL">TL</option>
-              </select>
-            )}
+            
+
+            <div className="gender-selector">
+              <label className="gender-label">
+                <input
+                  type="radio"
+                  name="radio"
+                  value="male"
+                  checked={!gender}
+                  onChange={() => setGender(false)}
+                />
+                <span>Male</span>
+              </label>
+              <label className="gender-label">
+                <input
+                  type="radio"
+                  name="radio"
+                  value="female"
+                  checked={gender}
+                  onChange={() => setGender(true)}
+                />
+                <span className="gender-span">Female</span>
+              </label>
+            </div>
           </div>
 
           <button type="submit">Register</button>
@@ -346,6 +263,9 @@ const RegisterPage = () => {
         >
           {message}
         </div>
+        <Link to="/manager-register">
+          <button>Manager Register</button>
+        </Link>
       </div>
     </div>
   );
