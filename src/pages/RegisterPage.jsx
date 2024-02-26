@@ -19,7 +19,7 @@ const RegisterPage = () => {
   const [address, setAddress] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [identityNumber, setIdentityNumber] = useState("");
-
+  const [isRegisterFirstTime,setIsRegisterFirstTime] = useState(false)
   const [identityNumberError, setIdentityNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
@@ -31,7 +31,7 @@ const RegisterPage = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   // State tanımı
-  const [currency, setCurrency] = useState("USD"); // Varsayılan olarak USD seçili
+  const [currency, setCurrency] = useState("TL"); // Varsayılan olarak USD seçili
 
   // Para birimi seçiciyi güncelleyen fonksiyon
   const handleCurrencyChange = (e) => {
@@ -110,12 +110,17 @@ const RegisterPage = () => {
         email: email.trim(),
         password: password,
         rePassword: rePassword,
+        address: address,
         identityNumber: identityNumber,
         dateOfBirth: date,
-        phone: phone,
         gender: stringGender,
-        address: address,
+        phone: phone,
         companyName: companyName.trim(),
+        isCompanyFirstRegistration: isRegisterFirstTime,
+        contractName: "SILVER", // FRONTTAN GELECEK
+        contractDuration: 30,   // DEGISTIRMEYI UNUTMA
+        contractCost: 300,      // !!!!!!!!!!!!!!!!
+        contractCurrency: currency,
       };
       let response;
       if (!isManager) {
@@ -326,15 +331,13 @@ const RegisterPage = () => {
               <select value={currency} onChange={handleCurrencyChange}>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
-                <option value="GBP">GBP</option>
-                <option value="JPY">JPY</option>
+                <option value="TL">TL</option>
               </select>
             )}
           </div>
 
           <button type="submit">Register</button>
         </form>
-        
 
         <div
           className={`registration-message ${visible ? "show" : ""} ${
