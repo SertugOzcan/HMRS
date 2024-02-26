@@ -10,7 +10,7 @@ const EditMyInfoForm = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [workPhone, setWorkPhone] = useState("");
-  const [img, setImg] = useState("");
+  const [imgFile, setImgFile] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ const EditMyInfoForm = () => {
       name: newName,
       lastName: newLastName,
       email: newEmail,
-      // image: newImg,
+      image: {imgFile},
       phones: [newPersonalPhone]
     };
 
@@ -82,13 +82,18 @@ const EditMyInfoForm = () => {
             placeholder={personnel.phones[0].phoneNumber}
             required
           />
-          <input
+          {/* <input
             className="edit-my-info-input"
             type="text"
             name="img"
             value={img}
             onChange={(e) => setImg(e.target.value)}
             placeholder="Image URL"
+          /> */}
+          <input
+            className="edit-my-info-input"
+            type="file"
+            onChange={(e) => setImgFile(e.target.files[0])}
           />
           <br />
           <button className="button-edit-info" type="submit">
