@@ -118,6 +118,33 @@
   .package-card {
     margin-bottom: 10px;
   }
+
+  .package-card-basic {
+    background-color: lightcyan;
+  }
+
+  .package-card-basic:hover {
+    background-color: lightblue;
+    transition: background-color 0.5s ease;
+  }
+  
+  .package-card-silver {
+    background-color: silver;
+  }
+
+  .package-card-silver:hover {
+    background-color: lightslategray;
+    transition: background-color 0.5s ease;
+  }
+  
+  .package-card-gold {
+    background-color: rgb(202, 202, 48);
+  }
+
+  .package-card-gold:hover {
+    background-color: gold;
+    transition: background-color 0.5s ease;
+  }
   
   .package-card label {
     cursor: pointer;
@@ -127,18 +154,17 @@
     border-radius: 4px;
   }
   
-  .package-card label:hover {
-    background-color: #f0f0f0;
-  }
-  
   .package-card input[type="radio"] {
     display: none;
   }
-  
+
   .package-card input[type="radio"]:checked + label {
-    background-color: #e0e0e0;
+    background-color: #77e21f;
+    border: 2px solid red;
+    box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.5); /* Hafif bir gölge ekleyelim */
   }
-  
+
+
   .registration-message {
     text-align: center;
     margin-top: 20px;

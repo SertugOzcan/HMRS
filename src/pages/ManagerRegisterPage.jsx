@@ -25,32 +25,45 @@ const ManagerRegisterPage = () => {
   const [message, setMessage] = useState("");
   const [visible, setVisible] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [currency, setCurrency] = useState("TRY");
+  const [currency, setCurrency] = useState("TL");
   const [selectedPackage, setSelectedPackage] = useState("");
-  const [packages, setPackages] = useState([
-    { name: "Basic", duration: 30, cost: 300 },
-    { name: "Silver", duration: 60, cost: 600 },
-    { name: "Gold", duration: 90, cost: 900 }
-  ]);
 
-  useEffect(() => {
-    updatePackagePrices();
-  }, [currency]);
-
-  const updatePackagePrices = () => {
-    const exchangeRates = {
-      TRY: 1,
-      USD: 0.15,
-      EUR: 0.12
-    };
-
-    const updatedPackages = packages.map(pkg => {
-      const updatedCost = pkg.cost * exchangeRates[currency];
-      return { ...pkg, cost: updatedCost };
-    });
-
-    setPackages(updatedPackages);
+  const defaultPackageCosts = {
+    basic: 30000,
+    silver: 60000,
+    gold: 90000
+  }
+  const exchangeRates = {
+    TL: 1,
+    USD: 0.032,
+    EUR: 0.030
   };
+
+  const [packages, setPackages] = useState([]);
+  useEffect(() => {
+    const updatedPackages = [
+      { name: "Basic", duration: 30, cost: defaultPackageCosts.basic * exchangeRates[currency]},
+      { name: "Silver", duration: 60, cost: defaultPackageCosts.silver * exchangeRates[currency]},
+      { name: "Gold", duration: 90, cost: defaultPackageCosts.gold * exchangeRates[currency]}
+    ];
+    setPackages(updatedPackages);
+  }, [currency])
+
+
+  // useEffect(() => {
+  //   updatePackagePrices();
+  // }, [currency]);
+
+  // const updatePackagePrices = () => {
+
+
+  //   const updatedPackages = packages.map(pkg => {
+  //     const updatedCost = pkg.cost * exchangeRates[currency];
+  //     return { ...pkg, cost: updatedCost };
+  //   });
+
+  //   setPackages(updatedPackages);
+  // };
 
   const handlePackageChange = packageName => {
     setSelectedPackage(packageName);
@@ -316,7 +329,7 @@ const ManagerRegisterPage = () => {
             <select value={currency} onChange={handleCurrencyChange}>
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
-              <option value="TRY">TRY</option>
+              <option value="TL">TL</option>
             </select>
             <div className="package-selection">
               <input
@@ -329,7 +342,7 @@ const ManagerRegisterPage = () => {
               {isRegisterFirstTime && (
                 <div className="package-options">
                   {packages.map((pkg) => (
-                    <div key={pkg.name} className="package-card">
+                    <div key={pkg.name} className={`package-card package-card-${pkg.name.toLowerCase()}`}>
                       <input
                         type="radio"
                         id={pkg.name}
