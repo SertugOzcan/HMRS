@@ -9,7 +9,7 @@ export const PersonnelPageAPIContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const PersonnelPageAPIContextProvider = ({children}) => {
     const [personnel, setPersonnel] = useState([]);
-    const [allPersonnel, setAllPersonnel] = useState([]);
+    // const [allPersonnel, setAllPersonnel] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -38,21 +38,6 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
 
 
     const handleEditMyInfo = async (newPersonnelInfo) => {
-        // const payload = { ...newPersonnelInfo,
-        //   token: isAuthenticated.token,
-        // };
-        // console.log("HAZIRLANAN PAYLOAD: ", payload);
-        // try {
-        //   const response = await axios.put("http://localhost:9091/api/v1/personnel/update", payload);
-        //   console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
-        //   if (response.status === 200) {
-        //     // setEmployees(prevEmployees => [...prevEmployees, response.data]);
-        //     // setIsAddingEmployee(false);
-        //     // window.location.reload(true);
-        //   }
-        // } catch (error) {
-        //   console.error("Error adding employee:", error);
-        // }
         const formData = new FormData();
 
         for (const key in newPersonnelInfo) {
@@ -75,7 +60,7 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
           if (response.status === 200) {
             // setEmployees(prevEmployees => [...prevEmployees, response.data]);
             // setIsAddingEmployee(false);
-            // window.location.reload(true);
+            window.location.reload(true);
           }
         } catch (error) {
           console.error("Error updating personnel:", error);

@@ -9,7 +9,7 @@ const EditMyInfoForm = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [workPhone, setWorkPhone] = useState("");
+  // const [workPhone, setWorkPhone] = useState("");
   const [imgFile, setImgFile] = useState(null);
 
   const handleSubmit = (e) => {
@@ -18,25 +18,21 @@ const EditMyInfoForm = () => {
     let newLastName = lastName.trim() === "" ? personnel.lastName : lastName.trim();
     let newEmail = email.trim() === "" ? personnel.email : email.trim();
     let newPersonalPhone = phone.trim() === "" ? personnel.phones[0].phoneNumber : phone.trim();
+
     if (newPersonalPhone.length !== 11) {
       alert("Check personnel's phone number!");
       return;
     }
-    //   let newImg;
-    //   if (img === "") {
-    //     newImg = gender
-    //       ? "https://i.imgur.com/BNXkMgI.png"
-    //       : "https://i.imgur.com/ltRBj9D.png";
-    //   } else {
-    //     newImg = img.trim();
-    //   }
-    const newPersonnelInfo = {
+
+    const personnelInfo = {
       name: newName,
       lastName: newLastName,
       email: newEmail,
-      profileImage: imgFile,
       phones: [newPersonalPhone]
     };
+
+    const newPersonnelInfo = imgFile ? {...personnelInfo, profileImage: imgFile} : {...personnelInfo, profileImageUrl: personnel.image}
+
 
     handleEditMyInfo(newPersonnelInfo);
   };
@@ -46,6 +42,7 @@ const EditMyInfoForm = () => {
       <h3 className="edit-info-name">Edit My Info</h3>
       <div className="edit-form-container">
         <form onSubmit={handleSubmit}>
+          <h6>Name</h6>
           <input
             className="edit-my-info-input"
             type="text"
@@ -54,6 +51,7 @@ const EditMyInfoForm = () => {
             onChange={(e) => setName(e.target.value)}
             placeholder={personnel.name}
           />
+          <h6>Surname</h6>
           <input
             className="edit-my-info-input"
             type="text"
@@ -62,6 +60,7 @@ const EditMyInfoForm = () => {
             onChange={(e) => setLastName(e.target.value)}
             placeholder={personnel.lastName}
           />
+          <h6>Email</h6>
           <input
             className="edit-my-info-input"
             type="email"
@@ -70,6 +69,7 @@ const EditMyInfoForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder={personnel.email}
           />
+          <h6>Phone</h6>
           <input
             className="edit-my-info-input"
             type="tel"
@@ -78,40 +78,35 @@ const EditMyInfoForm = () => {
             onChange={(e) => setPhone(e.target.value)}
             placeholder={personnel.phones[0].phoneNumber}
           />
-          {/* <input
-            className="edit-my-info-input"
-            type="text"
-            name="img"
-            value={img}
-            onChange={(e) => setImg(e.target.value)}
-            placeholder="Image URL"
-          /> */}
+          <h6>Profile Picture</h6>
           <input
             className="edit-my-info-input"
             type="file"
             onChange={(e) => setImgFile(e.target.files[0])}
           />
           <br />
-          <button className="button-edit-info" type="submit">
-            <span className="button-text-edit-info">Update My Info</span>
-            <span className="button-icon-edit-info">
-              <svg
-                className="svg"
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line x1="12" x2="12" y1="5" y2="19"></line>
-                <line x1="5" x2="19" y1="12" y2="12"></line>
-              </svg>
-            </span>
-          </button>
+          <div className="edit-form-button-div">
+            <button className="button-edit-info" type="submit">
+              <span className="button-text-edit-info">Update My Info</span>
+              <span className="button-icon-edit-info">
+                <svg
+                  className="svg"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line x1="12" x2="12" y1="5" y2="19"></line>
+                  <line x1="5" x2="19" y1="12" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+          </div>
         </form>
       </div>
     </>

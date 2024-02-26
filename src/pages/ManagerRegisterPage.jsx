@@ -20,6 +20,7 @@ const ManagerRegisterPage = () => {
   const [identityNumberError, setIdentityNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [packageSelectError, setPackageSelectError] = useState("");
   const [date, setDate] = useState(new Date());
   const [strength, setStrength] = useState("");
   const [message, setMessage] = useState("");
@@ -49,21 +50,6 @@ const ManagerRegisterPage = () => {
     setPackages(updatedPackages);
   }, [currency])
 
-
-  // useEffect(() => {
-  //   updatePackagePrices();
-  // }, [currency]);
-
-  // const updatePackagePrices = () => {
-
-
-  //   const updatedPackages = packages.map(pkg => {
-  //     const updatedCost = pkg.cost * exchangeRates[currency];
-  //     return { ...pkg, cost: updatedCost };
-  //   });
-
-  //   setPackages(updatedPackages);
-  // };
 
   const handlePackageChange = packageName => {
     setSelectedPackage(packageName);
@@ -108,6 +94,7 @@ const ManagerRegisterPage = () => {
     setPasswordError("");
     setIdentityNumberError("");
     setPhoneNumberError("");
+    setPackageSelectError("");
     let hasError = false;
 
     if (password !== rePassword) {
@@ -125,13 +112,18 @@ const ManagerRegisterPage = () => {
       hasError = true;
     }
 
+    if(selectedPackage === "" && isRegisterFirstTime){
+      setPackageSelectError("You must select one of the packages!")
+      hasError = true;
+    }
+
     if (hasError) {
       return;
     }
 
     try {
       const stringGender = gender ? "FEMALE" : "MALE";
-      const payload = {
+      const payloadPreparation = {
         name: name.trim(),
         surName: surName.trim(),
         email: email.trim(),
@@ -144,6 +136,10 @@ const ManagerRegisterPage = () => {
         phone: phone,
         companyName: companyName.trim(),
         isCompanyFirstRegistration: isRegisterFirstTime,
+      };
+
+      const payload = isRegisterFirstTime ? {
+        ...payloadPreparation, 
         contractName: selectedPackage,
         contractDuration:
           selectedPackage === "Basic"
@@ -153,14 +149,15 @@ const ManagerRegisterPage = () => {
             : 90,
         contractCost: packages.find(pkg => pkg.name === selectedPackage).cost,
         contractCurrency: currency
-      };
+      }
+      :
+      payloadPreparation
 
       const response = await axios.post(
         "http://localhost:9090/api/v1/auth/register-supervisor",
         payload
       );
 
-      console.log(response);
       setMessage("Registration successful!");
       setIsSuccess(true);
 
@@ -177,13 +174,18 @@ const ManagerRegisterPage = () => {
       setIdentityNumber("");
       setDate(new Date());
       setStrength("");
+      setSelectedPackage("");
+      setCurrency("TL");
       setPasswordError("");
       setIdentityNumberError("");
+      setPhoneNumberError("");
+      setPackageSelectError("");
     } catch (error) {
       console.error("Registration error:", error);
       setPasswordError("");
       setIdentityNumberError("");
       setPhoneNumberError("");
+      setPackageSelectError("");
       setMessage(error.response.data.message || "Registration failed!");
       setIsSuccess(false);
     }
@@ -200,7 +202,7 @@ const ManagerRegisterPage = () => {
     <div className="manager-register-page">
       <div className={`manager-register-container`}>
         <h2>Manager Register</h2>
-        <form onSubmit={handleRegister}>
+        <form className= "manager-register-page-form" onSubmit={handleRegister}>
           <div className="left-form">
             <input
             className="manager-register-input"
@@ -353,7 +355,12 @@ const ManagerRegisterPage = () => {
                       />
                       <label htmlFor={pkg.name}>
                         <h3>{pkg.name}</h3>
-                        <p>Duration: {pkg.duration} days</p>
+                        <p>Duration: {pkg.duration} days</p> 
+                        {selectedPackage === pkg.name ? 
+                        <span className='register-selected-package-span'>&#10004;</span>
+                        :
+                        ""
+                        }
                         <p>Cost: {pkg.cost} {currency}</p>
                       </label>
                     </div>
@@ -361,12 +368,17 @@ const ManagerRegisterPage = () => {
                 </div>
               )}
             </div>
+            {packageSelectError && (
+              <p className="registration-error-messages">
+                {packageSelectError}
+              </p>
+            )}
           </div>
           <button className="register_manager_button" type="submit">Register</button>
+          <div className={`registration-message ${visible ? "show" : ""} ${isSuccess ? "success" : "error"}`}>
+            {message}
+          </div>
         </form>
-        <div className={`registration-message ${visible ? "show" : ""} ${isSuccess ? "success" : "error"}`}>
-          {message}
-        </div>
       </div>
     </div>
   );

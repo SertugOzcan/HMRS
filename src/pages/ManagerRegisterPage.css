@@ -1,4 +1,8 @@
-.manager-register-page {
+  .manager-register-page-form{
+    position: relative;
+  }
+
+  .manager-register-page {
     margin: 0 auto; /* Sayfayı ortalamak için */
     padding: 20px; /* Kenar boşluğu eklemek için */
     min-height: 100vh; /* Sayfanın en az tam ekran yüksekliği olması için */
@@ -116,6 +120,7 @@
   }
   
   .package-card {
+    position: relative;
     margin-bottom: 10px;
   }
 
@@ -166,11 +171,32 @@
 
 
   .registration-message {
+    display: flex;
+    position: absolute;
+    right: 0px;
+    width: 50%;
+    justify-content: center;
     text-align: center;
-    margin-top: 20px;
     padding: 10px;
     border-radius: 4px;
     transition: opacity 0.3s ease-in-out;
+  }
+
+  .register-selected-package-span {
+    position: absolute;
+    right: 2rem;
+    bottom: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    color: #0c2fa3;
+    font-size: xx-large;
+    background-image: linear-gradient(
+      to top,
+      #30ca6b,
+      #2ca372,
+      #2ca372,
+      #f7f4f8
+  );
   }
   
   .registration-message.show {
