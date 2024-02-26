@@ -38,20 +38,47 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
 
 
     const handleEditMyInfo = async (newPersonnelInfo) => {
-        const payload = { ...newPersonnelInfo,
-          token: isAuthenticated.token,
-        };
-        console.log("HAZIRLANAN PAYLOAD: ", payload);
+        // const payload = { ...newPersonnelInfo,
+        //   token: isAuthenticated.token,
+        // };
+        // console.log("HAZIRLANAN PAYLOAD: ", payload);
+        // try {
+        //   const response = await axios.put("http://localhost:9091/api/v1/personnel/update", payload);
+        //   console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
+        //   if (response.status === 200) {
+        //     // setEmployees(prevEmployees => [...prevEmployees, response.data]);
+        //     // setIsAddingEmployee(false);
+        //     // window.location.reload(true);
+        //   }
+        // } catch (error) {
+        //   console.error("Error adding employee:", error);
+        // }
+        const formData = new FormData();
+
+        for (const key in newPersonnelInfo) {
+          formData.append(key, newPersonnelInfo[key]);
+        }
+      
+        formData.append("token", isAuthenticated.token);
+      
+        console.log("HAZIRLANAN FORM DATA: ", formData);
+      
         try {
-          const response = await axios.put("http://localhost:9091/api/v1/personnel/update", payload);
+          const response = await axios.put("http://localhost:9091/api/v1/personnel/update", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+      
           console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
+      
           if (response.status === 200) {
             // setEmployees(prevEmployees => [...prevEmployees, response.data]);
             // setIsAddingEmployee(false);
-            window.location.reload(true);
+            // window.location.reload(true);
           }
         } catch (error) {
-          console.error("Error adding employee:", error);
+          console.error("Error updating personnel:", error);
         }
     };
 

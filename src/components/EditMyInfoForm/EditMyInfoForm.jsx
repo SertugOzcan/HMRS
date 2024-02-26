@@ -14,14 +14,14 @@ const EditMyInfoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (phone.length !== 11) {
-      alert("Check personnel's phone number!");
-      return;
-    }
     let newName = name.trim() === "" ? personnel.name : name.trim();
     let newLastName = lastName.trim() === "" ? personnel.lastName : lastName.trim();
     let newEmail = email.trim() === "" ? personnel.email : email.trim();
     let newPersonalPhone = phone.trim() === "" ? personnel.phones[0].phoneNumber : phone.trim();
+    if (newPersonalPhone.length !== 11) {
+      alert("Check personnel's phone number!");
+      return;
+    }
     //   let newImg;
     //   if (img === "") {
     //     newImg = gender
@@ -34,7 +34,7 @@ const EditMyInfoForm = () => {
       name: newName,
       lastName: newLastName,
       email: newEmail,
-      image: {imgFile},
+      profileImage: imgFile,
       phones: [newPersonalPhone]
     };
 
@@ -53,7 +53,6 @@ const EditMyInfoForm = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={personnel.name}
-            required
           />
           <input
             className="edit-my-info-input"
@@ -62,7 +61,6 @@ const EditMyInfoForm = () => {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             placeholder={personnel.lastName}
-            required
           />
           <input
             className="edit-my-info-input"
@@ -71,7 +69,6 @@ const EditMyInfoForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={personnel.email}
-            required
           />
           <input
             className="edit-my-info-input"
@@ -80,7 +77,6 @@ const EditMyInfoForm = () => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder={personnel.phones[0].phoneNumber}
-            required
           />
           {/* <input
             className="edit-my-info-input"
