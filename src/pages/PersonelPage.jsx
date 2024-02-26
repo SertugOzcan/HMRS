@@ -3,12 +3,14 @@ import "./PersonelPage.css";
 import { PersonnelPageAPIContext } from "../context/PersonalPageAPIContext";
 import AddComment from "../components/AddCommentComponent/AddComment";
 import EditMyInfoForm from "../components/EditMyInfoForm/EditMyInfoForm";
+import { AuthContext } from "../context/AuthContext";
+import HRInfoCard from "../components/HRInfoCard/HRInfoCard";
 
 const PersonelPage = () => {
   const { personnel } = useContext(PersonnelPageAPIContext);
   const [isEditInfoClicked, setIsEditInfoClicked] = useState(false);
+  const { isAuthenticated } = useContext(AuthContext);
   const [isAddCommentClicked, setIsAddCommentClicked] = useState(false);
-
   const handleEditInfoClick = (e) => {
     e.preventDefault();
     setIsEditInfoClicked(true);
@@ -42,31 +44,39 @@ const PersonelPage = () => {
             <strong>Name:</strong> {personnel.name} {personnel.lastName}
           </p>
           <p>
-            <strong>Email:</strong> {personnel.email}{" "}
+            <strong>Email:</strong> {personnel.email}
           </p>
           <p>
-            <strong>Phone:</strong> {personnel.phones[0].phoneType} -{" "}
+            <strong>Phone:</strong> {personnel.phones[0].phoneType}
             {personnel.phones[0].phoneNumber}
           </p>
           <p>
             <strong>Company:</strong> {personnel.companyName}
           </p>
-          <p>
-            <strong>Shift:</strong> {personnel.department.shift}
-          </p>
-          <p>
-            <strong>Break:</strong> {personnel.department.break}
-          </p>
-          <p>
-            <strong>Salary:</strong> {personnel.salary}
-          </p>
-          <br />
-          <br />
-          <br />
-          <div className="btn-container">
-            <button
-              className="edit-info-button"
-              onClick={(e) => handleEditInfoClick(e)}
+          {isAuthenticated.role === "PERSONNEL" && (
+            <>
+              <p>
+                <strong>Shift:</strong> {personnel.department.shift}
+              </p>
+              <p>
+                <strong>Break:</strong> {personnel.department.break}
+              </p>
+              <p>
+                <strong>Salary:</strong> {personnel.salary}
+              </p>
+            </>
+          )}
+          <button
+            className="edit-info-button"
+            onClick={(e) => handleEditInfoClick(e)}
+          >
+            Edit My Info
+          </button>
+          {isEditInfoClicked && (
+            <div
+              className="edit-info-background"
+              onClick={() => setIsEditInfoClicked(false)}
+
             >
               Edit My Info
             </button>
@@ -92,6 +102,27 @@ const PersonelPage = () => {
               Add Comment
             </button>
             </div>
+
+          )}
+        </div>
+      </div>
+      <div className="personnel-company-summary">
+        <div className="personnel-company-img-and-company-name">
+          <img src={personnel.companyLogo}></img>
+          <h2>{personnel.companyName}</h2>
+        </div>
+        <div className="personnel-company-info-container">
+          <div className="personnel-company-info">
+            <div className="personnel-company-hr-info-container">
+              <strong>Şirket İletişim Bilgileri:</strong>
+              <div className="personnel-company-hr-info">
+                {personnel.hrInfos.map((hrInfo) => (
+                  <HRInfoCard hrInfo={hrInfo} />
+                ))}
+              </div>
+            </div>
+            <div className="personnel-company-holiday-info">
+              <strong>Resmi Tatil Bilgileri:</strong>
             {isAddCommentClicked && (
               <div
                 className="add-comment-background"
@@ -107,18 +138,11 @@ const PersonelPage = () => {
             )}
 
 
-          <div className="personnel-company-summary">
-            {/* <img src={compyImage}></img> */}
-            <img src={personnel.companyLogo}></img>
-            <div className="personnel-company-info">
-              <h2>{personnel.companyName}</h2>
-              <p>Şirket İletişim Bilgileri: info@xyzcompany.com</p>
-              <p>Resmi Tatil Bilgileri: 1 Ocak, 23 Nisan, 1 Mayıs</p>
+        
             </div>
           </div>
         </div>
       </div>
-      {/* <AddComment /> */}
     </div>
   );
 };
