@@ -10,9 +10,14 @@ const PersonelPage = () => {
   const { personnel } = useContext(PersonnelPageAPIContext);
   const [isEditInfoClicked, setIsEditInfoClicked] = useState(false);
   const { isAuthenticated } = useContext(AuthContext);
+  const [isAddCommentClicked, setIsAddCommentClicked] = useState(false);
   const handleEditInfoClick = (e) => {
     e.preventDefault();
     setIsEditInfoClicked(true);
+  };
+  const handleAddCommentClick = (e) => {
+    e.preventDefault();
+    setIsAddCommentClicked(true);
   };
 
   return (
@@ -71,14 +76,33 @@ const PersonelPage = () => {
             <div
               className="edit-info-background"
               onClick={() => setIsEditInfoClicked(false)}
+
             >
+              Edit My Info
+            </button>
+            {isEditInfoClicked && (
               <div
-                className="edit-info-content"
-                onClick={(e) => e.stopPropagation()}
+                className="edit-info-background"
+                onClick={() => setIsEditInfoClicked(false)}
               >
-                <EditMyInfoForm />
+                <div
+                  className="edit-info-content"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <EditMyInfoForm />
+                </div>
               </div>
+            )}
+
+
+            <button
+              className="add-comment-button"
+              onClick={(e) => handleAddCommentClick(e)}
+            >
+              Add Comment
+            </button>
             </div>
+
           )}
         </div>
       </div>
@@ -99,11 +123,26 @@ const PersonelPage = () => {
             </div>
             <div className="personnel-company-holiday-info">
               <strong>Resmi Tatil Bilgileri:</strong>
+            {isAddCommentClicked && (
+              <div
+                className="add-comment-background"
+                onClick={() => setIsAddCommentClicked(false)}
+              >
+                <div
+                  className="add-comment-content"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <AddComment setIsAddCommentClicked={setIsAddCommentClicked}/>
+                </div>
+              </div>
+            )}
+
+
+        
             </div>
           </div>
         </div>
       </div>
-      <AddComment />
     </div>
   );
 };

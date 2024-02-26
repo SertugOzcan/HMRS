@@ -1,0 +1,212 @@
+.manager-register-page {
+    margin: 0 auto; /* Sayfayı ortalamak için */
+    padding: 20px; /* Kenar boşluğu eklemek için */
+    min-height: 100vh; /* Sayfanın en az tam ekran yüksekliği olması için */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* İçeriği dikey ve yatayda ortala */
+    background-image: url(images/register.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  
+  .manager-register-container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 800px;
+  }
+  
+  .manager-register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .left-form,
+  .right-form {
+    width: 45%;
+    float: left;
+  }
+  
+  .right-form {
+    width: 50%; /* Formun yarısını kaplaması için */
+    float: right; /* Sağa yaslanması için */
+  }
+  
+  .manager-register-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .registration-error-messages {
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .strength {
+    margin-top: 5px;
+  }
+  
+  .bars {
+    height: 5px;
+    margin-top: 5px;
+  }
+  
+  .bars.empty {
+    background-color: #e0e0e0;
+  }
+  
+  .bars.weak {
+    background-color: #ff7f7f;
+  }
+  
+  .bars.medium {
+    background-color: #ffbf7f;
+  }
+  
+  .bars.strong {
+    background-color: #7fff7f;
+  }
+  
+  .dob-label-manager {
+    margin-top: 10px;
+  }
+  
+  .dob-input-manager {
+    margin-bottom: 10px;
+  }
+  
+  .gender-selector-manager {
+    margin-bottom: 10px;
+  }
+  
+  .gender-label-manager {
+    margin-right: 10px;
+  }
+  
+  .gender-span-manager {
+    margin-left: 5px;
+  }
+  
+  textarea {
+    padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 20px; /* Başlangıçta belirli bir yükseklik */
+  resize: none; /* Manuel büyütme kaldırıldı */
+  min-height: 40px;
+  max-height: 60px;
+}
+  
+  .package-selection {
+    margin-top: 20px;
+  }
+  
+  .package-options {
+    margin-top: 10px;
+  }
+  
+  .package-card {
+    margin-bottom: 10px;
+  }
+  
+  .package-card label {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .package-card label:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .package-card input[type="radio"] {
+    display: none;
+  }
+  
+  .package-card input[type="radio"]:checked + label {
+    background-color: #e0e0e0;
+  }
+  
+  .registration-message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .registration-message.show {
+    opacity: 1;
+  }
+  
+  .registration-message.success {
+    background-color: #7fff7f;
+    color: #fff;
+  }
+  
+  .registration-message.error {
+    background-color: #ff7f7f;
+    color: #fff;
+  }
+  
+ 
+  .register_manager_button {
+    --color: #560bad;
+    font-family: inherit;
+    display: block; /* Block öğe olarak ayarlandı */
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px auto; /* Dikeyde 20px, yatayda otomatik ortalamak için */
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+  }
+   
+   .register_manager_button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+   }
+   
+   .register_manager_button:hover {
+    color: #fff;
+   }
+   
+   .register_manager_button:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+   }
+   
+   .register_manager_button:hover:before {
+    top: -30px;
+    left: -30px;
+   }
+   
+   .register_manager_button:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+   }

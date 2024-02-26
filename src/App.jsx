@@ -24,6 +24,7 @@ import NoPage from "./pages/NoPage";
 import SupervisorPageEmployeeList from "./components/SupervisorPageEmployeeList/SupervisorPageEmployeeList";
 import SupervisorPageCompanyData from "./components/SupervisorPageCompanyData/SupervisorPageCompanyData";
 import SupervisorPageDayOffRequests from "./components/SupervisorPageDayOffRequests/SupervisorPageDayOffRequests";
+import ManagerRegisterPage from "./pages/ManagerRegisterPage";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -144,6 +145,7 @@ function App() {
             }
           />
           <Route path="/register-page" element={<RegisterPage />} />
+          <Route path="/manager-register" element={<ManagerRegisterPage />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </div>
