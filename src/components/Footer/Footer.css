@@ -1,4 +1,4 @@
-.footer-container{
+.footer-container.light{
     width: 100%;
     height: 50px;
     padding-right: 50px;
@@ -13,6 +13,10 @@
     box-shadow: 0 4px 30px rgba(0,0,0,0.1);
     backdrop-filter: blur(5px);
     color: #000;
+}
+
+.footer-container.dark{
+    color: #fff;
 }
 
 .footer-left{
