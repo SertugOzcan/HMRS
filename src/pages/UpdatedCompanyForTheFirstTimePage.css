@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center; 
   width: 850px;
-  height: 1650px;
+  min-height: 1800px;
 }
 .sidebar {
   width: 180px;
