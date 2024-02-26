@@ -22,7 +22,7 @@ const RegisterPage = () => {
   
   const [identityNumber, setIdentityNumber] = useState("");
 
-  const [isRegisterFirstTime,setIsRegisterFirstTime] = useState(t main
+  
   const [identityNumberError, setIdentityNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
