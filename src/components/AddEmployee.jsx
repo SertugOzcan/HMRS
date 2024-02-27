@@ -1,9 +1,13 @@
 import { useContext, useState } from "react";
 import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
 import "./AddEmployee.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddEmployeeForm = () => {
-  const { handleAddEmployee, companyData } = useContext(SupervisorPageAPIContext);
+  const { handleAddEmployee, companyData } = useContext(
+    SupervisorPageAPIContext
+  );
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -157,7 +161,7 @@ const AddEmployeeForm = () => {
             onChange={(e) => setAddress(e.target.value)}
             required
           />
-          
+
           <input
             className="add_employee_input"
             type="number"
@@ -168,22 +172,60 @@ const AddEmployeeForm = () => {
             required
           />
           <label className="addemp_dob">Date of Birth: </label>
-          <input
-            className="addemp_dob"
-            type="date"
-            name="dateOfBirth"
-            value={dateOfBirth}
-            onChange={(e) => setDateOfBirth(e.target.value)}
+          <DatePicker
+            className="add_employee_input"
+            placeholderText="Date of Birth"
             required
-          />{" "}
+            dateFormat="dd/MM/yyyy"
+            selected={dateOfBirth}
+            onChange={(date) => {
+              if (
+                date < new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000) ||
+                date > new Date()
+              ) {
+                alert(
+                  "Please select a date within the last 100 years and today."
+                );
+              } else {
+                setDateOfBirth(date);
+              }
+            }}
+            minDate={new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)}
+            maxDate={new Date()}
+            showYearDropdown
+            scrollableYearDropdown
+            yearDropdownItemNumber={100}
+            showMonthDropdown
+            scrollableMonthYearDropdown
+          />
           <br />
           <label className="addemp_doe"> Date of Employment: </label>
-          <input
-            type="date"
-            name="dateOfEmployment"
-            value={dateOfEmployment}
-            onChange={(e) => setDateOfEmployment(e.target.value)}
+          <DatePicker
+            selected={dateOfEmployment}
+            onChange={(date) => {
+              if (
+                date < new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000) ||
+                date > new Date()
+              ) {
+                alert(
+                  "Please select a date within the last 100 years and today."
+                );
+              } else {
+                dateOfEmployment(date);
+              }
+            }}
+            minDate={new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)}
+            maxDate={new Date()}
+            showYearDropdown
+            scrollableYearDropdown
+            yearDropdownItemNumber={100}
+            showMonthDropdown
+            scrollableMonthYearDropdown
+            className="add_employee_input"
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Date of Employment"
             required
+            
           />
           <br />
           <button className="button_addemp" type="submit">
