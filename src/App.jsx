@@ -14,7 +14,7 @@ import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
 import { AuthContext } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
 import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
-import { PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
+import { PersonnelPageAPIContext, PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
 import HomePageSideBar from "./components/HomePageSideBar/HomePageSideBar";
 import NavBar from "./components/NavBar/NavBar";
 import RegisteredUsers from "./components/AdminComponents/RegisteredUsers/RegisteredUsers";
@@ -30,11 +30,11 @@ import ManagerRegisterPage from "./pages/ManagerRegisterPage";
 import { SupervisorPageDayOffAPIContextProvider } from "./context/SupervisorPageDayOffAPIContext";
 import { SupervisorPageAdvanceAPIContextProvider } from "./context/SupervisorPageAdvanceAPIContext";
 import { SupervisorPageSpendingAPIContextProvider } from "./context/SupervisorPageSpendingAPIContext";
+import PersonnelInfoForm from "./components/PersonnelInfoForm/PersonnelInfoForm";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
   const { isAuthenticated } = useContext(AuthContext);
-
   return (
     <Router>
       <div className={`app-container ${theme}`}>
@@ -167,7 +167,7 @@ function App() {
               <PrivateRoute
                 element={
                   <PersonnelPageAPIContextProvider>
-                    <PersonelPage />
+                    <PersonnelInfoForm/>
                   </PersonnelPageAPIContextProvider>
                 }
               />
