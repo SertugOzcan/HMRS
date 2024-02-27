@@ -1,10 +1,9 @@
-import React from "react";
 import { useContext } from "react";
-import { AdminPageAPIContext } from "../../../context/AdminPageAPIContext";
 import "./RegisteredUsers.css";
+import { AdminPageActiveUsersAPIContext } from "../../../context/AdminPageActiveUsersAPIContext";
 
 const RegisteredUsers = () => {
-  const { activeUsers } = useContext(AdminPageAPIContext);
+  const { activeUsers } = useContext(AdminPageActiveUsersAPIContext);
   return (
     <div className="registered-users-container">
       <h2>Active Users</h2>

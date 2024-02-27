@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import { AdminPageAPIContext } from '../../../context/AdminPageAPIContext'
 import CommentRequestCard from '../CommentRequests/CommentRequestCard'
 import './CommentRequestList.css'
+import { AdminPagePendingCommentsAPIContext } from '../../../context/AdminPagePendingCommentsAPIContext'
 
 const CommentRequestList = () => {
-    const {pendingComments} = useContext(AdminPageAPIContext)
+    const {pendingComments} = useContext(AdminPagePendingCommentsAPIContext)
   return (
     <>
     <section className="comment-request-list-section">

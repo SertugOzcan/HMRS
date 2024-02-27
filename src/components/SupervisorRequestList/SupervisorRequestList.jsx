@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import styles from './SupervisorRequestList.module.css'
-import { AdminPageAPIContext } from "../../context/AdminPageAPIContext";
 import SupervisorRequestCard from "../SupervisorRequestCard/SupervisorRequestCard";
+import { AdminPagePendingSupervisorsAPIContext } from "../../context/AdminPagePendingSupervisorsAPIContext";
 
 const SupervisorRequestList = () => {
 
-  const {supervisorRequests} = useContext(AdminPageAPIContext);
+  const {pendingSupervisors} = useContext(AdminPagePendingSupervisorsAPIContext);
 
   return (
     <>
-    <section className={styles["request-list-section"]}>
+    <section className={styles["supervisor-request-list-section"]}>
         {/* {isLoading.read && <h1>LOADING REQUESTS...</h1>} */}
-        <article className={styles["request-list-article"]}>
-          {supervisorRequests.map((request)=> (
+        <article className={styles["supervisor-request-list-article"]}>
+          {pendingSupervisors.map((request)=> (
             <SupervisorRequestCard key={request.id} request={request}/>
           ))}
         </article>

@@ -1,4 +1,3 @@
-import React from 'react'
 import './CommentRequests.css'
 import CommentRequestList from './CommentRequestList'
 
