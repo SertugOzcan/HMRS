@@ -8,7 +8,7 @@ const PersonnelDayOffRequestForm = () => {
   const [dayoffDescription, setDayoffDescription] = useState("");
   const [dayoffStartDate, setDayoffStartDate] = useState();
   const [dayoffEndDate, setDayoffEndDate] = useState();
-  const {handleSubmit} = useContext(PersonnelPageDayOffAPIContext)
+  const { handleSubmit } = useContext(PersonnelPageDayOffAPIContext);
 
   const handleReasonChange = (e) => {
     setReason(e.target.value);

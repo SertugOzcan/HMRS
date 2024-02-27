@@ -24,7 +24,7 @@ const LoginPage = () => {
             navigate("/yonetici-page")
             break;
           case 'PERSONNEL':
-            navigate("/personel-page")
+            navigate("/personnel-page")
             break;
           case 'GUEST':
             navigate("/ziyaretci-page")

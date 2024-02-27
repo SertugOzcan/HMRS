@@ -34,6 +34,9 @@ import { AdminPagePendingCommentsAPIContextProvider } from "./context/AdminPageP
 import PersonnelInfoForm from "./components/PersonnelInfoForm/PersonnelInfoForm";
 import AddComment from "./components/AddCommentComponent/AddComment";
 import PersonnelDayOffRequestForm from './components/PersonnelDayOffRequestForm/PersonnelDayOffRequestForm'
+import { PersonnelPageDayOffAPIContextProvider } from "./context/PersonnelPageDayOffAPIContext";
+import { PersonnelPageAdvanceAPIContextProvider } from "./context/PersonnelPageAdvanceAPIContext";
+import { PersonnelPageSpendingAPIContextProvider } from "./context/PersonnelPageSpendingAPIContext";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -192,9 +195,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <PersonnelPageAPIContextProvider>
+                  <PersonnelPageDayOffAPIContextProvider>
                     <PersonnelDayOffRequestForm/>
-                  </PersonnelPageAPIContextProvider>
+                  </PersonnelPageDayOffAPIContextProvider>
                 }
               />
             }
@@ -204,9 +207,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <PersonnelPageAPIContextProvider>
+                  <PersonnelPageAdvanceAPIContextProvider>
                     <PersonnelInfoForm/>
-                  </PersonnelPageAPIContextProvider>
+                  </PersonnelPageAdvanceAPIContextProvider>
                 }
               />
             }
@@ -216,9 +219,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <PersonnelPageAPIContextProvider>
+                  <PersonnelPageSpendingAPIContextProvider>
                     <PersonnelInfoForm/>
-                  </PersonnelPageAPIContextProvider>
+                  </PersonnelPageSpendingAPIContextProvider>
                 }
               />
             }
