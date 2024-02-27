@@ -1,28 +1,28 @@
-import "./EmployeeCard.css"
+import "./EmployeeCard.css";
 
-const EmployeeCard = ({personnel}) => {
-
+const EmployeeCard = ({ personnel }) => {
   return (
+    <div className="card" style={{ width: "18rem" }}>
+      <img
+        src={personnel.image}
+        className="card-img-top"
+        alt="personnel-image"
+      />
 
-    <div className='card'>
-        
-        <img src={personnel.image} alt="personnel-image" />
-        
-        <div className='card-values'>
-            <div>
-                <p>Name : {personnel.name}</p>
-                <p>Surname : {personnel.lastName} </p>
-                <p>E-mail : {personnel.email}</p>
-                
-            </div>
-            <div>
-                <p>Phone : {personnel.phones.phoneNumber}</p>
-                <p>Salary : {personnel.salary}</p>
-                <p>Dayoffs : {personnel.dayOff}</p>
-            </div>
+      <div className="card-body">
+        <div>
+          <h5 className="card-title">
+            {personnel.name} {personnel.lastName}
+          </h5>
+
+          <p className="card-text">{personnel.email}</p>
+          <p className="card-text">Phone: {personnel.phones[0].phoneNumber}</p>
+          <p className="card-text">Salary: {personnel.salary}</p>
+          <p className="card-text">DayOff: {personnel.dayOff}</p>
         </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default EmployeeCard
+export default EmployeeCard;
