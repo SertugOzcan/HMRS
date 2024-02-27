@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 import "./ManagerRegisterPage.css";
 
 const ManagerRegisterPage = () => {
@@ -201,7 +201,7 @@ const ManagerRegisterPage = () => {
   return (
     <div className="manager-register-page">
       <div className={`manager-register-container`}>
-        <h2>Manager Register</h2>
+        <h2>Supervisor Register</h2>
         <form className= "manager-register-page-form" onSubmit={handleRegister}>
           <div className="left-form">
             <input
@@ -340,7 +340,7 @@ const ManagerRegisterPage = () => {
                 checked={isRegisterFirstTime}
                 onChange={() => setIsRegisterFirstTime(!isRegisterFirstTime)}
               />
-              <label htmlFor="isRegisteredFirstTime">Is Registered First Time?</label>
+              <label htmlFor="isRegisteredFirstTime"> Registering for the first time? <p1>Click to select your payment plan.</p1></label>
               {isRegisterFirstTime && (
                 <div className="package-options">
                   {packages.map((pkg) => (
@@ -378,6 +378,14 @@ const ManagerRegisterPage = () => {
           <div className={`registration-message ${visible ? "show" : ""} ${isSuccess ? "success" : "error"}`}>
             {message}
           </div>
+          <Link className="guest_link" to="/register-page">
+        <button className="button_go_guest_register">
+  Guest Register
+  <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
+    <path clipRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fillRule="evenodd"></path>
+  </svg>
+</button>
+        </Link>
         </form>
       </div>
     </div>
