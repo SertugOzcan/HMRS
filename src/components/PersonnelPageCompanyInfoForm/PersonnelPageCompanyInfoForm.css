@@ -1,0 +1,237 @@
+.personnel-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5.5rem 2.5rem 0.5rem 2.5rem;
+    animation: fadeIn 0.75s ease-out forwards;
+    height: 1080px;
+  }
+  
+  .personnel-page-main{
+    width: 70%;
+    position: relative;
+    left: 120px;
+    background-color: rgba(47, 241, 255, 0.116);
+    border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+  }
+  
+  .personnel-page-main-section > h1:first-child {
+    padding-top: 0.5rem;
+  }
+  
+  .personnel-page-main-section > h1:first-child, h4 {
+    text-align: center;
+  }
+  
+  .personnel-page-main-section > h4 {
+    margin-bottom: 0.5rem;
+  }
+  
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
+  
+  .personnel-container {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    position: relative;
+    left: 120px;
+    margin-top: 2rem;
+    background-color: rgba(172, 255, 47, 0.116);
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+  }
+  
+  .personnel-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* text-align: center; */
+  }
+  
+  .personnel-photo > img {
+    max-width: 30%;
+      border-radius: 2rem;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .personnel-info {
+    position: relative;
+    padding-top: 0.5rem;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .personnel-info > p{
+    padding-bottom: 1rem;
+  }
+  
+  .personnel-company-summary {
+    color: rgb(10, 10, 10);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+    width: 80%;
+    margin-top: 30px;
+    position: relative;
+    z-index: -1;
+    left: 120px;
+    background-color: rgba(0, 255, 157, 0.425);
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+  }
+  .personnel-company-info-container{
+    display: flex;
+    justify-content: space-around;
+  }
+  .personnel-company-img-and-company-name{
+    position: relative;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .personnel-company-img-and-company-name h2{
+    position: relative;
+    align-self: center;
+    justify-self: center;
+  }
+  
+  .personnel-company-img-and-company-name > img{
+    position: relative;
+    top: 5px;
+    left: 5px;
+    width: 10%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .personnel-company-info > h2{
+    text-align: center;
+  }
+  
+  
+  .personnel-company-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .btn-container{
+    display: flex;
+    gap: 5px;
+  }
+  .edit-info-button, .add-comment-button{
+    width: 12%;
+  
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-info-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .edit-info-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+  }
+  .add-comment-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .add-comment-content{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  /* .personnel-info {
+    width: 80%;
+  } */
+  
+  /* .personel-info,
+  .company-info,
+  .personel-photo {
+    width: 80%;
+  }
+  
+  .personel-info,
+  .company-info {
+    background-color: #6a6969;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .personel-info h2,
+  .company-info h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .personel-info p,
+  .company-info p {
+    margin-bottom: 5px;
+  }
+  
+  .personel-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .personel-photo img {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  } */
+  
