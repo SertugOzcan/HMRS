@@ -6,9 +6,9 @@
     top: 0;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    background-color: transparent;
+    /* background-color: transparent; */
     border: 1px solid rgba(255, 255 255, 0.3);
     box-shadow: 0 4px 30px rgba(0,0,0,0.1);
     backdrop-filter: blur(3px);
@@ -57,7 +57,9 @@
 
 .header-major-container a {
     text-decoration: none;
+    
 }
+
 
 .authenticated {
     background-color: rgb(252, 156, 100);
@@ -71,9 +73,11 @@
 .log-actions-div img {
     display: flex;
     flex-direction: row;
+    
     /* justify-content: center; */
     /* align-items: center; */
     width: 1.25rem;
+    
 }
 
 .switch-tabbing-button {
@@ -92,6 +96,7 @@
     }
 }
 
+
 .switch-tabbing-button.guest {
     background-color: rgb(100, 171, 252);
     &&:hover{
@@ -107,8 +112,31 @@
 .switch-tabbing-button {
     background-color: rgb(96, 201, 70);
 }
-  
-
+.img-div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+.img-div button{
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    z-index: 99;
+    background-image: url(icons8-human-resources-64.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-div span{
+    text-align: center;
+    font-weight: 700;
+    
+}
+.btn-container{
+    display: flex;
+    align-items: center;
+}
 
 
 
