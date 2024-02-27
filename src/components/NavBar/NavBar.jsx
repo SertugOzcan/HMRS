@@ -7,6 +7,7 @@ import LoginIcon from '../../assets/login.svg'
 import LogoutIcon from '../../assets/logout.svg'
 
 
+
 // eslint-disable-next-line react/prop-types
 const NavBar = ({theme}) => {
 
@@ -33,6 +34,10 @@ const NavBar = ({theme}) => {
   return (
     //loggedin
     <div className={`header-major-container ${theme}`}>
+      <div className="img-div">
+        <button></button><span>MUSKETEERS HMRS</span>
+      </div>
+      <div className="btn-container">
       {isAuthenticated && isAuthenticated.role === "SUPERVISOR" 
       ? 
       <Link to={supervisorCurrentPage === "supervisor" ? "/personel-page" : "/yonetici-page"}>
@@ -51,6 +56,8 @@ const NavBar = ({theme}) => {
           </div> 
       </div>
       {isAuthenticated && <ThemeSlider/>}
+      </div>
+      
     </div>
   );
 };
