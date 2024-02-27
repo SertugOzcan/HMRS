@@ -325,7 +325,8 @@ textarea::-webkit-scrollbar-thumb {
   overflow: hidden;
   font-size: 15px;
   cursor: pointer;
-  left: 10px;
+  top: -10px;
+  left: 20px;
 }
 
 .icon {
