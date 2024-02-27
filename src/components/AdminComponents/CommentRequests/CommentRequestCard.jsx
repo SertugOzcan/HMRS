@@ -1,11 +1,10 @@
-import React from 'react'
 import './CommentRequestCard.css'
 import { useContext } from 'react';
-import { AdminPageAPIContext } from '../../../context/AdminPageAPIContext';
+import { AdminPagePendingCommentsAPIContext } from '../../../context/AdminPagePendingCommentsAPIContext';
 
 const CommentRequestCard = ({request}) => {
-    const {handleCommentRequest} = useContext(AdminPageAPIContext);
-    // console.log(request);
+    const {handleCommentRequest} = useContext(AdminPagePendingCommentsAPIContext);
+    
   return (
     <div className='comment-card-div'>
             <div className='comment-image-div'>

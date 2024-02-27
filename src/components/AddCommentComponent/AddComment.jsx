@@ -33,21 +33,18 @@ const AddComment = ({setIsAddCommentClicked}) => {
   
     try {
       const response = await axios.post('http://localhost:9097/api/v1/comment/add', newComment);
-  
-      if (response.status === 201) {
-        console.log("succesfully")
-      } else {
-        console.error('Error');
+
+      if (response.status === 200) {
+        console.log("Add Comment Successfull")
       }
     } catch (error) {
-      console.error('Error', error);
+      console.log("Error on creating new comment request! ", error);
     }
   
     setContent('');
     setHeader('');
     setRating(1);
     setIsAddCommentClicked(false)
-    // alert("Succesfully")
   };
 
   return (

@@ -3,13 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 
-export const PersonnelPageDayOffAPIContext = createContext();
+export const PersonnelPageAdvanceAPIContext = createContext();
 
 // eslint-disable-next-line react/prop-types
-export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
+export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
 
-    const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
-    const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
+    const [pendingAdvanceRequests, setPendingAdvanceRequests] = useState([]);
+    const [notPendingAdvanceRequests, setNotPendingAdvanceRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -21,12 +21,12 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-my-requests/${isAuthenticated.token}`)
-                console.log("DAYOFFREQUESTS-DATA: ", response.data)
-                setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
+                const response = await axios.get(`http://localhost:9088/api/v1/advance/get-all-my-requests/${isAuthenticated.token}`)
+                console.log("ADVANCEREQUESTS-DATA: ", response.data)
+                setPendingAdvanceRequests(response.data.filter(request => request.requestStatus === "PENDING"))
+                setNotPendingAdvanceRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
             } catch (error) {
-                console.error("Error while fetching the dayoff requests data:", error);
+                console.error("Error while fetching the advance requests data:", error);
             } finally {
                 // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
                 // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
@@ -39,14 +39,14 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
     const handleSubmit = async (newRequest) => {
         setIsLoading(true);
         const payload = {...newRequest, token: isAuthenticated.token}
-        console.log("Hazırlanan new dayoff payload:", payload);
+        console.log("Hazırlanan new advance payload:", payload);
         try {
-            const response = await axios.post("http://localhost:9089/api/v1/day-off/create-request", payload)
+            const response = await axios.post("http://localhost:9088/api/v1/advance/create-request", payload)
             if (response.status === 200) {
                 // window.location.reload(true);
             }    
         } catch (error) {
-            console.log("Error on creating new day off request! ", error);
+            console.log("Error on creating new advance request! ", error);
         } finally {
             setIsLoading(false);
         }
@@ -58,27 +58,27 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
             "token": isAuthenticated.token,
             "requestId": requestId
         }
-        console.log("Hazırlanan cancel dayoff payload:", payload);
+        console.log("Hazırlanan cancel advance payload:", payload);
         try {
-            const response = await axios.patch("http://localhost:9089/api/v1/day-off/cancel-request", payload)
+            const response = await axios.patch("http://localhost:9088/api/v1/advance/cancel-request", payload)
             if (response.status === 200) {
                 // window.location.reload(true);
             }    
         } catch (error) {
-            console.log("Error on cancelling day off request! ", error);
+            console.log("Error on cancelling advance request! ", error);
         } finally {
             setIsLoading(false);
         }
     }
 
     return (
-        <PersonnelPageDayOffAPIContext.Provider value={{pendingDayOffRequests, notPendingDayOffRequests, handleSubmit, handleCancelRequest}}>
+        <PersonnelPageAdvanceAPIContext.Provider value={{pendingAdvanceRequests, notPendingAdvanceRequests, handleSubmit, handleCancelRequest}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (
                 children
             )}
-        </PersonnelPageDayOffAPIContext.Provider>
+        </PersonnelPageAdvanceAPIContext.Provider>
     )
 
 }

@@ -10,7 +10,6 @@ import "./App.css";
 import PrivateRoute from "./services/PrivateRoute";
 import { UserPreferencesContext } from "./context/UserPreferencesContext";
 import { useContext } from "react";
-import { AdminPageAPIContextProvider } from "./context/AdminPageAPIContext";
 import { AuthContext } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
 import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
@@ -30,6 +29,9 @@ import ManagerRegisterPage from "./pages/ManagerRegisterPage";
 import { SupervisorPageDayOffAPIContextProvider } from "./context/SupervisorPageDayOffAPIContext";
 import { SupervisorPageAdvanceAPIContextProvider } from "./context/SupervisorPageAdvanceAPIContext";
 import { SupervisorPageSpendingAPIContextProvider } from "./context/SupervisorPageSpendingAPIContext";
+import { AdminPageActiveUsersAPIContextProvider } from "./context/AdminPageActiveUsersAPIContext";
+import { AdminPagePendingSupervisorsAPIContextProvider } from "./context/AdminPagePendingSupervisorsAPIContext";
+import { AdminPagePendingCommentsAPIContextProvider } from "./context/AdminPagePendingCommentsAPIContext";
 import PersonnelInfoForm from "./components/PersonnelInfoForm/PersonnelInfoForm";
 
 function App() {
@@ -49,9 +51,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <AdminPageAPIContextProvider>
+                  <AdminPageActiveUsersAPIContextProvider>
                     <RegisteredUsers />
-                  </AdminPageAPIContextProvider>
+                  </AdminPageActiveUsersAPIContextProvider>
                 }
               />
             }
@@ -61,9 +63,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <AdminPageAPIContextProvider>
+                  <AdminPagePendingSupervisorsAPIContextProvider>
                     <ManagerRequests />
-                  </AdminPageAPIContextProvider>
+                  </AdminPagePendingSupervisorsAPIContextProvider>
                 }
               />
             }
@@ -73,9 +75,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <AdminPageAPIContextProvider>
+                  <AdminPagePendingCommentsAPIContextProvider>
                     <CommentRequests />
-                  </AdminPageAPIContextProvider>
+                  </AdminPagePendingCommentsAPIContextProvider>
                 }
               />
             }

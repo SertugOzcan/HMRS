@@ -2,11 +2,11 @@
 import styles from './SupervisorRequestCard.module.css';
 
 import { useContext } from 'react';
-import { AdminPageAPIContext } from '../../context/AdminPageAPIContext';
+import { AdminPagePendingSupervisorsAPIContext } from '../../context/AdminPagePendingSupervisorsAPIContext';
 
 const SupervisorRequestCard = ({request}) => {
 
-    const {handleSupervisorRequest} = useContext(AdminPageAPIContext);
+    const {handleSupervisorRequest} = useContext(AdminPagePendingSupervisorsAPIContext);
 
     return (
         <div className={styles['recipe-card-div']}>
