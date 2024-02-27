@@ -24,6 +24,8 @@ import NoPage from "./pages/NoPage";
 import SupervisorPageEmployeeList from "./components/SupervisorPageEmployeeList/SupervisorPageEmployeeList";
 import SupervisorPageCompanyData from "./components/SupervisorPageCompanyData/SupervisorPageCompanyData";
 import SupervisorPageDayOffRequests from "./components/SupervisorPageDayOffRequests/SupervisorPageDayOffRequests";
+import SupervisorPageAdvanceRequests from "./components/SupervisorPageAdvanceRequests/SupervisorPageAdvanceRequests";
+import SupervisorPageSpendingRequests from "./components/SupervisorPageSpendingRequests/SupervisorPageSpendingRequests";
 import ManagerRegisterPage from "./pages/ManagerRegisterPage";
 
 function App() {
@@ -118,6 +120,30 @@ function App() {
                 element={
                   <SupervisorPageAPIContextProvider>
                     <SupervisorPageDayOffRequests />
+                  </SupervisorPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="/yonetici-page/advance-requests"
+            element={
+              <PrivateRoute
+                element={
+                  <SupervisorPageAPIContextProvider>
+                    <SupervisorPageAdvanceRequests />
+                  </SupervisorPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="/yonetici-page/spending-requests"
+            element={
+              <PrivateRoute
+                element={
+                  <SupervisorPageAPIContextProvider>
+                    <SupervisorPageSpendingRequests />
                   </SupervisorPageAPIContextProvider>
                 }
               />
