@@ -3,7 +3,6 @@ import AdminLoginPage from "./pages/AdminLoginPage";
 import LoginPage from "./pages/LoginPage";
 import YoneticiPage from "./pages/YoneticiPage";
 import ZiyaretciPage from "./pages/ZiyaretciPage";
-import PersonelPage from "./pages/PersonelPage";
 import RegisterPage from "./pages/RegisterPage";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
@@ -13,7 +12,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
 import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
-import { PersonnelPageAPIContext, PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
+import { PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
 import HomePageSideBar from "./components/HomePageSideBar/HomePageSideBar";
 import NavBar from "./components/NavBar/NavBar";
 import RegisteredUsers from "./components/AdminComponents/RegisteredUsers/RegisteredUsers";
@@ -33,6 +32,8 @@ import { AdminPageActiveUsersAPIContextProvider } from "./context/AdminPageActiv
 import { AdminPagePendingSupervisorsAPIContextProvider } from "./context/AdminPagePendingSupervisorsAPIContext";
 import { AdminPagePendingCommentsAPIContextProvider } from "./context/AdminPagePendingCommentsAPIContext";
 import PersonnelInfoForm from "./components/PersonnelInfoForm/PersonnelInfoForm";
+import AddComment from "./components/AddCommentComponent/AddComment";
+import PersonnelDayOffRequestForm from './components/PersonnelDayOffRequestForm/PersonnelDayOffRequestForm'
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -154,7 +155,6 @@ function App() {
               />
             }
           />
-          {/*<Route path="/ziyaretci-page" element={<PrivateRoute element={<ZiyaretciPage />}/>} />*/}
           <Route
             path="/ziyaretci-page"
             element={
@@ -164,12 +164,72 @@ function App() {
             }
           />
           <Route
-            path="/personel-page"
+            path="/personnel-page"
             element={
               <PrivateRoute
                 element={
                   <PersonnelPageAPIContextProvider>
                     <PersonnelInfoForm/>
+                  </PersonnelPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="/personnel-page/my-profile"
+            element={
+              <PrivateRoute
+                element={
+                  <PersonnelPageAPIContextProvider>
+                    <PersonnelInfoForm/>
+                  </PersonnelPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="/personnel-page/request-dayoff"
+            element={
+              <PrivateRoute
+                element={
+                  <PersonnelPageAPIContextProvider>
+                    <PersonnelDayOffRequestForm/>
+                  </PersonnelPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="/personnel-page/request-advance"
+            element={
+              <PrivateRoute
+                element={
+                  <PersonnelPageAPIContextProvider>
+                    <PersonnelInfoForm/>
+                  </PersonnelPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="/personnel-page/requests-spending"
+            element={
+              <PrivateRoute
+                element={
+                  <PersonnelPageAPIContextProvider>
+                    <PersonnelInfoForm/>
+                  </PersonnelPageAPIContextProvider>
+                }
+              />
+            }
+          />
+          <Route
+            path="personnel-page/create-comment"
+            element={
+              <PrivateRoute
+                element={
+                  <PersonnelPageAPIContextProvider>
+                    <AddComment/>
                   </PersonnelPageAPIContextProvider>
                 }
               />
