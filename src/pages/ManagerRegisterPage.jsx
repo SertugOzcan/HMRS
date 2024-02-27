@@ -32,26 +32,37 @@ const ManagerRegisterPage = () => {
   const defaultPackageCosts = {
     basic: 30000,
     silver: 60000,
-    gold: 90000
-  }
+    gold: 90000,
+  };
   const exchangeRates = {
     TL: 1,
     USD: 0.032,
-    EUR: 0.030
+    EUR: 0.03,
   };
 
   const [packages, setPackages] = useState([]);
   useEffect(() => {
     const updatedPackages = [
-      { name: "Basic", duration: 30, cost: defaultPackageCosts.basic * exchangeRates[currency]},
-      { name: "Silver", duration: 60, cost: defaultPackageCosts.silver * exchangeRates[currency]},
-      { name: "Gold", duration: 90, cost: defaultPackageCosts.gold * exchangeRates[currency]}
+      {
+        name: "Basic",
+        duration: 30,
+        cost: defaultPackageCosts.basic * exchangeRates[currency],
+      },
+      {
+        name: "Silver",
+        duration: 60,
+        cost: defaultPackageCosts.silver * exchangeRates[currency],
+      },
+      {
+        name: "Gold",
+        duration: 90,
+        cost: defaultPackageCosts.gold * exchangeRates[currency],
+      },
     ];
     setPackages(updatedPackages);
-  }, [currency])
+  }, [currency]);
 
-
-  const handlePackageChange = packageName => {
+  const handlePackageChange = (packageName) => {
     setSelectedPackage(packageName);
   };
 
@@ -67,7 +78,7 @@ const ManagerRegisterPage = () => {
     }
   };
 
-  const getStrength = password => {
+  const getStrength = (password) => {
     let indicator = 0;
 
     if (/[a-z]/.test(password)) indicator++;
@@ -79,17 +90,17 @@ const ManagerRegisterPage = () => {
     return ["empty", "weak", "medium", "strong"][indicator];
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const newPassword = e.target.value;
     setStrength(getStrength(newPassword));
     setPassword(newPassword);
   };
 
-  const handleCurrencyChange = e => {
+  const handleCurrencyChange = (e) => {
     setCurrency(e.target.value);
   };
 
-  const handleRegister = async e => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setPasswordError("");
     setIdentityNumberError("");
@@ -112,8 +123,8 @@ const ManagerRegisterPage = () => {
       hasError = true;
     }
 
-    if(selectedPackage === "" && isRegisterFirstTime){
-      setPackageSelectError("You must select one of the packages!")
+    if (selectedPackage === "" && isRegisterFirstTime) {
+      setPackageSelectError("You must select one of the packages!");
       hasError = true;
     }
 
@@ -138,20 +149,21 @@ const ManagerRegisterPage = () => {
         isCompanyFirstRegistration: isRegisterFirstTime,
       };
 
-      const payload = isRegisterFirstTime ? {
-        ...payloadPreparation, 
-        contractName: selectedPackage,
-        contractDuration:
-          selectedPackage === "Basic"
-            ? 30
-            : selectedPackage === "Silver"
-            ? 60
-            : 90,
-        contractCost: packages.find(pkg => pkg.name === selectedPackage).cost,
-        contractCurrency: currency
-      }
-      :
-      payloadPreparation
+      const payload = isRegisterFirstTime
+        ? {
+            ...payloadPreparation,
+            contractName: selectedPackage,
+            contractDuration:
+              selectedPackage === "Basic"
+                ? 30
+                : selectedPackage === "Silver"
+                ? 60
+                : 90,
+            contractCost: packages.find((pkg) => pkg.name === selectedPackage)
+              .cost,
+            contractCurrency: currency,
+          }
+        : payloadPreparation;
 
       const response = await axios.post(
         "http://localhost:9090/api/v1/auth/register-supervisor",
@@ -197,15 +209,14 @@ const ManagerRegisterPage = () => {
     }, 4000);
   };
 
-
   return (
     <div className="manager-register-page">
       <div className={`manager-register-container`}>
         <h2>Supervisor Register</h2>
-        <form className= "manager-register-page-form" onSubmit={handleRegister}>
+        <form className="manager-register-page-form" onSubmit={handleRegister}>
           <div className="left-form">
             <input
-            className="manager-register-input"
+              className="manager-register-input"
               type="text"
               placeholder="Name"
               value={name}
@@ -213,7 +224,7 @@ const ManagerRegisterPage = () => {
               required
             />
             <input
-            className="manager-register-input"
+              className="manager-register-input"
               type="text"
               placeholder="Surname"
               value={surName}
@@ -221,7 +232,7 @@ const ManagerRegisterPage = () => {
               required
             />
             <input
-            className="manager-register-input"
+              className="manager-register-input"
               type="email"
               placeholder="Email"
               value={email}
@@ -229,7 +240,7 @@ const ManagerRegisterPage = () => {
               required
             />
             <input
-            className="manager-register-input"
+              className="manager-register-input"
               type="text"
               placeholder="Company Name"
               value={companyName}
@@ -237,7 +248,7 @@ const ManagerRegisterPage = () => {
               required
             />
             <input
-            className="manager-register-input"
+              className="manager-register-input"
               type="text"
               placeholder="Phone"
               value={phone}
@@ -247,7 +258,6 @@ const ManagerRegisterPage = () => {
               <p className="registration-error-messages">{phoneNumberError}</p>
             )}
             <input
-            
               type="text"
               className="manager-register-input"
               value={identityNumber}
@@ -270,7 +280,7 @@ const ManagerRegisterPage = () => {
               required
             />
             <input
-            className="manager-register-input"
+              className="manager-register-input"
               type="password"
               placeholder="Re-enter Password"
               value={rePassword}
@@ -290,13 +300,32 @@ const ManagerRegisterPage = () => {
                 placeholderText="Birthday"
                 dateFormat="dd/MM/yyyy"
                 selected={date}
-                onChange={(date) => setDate(date)}
+                onChange={(date) => {
+                  if (
+                    date <
+                      new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000) ||
+                    date > new Date()
+                  ) {
+                    alert(
+                      "Please select a date within the last 100 years and today."
+                    );
+                  } else {
+                    setDate(date);
+                  }
+                }}
+                minDate={new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)}
+                maxDate={new Date()}
+                showYearDropdown
+                scrollableYearDropdown
+                yearDropdownItemNumber={100}
+                showMonthDropdown
+                scrollableMonthYearDropdown
               />
             </div>
             <div className="gender-selector-manager">
               <label className="gender-label-manager">
                 <input
-                className="gender-manager"
+                  className="gender-manager"
                   type="radio"
                   name="radio"
                   value="male"
@@ -307,7 +336,7 @@ const ManagerRegisterPage = () => {
               </label>
               <label className="gender-label-manager">
                 <input
-                className="gender-manager"
+                  className="gender-manager"
                   type="radio"
                   name="radio"
                   value="female"
@@ -318,7 +347,7 @@ const ManagerRegisterPage = () => {
               </label>
             </div>
             <textarea
-            className="manager-register-input"
+              className="manager-register-input"
               id="address"
               name="address"
               placeholder="Your Address"
@@ -340,11 +369,18 @@ const ManagerRegisterPage = () => {
                 checked={isRegisterFirstTime}
                 onChange={() => setIsRegisterFirstTime(!isRegisterFirstTime)}
               />
-              <label htmlFor="isRegisteredFirstTime"> Registering for the first time? <p1>Click to select your payment plan.</p1></label>
+              <label htmlFor="isRegisteredFirstTime">
+                {" "}
+                Registering for the first time?{" "}
+                <p1>Click to select your payment plan.</p1>
+              </label>
               {isRegisterFirstTime && (
                 <div className="package-options">
                   {packages.map((pkg) => (
-                    <div key={pkg.name} className={`package-card package-card-${pkg.name.toLowerCase()}`}>
+                    <div
+                      key={pkg.name}
+                      className={`package-card package-card-${pkg.name.toLowerCase()}`}
+                    >
                       <input
                         type="radio"
                         id={pkg.name}
@@ -355,13 +391,17 @@ const ManagerRegisterPage = () => {
                       />
                       <label htmlFor={pkg.name}>
                         <h3>{pkg.name}</h3>
-                        <p>Duration: {pkg.duration} days</p> 
-                        {selectedPackage === pkg.name ? 
-                        <span className='register-selected-package-span'>&#10004;</span>
-                        :
-                        ""
-                        }
-                        <p>Cost: {pkg.cost} {currency}</p>
+                        <p>Duration: {pkg.duration} days</p>
+                        {selectedPackage === pkg.name ? (
+                          <span className="register-selected-package-span">
+                            &#10004;
+                          </span>
+                        ) : (
+                          ""
+                        )}
+                        <p>
+                          Cost: {pkg.cost} {currency}
+                        </p>
                       </label>
                     </div>
                   ))}
@@ -374,18 +414,28 @@ const ManagerRegisterPage = () => {
               </p>
             )}
           </div>
-          <button className="register_manager_button" type="submit">Register</button>
-          <div className={`registration-message ${visible ? "show" : ""} ${isSuccess ? "success" : "error"}`}>
+          <button className="register_manager_button" type="submit">
+            Register
+          </button>
+          <div
+            className={`registration-message ${visible ? "show" : ""} ${
+              isSuccess ? "success" : "error"
+            }`}
+          >
             {message}
           </div>
           <Link className="guest_link" to="/register-page">
-        <button className="button_go_guest_register">
-  Guest Register
-  <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
-    <path clipRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fillRule="evenodd"></path>
-  </svg>
-</button>
-        </Link>
+            <button className="button_go_guest_register">
+              Guest Register
+              <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
+                <path
+                  clipRule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                  fillRule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </Link>
         </form>
       </div>
     </div>
