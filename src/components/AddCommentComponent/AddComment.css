@@ -1,7 +1,7 @@
 .add-comment-container {
     padding: 25px;
     margin-top: 20px;
-    width: 60%;
+    width: 100%;
     background-color: #f9f9f9;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
@@ -38,7 +38,7 @@
 
   .input-box{
     position: relative;
-    width: 500px;
+    width: 100%;
   }
   .input-box input, .input-box textarea {
     width: 100%;

@@ -45,7 +45,10 @@ const HomePageSideBar = () => {
             <button></button><span>MUSKETEERS HMRS</span>
         </div>
         <div className='side-bar-inner-body'>
+          <div className='side-bar-inner-second-body'>
             {content}
+          </div>
+            
         </div>
     </div>
   )
