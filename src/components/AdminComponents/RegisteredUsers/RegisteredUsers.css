@@ -20,7 +20,7 @@
 }
 
 
-.card {
+.card_active_users {
   width: 200px;
   height: 254px;
   background: #07182E;
@@ -34,13 +34,13 @@
   
 }
 
-.card h2 {
+.card_active_users h2 {
   z-index: 1;
   color: white;
   font-size: 2em;
 }
 
-.card::before {
+.card_active_users::before {
   content: '';
   position: absolute;
   width: 100px;
@@ -61,7 +61,7 @@
   }
 }
 
-.card::after {
+.card_active_users::after {
   content: '';
   position: absolute;
   background: #07182e;
@@ -69,7 +69,7 @@
   inset: 5px;
   border-radius: 15px;
 }  
-.card:hover:before {
+.card_active_users:hover:before {
   background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
   animation: rotBGimg 3.5s linear infinite;
 } 
