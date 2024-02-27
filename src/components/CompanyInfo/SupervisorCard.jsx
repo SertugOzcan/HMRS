@@ -3,17 +3,20 @@ import "./SupervisorCard.css"
 const SupervisorCard = ({ supervisor }) => {
   return (
     <div className="supervisor-card">
-      <img src={supervisor.image} alt="" />
-      <div className="supervisor-card-texts">
-        <p>name : {supervisor.name}</p>
-        <p>surname :{supervisor.lastName}</p>
-        <p>gender :{supervisor.gender}</p>
-        {supervisor.phones && supervisor.phones.length > 0 && (
-          <p>
-            phone: {supervisor.phones[0].phoneType} -{" "}
-            {supervisor.phones[0].phoneNumber}
-          </p>
-        )}
+      <h3>PERSONNEL</h3>
+      <div className="supervisor-card-second-container">
+        <img src={supervisor.image} alt="" />
+        <div className="supervisor-card-texts">
+          <p>Name : <span>{supervisor.name}</span></p>
+          <p>Surname : <span>{supervisor.lastName}</span></p>
+          <p>Gender : <span>{supervisor.gender}</span></p>
+          {supervisor.phones && supervisor.phones.length > 0 && (
+            <p>
+              phone: <span>{supervisor.phones[0].phoneType} -{" "}
+              {supervisor.phones[0].phoneNumber}</span>
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

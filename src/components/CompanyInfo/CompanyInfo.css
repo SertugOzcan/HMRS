@@ -56,8 +56,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 7px;
+    gap: 15px;
     background-color: rgba(172, 255, 47, 0.082);
+}
+.hr-info h2{
+    padding: 3px 25px;
+    border: 2px solid black;
 }
 
 
@@ -86,4 +90,17 @@
   
   .close-button:hover {
     background-color: #d32f2f; /* Hover efekti */
+  }
+  .hrinfo-texts{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+  .hrinfo-texts p{
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .hrinfo-texts p span{
+    font-weight: 400;
   }

@@ -38,14 +38,14 @@ const CompanyInfo = ({ selectedCompanyInfo, setFilteredCompanies }) => {
       <div className="main-div">
         <div className="main-infos">
           <div className="hr-info">
-            <h3>HR INFO</h3>
+            <h2>HR INFO</h2>
             {hrInfos &&
               hrInfos.map((hrInfo, index) => (
-                <div key={index}>
-                  <p>FirstName: {hrInfo.firstName}</p>
-                  <p>LastName: {hrInfo.lastName}</p>
-                  <p>Email: {hrInfo.email}</p>
-                  <p>Phone: {hrInfo.phone}</p>
+                <div key={index} className="hrinfo-texts">
+                  <p>FirstName: <span>{hrInfo.firstName}</span></p>
+                  <p>LastName: <span>{hrInfo.lastName}</span></p>
+                  <p>Email: <span>{hrInfo.email}</span></p>
+                  <p>Phone: <span>{hrInfo.phone}</span></p>
                 </div>
               ))}
           </div>
