@@ -27,6 +27,9 @@ import SupervisorPageDayOffRequests from "./components/SupervisorPageDayOffReque
 import SupervisorPageAdvanceRequests from "./components/SupervisorPageAdvanceRequests/SupervisorPageAdvanceRequests";
 import SupervisorPageSpendingRequests from "./components/SupervisorPageSpendingRequests/SupervisorPageSpendingRequests";
 import ManagerRegisterPage from "./pages/ManagerRegisterPage";
+import { SupervisorPageDayOffAPIContextProvider } from "./context/SupervisorPageDayOffAPIContext";
+import { SupervisorPageAdvanceAPIContextProvider } from "./context/SupervisorPageAdvanceAPIContext";
+import { SupervisorPageSpendingAPIContextProvider } from "./context/SupervisorPageSpendingAPIContext";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -118,9 +121,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <SupervisorPageAPIContextProvider>
+                  <SupervisorPageDayOffAPIContextProvider>
                     <SupervisorPageDayOffRequests />
-                  </SupervisorPageAPIContextProvider>
+                  </SupervisorPageDayOffAPIContextProvider>
                 }
               />
             }
@@ -130,9 +133,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <SupervisorPageAPIContextProvider>
+                  <SupervisorPageAdvanceAPIContextProvider>
                     <SupervisorPageAdvanceRequests />
-                  </SupervisorPageAPIContextProvider>
+                  </SupervisorPageAdvanceAPIContextProvider>
                 }
               />
             }
@@ -142,9 +145,9 @@ function App() {
             element={
               <PrivateRoute
                 element={
-                  <SupervisorPageAPIContextProvider>
+                  <SupervisorPageSpendingAPIContextProvider>
                     <SupervisorPageSpendingRequests />
-                  </SupervisorPageAPIContextProvider>
+                  </SupervisorPageSpendingAPIContextProvider>
                 }
               />
             }

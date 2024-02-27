@@ -3,11 +3,9 @@ import "./EmployeeCard.css";
 const EmployeeCard = ({ personnel }) => {
   return (
     <div className="card" style={{ width: "18rem" }}>
-      <img
-        src={personnel.image}
-        className="card-img-top"
-        alt="personnel-image"
-      />
+      <div className="supervisor-page-employee-cards">
+        <img src={personnel.image} alt="personnel-image"/>
+      </div>
 
       <div className="card-body">
         <div>

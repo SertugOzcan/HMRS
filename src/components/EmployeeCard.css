@@ -1,18 +1,36 @@
-
-
-.card-img-top {
-    width: 60%;
-    border-radius: 50%;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
   .card {
-    padding: 1.5em 0.5em 0.5em;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0.5em 0.5em 0.5em;
+    height: 330px;
     text-align: center;
-    border-radius: 2em;
+    border-radius: 2rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
+
+  .supervisor-page-employee-cards {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+  }
+
+  .supervisor-page-employee-cards img {
+    max-width: 97%;
+    object-fit: cover;
+    /* mix-blend-mode: multiply; */
+    border-radius: 50%;
+    /* margin: 0 auto; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-body {
+    height: 50%;
+  }
+
   .card-title {
+    height: 50%;
     font-weight: bold;
     font-size: 1.5em;
   }
