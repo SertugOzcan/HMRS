@@ -8,7 +8,9 @@
   display: flex;
   justify-content: center; 
   width: 850px;
-  min-height: 1800px;
+  max-height: auto;
+  margin-bottom: 100px;
+  
 }
 .sidebar {
   width: 180px;
@@ -52,9 +54,10 @@
 
 .update-company-form {
   width: 50%;
-  padding: 20px;
+  padding: 20px ;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 .company-name-header{

@@ -142,6 +142,10 @@ const UpdateCompanyForTheFirstTimePage = () => {
   };
 
   const handleSubmit = async () => {
+    if (companyDepartments.length === 0) {
+      alert("Please add at least one department.");
+      return;
+    }
     const payload = {
       token: isAuthenticated.token,
       establishmentDate: establishmentDate,
