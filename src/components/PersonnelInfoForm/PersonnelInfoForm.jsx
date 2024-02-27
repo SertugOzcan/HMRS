@@ -3,11 +3,13 @@ import './PersonnelInfoForm.css'
 import { AuthContext } from '../../context/AuthContext'
 import EditMyInfoForm from '../EditMyInfoForm/EditMyInfoForm'
 import AddComment from '../AddCommentComponent/AddComment'
+import { PersonnelPageAPIContext } from '../../context/PersonalPageAPIContext'
  
-const PersonnelInfoForm = ({personnel}) => {
+const PersonnelInfoForm = () => {
     const [isEditInfoClicked, setIsEditInfoClicked] = useState(false);
     const {isAuthenticated} = useContext(AuthContext);
     const [isAddCommentClicked, setIsAddCommentClicked] = useState(false);
+    const {personnel} = useContext(PersonnelPageAPIContext)
   const handleEditInfoClick = (e) => {
     e.preventDefault();
     setIsEditInfoClicked(true);
@@ -40,10 +42,10 @@ const PersonnelInfoForm = ({personnel}) => {
           {isAuthenticated.role === "PERSONNEL" && (
             <>
               <p>
-                <strong>Shift:</strong> {personnel.department.shift}
+                <strong>Shift:</strong> {personnel.department.shiftHour}
               </p>
               <p>
-                <strong>Break:</strong> {personnel.department.break}
+                <strong>Break:</strong> {personnel.department.breakHour}
               </p>
               <p>
                 <strong>Salary:</strong> {personnel.salary}

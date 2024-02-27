@@ -31,7 +31,17 @@ const HomePageSideBar = () => {
         </div>
         break;
       case "PERSONNEL":
-        content = <div>Personnel içeriği</div>
+        content = <div>
+          <Link to='/personnel-page/edit-my-info'><button>My Profile</button></Link>
+          <br />
+          <Link to='/personnel-page/request-dayoff'><button>Request For Dayoff</button></Link>
+          <br />
+          <Link to='/personnel-page/request-advance'><button>Request For Advance</button></Link>
+          <br />
+          <Link to='/personnel-page/requests-spending'><button>Request For Spending</button></Link>
+          <br />
+          <Link to='/personnel-page/create-comment'><button>Comment To Company</button></Link>
+        </div>
         break;
       case "GUEST":
         content = <div>Guest içeriği</div>
@@ -42,13 +52,12 @@ const HomePageSideBar = () => {
   return (
     <div className='side-bar-container'>
         <div className="side-bar-upper-part">
-            <button></button><span>MUSKETEERS HMRS</span>
+            <span>{isAuthenticated.role} PAGE</span>
         </div>
         <div className='side-bar-inner-body'>
           <div className='side-bar-inner-second-body'>
             {content}
           </div>
-            
         </div>
     </div>
   )
