@@ -3,7 +3,7 @@ import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
 import "./AddEmployee.css";
 
 const AddEmployeeForm = () => {
-  const { handleAddEmployee } = useContext(SupervisorPageAPIContext);
+  const { handleAddEmployee, companyData } = useContext(SupervisorPageAPIContext);
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -125,15 +125,20 @@ const AddEmployeeForm = () => {
               <span className="gender-span">Female</span>
             </label>
           </div>
-          <input
+          <select
             className="add_employee_input"
-            type="text"
             name="department"
             value={department}
             onChange={(e) => setDepartment(e.target.value)}
-            placeholder="Department"
             required
-          />
+          >
+            <option value="">Select Department</option>
+            {companyData.departments.map((department) => (
+              <option key={department.name} value={department.name}>
+                {department.name}
+              </option>
+            ))}
+          </select>
           <input
             className="add_employee_input"
             type="text"
