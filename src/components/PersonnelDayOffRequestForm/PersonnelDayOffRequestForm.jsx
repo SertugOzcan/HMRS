@@ -29,13 +29,16 @@ const PersonnelDayOffRequestForm = () => {
       <div className="personnel-day-off-request-reason">
         <strong>DayOff Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
-          <option value="Annual Leave">Annual Leave</option>
-          <option value="Sick Leave">Sick Leave</option>
-          <option value="Maternity/Paternity Leave">
-            Maternity/Paternity Leave
+          <option value="ANNUAL">Annual Leave</option>
+          <option value="SICK">Sick Leave</option>
+          <option value="MATERNITY">
+            Maternity Leave
           </option>
-          <option value="Educational Leave">Educational Leave</option>
-          <option value="Marriage Leave">Marriage Leave</option>
+          <option value="PATERNITY">
+            Paternity Leave
+          </option>
+          <option value="EDUCATIONAL">Educational Leave</option>
+          <option value="MARRIAGE">Marriage Leave</option>
         </select>
       </div>
       <div className="personnel-day-off-request-description">
