@@ -32,7 +32,7 @@ const HomePageSideBar = () => {
         break;
       case "PERSONNEL":
         content = <div>
-          <Link to='/personnel-page/edit-my-info'><button>My Profile</button></Link>
+          <Link to='/personnel-page/my-profile'><button>My Profile</button></Link>
           <br />
           <Link to='/personnel-page/request-dayoff'><button>Request For Dayoff</button></Link>
           <br />

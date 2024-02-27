@@ -1,28 +1,34 @@
-import React, { useContext, useState } from 'react'
-import './PersonnelInfoForm.css'
-import { AuthContext } from '../../context/AuthContext'
-import EditMyInfoForm from '../EditMyInfoForm/EditMyInfoForm'
-import AddComment from '../AddCommentComponent/AddComment'
-import { PersonnelPageAPIContext } from '../../context/PersonalPageAPIContext'
- 
+import React, { useContext, useState } from "react";
+import "./PersonnelInfoForm.css";
+import { AuthContext } from "../../context/AuthContext";
+import EditMyInfoForm from "../EditMyInfoForm/EditMyInfoForm";
+import { PersonnelPageAPIContext } from "../../context/PersonalPageAPIContext";
+
 const PersonnelInfoForm = () => {
-    const [isEditInfoClicked, setIsEditInfoClicked] = useState(false);
-    const {isAuthenticated} = useContext(AuthContext);
-    const [isAddCommentClicked, setIsAddCommentClicked] = useState(false);
-    const {personnel} = useContext(PersonnelPageAPIContext)
+  const [isEditInfoClicked, setIsEditInfoClicked] = useState(false);
+  const { isAuthenticated } = useContext(AuthContext);
+  const { personnel } = useContext(PersonnelPageAPIContext);
   const handleEditInfoClick = (e) => {
     e.preventDefault();
     setIsEditInfoClicked(true);
   };
-  const handleAddCommentClick = (e) => {
-    e.preventDefault();
-    setIsAddCommentClicked(true);
-  };
 
   return (
-    <div className="personnel-container">
+    <div className="personnel-page-container">
+      <main className="personnel-page-main" id="main">
+        <section className="personnel-page-main-section">
+          <h1>
+            Welcome to the MUSKEETERS HR System Management, {personnel.name} !
+          </h1>
+          <br />
+          <h4>
+          You can view your profile, your company information and create a comment for your company...
+            Aslo you can ask for dayoff, spending or advance requests to your supervisor...
+          </h4>
+        </section>
+      </main>
+      <div className="personnel-container">
         <div className="personnel-photo">
-          {/* <img src={image}></img> */}
           <img src={personnel.image}></img>
         </div>
         <div className="personnel-info">
@@ -52,7 +58,6 @@ const PersonnelInfoForm = () => {
               </p>
             </>
           )}
-
           <div className="btn-container">
             <button
               className="edit-info-button"
@@ -73,32 +78,11 @@ const PersonnelInfoForm = () => {
                 </div>
               </div>
             )}
-            {isAddCommentClicked && (
-                <div
-                  className="add-comment-background"
-                  onClick={() => setIsAddCommentClicked(false)}
-                >
-                  <div
-                    className="add-comment-content"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <AddComment
-                      setIsAddCommentClicked={setIsAddCommentClicked}
-                    />
-                  </div>
-                </div>
-              )}
-            <button
-              className="add-comment-button"
-              onClick={(e) => handleAddCommentClick(e)}
-            >
-              Add Comment
-            </button>
           </div>
         </div>
       </div>
-    
-  )
-}
+    </div>
+  );
+};
 
-export default PersonnelInfoForm
+export default PersonnelInfoForm;
