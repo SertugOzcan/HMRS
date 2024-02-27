@@ -60,11 +60,10 @@
 }
 
 .personnel-photo > img {
-  min-width: 60%;
-  max-width: 60%;
-  object-fit: cover;
-  /* mix-blend-mode: multiply; */
-  border-radius: 2rem;
+  max-width: 30%;
+    border-radius: 2rem;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .personnel-info {

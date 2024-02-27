@@ -13,7 +13,7 @@ const AddEmployeeForm = () => {
   const [department, setDepartment] = useState("");
   const [identityNumber, setIdentityNumber] = useState("");
   const [address, setAddress] = useState("");
-  const [img, setImg] = useState("");  /* VOLKAN: ALTTAKI INPUT IMAGE KISMI SİLİNİNCE BUNA DA GEREK YOK SİL GİTSİN */
+
   const [salary, setSalary] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [dateOfEmployment, setDateOfEmployment] = useState(new Date());
@@ -45,7 +45,9 @@ const AddEmployeeForm = () => {
         gender: gender ? "FEMALE" : "MALE",
         identityNumber: identityNumber.trim(),
         email: email.trim(),
-        image: gender ? "https://i.imgur.com/BNXkMgI.png" : "https://i.imgur.com/ltRBj9D.png",
+        image: gender
+          ? "https://i.imgur.com/BNXkMgI.png"
+          : "https://i.imgur.com/ltRBj9D.png",
         address: address.trim(),
         phone: phone.trim(),
         departmentId: department.trim(),
@@ -150,15 +152,7 @@ const AddEmployeeForm = () => {
             onChange={(e) => setAddress(e.target.value)}
             required
           />
-          {/* VOLKAN: ADDPERSONELDE IMAGE ALINMAYACAK SİLİNECEK... PERSONEL DAHA SONRA KENDİSİ UPDATE EDECEK DEFAULT IMAGE'I (sadece alttaki input silinecek) */}
-          <input
-            className="add_employee_input"
-            type="text"
-            name="img"
-            value={img}
-            onChange={(e) => setImg(e.target.value)}
-            placeholder="Image URL"
-          />
+          
           <input
             className="add_employee_input"
             type="number"
