@@ -4,7 +4,7 @@ import ReactDatePicker from "react-datepicker";
 import { PersonnelPageDayOffAPIContext } from "../../context/PersonnelPageDayOffAPIContext";
 
 const PersonnelDayOffRequestForm = () => {
-  const [reason, setReason] = useState("");
+  const [reason, setReason] = useState("ANNUAL");
   const [dayoffDescription, setDayoffDescription] = useState("");
   const [dayoffStartDate, setDayoffStartDate] = useState();
   const [dayoffEndDate, setDayoffEndDate] = useState();
@@ -14,29 +14,26 @@ const PersonnelDayOffRequestForm = () => {
     setReason(e.target.value);
   };
 
-  const handleDayOffSubmit = () => {
-    const payload = {
+  const handleDayOffSubmit = (e) => {
+    e.preventDefault();
+    const newRequest = {
         reason: reason,
         description: dayoffDescription,
         startDate: dayoffStartDate,
         endDate: dayoffEndDate
     }
-    handleSubmit(payload);
+    handleSubmit(newRequest);
   }
 
   return (
-    <form className="personnel-day-off-request-form" onSubmit={handleDayOffSubmit}>
+    <form className="personnel-day-off-request-form">
       <div className="personnel-day-off-request-reason">
         <strong>DayOff Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
           <option value="ANNUAL">Annual Leave</option>
           <option value="SICK">Sick Leave</option>
-          <option value="MATERNITY">
-            Maternity Leave
-          </option>
-          <option value="PATERNITY">
-            Paternity Leave
-          </option>
+          <option value="MATERNITY">Maternity Leave</option>
+          <option value="PATERNITY">Paternity Leave</option>
           <option value="EDUCATIONAL">Educational Leave</option>
           <option value="MARRIAGE">Marriage Leave</option>
         </select>
@@ -73,7 +70,7 @@ const PersonnelDayOffRequestForm = () => {
           />
         </div>
       </div>
-      <button type="submit">Submit DayOff Request</button>
+      <button onClick={handleDayOffSubmit}>Submit DayOff Request</button>
     </form>
   );
 };

@@ -43,7 +43,7 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
         try {
             const response = await axios.post("http://localhost:9089/api/v1/day-off/create-request", payload)
             if (response.status === 200) {
-                // window.location.reload(true);
+                window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on creating new day off request! ", error);
