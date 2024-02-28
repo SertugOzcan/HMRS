@@ -4,6 +4,7 @@
     /* height: 100px; */
     padding: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.5s ease;
 }
 .dayoff-request-card-container:hover{
     background-color: #1e478f1a;
