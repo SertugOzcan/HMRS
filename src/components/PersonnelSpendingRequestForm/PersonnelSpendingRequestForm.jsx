@@ -43,11 +43,11 @@ const PersonnelSpendingRequestForm = () => {
       <div className="personnel-spending-request-reason">
         <strong>Spending Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="E">E</option>
+          <option value="TRAVEL">Travel Expense</option>
+          <option value="TRAINING">Training Expense</option>
+          <option value="OFFICE">Office Supplies Expense</option>
+          <option value="HEALTH">Health Expense</option>
+          <option value="ADVERTISING">Advertising Expense</option>
         </select>
       </div>
       <div className="personnel-spending-request-description">
