@@ -1,0 +1,22 @@
+.advance-request-list-container{
+    border: 2px solid #1e478f2c;
+    border-radius: 4px;
+    position: relative;
+    /* max-width: 1410px; */
+    width: 86%;
+    max-height: 777px;
+    top: 85px;
+    left: 260px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.advance-request-list-container::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;    
+}
+  
+.advance-request-list-container::-webkit-scrollbar-thumb {
+    background-color: #1e488f;
+    border-radius: 20px;
+  }

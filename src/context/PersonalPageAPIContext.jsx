@@ -14,6 +14,11 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
 
+    // volkan deneme 29 Subat Persembe:
+    // const [personnelAcceptedDayOffs, setPersonnelAcceptedDayOffs] = useState([]);
+    // setPersonnelAcceptedDayOffs(response.data.filter(dayOff => dayOff.requestStatus === "ACCEPTED"));
+
+
     useEffect(() => {
         if(isAuthenticated.role!=="PERSONNEL" && isAuthenticated.role!=="SUPERVISOR"){
             return navigate("/login")

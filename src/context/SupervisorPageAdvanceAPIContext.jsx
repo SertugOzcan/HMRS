@@ -8,8 +8,7 @@ export const SupervisorPageAdvanceAPIContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const SupervisorPageAdvanceAPIContextProvider = ({children}) => {
 
-    const [pendingAdvanceRequests, setPendingAdvanceRequests] = useState([]);
-    const [notPendingAdvanceRequests, setNotPendingAdvanceRequests] = useState([]);
+    const [advanceRequests, setAdvanceRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,46 +22,37 @@ export const SupervisorPageAdvanceAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:9088/api/v1/advance/get-all-requests/${isAuthenticated.token}`)
                 console.log("ADVANCEREQUESTS-DATA: ", response.data)
-                setPendingAdvanceRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                setNotPendingAdvanceRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
+                setAdvanceRequests(response.data.reverse());
             } catch (error) {
-                console.error("Error while fetching the dayoff requests data:", error);
+                console.error("Error while fetching the advance requests data:", error);
             } finally {
-                // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-                // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
                 setIsLoading(false);
             }
         };
         getRequests();
     }, []);
 
-    const handlePendingDecision = async (requestId, decision) => {
+    const handleAdvanceDecision = async (requestId, decision) => {
         setIsLoading(true);
         const payload = {
             "token": isAuthenticated.token,
             "requestId": requestId,
-            "decision": decision.toString()
+            "decision": decision
         };
         try {
             const response = await axios.patch("http://localhost:9088/api/v1/advance/update-request", payload)
             if (response.status === 200) {
-                const oldRequest = pendingAdvanceRequests.find(request => request.id === requestId);
-                console.log("OLD REQUEST ŞU: " , oldRequest);
-                setPendingAdvanceRequests(prevRequest => prevRequest.filter(request => request.id !== oldRequest.id))
-                setNotPendingAdvanceRequests(prevRequests => [oldRequest, ...prevRequests])
-                // window.location.reload(true);
+                window.location.reload(true);
             }    
         } catch (error) {
-            console.log("Error on updating day off update request! ", error);
+            console.log("Error on updating advance update request! ", error);
         } finally {
-            // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-            // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
             setIsLoading(false);
         }
     }
 
     return (
-        <SupervisorPageAdvanceAPIContext.Provider value={{pendingAdvanceRequests, notPendingAdvanceRequests, handlePendingDecision}}>
+        <SupervisorPageAdvanceAPIContext.Provider value={{advanceRequests, handleAdvanceDecision}}>
             {isLoading ? (
                 <div className="loader">
                 <div className="box box0">

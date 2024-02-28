@@ -48,7 +48,7 @@ const PersonnelAdvancePage = () => {
             <tr>
               <th>No</th>
               <th>Request Date</th>
-              <th>Request Reason</th>
+              {/* <th>Request Reason</th> */}
               <th>Request Description</th>
               <th>Request Amount</th>
               <th>Request Status</th>
@@ -60,7 +60,7 @@ const PersonnelAdvancePage = () => {
               <tr key={index} className={request.requestStatus}>
                 <td>{index+1}</td>
                 <td>{request.createdAt}</td>
-                <td>{request.reason}</td>
+                {/* <td>{request.reason}</td> */}
                 <td>{request.description}</td>
                 <td>{request.amount}</td>
                 <td>{request.requestStatus}</td>

@@ -42,6 +42,16 @@ const AddEmployeeForm = () => {
         alert("Check personnel's phone number!");
         return;
       }
+      
+      // if (dateOfBirth > Date.now()) {
+      //   alert("Check personnel's date of birth!")
+      //   return;
+      // }
+
+      // if (dateOfEmployment > Date.now()) {
+      //   alert("Check personnel's date of employement!")
+      //   return;
+      // }
 
       const newEmployee = {
         name: name.trim(),

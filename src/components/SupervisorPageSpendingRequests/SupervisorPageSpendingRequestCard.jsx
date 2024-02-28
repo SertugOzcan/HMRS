@@ -113,6 +113,10 @@ const SupervisorPageSpendingRequestCard = ({ request }) => {
             ))}
           </select>
         </div>
+        <div className='advance-request-card-data-div'>
+          <h3>STATUS</h3>
+          <p>{request.requestStatus}</p>
+        </div>
         {request.requestStatus === "PENDING" ? (
           <div className="spending-request-card-buttons">
             <button

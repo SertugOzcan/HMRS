@@ -17,7 +17,11 @@ const SupervisorPageDayOffRequestCard = ({request}) => {
         e.preventDefault();
         let confirmation;
         if(decision === "ACCEPTED"){
-            confirmation = window.confirm("Are you sure to accept day off request of this personnel?")
+            let confirmationText = differenceInDays > dayOffInteger ? 
+            "This personnel is requesting more days off than their day off quota. Are you still sure to accept day off request of this personnel?" 
+            : 
+            "Are you sure to accept day off request of this personnel";
+            confirmation = window.confirm(confirmationText)
         } else {
             confirmation = window.confirm("Are you sure to decline day off request of this personnel?")
         }
@@ -34,7 +38,7 @@ const SupervisorPageDayOffRequestCard = ({request}) => {
             <div className="dayoff-request-card-body">
                 <div className='dayoff-request-card-data-div'>
                     <h3>NAME</h3>
-                    <p>{request.name}</p>
+                    <p>{request.name} {request.lastName}</p>
                 </div>
                 <div className='dayoff-request-card-data-div'>
                     <h3>REQUEST DATE</h3>
@@ -63,6 +67,10 @@ const SupervisorPageDayOffRequestCard = ({request}) => {
                 <div className='dayoff-request-card-data-div'>
                     <h3>DAYOFF QUOTA</h3>
                     <p>{dayOffInteger} DAY</p>
+                </div>
+                <div className='advance-request-card-data-div'>
+                    <h3>STATUS</h3>
+                    <p>{request.requestStatus}</p>
                 </div>
                 {request.requestStatus === "PENDING" ? 
                 <div className='dayoff-request-card-buttons'>

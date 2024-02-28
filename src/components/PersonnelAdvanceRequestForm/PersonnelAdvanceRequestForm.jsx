@@ -3,28 +3,28 @@ import "./PersonnelAdvanceRequestForm.css";
 import { PersonnelPageAdvanceAPIContext } from "../../context/PersonnelPageAdvanceAPIContext";
 
 const PersonnelAdvanceRequestForm = () => {
-  const [reason, setReason] = useState("A");
+  // const [reason, setReason] = useState("A");
   const [advanceDescription, setAdvanceDescription] = useState("");
   const [advanceAmount, setAdvanceAmount] = useState();
   const { handleSubmit } = useContext(PersonnelPageAdvanceAPIContext);
 
-  const handleReasonChange = (e) => {
-    setReason(e.target.value);
-  };
+  // const handleReasonChange = (e) => {
+  //   setReason(e.target.value);
+  // };
 
   const handleAdvanceSubmit = (e) => {
     e.preventDefault();
     const newRequest = {
-        reason: reason,
+        // reason: reason,
         description: advanceDescription,
-        amount: advanceAmount,
+        amount: advanceAmount
     }
     handleSubmit(newRequest);
   }
 
   return (
     <form className="personnel-advance-request-form">
-      <h1>Advance Request Form</h1><br />
+      {/* <h1>Advance Request Form</h1><br />
       <div className="personnel-advance-request-reason">
         <strong>Advance Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
@@ -34,7 +34,7 @@ const PersonnelAdvanceRequestForm = () => {
           <option value="D">D</option>
           <option value="E">E</option>
         </select>
-      </div>
+      </div> */}
       <div className="personnel-advance-request-description">
         <textarea
           type="text"

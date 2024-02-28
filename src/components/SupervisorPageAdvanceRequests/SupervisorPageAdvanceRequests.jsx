@@ -1,8 +1,10 @@
-import React from 'react'
-
+import SupervisorPageAdvanceRequestList from './SupervisorPageAdvanceRequestList'
+import './SupervisorPageAdvanceRequests.css'
 const SupervisorPageAdvanceRequests = () => {
   return (
-    <div>SupervisorPageAdvanceRequests</div>
+    <div className='advance-request-list-major-container'>
+      <SupervisorPageAdvanceRequestList/>
+    </div>
   )
 }
 
