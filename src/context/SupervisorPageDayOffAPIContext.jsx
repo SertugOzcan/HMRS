@@ -8,8 +8,9 @@ export const SupervisorPageDayOffAPIContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
 
-    const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
-    const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
+    const [dayOffRequests, setDayOffRequests] = useState([])
+    // const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
+    // const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,13 +24,12 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-requests/${isAuthenticated.token}`)
                 console.log("DAYOFFREQUESTS-DATA: ", response.data)
-                setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
+                setDayOffRequests(response.data);
+                // setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
+                // setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
             } catch (error) {
                 console.error("Error while fetching the dayoff requests data:", error);
             } finally {
-                // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-                // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
                 setIsLoading(false);
             }
         };
@@ -46,23 +46,21 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
         try {
             const response = await axios.patch("http://localhost:9089/api/v1/day-off/update-request", payload)
             if (response.status === 200) {
-                const oldRequest = pendingDayOffRequests.find(request => request.id === requestId);
-                console.log("OLD REQUEST ŞU: " , oldRequest);
-                setPendingDayOffRequests(prevRequest => prevRequest.filter(request => request.id !== oldRequest.id))
-                setNotPendingDayOffRequests(prevRequests => [oldRequest, ...prevRequests])
-                // window.location.reload(true);
+                // const oldRequest = pendingDayOffRequests.find(request => request.id === requestId);
+                // console.log("OLD REQUEST ŞU: " , oldRequest);
+                // setPendingDayOffRequests(prevRequest => prevRequest.filter(request => request.id !== oldRequest.id))
+                // setNotPendingDayOffRequests(prevRequests => [oldRequest, ...prevRequests])
+                window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on updating day off update request! ", error);
         } finally {
-            // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-            // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
             setIsLoading(false);
         }
     }
 
     return (
-        <SupervisorPageDayOffAPIContext.Provider value={{pendingDayOffRequests, notPendingDayOffRequests, handleDayOffDecision}}>
+        <SupervisorPageDayOffAPIContext.Provider value={{dayOffRequests, handleDayOffDecision}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (
