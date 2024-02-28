@@ -72,6 +72,7 @@
 
 .cancel-day-off-request-button{
     background-color: rgba(83, 126, 190, 0.801);
+    cursor: pointer;
     border: none;
     border-radius: 5px;
     padding: 8px;

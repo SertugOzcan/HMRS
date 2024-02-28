@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { PersonnelPageDayOffAPIContext } from "../../context/PersonnelPageDayOffAPIContext";
 import "./PersonnelDayOffPage.css";
+import PersonnelDayOffRequestForm from "../PersonnelDayOffRequestForm/PersonnelDayOffRequestForm";
 const PersonnelDayOffPage = () => {
   const [isCreateButtonClicked, setIsCreateButtonClicked] = useState(false);
 
-  const { dayOffRequests } = useContext(
-    PersonnelPageDayOffAPIContext
-  );
+  const { dayOffRequests, handleCancelRequest } = useContext(PersonnelPageDayOffAPIContext);
 
-  const handleCreateButtonClick = () => {
+  const handleCreateButtonClick = (e) => {
+    e.preventDefault();
     setIsCreateButtonClicked(true);
   };
 
@@ -22,11 +22,35 @@ const PersonnelDayOffPage = () => {
     return durationInDays;
   };
 
+  const handleDayOffCancel = (e, id) => {
+    e.preventDefault();
+    const confirmation = window.confirm("Are you sure to cancel your day off request?");
+    if(confirmation) {
+      handleCancelRequest(id);
+    }
+  }
+
   return (
+    // SERTUĞA NOT: btn-container, edit-info-background,edit-info-content cssleri ayrıştırılabilir...
     <div className="personnel-day-off-page-container">
       <div className="personnel-day-off-page-upper">
         <strong>DayOff Requests</strong>
-        <button onClick={handleCreateButtonClick}>Create Request</button>
+        <div className="btn-container">
+          <button onClick={(e) => handleCreateButtonClick(e)}>Create Request</button>
+          {isCreateButtonClicked && (
+              <div
+                className="edit-info-background"
+                onClick={() => setIsCreateButtonClicked(false)}
+              >
+                <div
+                  className="edit-info-content"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <PersonnelDayOffRequestForm />
+                </div>
+              </div>
+          )}
+        </div>
       </div>
       <div className="personnel-day-off-page-bottom">
         <table>
@@ -54,7 +78,7 @@ const PersonnelDayOffPage = () => {
                 <td>{request.endDate}</td>
                 <td>{calculateDuration(request.startDate, request.endDate)}</td>
                 <td>{request.requestStatus}</td>
-                <td>{request.requestStatus==='PENDING' ? <button className="cancel-day-off-request-button">Cancel Request</button> : request.updatedAt }</td>
+                <td>{request.requestStatus==='PENDING' ? <button className="cancel-day-off-request-button" onClick={(e) => handleDayOffCancel(e,request.id)}>Cancel Request</button> : request.updatedAt }</td>
               </tr>
             ))}
           </tbody>
