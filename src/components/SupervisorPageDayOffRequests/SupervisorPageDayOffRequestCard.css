@@ -1,0 +1,83 @@
+.dayoff-request-card-container{
+    display: flex;
+    gap: 15px;
+    /* height: 100px; */
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.5s ease;
+}
+.dayoff-request-card-container:hover{
+    background-color: #1e478f1a;
+}
+.dayoff-request-card-body{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+.dayoff-request-card-img{
+    width: 80px;
+    border: 1px solid #1e478f2a;
+    border-radius: 100%;
+    position: relative;
+    left: 23px;
+}
+.dayoff-request-card-img img{
+    width: 100%;
+}
+.dayoff-request-card-data-div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 150px;
+    height: 70px;
+}
+.dayoff-request-card-data-div h3{
+    color: #1e488f;
+    font-weight: 700;
+}
+.dayoff-request-card-data-div p{
+    color: #333;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: normal;
+}
+.dayoff-request-card-buttons{
+    display: flex;
+    gap: 10px;
+}
+.dayoff-accept-button{
+    width: 80px;
+    height: 30px;
+    border: 1px solid #33333388;
+    background-color: #00ff00ab;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #333333e3;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dayoff-accept-button:hover{
+    background-color: #00ff00;
+    scale: 1.07;
+}
+.dayoff-decline-button{
+    width: 80px;
+    height: 30px;
+    border: 1px solid #33333388;
+    background-color: #ff0000b7;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #ffffffd7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dayoff-decline-button:hover{
+    background-color: #FF0000;
+    scale: 1.07;
+}
+
+
