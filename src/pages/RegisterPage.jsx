@@ -220,11 +220,30 @@ const RegisterPage = () => {
               <label>Date of Birth:</label>
             </div>
             <div className="dob-input">
-              <DatePicker
+            <DatePicker
                 placeholderText="Birthday"
                 dateFormat="dd/MM/yyyy"
                 selected={date}
-                onChange={(date) => setDate(date)}
+                onChange={(date) => {
+                  if (
+                    date <
+                      new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000) ||
+                    date > new Date()
+                  ) {
+                    alert(
+                      "Please select a date within the last 100 years and today."
+                    );
+                  } else {
+                    setDate(date);
+                  }
+                }}
+                minDate={new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)}
+                maxDate={new Date()}
+                showYearDropdown
+                scrollableYearDropdown
+                yearDropdownItemNumber={100}
+                showMonthDropdown
+                scrollableMonthYearDropdown
               />
             
 

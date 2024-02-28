@@ -52,7 +52,11 @@ const PersonnelDayOffRequestForm = () => {
       <div className="personnel-day-off-request-dates">
         <div className="date-picker-wrapper">
           <ReactDatePicker
+          className="dayOff_datePicker"
+          wrapperClassName="dayOff_wrapper"
+          
             placeholderText="Start Date"
+            popperClassName="dayOff_popper"
             selectsStart
             selected={dayoffStartDate}
             onChange={(date) => setDayoffStartDate(date)}
@@ -61,6 +65,9 @@ const PersonnelDayOffRequestForm = () => {
         </div>
         <div className="date-picker-wrapper">
           <ReactDatePicker
+          className="dayOff_datePicker"
+            wrapperClassName="dayOff_wrapper"
+            popperClassName="dayOff_popper"
             placeholderText="End Date"
             selectsEnd
             selected={dayoffEndDate}

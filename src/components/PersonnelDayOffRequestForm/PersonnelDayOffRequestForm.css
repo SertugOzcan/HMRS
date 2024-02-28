@@ -13,7 +13,7 @@
 
 .personnel-day-off-request-reason select,
 .personnel-day-off-request-description input,
-.react-datepicker-wrapper {
+.dayOff_wrapper {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
@@ -56,7 +56,7 @@
 .dayOff_button:hover {
     background-color: #0056b3;
 }
-.react-datepicker-wrapper {
+.dayOff_wrapper {
     width: 100%;
 }
 
@@ -64,11 +64,11 @@
     width: 100%;
 }
 
-.react-datepicker-popper {
+.dayOff_popper {
     z-index: 9999; 
 }
 
-.react-datepicker {
+.dayOff_datePicker {
     font-size: 14px;
 }
 
