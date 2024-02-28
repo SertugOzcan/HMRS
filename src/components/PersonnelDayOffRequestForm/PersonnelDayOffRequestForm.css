@@ -12,8 +12,7 @@
 }
 
 .personnel-day-off-request-reason select,
-.personnel-day-off-request-description input,
-.dayOff_wrapper {
+.personnel-day-off-request-description input {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
@@ -36,6 +35,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    padding: 10px; 
 }
 
 .date-picker-wrapper {
@@ -51,7 +53,9 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 20px; 
 }
+
 
 .dayOff_button:hover {
     background-color: #0056b3;
