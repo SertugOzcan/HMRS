@@ -8,8 +8,7 @@ export const PersonnelPageAdvanceAPIContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
 
-    const [pendingAdvanceRequests, setPendingAdvanceRequests] = useState([]);
-    const [notPendingAdvanceRequests, setNotPendingAdvanceRequests] = useState([]);
+    const [advanceRequests, setAdvanceRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,13 +22,10 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:9088/api/v1/advance/get-all-my-requests/${isAuthenticated.token}`)
                 console.log("ADVANCEREQUESTS-DATA: ", response.data)
-                setPendingAdvanceRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                setNotPendingAdvanceRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
+                setAdvanceRequests(response.data);
             } catch (error) {
                 console.error("Error while fetching the advance requests data:", error);
             } finally {
-                // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-                // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
                 setIsLoading(false);
             }
         };
@@ -47,6 +43,9 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
             }    
         } catch (error) {
             console.log("Error on creating new advance request! ", error);
+            if(error.response.data.code === 5007) {
+                alert("You already have pending advance request!");
+            }
         } finally {
             setIsLoading(false);
         }
@@ -62,7 +61,7 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
         try {
             const response = await axios.patch("http://localhost:9088/api/v1/advance/cancel-request", payload)
             if (response.status === 200) {
-                // window.location.reload(true);
+                window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on cancelling advance request! ", error);
@@ -72,7 +71,7 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
     }
 
     return (
-        <PersonnelPageAdvanceAPIContext.Provider value={{pendingAdvanceRequests, notPendingAdvanceRequests, handleSubmit, handleCancelRequest}}>
+        <PersonnelPageAdvanceAPIContext.Provider value={{advanceRequests, handleSubmit, handleCancelRequest}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (

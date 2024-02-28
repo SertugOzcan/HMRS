@@ -9,8 +9,6 @@ export const PersonnelPageDayOffAPIContext = createContext();
 export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
 
     const [dayOffRequests, setDayOffRequests] = useState([])
-    // const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
-    // const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -25,8 +23,6 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
                 const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-my-requests/${isAuthenticated.token}`)
                 console.log("DAYOFFREQUESTS-DATA: ", response.data)
                 setDayOffRequests(response.data);
-                // setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                // setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
             } catch (error) {
                 console.error("Error while fetching the dayoff requests data:", error);
             } finally {
@@ -47,6 +43,9 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
             }    
         } catch (error) {
             console.log("Error on creating new day off request! ", error);
+            if(error.response.data.code === 5007) {
+                alert("You already have pending day off request!");
+            }
         } finally {
             setIsLoading(false);
         }

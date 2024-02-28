@@ -1,29 +1,20 @@
-import { useContext, useState } from "react";
-import { PersonnelPageDayOffAPIContext } from "../../context/PersonnelPageDayOffAPIContext";
-import "./PersonnelDayOffPage.css";
-import PersonnelDayOffRequestForm from "../PersonnelDayOffRequestForm/PersonnelDayOffRequestForm";
-const PersonnelDayOffPage = () => {
+import { useContext, useState} from "react";
+import PersonnelAdvanceRequestForm from "../PersonnelAdvanceRequestForm/PersonnelAdvanceRequestForm";
+import "./PersonnelAdvancePage.css";
+import { PersonnelPageAdvanceAPIContext } from "../../context/PersonnelPageAdvanceAPIContext";
+const PersonnelAdvancePage = () => {
   const [isCreateButtonClicked, setIsCreateButtonClicked] = useState(false);
 
-  const { dayOffRequests, handleCancelRequest } = useContext(PersonnelPageDayOffAPIContext);
+  const { advanceRequests, handleCancelRequest } = useContext(PersonnelPageAdvanceAPIContext);
 
   const handleCreateButtonClick = (e) => {
     e.preventDefault();
     setIsCreateButtonClicked(true);
   };
 
-  const calculateDuration = (startDate, endDate) => {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-  
-    const durationInDays = Math.floor((end - start) / (24 * 60 * 60 * 1000) + 1);
-  
-    return durationInDays;
-  };
-
-  const handleDayOffCancel = (e, id) => {
+  const handleAdvanceCancel = (e, id) => {
     e.preventDefault();
-    const confirmation = window.confirm("Are you sure to cancel your day off request?");
+    const confirmation = window.confirm("Are you sure to cancel your advance request?");
     if(confirmation) {
       handleCancelRequest(id);
     }
@@ -31,9 +22,9 @@ const PersonnelDayOffPage = () => {
 
   return (
     // SERTUĞA NOT: btn-container, edit-info-background,edit-info-content cssleri ayrıştırılabilir...
-    <div className="personnel-day-off-page-container">
-      <div className="personnel-day-off-page-upper">
-        <strong>DayOff Requests</strong>
+    <div className="personnel-advance-page-container">
+      <div className="personnel-advance-page-upper">
+        <strong>Advance Requests</strong>
         <div className="btn-container">
           <button onClick={(e) => handleCreateButtonClick(e)}>Create Request</button>
           {isCreateButtonClicked && (
@@ -45,13 +36,13 @@ const PersonnelDayOffPage = () => {
                   className="edit-info-content"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <PersonnelDayOffRequestForm />
+                <PersonnelAdvanceRequestForm />
                 </div>
               </div>
           )}
         </div>
       </div>
-      <div className="personnel-day-off-page-bottom">
+      <div className="personnel-advance-page-bottom">
         <table>
           <thead>
             <tr>
@@ -59,25 +50,21 @@ const PersonnelDayOffPage = () => {
               <th>Request Date</th>
               <th>Request Reason</th>
               <th>Request Description</th>
-              <th>Request Start Date</th>
-              <th>Request End Date</th>
-              <th>Request Duration</th>
+              <th>Request Amount</th>
               <th>Request Status</th>
               <th>Request UpdatedAt</th>
             </tr>
           </thead>
           <tbody>
-            {dayOffRequests.map((request, index) => (
+            {advanceRequests.map((request, index) => (
               <tr key={index} className={request.requestStatus}>
                 <td>{index+1}</td>
                 <td>{request.createdAt}</td>
                 <td>{request.reason}</td>
                 <td>{request.description}</td>
-                <td>{request.startDate}</td>
-                <td>{request.endDate}</td>
-                <td>{calculateDuration(request.startDate, request.endDate)}</td>
+                <td>{request.amount}</td>
                 <td>{request.requestStatus}</td>
-                <td>{request.requestStatus==='PENDING' ? <button className="cancel-day-off-request-button" onClick={(e) => handleDayOffCancel(e,request.id)}>Cancel Request</button> : request.updatedAt }</td>
+                <td>{request.requestStatus==='PENDING' ? <button className="cancel-advance-request-button" onClick={(e) => handleAdvanceCancel(e,request.id)}>Cancel Request</button> : request.updatedAt }</td>
               </tr>
             ))}
           </tbody>
@@ -87,4 +74,4 @@ const PersonnelDayOffPage = () => {
   );
 };
 
-export default PersonnelDayOffPage;
+export default PersonnelAdvancePage;
