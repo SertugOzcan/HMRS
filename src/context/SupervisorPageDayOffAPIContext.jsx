@@ -50,7 +50,7 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
                 console.log("OLD REQUEST ŞU: " , oldRequest);
                 setPendingDayOffRequests(prevRequest => prevRequest.filter(request => request.id !== oldRequest.id))
                 setNotPendingDayOffRequests(prevRequests => [oldRequest, ...prevRequests])
-                // window.location.reload(true);
+                 window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on updating day off update request! ", error);
