@@ -1,0 +1,45 @@
+
+/* HOME PAGE  */
+.home-page{
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .home-container {
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    align-items: center;
+    width: 90%;
+  }
+  .home-container h1{
+    margin-bottom: 12px;
+  }
+  .home-texts{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 8px;
+    width: 90%;
+  }
+  .home-button{
+    margin-top: 15px;
+    background-color: #1e478fe1;
+    padding: 12px;
+    width: 30%;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.5s ease;
+  }
+  .home-button:hover{
+    background-color: #1e488f;
+  }
+  
+  .home-img img{
+    width: 100%;
+    height: auto;
+  }
