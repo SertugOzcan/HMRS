@@ -1,0 +1,115 @@
+.spending-request-card-container{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.5s ease;
+}
+.spending-request-card-container:hover{
+    /* background-color: #1e478f1a; */
+}
+.spending-request-card-body{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+.spending-request-card-img{
+    width: 70px;
+    border: 1px solid #1e478f2a;
+    border-radius: 100%;
+    position: relative;
+    left: 5px;
+}
+.spending-request-card-img img{
+    width: 100%;
+}
+.spending-request-card-data-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+    height: 80px;
+}
+.spending-request-card-data-div h3{
+    color: #1e488f;
+}
+.spending-request-card-data-div p{
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: normal;
+}
+.spending-request-card-buttons{
+    display: flex;
+    gap: 10px;
+}
+.spending-request-accept-button{
+    width: 80px;
+    height: 30px;
+    border: 1px solid #33333388;
+    background-color: #00ff00ab;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #333333e3;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.spending-request-accept-button:hover{
+    background-color: #00ff00;
+    scale: 1.07;
+}
+.spending-request-decline-button{
+    width: 80px;
+    height: 30px;
+    border: 1px solid #33333388;
+    background-color: #ff0000b7;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #ffffffd7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.spending-request-decline-button:hover{
+    background-color: #FF0000;
+    scale: 1.07;
+}
+
+.supervisor-ACCEPTED{
+    background-color: rgba(95, 190, 83, 0.801);
+}
+
+.supervisor-ACCEPTED:hover{
+    background-color: rgba(66, 221, 46, 0.801);
+}
+
+.supervisor-CANCELLED{
+    background-color: #5274a7b6;
+}
+
+.supervisor-CANCELLED:hover{
+    background-color: #4a84dacc;
+}
+
+.supervisor-DECLINED{
+    background-color: rgba(190, 83, 83, 0.801);
+}
+
+.supervisor-DECLINED:hover{
+    background-color: rgba(233, 57, 57, 0.801);
+}
+
+.supervisor-PENDING{
+    background-color: rgba(199, 199, 38, 0.712);
+}
+
+.supervisor-PENDING:hover{
+    background-color: rgba(233, 233, 34, 0.712);
+}
+
+
