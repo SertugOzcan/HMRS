@@ -211,7 +211,7 @@ const AddEmployeeForm = () => {
                   "Please select a date within the last 100 years and today."
                 );
               } else {
-                dateOfEmployment(date);
+                setDateOfEmployment(date);
               }
             }}
             minDate={new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)}

@@ -27,6 +27,7 @@ const PersonnelDayOffRequestForm = () => {
 
   return (
     <form className="personnel-day-off-request-form">
+      <h1>Day Off Request Form</h1><br />
       <div className="personnel-day-off-request-reason">
         <strong>DayOff Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
@@ -39,7 +40,7 @@ const PersonnelDayOffRequestForm = () => {
         </select>
       </div>
       <div className="personnel-day-off-request-description">
-        <input
+        <textarea
           type="text"
           className="day-off-request-description"
           value={dayoffDescription}
@@ -70,7 +71,7 @@ const PersonnelDayOffRequestForm = () => {
           />
         </div>
       </div>
-      <button onClick={handleDayOffSubmit}>Submit DayOff Request</button>
+      <button className="dayOff_button" onClick={handleDayOffSubmit}>Submit DayOff Request</button>
     </form>
   );
 };

@@ -40,7 +40,7 @@ const NavBar = ({theme}) => {
       <div className="btn-container">
       {isAuthenticated && isAuthenticated.role === "SUPERVISOR" 
       ? 
-      <Link to={supervisorCurrentPage === "supervisor" ? "/personel-page" : "/yonetici-page"}>
+      <Link to={supervisorCurrentPage === "supervisor" ? "/personnel-page" : "/yonetici-page"}>
         <div onClick={handleChange} className={`switch-tabbing-button ${supervisorCurrentPage !== 'supervisor' ? 'guest' : ''}`} >{supervisorCurrentPage === "supervisor" ? "Personnel" : "Supervisor"}</div>
       </Link>
       :

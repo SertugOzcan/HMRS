@@ -1,16 +1,102 @@
-.personnel-day-off-request-form{
+.personnel-day-off-request-form {
     width: 100%;
-    height: 50%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 100px auto; 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    position: relative;
-    left: 125px;
-    top: 100px;
-    gap: 30px;
 }
 
-.personnel-day-off-request-dates{
+.personnel-day-off-request-reason select,
+.personnel-day-off-request-description input,
+.react-datepicker-wrapper {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+}
+.personnel-day-off-request-description textarea {
+    width: 300px;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    
+    height: 50px; 
+}
+
+.personnel-day-off-request-dates {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.date-picker-wrapper {
+    width: 48%;
+}
+
+.dayOff_button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dayOff_button:hover {
+    background-color: #0056b3;
+}
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker__input-container {
+    width: 100%;
+}
+
+.react-datepicker-popper {
+    z-index: 9999; 
+}
+
+.react-datepicker {
+    font-size: 14px;
+}
+
+.react-datepicker__input-container input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.personnel-day-off-request-reason {
+    width: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+    
+}
+
+.personnel-day-off-request-reason strong {
+    width: 130px; 
+    margin-top: -15px; 
+}
+
+.personnel-day-off-request-reason select {
+    width: calc(100% - 110px); 
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
