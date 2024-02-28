@@ -247,3 +247,10 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   } */
   
+
+
+
+.holiday-day {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}

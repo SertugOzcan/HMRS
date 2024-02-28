@@ -1,13 +1,59 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
 import "./PersonnelInfoForm.css";
 import { AuthContext } from "../../context/AuthContext";
 import EditMyInfoForm from "../EditMyInfoForm/EditMyInfoForm";
 import { PersonnelPageAPIContext } from "../../context/PersonalPageAPIContext";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const PersonnelInfoForm = () => {
   const [isEditInfoClicked, setIsEditInfoClicked] = useState(false);
   const { isAuthenticated } = useContext(AuthContext);
   const { personnel } = useContext(PersonnelPageAPIContext);
+  const [holidays, setHolidays] = useState([]);
+
+  useEffect(() => {
+    
+    const mockHolidays = [
+      {
+        name: "New Year's Day",
+        startDate: "2024-01-01",
+        endDate: "2024-01-01",
+      },
+      {
+        name: "Labor Day",
+        startDate: "2024-05-01",
+        endDate: "2024-05-01",
+      },
+      {
+        name: "Independence Day",
+        startDate: "2024-07-04",
+        endDate: "2024-07-04",
+      },
+      {
+        name: "Christmas Day",
+        startDate: "2024-12-25",
+        endDate: "2024-12-25",
+      },
+    ];
+
+    setHolidays(mockHolidays);
+  }, []);
+
+  // useEffect(() => {
+  //   const fetchHolidays = async () => {
+  //     try {
+  //       const response = await axios.get('http://localhost:9095/api/v1/company/holidays');
+  //       setHolidays(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching holidays:', error);
+  //     }
+  //   };
+
+  //   fetchHolidays();
+  // }, []);
+
   const handleEditInfoClick = (e) => {
     e.preventDefault();
     setIsEditInfoClicked(true);
@@ -22,8 +68,9 @@ const PersonnelInfoForm = () => {
           </h1>
           <br />
           <h4>
-          You can view your profile, your company information and create a comment for your company...
-            Also you can ask for dayoff, spending or advance requests to your supervisor...
+            You can view your profile, your company information and create a
+            comment for your company... Also you can ask for dayoff, spending or
+            advance requests to your supervisor...
           </h4>
         </section>
       </main>
@@ -80,6 +127,22 @@ const PersonnelInfoForm = () => {
             )}
           </div>
         </div>
+      </div>
+      <div className="calendar-container">
+        <Calendar
+          className="holiday-calendar" 
+          value={new Date()}
+          tileContent={({ date }) => {
+            const holiday = holidays.find(
+              (holiday) =>
+                new Date(holiday.startDate).toDateString() ===
+                date.toDateString()
+            );
+            return holiday ? (
+              <div className="holiday-day">{holiday.name}</div>
+            ) : null;
+          }}
+        />
       </div>
     </div>
   );
