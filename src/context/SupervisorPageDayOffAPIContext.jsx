@@ -9,8 +9,8 @@ export const SupervisorPageDayOffAPIContext = createContext();
 export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
 
     const [dayOffRequests, setDayOffRequests] = useState([])
-    // const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
-    // const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
+    const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
+    const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -25,8 +25,8 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
                 const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-requests/${isAuthenticated.token}`)
                 console.log("DAYOFFREQUESTS-DATA: ", response.data)
                 setDayOffRequests(response.data);
-                // setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                // setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
+                setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
+                setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
             } catch (error) {
                 console.error("Error while fetching the dayoff requests data:", error);
             } finally {
@@ -60,7 +60,7 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
     }
 
     return (
-        <SupervisorPageDayOffAPIContext.Provider value={{dayOffRequests, handleDayOffDecision}}>
+        <SupervisorPageDayOffAPIContext.Provider value={{pendingDayOffRequests, notPendingDayOffRequests, handleDayOffDecision}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (

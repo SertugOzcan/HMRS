@@ -8,8 +8,9 @@ export const PersonnelPageDayOffAPIContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
 
-    const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
-    const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
+    const [dayOffRequests, setDayOffRequests] = useState([])
+    // const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
+    // const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,13 +24,12 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-my-requests/${isAuthenticated.token}`)
                 console.log("DAYOFFREQUESTS-DATA: ", response.data)
-                setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
+                setDayOffRequests(response.data);
+                // setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
+                // setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
             } catch (error) {
                 console.error("Error while fetching the dayoff requests data:", error);
             } finally {
-                // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-                // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
                 setIsLoading(false);
             }
         };
@@ -62,7 +62,7 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
         try {
             const response = await axios.patch("http://localhost:9089/api/v1/day-off/cancel-request", payload)
             if (response.status === 200) {
-                // window.location.reload(true);
+                window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on cancelling day off request! ", error);
@@ -72,7 +72,7 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
     }
 
     return (
-        <PersonnelPageDayOffAPIContext.Provider value={{pendingDayOffRequests, notPendingDayOffRequests, handleSubmit, handleCancelRequest}}>
+        <PersonnelPageDayOffAPIContext.Provider value={{dayOffRequests, handleSubmit, handleCancelRequest}}>
             {isLoading ? (
                 <h1 className="loading-h1-tags">Loading...</h1>
             ) : (
