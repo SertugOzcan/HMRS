@@ -3,10 +3,10 @@
     border-radius: 4px;
     position: relative;
     /* max-width: 1410px; */
-    width: 81%;
+    width: 86%;
     max-height: 777px;
     top: 85px;
-    left: 16%;
+    left: 260px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;

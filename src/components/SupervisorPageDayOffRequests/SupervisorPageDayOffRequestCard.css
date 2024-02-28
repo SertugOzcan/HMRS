@@ -1,8 +1,7 @@
 .dayoff-request-card-container{
     display: flex;
-    gap: 15px;
-    /* height: 100px; */
-    padding: 25px;
+    gap: 10px;
+    padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: 0.5s ease;
 }
@@ -11,16 +10,17 @@
 }
 .dayoff-request-card-body{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
+    gap: 10px;
 }
 .dayoff-request-card-img{
-    width: 80px;
+    width: 70px;
     border: 1px solid #1e478f2a;
     border-radius: 100%;
     position: relative;
-    left: 23px;
+    left: 5px;
 }
 .dayoff-request-card-img img{
     width: 100%;
@@ -34,11 +34,9 @@
 }
 .dayoff-request-card-data-div h3{
     color: #1e488f;
-    font-weight: 700;
 }
 .dayoff-request-card-data-div p{
     color: #333;
-    font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis; 
     white-space: normal;
@@ -89,11 +87,11 @@
 }
 
 .supervisor-CANCELLED{
-    background-color: #8695ac4d;
+    background-color: #5274a7b6;
 }
 
 .supervisor-CANCELLED:hover{
-    background-color: rgba(192, 210, 236, 0.301);
+    background-color: #4a84dacc;
 }
 
 .supervisor-DECLINED{
