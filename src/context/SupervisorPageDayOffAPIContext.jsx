@@ -46,10 +46,10 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
         try {
             const response = await axios.patch("http://localhost:9089/api/v1/day-off/update-request", payload)
             if (response.status === 200) {
-                // const oldRequest = pendingDayOffRequests.find(request => request.id === requestId);
-                // console.log("OLD REQUEST ŞU: " , oldRequest);
-                // setPendingDayOffRequests(prevRequest => prevRequest.filter(request => request.id !== oldRequest.id))
-                // setNotPendingDayOffRequests(prevRequests => [oldRequest, ...prevRequests])
+                const oldRequest = pendingDayOffRequests.find(request => request.id === requestId);
+                console.log("OLD REQUEST ŞU: " , oldRequest);
+                setPendingDayOffRequests(prevRequest => prevRequest.filter(request => request.id !== oldRequest.id))
+                setNotPendingDayOffRequests(prevRequests => [oldRequest, ...prevRequests])
                 window.location.reload(true);
             }    
         } catch (error) {
