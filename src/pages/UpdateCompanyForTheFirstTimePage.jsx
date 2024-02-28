@@ -44,7 +44,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
   const [startDate, setHolidayStartDate] = useState();
   const [endDate, setHolidayEndDate] = useState();
 
-  const [incomeRecipeDate,setIncomeRecipeDate] = useState(); 
+  const [incomeRecipeDate, setIncomeRecipeDate] = useState();
   const [expenseRecipeDate, setExpenseRecipeDate] = useState();
   const navigate = useNavigate();
 
@@ -63,14 +63,14 @@ const UpdateCompanyForTheFirstTimePage = () => {
         lastName: hrInfoSurname,
         email: hrInfoEmail,
         phone: hrInfoPhone,
-        gender: hrGender ? "FEMALE" : "MALE"
+        gender: hrGender ? "FEMALE" : "MALE",
       },
     ]);
     setHRInfoName("");
     setHRInfoSurname("");
     setHRInfoEmail("");
     setHRInfoPhone("");
-    setHrGender(false)
+    setHrGender(false);
   };
 
   const handleAddDepartment = (e) => {
@@ -112,12 +112,12 @@ const UpdateCompanyForTheFirstTimePage = () => {
       {
         description: incomeDescription,
         amount: incomeAmount,
-        incomeDate: incomeRecipeDate
+        incomeDate: incomeRecipeDate,
       },
     ]);
     setIncomeDescription("");
     setIncomeAmount(0);
-    setIncomeRecipeDate("")
+    setIncomeRecipeDate("");
   };
 
   const handleAddExpense = (e) => {
@@ -127,7 +127,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
       {
         description: expenseDescription,
         amount: expenseAmount,
-        expenseDate: expenseRecipeDate
+        expenseDate: expenseRecipeDate,
       },
     ]);
     setExpenseDescription("");
@@ -189,14 +189,16 @@ const UpdateCompanyForTheFirstTimePage = () => {
             <label className="company-name-header">
               {companyData.companyName}
             </label>
-            <input
-              type="text"
-              name="establishment-date"
-              id="establishment-date"
-              value={establishmentDate}
-              onChange={(event) => setEstablishmentDate(event.target.value)}
-              placeholder="Establishment Date"
-              required
+            <DatePicker
+              className="est_date_picker"
+              selected={establishmentDate}
+              onChange={(date) => setEstablishmentDate(date)}
+              maxDate={new Date()}
+              placeholderText="Establishment Date"
+              dateFormat="MM/dd/yyyy" // Örnek bir tarih formatı
+              wrapperClassName="custom-datepicker-wrapper" // Özel wrapper class
+              // İlgili <input> elementi için özel class ekleyin
+              calendarClassName="custom-datepicker-input"
             />
             <input
               type="text"
@@ -325,15 +327,19 @@ const UpdateCompanyForTheFirstTimePage = () => {
                   placeholder="Shift Start Hour (09:00)"
                   type="text"
                   value={departmentShiftStart}
-                  onChange={(event) => setDepartmentShiftStart(event.target.value)}
+                  onChange={(event) =>
+                    setDepartmentShiftStart(event.target.value)
+                  }
                   required
                 />
-                 <input
+                <input
                   className="input"
                   placeholder="Shift End Hour (17:00)"
                   type="text"
                   value={departmentShiftEnd}
-                  onChange={(event) => setDepartmentShiftEnd(event.target.value)}
+                  onChange={(event) =>
+                    setDepartmentShiftEnd(event.target.value)
+                  }
                   required
                 />
               </div>
@@ -343,7 +349,9 @@ const UpdateCompanyForTheFirstTimePage = () => {
                   placeholder="Break Start Hour (12:30)"
                   type="text"
                   value={departmentBreakStart}
-                  onChange={(event) => setDepartmentBreakStart(event.target.value)}
+                  onChange={(event) =>
+                    setDepartmentBreakStart(event.target.value)
+                  }
                   required
                 />
                 <input
@@ -351,7 +359,9 @@ const UpdateCompanyForTheFirstTimePage = () => {
                   placeholder="Break End Hour (13:30)"
                   type="text"
                   value={departmentBreakEnd}
-                  onChange={(event) => setDepartmentBreakEnd(event.target.value)}
+                  onChange={(event) =>
+                    setDepartmentBreakEnd(event.target.value)
+                  }
                   required
                 />
               </div>
@@ -455,15 +465,17 @@ const UpdateCompanyForTheFirstTimePage = () => {
                 />
               </div>
               <div className="date-picker">
-              <div className="dob-input">
-                <DatePicker
-                  placeholderText="Recipe Date"
-                  dateFormat="dd/MM/yyyy"
-                  selected={incomeRecipeDate}
-                  onChange={(incomeRecipeDate) => setIncomeRecipeDate(incomeRecipeDate)}
-                />
+                <div className="dob-input">
+                  <DatePicker
+                    placeholderText="Recipe Date"
+                    dateFormat="dd/MM/yyyy"
+                    selected={incomeRecipeDate}
+                    onChange={(incomeRecipeDate) =>
+                      setIncomeRecipeDate(incomeRecipeDate)
+                    }
+                  />
+                </div>
               </div>
-            </div>
             </div>
             <button className="buttonas" onClick={handleAddIncome}>
               <div className="buttonas-box">
@@ -506,15 +518,17 @@ const UpdateCompanyForTheFirstTimePage = () => {
                 />
               </div>
               <div className="date-picker">
-              <div className="ird-input">
-                <DatePicker
-                  placeholderText="Recipe Date"
-                  dateFormat="dd/MM/yyyy"
-                  selected={expenseRecipeDate}
-                  onChange={(expenseRecipeDate) => setExpenseRecipeDate(expenseRecipeDate)}
-                />
+                <div className="ird-input">
+                  <DatePicker
+                    placeholderText="Recipe Date"
+                    dateFormat="dd/MM/yyyy"
+                    selected={expenseRecipeDate}
+                    onChange={(expenseRecipeDate) =>
+                      setExpenseRecipeDate(expenseRecipeDate)
+                    }
+                  />
+                </div>
               </div>
-            </div>
             </div>
             <button className="buttonas" onClick={handleAddExpense}>
               <div className="buttonas-box">
