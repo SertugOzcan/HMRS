@@ -1,0 +1,85 @@
+.personnel-advance-page-container{
+    width: 80%;
+    position: relative;
+    left: 300px;
+    top: 100px;
+}
+
+.personnel-advance-page-upper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.personnel-advance-page-upper strong{
+    font-size: larger;
+}
+
+.personnel-advance-page-bottom table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.personnel-advance-page-bottom th,
+.personnel-advance-page-bottom td {
+  padding: 8px;
+  text-align: center;
+}
+
+
+.personnel-advance-page-bottom th {
+  background-color: #f2f2f2;
+}
+
+.ACCEPTED{
+    background-color: rgba(95, 190, 83, 0.801);
+    height: 47px;
+}
+
+.ACCEPTED:hover{
+    background-color: rgba(66, 221, 46, 0.801);
+}
+
+.CANCELLED{
+    background-color: rgba(83, 126, 190, 0.801);
+    height: 47px;
+}
+
+.CANCELLED:hover{
+    background-color: rgba(49, 123, 235, 0.801);
+}
+
+.DECLINED{
+    background-color: rgba(190, 83, 83, 0.801);
+    height: 47px;
+}
+
+.DECLINED:hover{
+    background-color: rgba(233, 57, 57, 0.801);
+}
+
+.PENDING{
+    background-color: rgba(199, 199, 38, 0.712);
+    height: 47px;
+}
+
+.PENDING:hover{
+    background-color: rgba(233, 233, 34, 0.712);
+}
+
+.cancel-advance-request-button{
+    background-color: rgba(83, 126, 190, 0.801);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    font-weight: 500;
+    color: beige;
+    &:hover{
+        background-color: rgba(49, 123, 235, 0.801);
+        scale: 1.2;
+    }
+}

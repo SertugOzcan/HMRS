@@ -24,6 +24,7 @@ const PersonnelAdvanceRequestForm = () => {
 
   return (
     <form className="personnel-advance-request-form">
+      <h1>Advance Request Form</h1><br />
       <div className="personnel-advance-request-reason">
         <strong>Advance Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
@@ -35,7 +36,7 @@ const PersonnelAdvanceRequestForm = () => {
         </select>
       </div>
       <div className="personnel-advance-request-description">
-        <input
+        <textarea
           type="text"
           className="advance-request-description"
           value={advanceDescription}

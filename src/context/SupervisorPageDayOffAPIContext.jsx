@@ -8,6 +8,7 @@ export const SupervisorPageDayOffAPIContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
 
+    const [dayOffRequests, setDayOffRequests] = useState([])
     const [pendingDayOffRequests, setPendingDayOffRequests] = useState([]);
     const [notPendingDayOffRequests, setNotPendingDayOffRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -23,13 +24,12 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-requests/${isAuthenticated.token}`)
                 console.log("DAYOFFREQUESTS-DATA: ", response.data)
+                setDayOffRequests(response.data);
                 setPendingDayOffRequests(response.data.filter(request => request.requestStatus === "PENDING"))
                 setNotPendingDayOffRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
             } catch (error) {
                 console.error("Error while fetching the dayoff requests data:", error);
             } finally {
-                // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-                // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
                 setIsLoading(false);
             }
         };
@@ -50,13 +50,11 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
                 console.log("OLD REQUEST ŞU: " , oldRequest);
                 setPendingDayOffRequests(prevRequest => prevRequest.filter(request => request.id !== oldRequest.id))
                 setNotPendingDayOffRequests(prevRequests => [oldRequest, ...prevRequests])
-                 window.location.reload(true);
+                window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on updating day off update request! ", error);
         } finally {
-            // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-            // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
             setIsLoading(false);
         }
     }

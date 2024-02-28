@@ -33,12 +33,12 @@ import { AdminPagePendingSupervisorsAPIContextProvider } from "./context/AdminPa
 import { AdminPagePendingCommentsAPIContextProvider } from "./context/AdminPagePendingCommentsAPIContext";
 import PersonnelInfoForm from "./components/PersonnelInfoForm/PersonnelInfoForm";
 import AddComment from "./components/AddCommentComponent/AddComment";
-import PersonnelDayOffRequestForm from './components/PersonnelDayOffRequestForm/PersonnelDayOffRequestForm'
+import PersonnelDayOffPage from './components/PersonnelDayOffPage/PersonnelDayOffPage'
 import { PersonnelPageDayOffAPIContextProvider } from "./context/PersonnelPageDayOffAPIContext";
 import { PersonnelPageAdvanceAPIContextProvider } from "./context/PersonnelPageAdvanceAPIContext";
 import { PersonnelPageSpendingAPIContextProvider } from "./context/PersonnelPageSpendingAPIContext";
-import PersonnelAdvanceRequestForm from "./components/PersonnelAdvanceRequestForm/PersonnelAdvanceRequestForm";
 import PersonnelSpendingRequestForm from "./components/PersonnelSpendingRequestForm/PersonnelSpendingRequestForm";
+import PersonnelAdvancePage from "./components/PersonnelAdvancePage/PersonnelAdvancePage";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -198,7 +198,7 @@ function App() {
               <PrivateRoute
                 element={
                   <PersonnelPageDayOffAPIContextProvider>
-                    <PersonnelDayOffRequestForm/>
+                    <PersonnelDayOffPage/>
                   </PersonnelPageDayOffAPIContextProvider>
                 }
               />
@@ -210,7 +210,7 @@ function App() {
               <PrivateRoute
                 element={
                   <PersonnelPageAdvanceAPIContextProvider>
-                    <PersonnelAdvanceRequestForm/>
+                    <PersonnelAdvancePage/>
                   </PersonnelPageAdvanceAPIContextProvider>
                 }
               />
