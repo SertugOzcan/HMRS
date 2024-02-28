@@ -4,12 +4,12 @@ import  SupervisorPageDayOffRequestCard  from '../SupervisorPageDayOffRequests/S
 import { SupervisorPageDayOffAPIContext } from '../../context/SupervisorPageDayOffAPIContext'
 
 const SupervisorPageDayOffRequestList = () => {
-    const {pendingDayOffRequests, notPendingDayOffRequests} = useContext(SupervisorPageDayOffAPIContext)
+    const {dayOffRequests} = useContext(SupervisorPageDayOffAPIContext)
 
   return (
     <div className='dayoff-request-list-container'>
-      {pendingDayOffRequests.map((dayoffRequest)=>(
-        <SupervisorPageDayOffRequestCard key={dayoffRequest.id} dayoffRequest={dayoffRequest}/>
+      {dayOffRequests.map((dayoffRequest)=>(
+        <SupervisorPageDayOffRequestCard key={dayoffRequest.id} request={dayoffRequest}/>
       ))}
     </div>
   )

@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./ZiyaretciPage.css";
-import axios from 'axios';
 import CompanyList from '../components/CompanyCardAndList/CompanyList';
-import CompanyInfo from '../components/CompanyInfo/CompanyInfo';
 
 // ???????
 

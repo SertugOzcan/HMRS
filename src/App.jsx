@@ -37,8 +37,13 @@ import PersonnelDayOffPage from './components/PersonnelDayOffPage/PersonnelDayOf
 import { PersonnelPageDayOffAPIContextProvider } from "./context/PersonnelPageDayOffAPIContext";
 import { PersonnelPageAdvanceAPIContextProvider } from "./context/PersonnelPageAdvanceAPIContext";
 import { PersonnelPageSpendingAPIContextProvider } from "./context/PersonnelPageSpendingAPIContext";
-import PersonnelSpendingRequestForm from "./components/PersonnelSpendingRequestForm/PersonnelSpendingRequestForm";
 import PersonnelAdvancePage from "./components/PersonnelAdvancePage/PersonnelAdvancePage";
+
+import PersonnelSpendingRequestPage from "./components/PersonnelSpendingRequestPage/PersonnelSpendingRequestPage";
+
+import HomePage from "./pages/HomePage/HomePage";
+import AboutUsCardList from "./pages/AboutUsPage/AboutUsCardList";
+
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -49,9 +54,10 @@ function App() {
         {isAuthenticated && <HomePageSideBar />}
         <NavBar theme={`${theme}`} />
         <Routes>
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/admin-login" element={<AdminLoginPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="about-us" element={<AboutUsCardList />} />
           <Route
             path="/admin-page/registered-users"
             element={
@@ -222,7 +228,7 @@ function App() {
               <PrivateRoute
                 element={
                   <PersonnelPageSpendingAPIContextProvider>
-                    <PersonnelSpendingRequestForm/>
+                    <PersonnelSpendingRequestPage/>
                   </PersonnelPageSpendingAPIContextProvider>
                 }
               />
