@@ -22,7 +22,7 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:9088/api/v1/advance/get-all-my-requests/${isAuthenticated.token}`)
                 console.log("ADVANCEREQUESTS-DATA: ", response.data)
-                setAdvanceRequests(response.data);
+                setAdvanceRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the advance requests data:", error);
             } finally {

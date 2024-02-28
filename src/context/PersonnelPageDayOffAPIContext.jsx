@@ -22,7 +22,7 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-my-requests/${isAuthenticated.token}`)
                 console.log("DAYOFFREQUESTS-DATA: ", response.data)
-                setDayOffRequests(response.data);
+                setDayOffRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the dayoff requests data:", error);
             } finally {
