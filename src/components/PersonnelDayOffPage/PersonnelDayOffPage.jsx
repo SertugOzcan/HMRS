@@ -40,6 +40,7 @@ const PersonnelDayOffPage = () => {
               <th>Request End Date</th>
               <th>Request Duration</th>
               <th>Request Status</th>
+              <th>Request UpdatedAt</th>
             </tr>
           </thead>
           <tbody>
@@ -52,11 +53,21 @@ const PersonnelDayOffPage = () => {
                 <td>{request.startDate}</td>
                 <td>{request.endDate}</td>
                 <td>{calculateDuration(request.startDate, request.endDate)}</td>
-                <td>
-                  {pendingDayOffRequests && <button className="cancel-day-off-request-button">Cancel Request</button>}
-                  {notPendingDayOffRequests &&
-                    notPendingDayOffRequests.updatedAt}
-                </td>
+                <td>{request.requestStatus}</td>
+                <td>{<button className="cancel-day-off-request-button">Cancel Request</button>}</td>
+              </tr>
+            ))}
+            {notPendingDayOffRequests.map((request, index) => (
+              <tr key={index} className={request.requestStatus}>
+                <td>{index+1}</td>
+                <td>{request.createdAt}</td>
+                <td>{request.reason}</td>
+                <td>{request.description}</td>
+                <td>{request.startDate}</td>
+                <td>{request.endDate}</td>
+                <td>{calculateDuration(request.startDate, request.endDate)}</td>
+                <td>{request.requestStatus}</td>
+                <td>{request.updatedAt}</td>
               </tr>
             ))}
           </tbody>

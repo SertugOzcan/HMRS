@@ -36,6 +36,7 @@
 
 .ACCEPTED{
     background-color: rgba(95, 190, 83, 0.801);
+    height: 47px;
 }
 
 .ACCEPTED:hover{
@@ -44,6 +45,7 @@
 
 .CANCELLED{
     background-color: rgba(83, 126, 190, 0.801);
+    height: 47px;
 }
 
 .CANCELLED:hover{
@@ -52,6 +54,7 @@
 
 .DECLINED{
     background-color: rgba(190, 83, 83, 0.801);
+    height: 47px;
 }
 
 .DECLINED:hover{
@@ -60,6 +63,7 @@
 
 .PENDING{
     background-color: rgba(199, 199, 38, 0.712);
+    height: 47px;
 }
 
 .PENDING:hover{
