@@ -10,7 +10,7 @@ const EditMyInfoForm = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [imgFile, setImgFile] = useState(null);
-  const [imgUrl, setImgUrl] = useState(""); 
+  const [imgUrl, setImgUrl] = useState("");
   // const [workPhone, setWorkPhone] = useState("");
 
   const handleSubmit = (e) => {
@@ -36,9 +36,9 @@ const EditMyInfoForm = () => {
 
     const newPersonnelInfo = imgFile
       ? { ...personnelInfo, profileImage: imgFile }
-      : imgUrl 
-        ? { ...personnelInfo, profileImageUrl: imgUrl }
-        : { ...personnelInfo, profileImageUrl: personnel.image };
+      : imgUrl
+      ? { ...personnelInfo, profileImageUrl: imgUrl }
+      : { ...personnelInfo, profileImageUrl: personnel.image };
 
     handleEditMyInfo(newPersonnelInfo);
   };
@@ -84,7 +84,7 @@ const EditMyInfoForm = () => {
             onChange={(e) => setPhone(e.target.value)}
             placeholder={personnel.phones[0].phoneNumber}
           />
-          <h6>Profile Picture URL</h6> 
+          <h6>Profile Picture URL</h6>
           <input
             className="edit-my-info-input"
             type="text"

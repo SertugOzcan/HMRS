@@ -12,7 +12,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
   const [establishmentDate, setEstablishmentDate] = useState("");
-  const [companyLogo, setCompanyLogo] = useState("");
+  const [companyLogo, setCompanyLogo] = useState(null);
   const [companyAddress, setCompanyAddress] = useState("");
   const [hrInfoList, setHrInfoList] = useState([]);
   const [companyDepartments, setCompanyDepartments] = useState([]);
@@ -195,19 +195,15 @@ const UpdateCompanyForTheFirstTimePage = () => {
               onChange={(date) => setEstablishmentDate(date)}
               maxDate={new Date()}
               placeholderText="Establishment Date"
-              dateFormat="MM/dd/yyyy" // Örnek bir tarih formatı
-              wrapperClassName="custom-datepicker-wrapper" // Özel wrapper class
-              // İlgili <input> elementi için özel class ekleyin
+              dateFormat="dd/MM/yyyy"
+              wrapperClassName="custom-datepicker-wrapper"
               calendarClassName="custom-datepicker-input"
             />
+
             <input
-              type="text"
-              name="company-logo"
-              id="company-logo"
-              value={companyLogo}
-              onChange={(event) => setCompanyLogo(event.target.value)}
-              placeholder="Company Logo URL"
-              required
+              className="company-logo-input"
+              type="file"
+              onChange={(e) => setCompanyLogo(e.target.files[0])}
             />
             <input
               type="text"
