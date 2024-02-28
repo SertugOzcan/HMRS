@@ -5,7 +5,7 @@ import "./PersonnelDayOffPage.css";
 const PersonnelDayOffPage = () => {
   const [isCreateButtonClicked, setIsCreateButtonClicked] = useState(false);
 
-  const { pendingDayOffRequests, notPendingDayOffRequests } = useContext(
+  const { dayOffRequests } = useContext(
     PersonnelPageDayOffAPIContext
   );
 
@@ -17,7 +17,7 @@ const PersonnelDayOffPage = () => {
     const start = new Date(startDate);
     const end = new Date(endDate);
   
-    const durationInDays = Math.floor((end - start) / (24 * 60 * 60 * 1000));
+    const durationInDays = Math.floor((end - start) / (24 * 60 * 60 * 1000) + 1);
   
     return durationInDays;
   };
@@ -44,7 +44,7 @@ const PersonnelDayOffPage = () => {
             </tr>
           </thead>
           <tbody>
-            {pendingDayOffRequests.map((request, index) => (
+            {dayOffRequests.map((request, index) => (
               <tr key={index} className={request.requestStatus}>
                 <td>{index+1}</td>
                 <td>{request.createdAt}</td>
@@ -54,20 +54,7 @@ const PersonnelDayOffPage = () => {
                 <td>{request.endDate}</td>
                 <td>{calculateDuration(request.startDate, request.endDate)}</td>
                 <td>{request.requestStatus}</td>
-                <td>{<button className="cancel-day-off-request-button">Cancel Request</button>}</td>
-              </tr>
-            ))}
-            {notPendingDayOffRequests.map((request, index) => (
-              <tr key={index} className={request.requestStatus}>
-                <td>{index+1}</td>
-                <td>{request.createdAt}</td>
-                <td>{request.reason}</td>
-                <td>{request.description}</td>
-                <td>{request.startDate}</td>
-                <td>{request.endDate}</td>
-                <td>{calculateDuration(request.startDate, request.endDate)}</td>
-                <td>{request.requestStatus}</td>
-                <td>{request.updatedAt}</td>
+                <td>{request.requestStatus==='PENDING' ? <button className="cancel-day-off-request-button">Cancel Request</button> : request.updatedAt }</td>
               </tr>
             ))}
           </tbody>
