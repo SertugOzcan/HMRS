@@ -139,7 +139,9 @@ textarea::-webkit-scrollbar-thumb {
 .registration-message {
   font-weight: bold;
   font-size: large;
-  margin-top: 10px;
+  position: relative; /* Yeni eklenen özellik */
+  top: 630px; /* Mesajın yukarıdan biraz aşağı kayması için */
+  
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -149,6 +151,7 @@ textarea::-webkit-scrollbar-thumb {
 .registration-message.show {
   opacity: 1;
   transform: translateY(0);
+  width: 298px;
 }
 
 .registration-message.success {
@@ -251,7 +254,8 @@ textarea::-webkit-scrollbar-thumb {
   width: 8em;
   height: 2.6em;
   line-height: 2.5em;
-  margin: 20px auto; /* Dikeyde 20px, yatayda otomatik ortalamak için */
+  margin: auto; /* Dikeyde 20px, yatayda otomatik ortalamak için */
+  margin-bottom: 40px;
   position: relative;
   overflow: hidden;
   border: 2px solid var(--color);
@@ -325,7 +329,7 @@ textarea::-webkit-scrollbar-thumb {
   overflow: hidden;
   font-size: 15px;
   cursor: pointer;
-  top: -10px;
+  top: 18px;
   left: 20px;
 }
 

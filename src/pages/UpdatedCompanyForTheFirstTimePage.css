@@ -1,5 +1,9 @@
 /* Ana bileşenler */
 
+.custom-datepicker-wrapper {
+  width: 300px; 
+
+}
 
 .update-company-page {
   position: relative;
