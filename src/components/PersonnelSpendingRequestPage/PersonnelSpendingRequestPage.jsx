@@ -2,14 +2,14 @@ import React, { useContext, useState, useRef, useEffect } from "react";
 import { PersonnelPageSpendingAPIContext } from "../../context/PersonnelPageSpendingAPIContext";
 import PersonnelSpendingRequestForm from "../PersonnelSpendingRequestForm/PersonnelSpendingRequestForm";
 import "./PersonnelSpendingRequestPage.css";
+
 const PersonnelSpendingRequestPage = () => {
-  const [fileToBeShown, setFileToBeShown] = useState("");
   const [isCreateButtonClicked, setIsCreateButtonClicked] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { pendingSpendingRequests } = useContext(PersonnelPageSpendingAPIContext);
+  const { pendingSpendingRequests,notPendingSpendingRequests, handleCancelRequest } = useContext(PersonnelPageSpendingAPIContext);
 
   const dropdownRef = useRef();
 
@@ -58,8 +58,8 @@ const PersonnelSpendingRequestPage = () => {
 
   const renderModalContent = () => {
     return (
-      <div className="modal">
-        <div className="modal-content">
+      <div className="spending-modal">
+        <div className="spending-modal-content">
           <span className="close" onClick={handleModalClose}>&times;</span>
           <div className="spending-file-img-container">
             <img src={selectedFile} alt="Selected File" />
@@ -69,9 +69,6 @@ const PersonnelSpendingRequestPage = () => {
     );
   };
 
-  const handleDropdownToggle = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
   return (
     <div className="personnel-spending-request-page-container">
       <div className="personnel-spending-page-upper">
@@ -153,6 +150,33 @@ const PersonnelSpendingRequestPage = () => {
                     request.updatedAt
                   )}
                 </td>
+              </tr>
+            ))}
+            {notPendingSpendingRequests.map((request, index) => (
+              <tr key={index} className={request.requestStatus}>
+                <td>{index + 1}</td>
+                <td>{request.createdAt}</td>
+                <td>{request.reason}</td>
+                <td>{request.description}</td>
+                <td>{request.amount}</td>
+                <td>{request.currency}</td>
+                <td>{request.spendingDate}</td>
+                <td ref={dropdownRef}>
+                      <select
+                        value={selectedFile || "Select the file to be shown"}
+                        onChange={handleFileChange}
+                        className="dropdown-menu"
+                      >
+                        <option disabled>Select the file to be shown</option>
+                        {request.attachments.map((file, index) => (
+                          <option key={index} value={file}>
+                            {file}
+                          </option>
+                        ))}
+                      </select>
+                </td>
+                <td>{request.requestStatus}</td>
+                <td>{request.updatedAt}</td>
               </tr>
             ))}
           </tbody>
