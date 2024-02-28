@@ -173,14 +173,17 @@
   .registration-message {
     display: flex;
     position: absolute;
-    right: 0px;
+    right: 55px;
+    top: 450px; /* Mesajın biraz aşağıya kayması */
     width: 50%;
     justify-content: center;
     text-align: center;
     padding: 10px;
     border-radius: 4px;
     transition: opacity 0.3s ease-in-out;
-  }
+}
+
+
 
   .register-selected-package-span {
     position: absolute;
