@@ -9,15 +9,18 @@ const EditMyInfoForm = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  // const [workPhone, setWorkPhone] = useState("");
   const [imgFile, setImgFile] = useState(null);
+  const [imgUrl, setImgUrl] = useState(""); 
+  // const [workPhone, setWorkPhone] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let newName = name.trim() === "" ? personnel.name : name.trim();
-    let newLastName = lastName.trim() === "" ? personnel.lastName : lastName.trim();
+    let newLastName =
+      lastName.trim() === "" ? personnel.lastName : lastName.trim();
     let newEmail = email.trim() === "" ? personnel.email : email.trim();
-    let newPersonalPhone = phone.trim() === "" ? personnel.phones[0].phoneNumber : phone.trim();
+    let newPersonalPhone =
+      phone.trim() === "" ? personnel.phones[0].phoneNumber : phone.trim();
 
     if (newPersonalPhone.length !== 11) {
       alert("Check personnel's phone number!");
@@ -28,11 +31,14 @@ const EditMyInfoForm = () => {
       name: newName,
       lastName: newLastName,
       email: newEmail,
-      phones: [newPersonalPhone]
+      phones: [newPersonalPhone],
     };
 
-    const newPersonnelInfo = imgFile ? {...personnelInfo, profileImage: imgFile} : {...personnelInfo, profileImageUrl: personnel.image}
-
+    const newPersonnelInfo = imgFile
+      ? { ...personnelInfo, profileImage: imgFile }
+      : imgUrl 
+        ? { ...personnelInfo, profileImageUrl: imgUrl }
+        : { ...personnelInfo, profileImageUrl: personnel.image };
 
     handleEditMyInfo(newPersonnelInfo);
   };
@@ -77,6 +83,15 @@ const EditMyInfoForm = () => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder={personnel.phones[0].phoneNumber}
+          />
+          <h6>Profile Picture URL</h6> 
+          <input
+            className="edit-my-info-input"
+            type="text"
+            name="imageUrl"
+            value={imgUrl}
+            onChange={(e) => setImgUrl(e.target.value)}
+            placeholder="Enter image URL"
           />
           <h6>Profile Picture</h6>
           <input
