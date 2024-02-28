@@ -1,12 +1,62 @@
-.personnel-advance-request-form{
+.personnel-advance-request-form {
     width: 100%;
-    height: 50%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 100px auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+}
+
+.personnel-advance-request-reason {
+    width: 100%;
+    display: flex;
     align-items: center;
-    position: relative;
-    left: 125px;
-    top: 100px;
-    gap: 30px;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.personnel-advance-request-description textarea {
+    width: 300px;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    
+    height: 50px; 
+}
+
+.personnel-advance-request-reason strong {
+    margin-top: -15px;
+    width: 100%;
+    margin-right: 10px;
+}
+
+
+.personnel-advance-request-amount input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.personnel-advance-request-form button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.personnel-advance-request-form button:hover {
+    background-color: #0056b3;
 }

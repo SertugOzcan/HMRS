@@ -39,6 +39,7 @@ const PersonnelSpendingRequestForm = () => {
 
   return (
     <form className="personnel-spending-request-form">
+      <h1>Spending Request Form</h1><br />
       <div className="personnel-spending-request-reason">
         <strong>Spending Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
@@ -50,7 +51,7 @@ const PersonnelSpendingRequestForm = () => {
         </select>
       </div>
       <div className="personnel-spending-request-description">
-        <input
+        <textarea
           type="text"
           className="spending-request-description"
           value={spendingDescription}
@@ -77,7 +78,7 @@ const PersonnelSpendingRequestForm = () => {
           <option value="EUR">EUR</option>
         </select>
       </div>
-      <div className="date-picker-wrapper">
+      <div className="spending-date-picker-wrapper">
           <ReactDatePicker
             placeholderText="Spending Date"
             selected={spendingDate}
@@ -93,7 +94,7 @@ const PersonnelSpendingRequestForm = () => {
           multiple
         />
       </div>
-      <button onClick={handleSpendingSubmit}>Submit Spending Request</button>
+      <button className="spend_button" onClick={handleSpendingSubmit}>Submit Spending Request</button>
     </form>
   );
 };
