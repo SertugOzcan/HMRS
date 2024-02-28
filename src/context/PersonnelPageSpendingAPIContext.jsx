@@ -36,13 +36,15 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
         getRequests();
     }, []);
 
-    const handleSubmit = async (newRequest) => {
+    const handleSubmit = async (newRequest, spendingAttachments) => {
         setIsLoading(true);
         const formData = new FormData();
-        // list multipart attachments hata verirse buraya bi bak -- Volkan kendine not...
         for (const key in newRequest) {
             formData.append(key, newRequest[key]);
         }
+        spendingAttachments.forEach((file, index) => {
+            formData.append(`attachments[${index}]`, file);
+        });
         formData.append("token", isAuthenticated.token);
         console.log("HAZIRLANAN NEW SPENDING FORM DATA: ", formData);
         try {
@@ -52,7 +54,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
                 },
             });
             if (response.status === 200) {
-                // window.location.reload(true);
+                window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on creating new spending request! ", error);

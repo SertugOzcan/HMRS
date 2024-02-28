@@ -37,6 +37,8 @@ import PersonnelDayOffRequestForm from './components/PersonnelDayOffRequestForm/
 import { PersonnelPageDayOffAPIContextProvider } from "./context/PersonnelPageDayOffAPIContext";
 import { PersonnelPageAdvanceAPIContextProvider } from "./context/PersonnelPageAdvanceAPIContext";
 import { PersonnelPageSpendingAPIContextProvider } from "./context/PersonnelPageSpendingAPIContext";
+import PersonnelAdvanceRequestForm from "./components/PersonnelAdvanceRequestForm/PersonnelAdvanceRequestForm";
+import PersonnelSpendingRequestForm from "./components/PersonnelSpendingRequestForm/PersonnelSpendingRequestForm";
 
 function App() {
   const { theme } = useContext(UserPreferencesContext);
@@ -208,7 +210,7 @@ function App() {
               <PrivateRoute
                 element={
                   <PersonnelPageAdvanceAPIContextProvider>
-                    <PersonnelInfoForm/>
+                    <PersonnelAdvanceRequestForm/>
                   </PersonnelPageAdvanceAPIContextProvider>
                 }
               />
@@ -220,7 +222,7 @@ function App() {
               <PrivateRoute
                 element={
                   <PersonnelPageSpendingAPIContextProvider>
-                    <PersonnelInfoForm/>
+                    <PersonnelSpendingRequestForm/>
                   </PersonnelPageSpendingAPIContextProvider>
                 }
               />

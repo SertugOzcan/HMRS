@@ -1,0 +1,12 @@
+.personnel-advance-request-form{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 125px;
+    top: 100px;
+    gap: 30px;
+}

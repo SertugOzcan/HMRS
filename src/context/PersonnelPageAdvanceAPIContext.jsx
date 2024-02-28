@@ -43,7 +43,7 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
         try {
             const response = await axios.post("http://localhost:9088/api/v1/advance/create-request", payload)
             if (response.status === 200) {
-                // window.location.reload(true);
+                window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on creating new advance request! ", error);
