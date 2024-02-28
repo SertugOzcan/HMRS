@@ -8,7 +8,7 @@ const Footer = ({theme}) => {
         <Link to="/">
           <button>Home</button>
         </Link>
-        <Link to="/aboutus">
+        <Link to="/about-us">
           <button>About Us</button>
         </Link>
         <Link to="/contactus">
