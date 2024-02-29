@@ -275,7 +275,7 @@ const RegisterPage = () => {
         </form>
 
         <div
-          className={`registration-message ${visible ? "show" : ""} ${
+          className={`registration-message-guest ${visible ? "show" : ""} ${
             isSuccess ? "success" : "error"
           }`}
         >
