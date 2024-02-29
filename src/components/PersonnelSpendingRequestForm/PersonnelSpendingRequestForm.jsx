@@ -4,7 +4,7 @@ import ReactDatePicker from "react-datepicker";
 import { PersonnelPageSpendingAPIContext } from "../../context/PersonnelPageSpendingAPIContext";
 
 const PersonnelSpendingRequestForm = () => {
-  const [reason, setReason] = useState("A");
+  const [reason, setReason] = useState("TRAVEL");
   const [spendingDescription, setSpendingDescription] = useState("");
   const [spendingAmount, setSpendingAmount] = useState();
   const [spendingCurrency, setSpendingCurrency] = useState("TL");

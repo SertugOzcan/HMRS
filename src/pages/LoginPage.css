@@ -28,12 +28,12 @@
 .container h2 {
     text-align: center;
     margin-bottom: 30px;
-    color: #fff;
+    color: #333;
 }
 
 .container a {
     text-decoration: none;
-    color: lightblue;
+    color: rgb(77, 126, 143);
 }
 
 .btn {
@@ -73,7 +73,7 @@
     width: 100%;
     padding: 15px 0;
     font-size: 18px;
-    color: #fff;
+    color: #333;
 }
 
 .form-control input:focus,
@@ -87,7 +87,7 @@
     top: 15px;
     left: 0;
     pointer-events: none;
-    color: #fff;
+    color: #333;
 }
 
 .form-control label span {
@@ -99,7 +99,7 @@
 
 .form-control input:focus + label span,
 .form-control input:valid + label span {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     transform: translateY(-30px);
 }
 
@@ -124,7 +124,7 @@
 }
 
 .login-username-input:focus, .login-pwd-input:focus {
-    box-shadow: 0 0 0 4px #545966;
+    box-shadow: 0 0 0 4px rgb(88, 135, 151);
 }
 
 .login-pwd-input, .login-username-input{
