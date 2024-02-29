@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import "./CompanyInfo.css";
 import { GuestPageAPIContext } from "../../context/GuestPageAPIContext";
 import SupervisorCardList from "./SupervisorCardList";
 import CommentCardList from "./CommentCardList";
+
 
 const CompanyInfo = ({ selectedCompanyInfo, setFilteredCompanies }) => {
   const { setSelectedCompanyId, } = useContext(GuestPageAPIContext);

@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import "./PersonnelPageCompanyInfoForm.css";
 import HRInfoCard from "../HRInfoCard/HRInfoCard";
 

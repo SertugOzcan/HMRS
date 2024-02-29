@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import "./RatingComponent.css"
+// eslint-disable-next-line react/prop-types
 const RatingComponent = ({setRating, rating}) => {
     const [hover, setHover] = useState(null);
   return (

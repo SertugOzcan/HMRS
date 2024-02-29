@@ -1,6 +1,7 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import "./Footer.css"
 import { Link } from "react-router-dom";
+
 const Footer = ({theme}) => {
   return (
     <footer className={`footer-container ${theme}`}>

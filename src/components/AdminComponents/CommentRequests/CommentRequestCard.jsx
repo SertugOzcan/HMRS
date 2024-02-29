@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './CommentRequestCard.css'
 import { useContext } from 'react';
 import { AdminPagePendingCommentsAPIContext } from '../../../context/AdminPagePendingCommentsAPIContext';

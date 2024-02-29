@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+/* eslint-disable react/prop-types */
+import { useContext } from "react";
 import "./CompanyCard.css";
 import { GuestPageAPIContext } from "../../context/GuestPageAPIContext";
 

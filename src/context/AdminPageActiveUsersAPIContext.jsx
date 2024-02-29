@@ -20,7 +20,7 @@ export const AdminPageActiveUsersAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:9090/api/v1/auth/get-all-active')
+                const response = await axios.get('http://localhost:80/auth/get-all-active')
                 console.log("GETALLACTIVE: ", response);
                 setActiveUsers(response.data)
             } catch (error) {

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "./AddComment.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
@@ -32,7 +32,7 @@ const AddComment = () => {
     };
   
     try {
-      const response = await axios.post('http://localhost:9097/api/v1/comment/add', newComment);
+      const response = await axios.post('http://localhost:80/comment/add', newComment);
 
       if (response.status === 200) {
         console.log("Add Comment Successfull")

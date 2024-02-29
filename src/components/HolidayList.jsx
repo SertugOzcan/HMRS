@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import HolidayCard from './HolidayCard'
 
 const HolidayList = ({holidays}) => {

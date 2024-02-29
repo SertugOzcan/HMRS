@@ -1,6 +1,6 @@
-import React from "react";
-import SupervisorCard from "./SupervisorCard";
+/* eslint-disable react/prop-types */
 
+import SupervisorCard from "./SupervisorCard";
 
 const SupervisorCardList = ({ selectedCompanyInfo }) => {
   return (

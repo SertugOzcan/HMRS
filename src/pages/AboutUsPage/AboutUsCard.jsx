@@ -1,4 +1,3 @@
-import React from 'react'
 import "./AboutUsCard.css"
 import {FaGithub, FaLinkedin} from 'react-icons/fa'
 const AboutUsCard = ({developer}) => {

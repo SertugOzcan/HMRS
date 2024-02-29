@@ -190,7 +190,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
     });
 
     try {
-      const response = await axios.put("http://localhost:9095/api/v1/company/update-for-the-first-time", formData, {
+      const response = await axios.put("http://localhost:80/company/update-for-the-first-time", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
