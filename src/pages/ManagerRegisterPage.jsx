@@ -123,8 +123,14 @@ const ManagerRegisterPage = () => {
       hasError = true;
     }
 
+    if (identityNumber.startsWith("0")) {
+      setIdentityNumberError("Identity number can not start with number zero!");
+      hasError = true;
+    }
+
+
     if (!phone.startsWith("0")) {
-      setPhoneNumberError("Phone number must start with zero!");
+      setPhoneNumberError("Phone number must start with number zero!");
       hasError = true;
     }
 
@@ -170,8 +176,12 @@ const ManagerRegisterPage = () => {
           }
         : payloadPreparation;
 
+      // const response = await axios.post(
+      //   "http://localhost:9090/api/v1/auth/register-supervisor",
+      //   payload
+      // );
       const response = await axios.post(
-        "http://localhost:9090/api/v1/auth/register-supervisor",
+        "http://localhost:80/auth/register-supervisor",
         payload
       );
 

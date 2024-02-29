@@ -1,5 +1,5 @@
 // RegisterPage.jsx
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "./RegisterPage.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -96,7 +96,7 @@ const RegisterPage = () => {
       };
       
       const response = await axios.post(
-        "http://localhost:9090/api/v1/auth/register-guest",
+        "http://localhost:80/auth/register-guest",
         payload
       );
       

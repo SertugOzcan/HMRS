@@ -1,4 +1,3 @@
-import React from 'react';
 import "./ZiyaretciPage.css";
 import CompanyList from '../components/CompanyCardAndList/CompanyList';
 

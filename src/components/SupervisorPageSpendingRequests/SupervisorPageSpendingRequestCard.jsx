@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext,useState,useEffect,useRef } from "react";
 import { SupervisorPageSpendingAPIContext } from "../../context/SupervisorPageSpendingAPIContext";
 import "./SupervisorPageSpendingRequestCard.css";

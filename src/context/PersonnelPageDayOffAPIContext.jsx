@@ -20,7 +20,7 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-my-requests/${isAuthenticated.token}`)
+                const response = await axios.get(`http://localhost:80/day-off/get-all-my-requests/${isAuthenticated.token}`)
                 console.log("DAYOFFREQUESTS-DATA: ", response.data)
                 setDayOffRequests(response.data.reverse());
             } catch (error) {
@@ -37,7 +37,7 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
         const payload = {...newRequest, token: isAuthenticated.token}
         console.log("Hazırlanan new dayoff payload:", payload);
         try {
-            const response = await axios.post("http://localhost:9089/api/v1/day-off/create-request", payload)
+            const response = await axios.post("http://localhost:80/day-off/create-request", payload)
             if (response.status === 200) {
                 window.location.reload(true);
             }    
@@ -59,7 +59,7 @@ export const PersonnelPageDayOffAPIContextProvider = ({children}) => {
         }
         console.log("Hazırlanan cancel dayoff payload:", payload);
         try {
-            const response = await axios.patch("http://localhost:9089/api/v1/day-off/cancel-request", payload)
+            const response = await axios.patch("http://localhost:80/day-off/cancel-request", payload)
             if (response.status === 200) {
                 window.location.reload(true);
             }    

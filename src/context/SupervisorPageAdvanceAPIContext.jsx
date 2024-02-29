@@ -20,7 +20,7 @@ export const SupervisorPageAdvanceAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response = await axios.get(`http://localhost:9088/api/v1/advance/get-all-requests/${isAuthenticated.token}`)
+                const response = await axios.get(`http://localhost:80/advance/get-all-requests/${isAuthenticated.token}`)
                 console.log("ADVANCEREQUESTS-DATA: ", response.data)
                 setAdvanceRequests(response.data.reverse());
             } catch (error) {
@@ -40,7 +40,7 @@ export const SupervisorPageAdvanceAPIContextProvider = ({children}) => {
             "decision": decision
         };
         try {
-            const response = await axios.patch("http://localhost:9088/api/v1/advance/update-request", payload)
+            const response = await axios.patch("http://localhost:80/advance/update-request", payload)
             if (response.status === 200) {
                 window.location.reload(true);
             }    

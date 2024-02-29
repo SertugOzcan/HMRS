@@ -20,7 +20,7 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response = await axios.get(`http://localhost:9089/api/v1/day-off/get-all-requests/${isAuthenticated.token}`)
+                const response = await axios.get(`http://localhost:80/day-off/get-all-requests/${isAuthenticated.token}`)
                 console.log("DAYOFFREQUESTS-DATA: ", response.data)
                 setDayOffRequests(response.data.reverse());
             } catch (error) {
@@ -40,7 +40,7 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
             "decision": decision
         };
         try {
-            const response = await axios.patch("http://localhost:9089/api/v1/day-off/update-request", payload)
+            const response = await axios.patch("http://localhost:80/day-off/update-request", payload)
             if (response.status === 200) {
                 window.location.reload(true);
             }    

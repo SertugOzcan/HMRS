@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import axios from "axios";
+import { useContext, useState, useEffect } from "react";
 import "./PersonnelInfoForm.css";
 import { AuthContext } from "../../context/AuthContext";
 import EditMyInfoForm from "../EditMyInfoForm/EditMyInfoForm";

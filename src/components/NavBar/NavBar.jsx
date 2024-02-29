@@ -6,8 +6,6 @@ import { AuthContext } from "../../context/AuthContext";
 import LoginIcon from '../../assets/login.svg'
 import LogoutIcon from '../../assets/logout.svg'
 
-
-
 // eslint-disable-next-line react/prop-types
 const NavBar = ({theme}) => {
 

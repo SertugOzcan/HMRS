@@ -21,7 +21,7 @@ export const SupervisorPageSpendingAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response = await axios.get(`http://localhost:9087/api/v1/spending/get-all-requests/${isAuthenticated.token}`)
+                const response = await axios.get(`http://localhost:80/spending/get-all-requests/${isAuthenticated.token}`)
                 console.log("SPENDINGREQUESTS-DATA: ", response.data)
                 setPendingSpendingRequests(response.data.filter(request => request.requestStatus === "PENDING"))
                 setNotPendingSpendingRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
@@ -44,7 +44,7 @@ export const SupervisorPageSpendingAPIContextProvider = ({children}) => {
             "decision": decision.toString()
         };
         try {
-            const response = await axios.patch("http://localhost:9087/api/v1/spending/update-request", payload)
+            const response = await axios.patch("http://localhost:80/spending/update-request", payload)
             if (response.status === 200) {
                 const oldRequest = pendingSpendingRequests.find(request => request.id === requestId);
                 console.log("OLD REQUEST ŞU: " , oldRequest);

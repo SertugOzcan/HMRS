@@ -21,7 +21,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response = await axios.get(`http://localhost:9087/api/v1/spending/get-all-my-requests/${isAuthenticated.token}`)
+                const response = await axios.get(`http://localhost:80/spending/get-all-my-requests/${isAuthenticated.token}`)
                 console.log("SPENDINGREQUESTS-DATA: ", response.data)
                 setPendingSpendingRequests(response.data.filter(request => request.requestStatus === "PENDING"))
                 setNotPendingSpendingRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
@@ -48,7 +48,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
         formData.append("token", isAuthenticated.token);
         console.log("HAZIRLANAN NEW SPENDING FORM DATA: ", formData);
         try {
-            const response = await axios.post("http://localhost:9087/api/v1/spending/create-request", formData, {
+            const response = await axios.post("http://localhost:80/spending/create-request", formData, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
@@ -71,9 +71,9 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
         }
         console.log("Hazırlanan cancel spending payload:", payload);
         try {
-            const response = await axios.patch("http://localhost:9087/api/v1/spending/cancel-request", payload)
+            const response = await axios.patch("http://localhost:80/spending/cancel-request", payload)
             if (response.status === 200) {
-                // window.location.reload(true);
+                window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on cancelling spending request! ", error);

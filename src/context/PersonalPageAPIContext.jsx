@@ -26,7 +26,7 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response1 = await axios.get(`http://localhost:9091/api/v1/personnel/get/${isAuthenticated.token}`)
+                const response1 = await axios.get(`http://localhost:80/personnel/get/${isAuthenticated.token}`)
                 console.log("PERSONEL RESPONSE DÖNEN: ", response1.data);
                 setPersonnel(response1.data)
                 // const response2 = await axios.get(`http://localhost:9091/api/v1/personnel/get-all`)
@@ -54,7 +54,7 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
         console.log("HAZIRLANAN FORM DATA: ", formData);
       
         try {
-          const response = await axios.put("http://localhost:9091/api/v1/personnel/update", formData, {
+          const response = await axios.put("http://localhost:80/personnel/update", formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

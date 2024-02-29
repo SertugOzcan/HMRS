@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from 'react';
+import { useEffect, useContext, useRef } from 'react';
 import './SupervisorPageEmployeeList.css';
 import EmployeeList from "../EmployeeList";
 import AddEmployeeForm from "../AddEmployee";
