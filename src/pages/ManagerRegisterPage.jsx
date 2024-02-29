@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
@@ -120,6 +120,11 @@ const ManagerRegisterPage = () => {
 
     if (phone.length !== 11) {
       setPhoneNumberError("Phone number must be 11 characters");
+      hasError = true;
+    }
+
+    if (!phone.startsWith("0")) {
+      setPhoneNumberError("Phone number must start with zero!");
       hasError = true;
     }
 

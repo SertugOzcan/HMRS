@@ -27,6 +27,11 @@ const EditMyInfoForm = () => {
       return;
     }
 
+    if (!newPersonalPhone.startsWith("0")) {
+      alert("Phone number must start with zero!");
+      return;
+    }
+
     const personnelInfo = {
       name: newName,
       lastName: newLastName,

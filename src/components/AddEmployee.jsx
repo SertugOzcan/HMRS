@@ -42,6 +42,10 @@ const AddEmployeeForm = () => {
         alert("Check personnel's phone number!");
         return;
       }
+      if (!phone.startsWith("0")) {
+        alert("Phone number must start with zero!");
+        return;
+      }
       
       // if (dateOfBirth > Date.now()) {
       //   alert("Check personnel's date of birth!")
