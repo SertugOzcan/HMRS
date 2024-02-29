@@ -4,13 +4,14 @@
   top: 100px;
   order: 1;
   width: 80%;  
-  
 }
+
 .registered-users {
   display: flex;
   flex-wrap: wrap; 
- 
+  gap: 30px;
 }
+
 .registered-user {
   margin-bottom: 0px;
   color: azure;
@@ -21,8 +22,8 @@
 
 
 .card_active_users {
-  width: 200px;
-  height: 254px;
+  width: 300px;
+  height: 200px;
   background: #07182E;
   position: relative;
   display: flex;
@@ -45,7 +46,7 @@
   position: absolute;
   width: 100px;
   background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
-  height: 130%;
+  height: 150%;
   animation: rotBGimg 3s linear infinite;
   transition: all 0.2s linear;
   
