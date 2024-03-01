@@ -9,7 +9,7 @@ const PersonnelSpendingRequestPage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { pendingSpendingRequests,notPendingSpendingRequests, handleCancelRequest } = useContext(PersonnelPageSpendingAPIContext);
+  const { spendingRequests, handleCancelRequest } = useContext(PersonnelPageSpendingAPIContext);
 
   const dropdownRef = useRef();
 
@@ -114,7 +114,7 @@ const PersonnelSpendingRequestPage = () => {
             </tr>
           </thead>
           <tbody>
-            {pendingSpendingRequests.map((request, index) => (
+            {spendingRequests.map((request, index) => (
               <tr key={index} className={request.requestStatus}>
                 <td>{index + 1}</td>
                 <td>{request.createdAt}</td>
@@ -150,33 +150,6 @@ const PersonnelSpendingRequestPage = () => {
                     request.updatedAt
                   )}
                 </td>
-              </tr>
-            ))}
-            {notPendingSpendingRequests.map((request, index) => (
-              <tr key={index} className={request.requestStatus}>
-                <td>{index + 1}</td>
-                <td>{request.createdAt}</td>
-                <td>{request.reason}</td>
-                <td>{request.description}</td>
-                <td>{request.amount}</td>
-                <td>{request.currency}</td>
-                <td>{request.spendingDate}</td>
-                <td ref={dropdownRef}>
-                      <select
-                        value={selectedFile || "Select the file to be shown"}
-                        onChange={handleFileChange}
-                        className="dropdown-menu"
-                      >
-                        <option disabled>Select the file to be shown</option>
-                        {request.attachments.map((file, index) => (
-                          <option key={index} value={file}>
-                            {file}
-                          </option>
-                        ))}
-                      </select>
-                </td>
-                <td>{request.requestStatus}</td>
-                <td>{request.updatedAt}</td>
               </tr>
             ))}
           </tbody>

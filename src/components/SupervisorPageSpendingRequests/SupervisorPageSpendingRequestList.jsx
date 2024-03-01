@@ -4,19 +4,13 @@ import { useContext } from "react";
 import {SupervisorPageSpendingAPIContext} from "../../context/SupervisorPageSpendingAPIContext";
 
 const SupervisorPageSpendingRequestList = () => {
-  const { pendingSpendingRequests, notPendingSpendingRequests } = useContext(
+  const { spendingRequests } = useContext(
     SupervisorPageSpendingAPIContext
   );
 
   return (
     <div className="supervisor-page-spending-request-list-container">
-      {pendingSpendingRequests.map((spendingRequest) => (
-        <SupervisorPageSpendingRequestCard
-          key={spendingRequest.id}
-          request={spendingRequest}
-        />
-      ))}
-      {notPendingSpendingRequests.map((spendingRequest) => (
+      {spendingRequests.map((spendingRequest) => (
         <SupervisorPageSpendingRequestCard
           key={spendingRequest.id}
           request={spendingRequest}

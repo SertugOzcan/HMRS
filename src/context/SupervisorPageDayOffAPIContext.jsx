@@ -42,7 +42,7 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
         try {
             const response = await axios.patch("http://localhost:80/day-off/update-request", payload)
             if (response.status === 200) {
-                window.location.reload(true);
+              window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on updating day off update request! ", error);

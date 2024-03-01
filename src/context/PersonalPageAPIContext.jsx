@@ -43,35 +43,40 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
 
 
     const handleEditMyInfo = async (newPersonnelInfo) => {
+      let newProfileImageUrl
+      if(newPersonnelInfo.haveFile) {
+        const file = newPersonnelInfo.profileImageUrl;
         const formData = new FormData();
-
-        for (const key in newPersonnelInfo) {
-          formData.append(key, newPersonnelInfo[key]);
-        }
-      
-        formData.append("token", isAuthenticated.token);
-      
-        console.log("HAZIRLANAN FORM DATA: ", formData);
-      
+        formData.append("file", file);
+        formData.append("upload_preset", "epd6rg4j");
         try {
-          const response = await axios.put("http://localhost:80/personnel/update", formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
-      
-          console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
-      
-          if (response.status === 200) {
-            // setEmployees(prevEmployees => [...prevEmployees, response.data]);
-            // setIsAddingEmployee(false);
-            window.location.reload(true);
-          }
+          const response = await axios.post("https://api.cloudinary.com/v1_1/dhwpj4ze4/upload", formData);
+          newProfileImageUrl = response.data.url;
         } catch (error) {
-          console.error("Error updating personnel:", error);
-        }
-    };
+          console.error("Error while uploading image for personnel edit my info:", error);
+        }   
+      } else {
+        newProfileImageUrl = newPersonnelInfo.profileImageUrl;
+      }
 
+      const payload = {
+        token: isAuthenticated.token,
+        name: newPersonnelInfo.name,
+        lastName: newPersonnelInfo.lastName,
+        email: newPersonnelInfo.email,
+        phones: newPersonnelInfo.phones,
+        profileImageUrl: newProfileImageUrl
+      }
+
+      try {
+        const response = await axios.put("http://localhost:80/personnel/update", payload);
+        if (response.status === 200) {
+          window.location.reload(true);
+        }
+      } catch (error) {
+        console.error("Error updating personnel:", error);
+      }
+    };
 
     return (
         <PersonnelPageAPIContext.Provider value={{personnel, handleEditMyInfo}}>

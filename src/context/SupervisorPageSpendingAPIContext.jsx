@@ -8,8 +8,7 @@ export const SupervisorPageSpendingAPIContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const SupervisorPageSpendingAPIContextProvider = ({children}) => {
 
-    const [pendingSpendingRequests, setPendingSpendingRequests] = useState([]);
-    const [notPendingSpendingRequests, setNotPendingSpendingRequests] = useState([]);
+    const [spendingRequests, setSpendingRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,13 +22,10 @@ export const SupervisorPageSpendingAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:80/spending/get-all-requests/${isAuthenticated.token}`)
                 console.log("SPENDINGREQUESTS-DATA: ", response.data)
-                setPendingSpendingRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                setNotPendingSpendingRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
+                setSpendingRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the spending requests data:", error);
             } finally {
-                // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-                // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
                 setIsLoading(false);
             }
         };
@@ -46,23 +42,17 @@ export const SupervisorPageSpendingAPIContextProvider = ({children}) => {
         try {
             const response = await axios.patch("http://localhost:80/spending/update-request", payload)
             if (response.status === 200) {
-                const oldRequest = pendingSpendingRequests.find(request => request.id === requestId);
-                console.log("OLD REQUEST ŞU: " , oldRequest);
-                setPendingSpendingRequests(prevRequest => prevRequest.filter(request => request.id !== oldRequest.id))
-                setNotPendingSpendingRequests(prevRequests => [oldRequest, ...prevRequests])
-                // window.location.reload(true);
+              window.location.reload(true);
             }    
         } catch (error) {
             console.log("Error on updating spending update request! ", error);
         } finally {
-            // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-            // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
             setIsLoading(false);
         }
     }
 
     return (
-        <SupervisorPageSpendingAPIContext.Provider value={{pendingSpendingRequests, notPendingSpendingRequests, handleSpendingDecision}}>
+        <SupervisorPageSpendingAPIContext.Provider value={{spendingRequests, handleSpendingDecision}}>
             {isLoading ? (
                 <div className="loader">
                 <div className="box box0">

@@ -147,61 +147,40 @@ const UpdateCompanyForTheFirstTimePage = () => {
       return;
     }
 
-    const formData = new FormData();
-
-    const formattedDate = (date) => {
-      return new Date(date).toISOString().split('T')[0];
+    const beforePayload = {
+      token: isAuthenticated.token,
+      establishmentDate: establishmentDate,
+      address: companyAddress,
+      hrInfos: hrInfoList,
+      departments: companyDepartments,
+      holidays: companyHolidays,
+      incomes: companyIncomes,
+      expenses: companyExpenses
     };
 
-    formData.append("token", isAuthenticated.token);
-    formData.append("establishmentDate", formattedDate(establishmentDate))
-    formData.append("companyLogo", companyLogo)
-    formData.append("address", companyAddress)
+    const file = companyLogo;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "epd6rg4j");
+    let cloudinaryUrl;
+    try {
+      const response = await axios.post("https://api.cloudinary.com/v1_1/dhwpj4ze4/upload", formData);
+      cloudinaryUrl = response.data.url;
+    } catch (error) {
+      console.error("Error while uploading image for updating company for the first time:", error);
+    }
 
-    hrInfoList.forEach((hrInfo, index) => {
-      formData.append(`hrInfos[${index}].firstName`, hrInfo.firstName);
-      formData.append(`hrInfos[${index}].lastName`, hrInfo.lastName);
-      formData.append(`hrInfos[${index}].email`, hrInfo.email);
-      formData.append(`hrInfos[${index}].phone`, hrInfo.phone);
-      formData.append(`hrInfos[${index}].gender`, hrInfo.gender);
-    });
-
-    companyDepartments.forEach((department, index) => {
-      formData.append(`departments[${index}].name`, department.name);
-      formData.append(`departments[${index}].shiftHour`, department.shiftHour);
-      formData.append(`departments[${index}].breakHour`, department.breakHour);
-    });
-
-    companyHolidays.forEach((holiday, index) => {
-      formData.append(`holidays[${index}].name`, holiday.name);
-      formData.append(`holidays[${index}].startDate`, formattedDate(holiday.startDate));
-      formData.append(`holidays[${index}].endDate`, formattedDate(holiday.endDate));
-    });
-
-    companyIncomes.forEach((income, index) => {
-      formData.append(`incomes[${index}].description`, income.description);
-      formData.append(`incomes[${index}].amount`, income.amount);
-      formData.append(`incomes[${index}].incomeDate`, formattedDate(income.incomeDate));
-    });
-    companyExpenses.forEach((expense, index) => {
-      formData.append(`expenses[${index}].description`, expense.description);
-      formData.append(`expenses[${index}].amount`, expense.amount);
-      formData.append(`expenses[${index}].expenseDate`, formattedDate(expense.expenseDate));
-    });
+    const completePayload = {...beforePayload, companyLogoUrl: cloudinaryUrl}
 
     try {
-      const response = await axios.put("http://localhost:80/company/update-for-the-first-time", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      if (response.status === 200) {
+      const response = await axios.put("http://localhost:80/company/update-for-the-first-time",completePayload);
+      if(response.status === 200) {
         window.location.reload(true);
       }
     } catch (error) {
       console.error("Error updating company for the first time:", error);
     }
-  };
+  }
 
   return (
     <div className="update-company-page">

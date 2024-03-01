@@ -8,8 +8,7 @@ export const PersonnelPageSpendingAPIContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
 
-    const [pendingSpendingRequests, setPendingSpendingRequests] = useState([]);
-    const [notPendingSpendingRequests, setNotPendingSpendingRequests] = useState([]);
+    const [spendingRequests, setSpendingRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,13 +22,10 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
             try {
                 const response = await axios.get(`http://localhost:80/spending/get-all-my-requests/${isAuthenticated.token}`)
                 console.log("SPENDINGREQUESTS-DATA: ", response.data)
-                setPendingSpendingRequests(response.data.filter(request => request.requestStatus === "PENDING"))
-                setNotPendingSpendingRequests(response.data.filter(request => request.requestStatus !== "PENDING"));
+                setSpendingRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the spending requests data:", error);
             } finally {
-                // console.log("PENDING OLAN DAYOFFLAR: ", pendingDayOffRequests);
-                // console.log("PENDING OLMAYAN DAYOFFLAR: ", notPendingDayOffRequests);
                 setIsLoading(false);
             }
         };
@@ -38,21 +34,32 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
 
     const handleSubmit = async (newRequest, spendingAttachments) => {
         setIsLoading(true);
-        const formData = new FormData();
-        for (const key in newRequest) {
-            formData.append(key, newRequest[key]);
+        let attachmentUrls = [];
+        for (const attachment of spendingAttachments) {
+            const file = attachment;
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", "epd6rg4j");
+            try {
+              const response = await axios.post("https://api.cloudinary.com/v1_1/dhwpj4ze4/upload", formData);
+              attachmentUrls.push(response.data.url);
+            } catch (error) {
+              console.error("Error while uploading image for creating spending request:", error);
+            }
         }
-        spendingAttachments.forEach((file, index) => {
-            formData.append(`attachments[${index}]`, file);
-        });
-        formData.append("token", isAuthenticated.token);
-        console.log("HAZIRLANAN NEW SPENDING FORM DATA: ", formData);
+
+        const payload = {
+            token: isAuthenticated.token,
+            reason: newRequest.reason,
+            description: newRequest.description,
+            amount: newRequest.amount,
+            currency: newRequest.currency,
+            spendingDate: newRequest.spendingDate,
+            attachmentUrls: attachmentUrls,
+        };
+
         try {
-            const response = await axios.post("http://localhost:80/spending/create-request", formData, {
-                headers: {
-                  "Content-Type": "multipart/form-data",
-                },
-            });
+            const response = await axios.post("http://localhost:80/spending/create-request", payload);
             if (response.status === 200) {
                 window.location.reload(true);
             }    
@@ -83,7 +90,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
     }
 
     return (
-        <PersonnelPageSpendingAPIContext.Provider value={{pendingSpendingRequests, notPendingSpendingRequests, handleSubmit, handleCancelRequest}}>
+        <PersonnelPageSpendingAPIContext.Provider value={{spendingRequests, handleSubmit, handleCancelRequest}}>
             {isLoading ? (
                 <div className="loader">
                 <div className="box box0">

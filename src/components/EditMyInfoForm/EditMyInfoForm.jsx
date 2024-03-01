@@ -40,10 +40,10 @@ const EditMyInfoForm = () => {
     };
 
     const newPersonnelInfo = imgFile
-      ? { ...personnelInfo, profileImage: imgFile }
+      ? { ...personnelInfo, profileImageUrl: imgFile, haveFile: true }
       : imgUrl
-      ? { ...personnelInfo, profileImageUrl: imgUrl }
-      : { ...personnelInfo, profileImageUrl: personnel.image };
+      ? { ...personnelInfo, profileImageUrl: imgUrl, haveFile: false }
+      : { ...personnelInfo, profileImageUrl: personnel.image, haveFile: false };
 
     handleEditMyInfo(newPersonnelInfo);
   };
