@@ -1,132 +1,176 @@
-* {
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+*
+
+body 
+{
+  display: flex;
+  
+  min-height: 100vh;
+  background: #000;
+}
+section 
+{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+section::before 
+{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000,#0f0,#000);
+  animation: animate 5s linear infinite;
+}
+@keyframes animate 
+{
+  0%
+  {
+    transform: translateY(-100%);
+  }
+  100%
+  {
+    transform: translateY(100%);
+  }
+}
+section span 
+{
+  position: relative;
+  display: block;
+  width: calc(6.25vw - 2px);
+  height: calc(6.25vw - 2px);
+  background: #181818;
+  z-index: 2;
+  transition: 1.5s;
+}
+section span:hover 
+{
+  background: #0f0;
+  transition: 0s;
 }
 
-.guest-login-major-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    z-index: 90;
-    background-image: url(images/login-wall.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+section .signin
+{
+  position: absolute;
+  width: 400px;
+  background: #222;  
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
 }
-
-.container {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255 255, 0.3);
-    padding: 20px 40px;
-    border-radius: 16px;
-    width: 320px;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-    backdrop-filter: blur(5px);
+section .signin .contents 
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
 }
-
-.container h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
+section .signin .contents h2 
+{
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
 }
-
-.container a {
-    text-decoration: none;
-    color: rgb(77, 126, 143);
+section .signin .contents .form 
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
-
-.btn {
-    color: white;
-    cursor: pointer;
-    display: inline-block;
-    width: 100%;
-    background: rgb(88, 135, 151);
-    padding: 15px;
-    font-family: inherit;
-    font-size: 16px;
-    border: 0;
-    border-radius: 5px;
+section .signin .contents .form .inputBox
+{
+  position: relative;
+  width: 100%;
 }
-
-.btn:focus {
-    outline: 0;
+section .signin .contents .form .inputBox input 
+{
+  position: relative;
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
 }
-
-.btn:active {
-    transform: scale(0.98);
+section .signin .contents .form .inputBox i 
+{
+  position: absolute;
+  left: 0;
+  padding: 15px 10px;
+  font-style: normal;
+  color: #aaa;
+  transition: 0.5s;
+  pointer-events: none;
 }
-
-.text {
-    margin-top: 30px;
+.signin .contents .form .inputBox input:focus ~ i,
+.signin .contents .form .inputBox input:valid ~ i
+{
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
 }
-
-.form-control {
-    position: relative;
-    margin: 20px 0 40px;
+.signin .contents .form .links 
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
-
-.form-control input {
-    background-color: transparent;
-    border: 0;
-    display: block;
-    width: 100%;
-    padding: 15px 0;
-    font-size: 18px;
-    color: #333;
+.signin .contents .form .links a 
+{
+  color: #fff;
+  text-decoration: none;
 }
-
-.form-control input:focus,
-.form-control input:valid {
-    outline: 0;
-    border-bottom-color: lightblue;
+.signin .contents .form .links a:nth-child(2)
+{
+  color: #0f0;
+  font-weight: 600;
 }
-
-.form-control label {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    pointer-events: none;
-    color: #333;
+.giris
+{
+  padding: 10px;
+  background: #0f0;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
 }
-
-.form-control label span {
-    display: inline-block;
-    font-size: 18px;
-    min-width: 5px;
-    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+.giris:active
+{
+  opacity: 0.6;
 }
-
-.form-control input:focus + label span,
-.form-control input:valid + label span {
-    color: rgb(0, 0, 0);
-    transform: translateY(-30px);
+@media (max-width: 900px)
+{
+  section span 
+  {
+    width: calc(10vw - 2px);
+    height: calc(10vw - 2px);
+  }
 }
-
-.login-message {
-    font-weight: bold;
-    font-size: large;
-    margin-top: 10px;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    text-align: center;
-}
-
-
-.login-message.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.login-message.error {
-    color: red;
-}
-
-.login-username-input:focus, .login-pwd-input:focus {
-    box-shadow: 0 0 0 4px rgb(88, 135, 151);
-}
-
-.login-pwd-input, .login-username-input{
-    border-radius: 5px;
+@media (max-width: 600px)
+{
+  section span 
+  {
+    width: calc(20vw - 2px);
+    height: calc(20vw - 2px);
+  }
 }
