@@ -15,14 +15,13 @@ const CommentCardPersonnel = ({ comment }) => {
             {name} {surName}
           </h3>
           <div className="comment-card-texts-personnel-header-content">
-            {/* <h4>{comment.header}</h4> */}
+            <h4>{comment.header}</h4>
             <p>{comment.content}</p>
           </div>
-          <p className="creation-date-personnel">{comment.creationDate}</p>
+          <p className="creation-date-personnel">Comment date: {comment.creationDate}</p>
         </div>
       </div>
-
-      <div>
+      <div className= "comment-rating-div-personnel">
         <RatingCommentComponentPersonnel comment={comment} />
       </div>
     </div>

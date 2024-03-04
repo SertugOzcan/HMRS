@@ -42,6 +42,12 @@ const AddEmployeeForm = () => {
         alert("Check personnel's phone number!");
         return;
       }
+
+      if (identityNumber.startsWith("0")) {
+        alert("Identity number can not start with number zero!");
+        return;
+      }
+
       if (!phone.startsWith("0")) {
         alert("Phone number must start with zero!");
         return;

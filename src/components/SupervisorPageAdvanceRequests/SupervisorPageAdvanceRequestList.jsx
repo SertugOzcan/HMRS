@@ -7,11 +7,12 @@ const SupervisorPageAdvanceRequestList = () => {
     const {advanceRequests} = useContext(SupervisorPageAdvanceAPIContext)
 
   return (
-    <div className='advance-request-list-container'>
+    // <div className='advance-request-list-container'>
+    <>
       {advanceRequests.map((advanceRequest)=>(
         <SupervisorPageAdvanceRequestCard key={advanceRequest.id} request={advanceRequest}/>
       ))}
-    </div>
+    </>
   )
 }
 

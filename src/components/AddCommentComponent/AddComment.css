@@ -95,6 +95,7 @@
   }
   
   .submit-button {
+    position: relative;
     width: 20%;
     margin-top: 5px;
     padding: 7px;
@@ -109,5 +110,32 @@
   .submit-button:hover {
     background-color: #00dfc5a9;
     
+  }
+
+  .add-comment-message {
+    position: absolute;
+    right: 13.25rem;
+    bottom: 2.87rem;
+    width: 25%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.3rem;
+    border-radius: 4px;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+  .add-comment-message.show {
+    opacity: 1;
+  }
+  
+  .add-comment-message.success {
+    background-color: #7fff7f;
+    color: #fff;
+  }
+  
+  .add-comment-message.error {
+    background-color: #ff7f7f;
+    color: #fff;
   }
   

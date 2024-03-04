@@ -47,3 +47,7 @@
     align-items: start;
     gap: 2px;
 }
+
+.comment-rating-div-personnel {
+    width: 140px;
+}
