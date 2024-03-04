@@ -13,7 +13,6 @@ const PersonnelInfoForm = () => {
   const [holidays, setHolidays] = useState([]);
 
   useEffect(() => {
-    
     const mockHolidays = [
       {
         name: "New Year's Day",
@@ -86,10 +85,11 @@ const PersonnelInfoForm = () => {
           </p>
           <p>
             <strong>Phone:</strong> {personnel.phones[0].phoneType}
+            {": "}
             {personnel.phones[0].phoneNumber}
           </p>
           <p>
-            <strong>Company:</strong> {personnel.companyName}
+            <strong>Department:</strong> {personnel.department.name}
           </p>
           {isAuthenticated.role === "PERSONNEL" && (
             <>
@@ -101,6 +101,9 @@ const PersonnelInfoForm = () => {
               </p>
               <p>
                 <strong>Salary:</strong> {personnel.salary}
+              </p>
+              <p>
+                <strong>DayOff Quota:</strong> {personnel.dayOff}
               </p>
             </>
           )}
@@ -126,10 +129,32 @@ const PersonnelInfoForm = () => {
             )}
           </div>
         </div>
+        <div className="personnel-company-info-container">
+          <div className="personnel-company-summary">
+            <div className="personnel-company-img-and-company-name">
+              <img src={personnel.companyLogo} />
+              <div className="personnel-company-name">
+                <strong>Company Name:</strong>
+                <p>{personnel.companyName}</p>
+              </div>
+            </div>
+            <div className="personnel-company-data">
+              <div className="personnel-hrinfo-container">
+              <strong>HR Infos:</strong>
+                {personnel.hrInfos.map((hrInfo) => (
+                  <div>
+                    <p key={hrInfo.email}>Mail:{hrInfo.email}</p>
+                    <p key={hrInfo.phone}>Phone:{hrInfo.phone}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="calendar-container">
         <Calendar
-          className="holiday-calendar" 
+          className="holiday-calendar"
           value={new Date()}
           tileContent={({ date }) => {
             const holiday = holidays.find(
