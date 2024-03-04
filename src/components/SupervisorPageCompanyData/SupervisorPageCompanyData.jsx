@@ -14,25 +14,20 @@ const SupervisorPageCompanyData = () => {
     useState(0);
   const [totalProfitOrLossNextMonth, setProfitOrLossNextMonth] = useState(0);
 
-  console.log(companyData.incomes);
-  console.log(companyData.expenses);
-  console.log(companyData.holidays);
-
   useEffect(() => {
     calculateProfitLoss();
   }, [companyData]);
 
   const date = new Date();
   const currentDate = date.getMonth() + 1;
-  console.log(currentDate);
 
   const calculateProfitLoss = () => {
     const currentMonthIncomes = companyData.incomes.filter(
-      (income) => new Date(income.incomeDate).getMonth() === currentDate
+      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])+1) === currentDate
     );
 
     const nextMonthIncomes = companyData.incomes.filter(
-      (income) => income.incomeDate === currentDate + 1
+      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])+2) === currentDate + 1
     );
 
     const totalCurrentMonthIncome = currentMonthIncomes.reduce(
@@ -44,18 +39,15 @@ const SupervisorPageCompanyData = () => {
       0
     );
 
-    console.log("totalCurrentMonthIncome", totalCurrentMonthIncome);
-    console.log("totalNextMonthIncome", totalNextMonthIncome);
-
     setTotalCurrentMonthIncome(totalCurrentMonthIncome);
     setTotalNextMonthIncome(totalNextMonthIncome);
 
     const currentMonthExpenses = companyData.expenses.filter(
-      (expense) => expense.expenseDate === currentDate
+      (expense) => (Number(expense.expenseDate.split('-')[1].split('')[1])) === currentDate
     );
 
     const nextMonthExpenses = companyData.expenses.filter(
-      (expense) => expense.expenseDate === currentDate
+      (expense) => (Number(expense.expenseDate.split('-')[1].split('')[1])+1) === currentDate + 1
     );
 
     const totalCurrentMonthExpense = currentMonthExpenses.reduce(
@@ -66,9 +58,6 @@ const SupervisorPageCompanyData = () => {
       (sum, expense) => sum + expense.amount,
       0
     );
-
-    console.log("totalCurrentMonthExpense", totalCurrentMonthExpense);
-    console.log("totalNextMonthExpense", totalNextMonthExpense);
 
     setTotalCurrentMonthExpense(totalCurrentMonthExpense);
     setTotalNextMonthExpense(totalNextMonthExpense);
