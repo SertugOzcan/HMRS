@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
-import './LoginPage.css';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
-import AuthService from '../services/AuthService';
+import { useContext, useEffect, useState } from "react";
+import "./LoginPage.css";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import AuthService from "../services/AuthService";
 
 const LoginPage = () => {
-  const [identity, setIdentity] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [identity, setIdentity] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [visible, setVisible] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
@@ -20,22 +20,22 @@ const LoginPage = () => {
       const user = AuthService.getCurrentUser();
       if (response) {
         switch (user.role) {
-          case 'SUPERVISOR':
-            navigate('/yonetici-page');
+          case "SUPERVISOR":
+            navigate("/yonetici-page");
             break;
-          case 'PERSONNEL':
-            navigate('/personnel-page');
+          case "PERSONNEL":
+            navigate("/personnel-page");
             break;
-          case 'GUEST':
-            navigate('/ziyaretci-page');
+          case "GUEST":
+            navigate("/ziyaretci-page");
             break;
           default:
-            navigate('/login');
+            navigate("/login");
             break;
         }
       }
     } catch (error) {
-      setErrorMessage('Wrong email or password!');
+      setErrorMessage("Wrong email or password!");
       setIsSuccess(false);
       setVisible(true);
     }
@@ -46,19 +46,10 @@ const LoginPage = () => {
     }, 4000);
   };
 
-  useEffect(() => {
-    logout();
-    const labels = document.querySelectorAll('.form-control label');
-    labels.forEach((label) => {
-      label.innerHTML = label.innerText
-        .split('')
-        .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
-        .join('');
-    });
-  }, []);
+  
 
   return (
-    <section className='sectionLogin'>
+    <section className="sectionLogin">
       <span></span> <span></span> <span></span> <span></span> <span></span>
       <span></span> <span></span> <span></span> <span></span> <span></span>
       <span></span> <span></span> <span></span> <span></span> <span></span>
@@ -112,7 +103,7 @@ const LoginPage = () => {
       <span></span> <span></span> <span></span> <span></span> <span></span>
       <span></span> <span></span> <span></span> <span></span> <span></span>
       <div className="signin">
-        <div className="contents">
+        <div className="contentsLogin">
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
             <div className="form">
@@ -136,9 +127,13 @@ const LoginPage = () => {
                 />
                 <i>Password</i>
               </div>
-              
-              <input className='giris' type="submit" value="Sign in" />
-              <div className={`login-message ${visible ? 'show' : ''} ${isSuccess ? 'success' : 'error'}`}>
+
+              <input className="giris" type="submit" value="Sign in" />
+              <div
+                className={`login-message ${visible ? "show" : ""} ${
+                  isSuccess ? "success" : "error"
+                }`}
+              >
                 {errorMessage}
               </div>
             </div>

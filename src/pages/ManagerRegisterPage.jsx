@@ -128,7 +128,6 @@ const ManagerRegisterPage = () => {
       hasError = true;
     }
 
-
     if (!phone.startsWith("0")) {
       setPhoneNumberError("Phone number must start with number zero!");
       hasError = true;
@@ -225,235 +224,502 @@ const ManagerRegisterPage = () => {
   };
 
   return (
-    <div className="manager-register-page">
-      <div className={`manager-register-container`}>
-        <h2>Supervisor Register</h2>
-        <form className="manager-register-page-form" onSubmit={handleRegister}>
-          <div className="left-form">
-            <input
-              className="manager-register-input"
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <input
-              className="manager-register-input"
-              type="text"
-              placeholder="Surname"
-              value={surName}
-              onChange={(e) => setSurName(e.target.value)}
-              required
-            />
-            <input
-              className="manager-register-input"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              className="manager-register-input"
-              type="text"
-              placeholder="Company Name"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-              required
-            />
-            <input
-              className="manager-register-input"
-              type="text"
-              placeholder="Phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            {phoneNumberError && (
-              <p className="registration-error-messages">{phoneNumberError}</p>
-            )}
-            <input
-              type="text"
-              className="manager-register-input"
-              value={identityNumber}
-              onChange={(e) => setIdentityNumber(e.target.value)}
-              placeholder="Identity Number"
-              required
-            />
-            {identityNumberError && (
-              <p className="registration-error-messages">
-                {identityNumberError}
-              </p>
-            )}
-            <input
-              type="password"
-              spellCheck="false"
-              className="manager-register-input"
-              placeholder="Password"
-              value={password}
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="manager-register-input"
-              type="password"
-              placeholder="Re-enter Password"
-              value={rePassword}
-              onChange={(e) => setRePassword(e.target.value)}
-              required
-            />
-            {passwordError && (
-              <p className="registration-error-messages">{passwordError}</p>
-            )}
-            <div className={`bars ${strength}`}></div>
-            <div className="strength">{strength && `${strength} password`}</div>
-            <div className="dob-label-manager">
-              <label>Date of Birth:</label>
-            </div>
-            <div className="dob-input-manager">
-              <DatePicker
-                placeholderText="Birthday"
-                dateFormat="dd/MM/yyyy"
-                selected={date}
-                onChange={(date) => {
-                  if (
-                    date <
-                      new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000) ||
-                    date > new Date()
-                  ) {
-                    alert(
-                      "Please select a date within the last 100 years and today."
-                    );
-                  } else {
-                    setDate(date);
-                  }
-                }}
-                minDate={new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)}
-                maxDate={new Date()}
-                showYearDropdown
-                scrollableYearDropdown
-                yearDropdownItemNumber={100}
-                showMonthDropdown
-                scrollableMonthYearDropdown
-              />
-            </div>
-            <div className="gender-selector-manager">
-              <label className="gender-label-manager">
+    <section className="section_register_man">
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+      <span className="man_register_span"></span>
+
+      <div className="manager_register">
+        <div className={`contentsManRegister`}>
+          <h2>Supervisor Register</h2>
+          <form onSubmit={handleRegister}>
+            <div className="formManRegister">
+              <div className="inputBox_register_man_left">
                 <input
-                  className="gender-manager"
-                  type="radio"
-                  name="radio"
-                  value="male"
-                  checked={!gender}
-                  onChange={() => setGender(false)}
+                  className="manager-register-input"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                 />
-                <span>Male</span>
-              </label>
-              <label className="gender-label-manager">
+                <i className="register-label_manager">Name</i>
                 <input
-                  className="gender-manager"
-                  type="radio"
-                  name="radio"
-                  value="female"
-                  checked={gender}
-                  onChange={() => setGender(true)}
+                  className="manager-register-input"
+                  type="text"
+                  value={surName}
+                  onChange={(e) => setSurName(e.target.value)}
+                  required
                 />
-                <span className="gender-span-manager">Female</span>
-              </label>
-            </div>
-            <textarea
-              className="manager-register-input"
-              id="address"
-              name="address"
-              placeholder="Your Address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            />
-          </div>
-          <div className="right-form">
-            <select value={currency} onChange={handleCurrencyChange}>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="TL">TL</option>
-            </select>
-            <div className="package-selection">
-              <input
-                type="checkbox"
-                id="isRegisteredFirstTime"
-                checked={isRegisterFirstTime}
-                onChange={() => setIsRegisterFirstTime(!isRegisterFirstTime)}
-              />
-              <label htmlFor="isRegisteredFirstTime">
-                {" "}
-                Registering for the first time?{" "}
-                <p1>Click to select your payment plan.</p1>
-              </label>
-              {isRegisterFirstTime && (
-                <div className="package-options">
-                  {packages.map((pkg) => (
-                    <div
-                      key={pkg.name}
-                      className={`package-card package-card-${pkg.name.toLowerCase()}`}
-                    >
-                      <input
-                        type="radio"
-                        id={pkg.name}
-                        name="package"
-                        value={pkg.name}
-                        checked={selectedPackage === pkg.name}
-                        onChange={() => handlePackageChange(pkg.name)}
-                      />
-                      <label htmlFor={pkg.name}>
-                        <h3>{pkg.name}</h3>
-                        <p>Duration: {pkg.duration} days</p>
-                        {selectedPackage === pkg.name ? (
-                          <span className="register-selected-package-span">
-                            &#10004;
-                          </span>
-                        ) : (
-                          ""
-                        )}
-                        <p>
-                          Cost: {pkg.cost} {currency}
-                        </p>
-                      </label>
-                    </div>
-                  ))}
+                <i className="register-label_manager">Surname</i>
+                <input
+                  className="manager-register-input"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <i className="register-label_manager">Email</i>
+                <input
+                  className="manager-register-input"
+                  type="text"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  required
+                />
+                <i className="register-label_manager">Company Name</i>
+                <input
+                  className="manager-register-input"
+                  type="text"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+                <i className="register-label_manager">Phone</i>
+                {phoneNumberError && (
+                  <p className="registration-error-messages">
+                    {phoneNumberError}
+                  </p>
+                )}
+                <input
+                  type="text"
+                  className="manager-register-input"
+                  value={identityNumber}
+                  onChange={(e) => setIdentityNumber(e.target.value)}
+                  required
+                />
+                <i className="register-label_manager">Identity Number</i>
+                {identityNumberError && (
+                  <p className="registration-error-messages">
+                    {identityNumberError}
+                  </p>
+                )}
+                <input
+                  type="password"
+                  spellCheck="false"
+                  className="manager-register-input"
+                  value={password}
+                  onChange={handleChange}
+                  required
+                />
+                <i className="register-label_manager">Password</i>
+                <input
+                  className="manager-register-input"
+                  type="password"
+                  value={rePassword}
+                  onChange={(e) => setRePassword(e.target.value)}
+                  required
+                />
+                <i className="register-label_manager">Re-enter Password</i>
+                {passwordError && (
+                  <p className="registration-error-messages">{passwordError}</p>
+                )}
+                <div className={`bars ${strength}`}></div>
+                <div className="strength">
+                  {strength && `${strength} password`}
                 </div>
-              )}
+                <div className="dob-label-manager">
+                  <label>Date of Birth:</label>
+                </div>
+                <div className="dob-input-manager">
+                  <DatePicker
+                  className="datepicker_register_manager"
+                    placeholderText="Birthday"
+                    dateFormat="dd/MM/yyyy"
+                    selected={date}
+                    onChange={(date) => {
+                      if (
+                        date <
+                          new Date(
+                            Date.now() - 100 * 365 * 24 * 60 * 60 * 1000
+                          ) ||
+                        date > new Date()
+                      ) {
+                        alert(
+                          "Please select a date within the last 100 years and today."
+                        );
+                      } else {
+                        setDate(date);
+                      }
+                    }}
+                    minDate={
+                      new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)
+                    }
+                    maxDate={new Date()}
+                    showYearDropdown
+                    scrollableYearDropdown
+                    yearDropdownItemNumber={100}
+                    showMonthDropdown
+                    scrollableMonthYearDropdown
+                  />
+                </div>
+                <div className="gender-selector-manager">
+                  <input
+                    type="radio"
+                    name="radio"
+                    value="male"
+                    checked={!gender}
+                    onChange={() => setGender(false)}
+                  />
+                  <label className="gender_register_manager">Male  </label>
+
+                  <input
+                    type="radio"
+                    name="radio"
+                    value="female"
+                    checked={gender}
+                    onChange={() => setGender(true)}
+                  />
+                  <label className="gender_register_manager">Female</label>
+                </div>
+                <br />
+                
+              </div>
+              <div className="inputBox_register_man_right">
+              <textarea
+                  className="manager-register-input"
+                  id="address"
+                  name="address"
+                  placeholder="Your Address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
+                />
+                <select className="price_selector" value={currency} onChange={handleCurrencyChange}>
+                  <option value="USD">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="TL">TL</option>
+                </select>
+                <div className="package-selection">
+                  <input
+                    type="checkbox"
+                    id="isRegisteredFirstTime"
+                    checked={isRegisterFirstTime}
+                    onChange={() =>
+                      setIsRegisterFirstTime(!isRegisterFirstTime)
+                    }
+                  />
+                  <label className="registering_question" htmlFor="isRegisteredFirstTime">
+                    {" "}
+                    Registering for the first time?{" "}
+                    <p1>Click to select your payment plan.</p1>
+                  </label>
+                  {isRegisterFirstTime && (
+                    <div className="package-options">
+                      {packages.map((pkg) => (
+                        <div
+                          key={pkg.name}
+                          className={`package-card package-card-${pkg.name.toLowerCase()}`}
+                        >
+                          <input
+                            type="radio"
+                            id={pkg.name}
+                            name="package"
+                            value={pkg.name}
+                            checked={selectedPackage === pkg.name}
+                            onChange={() => handlePackageChange(pkg.name)}
+                          />
+                          <label htmlFor={pkg.name}>
+                            <h3>{pkg.name}</h3>
+                            <p>Duration: {pkg.duration} days</p>
+                            <p>
+                              Cost: {pkg.cost} {currency}
+                            </p>
+                            {selectedPackage === pkg.name ? (
+                              <span className="register-selected-package-span-register">
+                                
+                            </span>
+                            ) : (
+                              ""
+                            )}
+                          </label>
+                        </div>
+                        ))}
+                    </div>
+                  )}
+                </div>
+                {packageSelectError && (
+                  <p className="registration-error-messages">
+                    {packageSelectError}
+                  </p>
+                )}
+              </div>
+              <input
+                className="register_giris_man"
+                type="submit"
+                value="Sign up"
+              />
+
+              <div
+                className={`registration-message ${visible ? "show" : ""} ${
+                  isSuccess ? "success" : "error"
+                }`}
+              >
+                {message}
+              </div>
+              <Link className="guest_link" to="/register-page">
+                <button className="button_go_guest_register">
+                  Guest Register
+                  <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
+                    <path
+                      clipRule="evenodd"
+                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                      fillRule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </Link>
             </div>
-            {packageSelectError && (
-              <p className="registration-error-messages">
-                {packageSelectError}
-              </p>
-            )}
-          </div>
-          <button className="register_manager_button" type="submit">
-            Register
-          </button>
-          <div
-            className={`registration-message ${visible ? "show" : ""} ${
-              isSuccess ? "success" : "error"
-            }`}
-          >
-            {message}
-          </div>
-          <Link className="guest_link" to="/register-page">
-            <button className="button_go_guest_register">
-              Guest Register
-              <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
-                <path
-                  clipRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                  fillRule="evenodd"
-                ></path>
-              </svg>
-            </button>
-          </Link>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

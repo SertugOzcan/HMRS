@@ -1,9 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-*
-
-
-.sectionLogin 
-{
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+* .sectionLogin {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -17,28 +13,23 @@
   min-height: 100vh;
   background: #000;
 }
-.sectionLogin::before 
-{
-  content: '';
+.sectionLogin::before {
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#000,#0f0,#000);
+  background: linear-gradient(#000, #0f0, #000);
   animation: animate 5s linear infinite;
 }
-@keyframes animate 
-{
-  0%
-  {
+@keyframes animate {
+  0% {
     transform: translateY(-100%);
   }
-  100%
-  {
+  100% {
     transform: translateY(100%);
   }
 }
-.sectionLogin  span 
-{
+.sectionLogin span {
   position: relative;
   display: block;
   width: calc(6.25vw - 2px);
@@ -47,27 +38,24 @@
   z-index: 2;
   transition: 1.5s;
 }
-.sectionLogin  span:hover 
-{
+.sectionLogin span:hover {
   background: #0f0;
   transition: 0s;
 }
 
-.sectionLogin  .signin
-{
+.sectionLogin .signin {
   position: absolute;
   width: 400px;
-  background: #222;  
+  background: #222;
   z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
   border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
 }
-.sectionLogin  .signin .contents 
-{
+.sectionLogin .signin .contentsLogin {
   position: relative;
   width: 100%;
   display: flex;
@@ -76,26 +64,23 @@
   flex-direction: column;
   gap: 40px;
 }
-.sectionLogin  .signin .contents h2 
-{
+.sectionLogin .signin .contentsLogin h2 {
   font-size: 2em;
   color: #0f0;
   text-transform: uppercase;
 }
-.sectionLogin  .signin .contents .form 
-{
+.sectionLogin .signin .contentsLogin .form {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
-.sectionLogin  .signin .contents .form .inputBox
-{
+.sectionLogin .signin .contentsLogin .form .inputBox {
   position: relative;
   width: 100%;
 }
-.sectionLogin  .signin .contents .form .inputBox input 
-{
+.login-username-input,
+.login-pwd-input {
   position: relative;
   width: 100%;
   background: #333;
@@ -107,8 +92,7 @@
   font-weight: 500;
   font-size: 1em;
 }
-.sectionLogin  .signin .contents .form .inputBox i 
-{
+.sectionLogin .signin .contentsLogin .form .inputBox i {
   position: absolute;
   left: 0;
   padding: 15px 10px;
@@ -117,32 +101,27 @@
   transition: 0.5s;
   pointer-events: none;
 }
-.signin .contents .form .inputBox input:focus ~ i,
-.signin .contents .form .inputBox input:valid ~ i
-{
+.signin .contentsLogin .form .inputBox input:focus ~ i,
+.signin .contentsLogin .form .inputBox input:valid ~ i {
   transform: translateY(-7.5px);
   font-size: 0.8em;
   color: #fff;
 }
-.signin .contents .form .links 
-{
+.signin .contentsLogin .form .links {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.signin .contents .form .links a 
-{
+.signin .contentsLogin .form .links a {
   color: #fff;
   text-decoration: none;
 }
-.signin .contents .form .links a:nth-child(2)
-{
+.signin .contentsLogin .form .links a:nth-child(2) {
   color: #0f0;
   font-weight: 600;
 }
-.giris
-{
+.giris {
   padding: 10px;
   background: #0f0;
   color: #000;
@@ -151,22 +130,17 @@
   letter-spacing: 0.05em;
   cursor: pointer;
 }
-.giris:active
-{
+.giris:active {
   opacity: 0.6;
 }
-@media (max-width: 900px)
-{
-  .sectionLogin  span 
-  {
+@media (max-width: 900px) {
+  .sectionLogin span {
     width: calc(10vw - 2px);
     height: calc(10vw - 2px);
   }
 }
-@media (max-width: 600px)
-{
-  .sectionLogin  span 
-  {
+@media (max-width: 600px) {
+  .sectionLogin span {
     width: calc(20vw - 2px);
     height: calc(20vw - 2px);
   }

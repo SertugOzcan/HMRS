@@ -7,9 +7,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
- 
-  
-
   const [name, setName] = useState("");
   const [surName, setSurName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,8 +15,6 @@ const RegisterPage = () => {
   const [rePassword, setRePassword] = useState("");
   const [gender, setGender] = useState(false);
 
- 
-  
   const [identityNumber, setIdentityNumber] = useState("");
 
   const [identityNumberError, setIdentityNumberError] = useState("");
@@ -85,21 +80,18 @@ const RegisterPage = () => {
         email: email.trim(),
         password: password,
         rePassword: rePassword,
-        
+
         identityNumber: identityNumber,
         dateOfBirth: date,
         gender: stringGender,
         phone: phone,
-      
-        
-    
       };
-      
+
       const response = await axios.post(
         "http://localhost:80/auth/register-guest",
         payload
       );
-      
+
       console.log(response);
       setMessage("Registration successful!");
       setIsSuccess(true);
@@ -136,161 +128,186 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="register-page-major-container">
-      <div className={"register-container"}>
-        <h2>Register</h2>
-        <div className="role-selector"></div>
+    <section className="sectionRegister">
+      
+<span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span><span className="register-span"></span>
 
 
-        <form onSubmit={handleRegister}>
-          
-            <input
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Surname"
-              value={surName}
-              onChange={(e) => setSurName(e.target.value)}
-              required
-            />
-          
-          
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-           
-            <input
-              type="text"
-              placeholder="Phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            {phoneNumberError && (
-              <p className="registration-error-messages">{phoneNumberError}</p>
-            )}
-            <input
-              type="text"
-              className="identity-number"
-              value={identityNumber}
-              onChange={(e) => setIdentityNumber(e.target.value)}
-              placeholder="Identity Number"
-              required
-            />
-            {identityNumberError && (
-              <p className="registration-error-messages">
-                {identityNumberError}
-              </p>
-            )}
-          
-            <input
-              type="password"
-              spellCheck="false"
-              className="control"
-              placeholder="Password"
-              value={password}
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              type="password"
-              placeholder="Re-enter Password"
-              value={rePassword}
-              onChange={(e) => setRePassword(e.target.value)}
-              required
-            />
-            {passwordError && (
-              <p className="registration-error-messages">{passwordError}</p>
-            )}
-
-            <div className={`bars ${strength}`}></div>
-            <div className="strength">{strength && `${strength} password`}</div>
-          
-          
-            <div className="dob-label">
-              <label>Date of Birth:</label>
-            </div>
-            <div className="dob-input">
-            <DatePicker
-                placeholderText="Birthday"
-                dateFormat="dd/MM/yyyy"
-                selected={date}
-                onChange={(date) => {
-                  if (
-                    date <
-                      new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000) ||
-                    date > new Date()
-                  ) {
-                    alert(
-                      "Please select a date within the last 100 years and today."
-                    );
-                  } else {
-                    setDate(date);
-                  }
-                }}
-                minDate={new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)}
-                maxDate={new Date()}
-                showYearDropdown
-                scrollableYearDropdown
-                yearDropdownItemNumber={100}
-                showMonthDropdown
-                scrollableMonthYearDropdown
-              />
-            
-
-            <div className="gender-selector">
-              <label className="gender-label">
+      <div className="register">
+        <div className={"contentsRegister"}>
+          <h2>Register</h2>
+          <form onSubmit={handleRegister}>
+            <div className="formRegister">
+              <div className="inputBox_register">
                 <input
-                  type="radio"
-                  name="radio"
-                  value="male"
-                  checked={!gender}
-                  onChange={() => setGender(false)}
-                />
-                <span>Male</span>
-              </label>
-              <label className="gender-label">
+                  type="text"
+                  className="register_input"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  />
+                  <i className="register-label">Name</i>
                 <input
-                  type="radio"
-                  name="radio"
-                  value="female"
-                  checked={gender}
-                  onChange={() => setGender(true)}
+                  type="text"
+                  className="register_input"
+                  value={surName}
+                  onChange={(e) => setSurName(e.target.value)}
+                  required
+                  />
+                  <i className="register-label">Last Name</i>
+
+                <input
+                  type="email"
+                  className="register_input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
-                <span className="gender-span">Female</span>
-              </label>
+                <i className="register-label">Email</i>
+                <input
+                  type="text"
+                  className="register_input"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+<i className="register-label">Phone</i>
+                {phoneNumberError && (
+                  <p className="registration-error-messages">
+                    {phoneNumberError}
+                  </p>
+                )}
+                
+                <input
+                  type="text"
+                  className="register_input"
+                  value={identityNumber}
+                  onChange={(e) => setIdentityNumber(e.target.value)}
+                  required
+                />
+
+                {identityNumberError && (
+                  <p className="registration-error-messages">
+                    {identityNumberError}
+                  </p>
+                )}
+                <i className="register-label">Identity Number</i>
+                <input
+                  type="password"
+                  spellCheck="false"
+                  className="register_input" // ?????????????
+                  
+                  value={password}
+                  onChange={handleChange}
+                  required
+                />
+                <i className="register-label">Password</i>
+                <input
+                  type="password"
+                  className="register_input"
+                  value={rePassword}
+                  onChange={(e) => setRePassword(e.target.value)}
+                  required
+                />
+                <i className="register-label">Re-Password</i>
+                {passwordError && (
+                  <p className="registration-error-messages">{passwordError}</p>
+                )}
+
+                <div className={`bars ${strength}`}></div>
+                <div className="strength">
+                  {strength && `${strength} password`}
+                </div>
+
+                <div className="dob-label">
+                  <label>Date of Birth:</label>
+                </div>
+                <div className="dob-input">
+                  <DatePicker
+                  wrapperClassName="dob_register"
+                  className="datepicker_register"
+                  popperClassName="dob_register"
+                    placeholderText="Birthday"
+                    dateFormat="dd/MM/yyyy"
+                    selected={date}
+                    onChange={(date) => {
+                      if (
+                        date <
+                          new Date(
+                            Date.now() - 100 * 365 * 24 * 60 * 60 * 1000
+                          ) ||
+                        date > new Date()
+                      ) {
+                        alert(
+                          "Please select a date within the last 100 years and today."
+                        );
+                      } else {
+                        setDate(date);
+                      }
+                    }}
+                    minDate={
+                      new Date(Date.now() - 100 * 365 * 24 * 60 * 60 * 1000)
+                    }
+                    maxDate={new Date()}
+                    showYearDropdown
+                    scrollableYearDropdown
+                    yearDropdownItemNumber={100}
+                    showMonthDropdown
+                    scrollableMonthYearDropdown
+                  /> <br />
+<div className="gender_selector">
+                  <input
+                    type="radio"
+                    name="radio"
+                    value="male"
+                    checked={!gender}
+                    onChange={() => setGender(false)}
+                  />
+                  <label className="gender_register">Male</label>
+                  <input
+                    type="radio"
+                    name="radio"
+                    value="female"
+                    checked={gender}
+                    onChange={() => setGender(true)}
+                  />
+                  <label className="gender_register">Female</label>
+</div><br />
+                  <input
+                    className="register_giris"
+                    type="submit"
+                    value="Sign up"
+                  />
+
+                  <div
+                    className={`registration-message-guest ${
+                      visible ? "show" : ""
+                    } ${isSuccess ? "success" : "error"}`}
+                  >
+                    {message}
+                  </div>
+                  <Link className="manager_link" to="/manager-register">
+                    <button className="button_go_manager_register">
+                      Supervisor Register
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        className="icon"
+                      >
+                        <path
+                          clipRule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          fillRule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <button className="register_guest_button" type="submit">Register</button>
-        </form>
-
-        <div
-          className={`registration-message-guest ${visible ? "show" : ""} ${
-            isSuccess ? "success" : "error"
-          }`}
-        >
-          {message}
+          </form>
         </div>
-        <Link className="manager_link" to="/manager-register">
-        <button className="button_go_manager_register">
-  Supervisor Register
-  <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
-    <path clipRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fillRule="evenodd"></path>
-  </svg>
-</button>
-        </Link>
       </div>
-    </div>
+    </section>
   );
 };
 
