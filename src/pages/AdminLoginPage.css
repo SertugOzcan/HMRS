@@ -172,3 +172,8 @@
     height: calc(20vw - 2px);
   }
 }
+
+.admin-login-message {
+  color: red;
+  
+}
