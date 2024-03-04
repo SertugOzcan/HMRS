@@ -88,6 +88,9 @@ const PersonnelInfoForm = () => {
             {": "}
             {personnel.phones[0].phoneNumber}
           </p>
+              <p>
+                <strong>Salary:</strong> {personnel.salary}
+              </p>
           <p>
             <strong>Department:</strong> {personnel.department.name}
           </p>
@@ -98,9 +101,6 @@ const PersonnelInfoForm = () => {
               </p>
               <p>
                 <strong>Break:</strong> {personnel.department.breakHour}
-              </p>
-              <p>
-                <strong>Salary:</strong> {personnel.salary}
               </p>
               <p>
                 <strong>DayOff Quota:</strong> {personnel.dayOff}
