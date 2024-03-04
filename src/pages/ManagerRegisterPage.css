@@ -337,7 +337,7 @@ animation: gradientAnimation 5s ease infinite;
     display: flex;
     position: absolute;
     right: 0px;
-    top: 452px; /* Mesajın biraz aşağıya kayması */
+    top: 550px; /* Mesajın biraz aşağıya kayması */
     width: 50%;
     justify-content: center;
     text-align: center;
@@ -345,6 +345,7 @@ animation: gradientAnimation 5s ease infinite;
     border-radius: 4px;
     transition: opacity 0.3s ease-in-out;
     opacity: 0;
+    left: 440px;
 }
 
 
@@ -420,7 +421,7 @@ animation: gradientAnimation 5s ease infinite;
     font-size: 15px;
     cursor: pointer;
     left: 590px;
-    top: 640px;
+    top: 610px;
   }
   
   /* Butonun üstündeki ikonlar için */

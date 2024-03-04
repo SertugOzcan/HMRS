@@ -145,3 +145,8 @@
     height: calc(20vw - 2px);
   }
 }
+
+.login-message {
+  color: red;
+  
+}

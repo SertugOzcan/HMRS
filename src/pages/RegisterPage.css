@@ -65,6 +65,7 @@
   padding: 40px;
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0,0,0,9);
+  height: 750px;
 }
 .sectionRegister  .register .contentsRegister 
 {
@@ -231,8 +232,8 @@ textarea::-webkit-scrollbar-thumb {
 
 .registration-message-guest {
   position: absolute;
-  margin-top: -30px; /* Önceki değeri artırabilirsiniz */
-left: 0px;
+  margin-top: 15px; /* Önceki değeri artırabilirsiniz */
+left: 20px;
   opacity: 0;
   transform: translateY(-1px);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -271,14 +272,13 @@ left: 0px;
 
 
 
-.manager_link {
-  text-decoration: none;
-}
+
+
 
 
 
 .button_go_manager_register {
-  position: relative;
+  position: absolute;
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   padding-block: 0.5rem;
@@ -296,8 +296,9 @@ left: 0px;
   overflow: hidden;
   font-size: 15px;
   cursor: pointer;
-  top: 15px;
-  left: 50px;
+  top: 497px;
+  left: 162px;
+  
 }
 
 .icon {
@@ -351,9 +352,9 @@ left: 0px;
 
 
 .register_input:focus ~ .register-label,
-.register_input:active ~ .register-label {
-  transform: translateY(-7.5px);
-  font-size: 0.8em;
+.register_input:valid ~ .register-label {
+  transform: translateY(-15px);
+  font-size: 0.7em;
   color: #fff;
 }
 

@@ -180,6 +180,7 @@ const RegisterPage = () => {
                 <i className="register-label">Email</i>
                 <input
                   type="text"
+                  required
                   className="register_input"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
