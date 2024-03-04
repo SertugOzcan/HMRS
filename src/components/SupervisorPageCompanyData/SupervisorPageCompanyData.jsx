@@ -3,6 +3,7 @@ import "./SupervisorPageCompanyData.css";
 import HolidayList from "../HolidayList";
 import { SupervisorPageAPIContext } from "../../context/SupervisorPageAPIContext";
 import { PieChart } from "@mui/x-charts/PieChart";
+import randomColor from "randomcolor";
 
 const SupervisorPageCompanyData = () => {
   const { companyData } = useContext(SupervisorPageAPIContext);
@@ -23,11 +24,11 @@ const SupervisorPageCompanyData = () => {
 
   const calculateProfitLoss = () => {
     const currentMonthIncomes = companyData.incomes.filter(
-      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])+1) === currentDate
+      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])) === currentDate
     );
 
     const nextMonthIncomes = companyData.incomes.filter(
-      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])+2) === currentDate + 1
+      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])+1) === currentDate + 1
     );
 
     const totalCurrentMonthIncome = currentMonthIncomes.reduce(
@@ -47,7 +48,7 @@ const SupervisorPageCompanyData = () => {
     );
 
     const nextMonthExpenses = companyData.expenses.filter(
-      (expense) => (Number(expense.expenseDate.split('-')[1].split('')[1])+1) === currentDate + 1
+      (expense) => (Number(expense.expenseDate.split('-')[1].split('')[1])) === currentDate + 1
     );
 
     const totalCurrentMonthExpense = currentMonthExpenses.reduce(
@@ -81,14 +82,68 @@ const SupervisorPageCompanyData = () => {
     return durationInDays;
   };
 
+  const combinedExpenses = {};
+  const combinedIncomes = {};
+
+  companyData.expenses
+  .filter((expense) => {
+    const expenseMonth = Number(expense.expenseDate.split('-')[1].split('')[1]);
+    return expenseMonth === currentDate;
+  })
+  .forEach((expense) => {
+    if (combinedExpenses[expense.description]) {
+      combinedExpenses[expense.description].value += expense.amount;
+    } else {
+      combinedExpenses[expense.description] = {
+        id: expense.id,
+        value: expense.amount,
+        label: expense.description,
+      };
+    }
+  });
+
+  companyData.incomes
+  .filter((income) => {
+    const incomeMonth = Number(income.incomeDate.split('-')[1].split('')[1]);
+    return incomeMonth === currentDate;
+  })
+  .forEach((income) => {
+    if (combinedIncomes[income.description]) {
+      combinedIncomes[income.description].value += income.amount;
+    } else {
+      combinedIncomes[income.description] = {
+        id: income.id,
+        value: income.amount,
+        label: income.description,
+      };
+    }
+  });
+
+  const pieChartDataExpenses = Object.values(combinedExpenses);
+  const pieChartDataIncomes = Object.values(combinedIncomes);
+
+  const generateRandomColors = (count) => {
+    const colors = [];
+    for (let i = 0; i < count; i++) {
+      colors.push(randomColor());
+    }
+    return colors;
+  };
+
+ 
+  const generateRandomColor = () => randomColor();
+
   return (
     <div className="company-data-major-container">
       <div className="finansal-bilgiler">
-        <h3>Finansal Bilgiler</h3>
+        <h2>Welcome to the Company Data Page!</h2>
+        <br />
+        <p>Explore essential details about the company's incomes, expenses, and personnel information. This page provides a comprehensive view of monthly financial insights, including approved spending and advance requests. You can also access information about company holidays, the number of departments, and the total personnel count.</p>
+        <h4><em>Personnel salaries, accepted advance requests, and spending details are presented under the expenses section on this page.</em></h4>
         <div className="finansal-kutular">
           <div className="finansal-kutu">
             <p>
-              <strong>Kar/Zarar Bilgileri:</strong>{" "}
+              <strong>Current Month Income/Expense Amount:</strong>{" "}
               {totalProfitOrLossCurrentMonth}
             </p>
             <PieChart
@@ -96,13 +151,39 @@ const SupervisorPageCompanyData = () => {
               series={[
                 {
                   data: [
-                    { id: 0, value: totalCurrentMonthIncome, label: "Income" },
+                    { id: 0, value: totalCurrentMonthIncome, label: "Incomes" },
                     {
                       id: 1,
                       value: totalCurrentMonthExpense,
-                      label: "Expense",
+                      label: "Expenses",
                     },
                   ],
+                },
+              ]}
+              width={600}
+              height={300}
+            />
+            <p>
+              <strong>Incomes in Detail:</strong>
+            </p>
+            <PieChart
+              colors={generateRandomColors(pieChartDataIncomes.length)}
+              series={[
+                {
+                  data: pieChartDataIncomes,
+                },
+              ]}
+              width={600}
+              height={300}
+            />
+            <p>
+              <strong>Expenses in Detail:</strong>
+            </p>
+            <PieChart
+              colors={generateRandomColors(pieChartDataExpenses.length)}
+              series={[
+                {
+                  data: pieChartDataExpenses,
                 },
               ]}
               width={600}
@@ -111,29 +192,29 @@ const SupervisorPageCompanyData = () => {
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>{currentDate}. Ay Toplam Gelir Bilgisi:</strong>{" "}
-              {totalCurrentMonthIncome}
+              <strong>Current Month Total Income Amount:</strong>{" "}
+              {totalCurrentMonthIncome} TL
             </p>
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>{currentDate}. Ay Toplam Gider Bilgisi:</strong>{" "}
-              {totalCurrentMonthExpense}
+              <strong>Current Month Total Expense Amount:</strong>{" "}
+              {totalCurrentMonthExpense} TL
             </p>
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>Yaklaşan Ödeme Bilgileri:</strong> {totalNextMonthExpense}
+              <strong>Next Month Estimated Expense Amount:</strong> {totalNextMonthExpense} TL
             </p>
           </div>
           <div className="finansal-kutu">
             <table className="holiday-table">
               <thead>
                 <tr>
-                  <th>Tatil Adı</th>
-                  <th>Tatil Baslangic</th>
-                  <th>Tatil Bitis</th>
-                  <th>Tarih Suresi</th>
+                  <th>Holiday Name</th>
+                  <th>Holiday Starts</th>
+                  <th>Holiday Ends</th>
+                  <th>Holiday Duration</th>
                 </tr>
               </thead>
               <tbody>

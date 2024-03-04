@@ -30,6 +30,19 @@
       margin-bottom: 20px;
       color: #fff;
   }
+
+  /* volkan */
+  .finansal-bilgiler > h2:first-child {
+    text-align: center;
+  }
+
+  .finansal-bilgiler > p {
+    text-align: center;
+  }
+
+  .finansal-bilgiler > h4:first-child {
+    text-align: center;
+  }
   
   .calisan-listesi h3,
   .finansal-bilgiler h3 {
