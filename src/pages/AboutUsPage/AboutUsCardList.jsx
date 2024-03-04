@@ -3,10 +3,10 @@ import "./AboutUsCardList.css";
 const AboutUsCardList = () => {
   const developerInfos = [
     {
-      firstName: "Bahadir",
-      lastName: "Unsal",
+      firstName: "Ali Volkan",
+      lastName: "Şahin",
       dayOfBirth: "07.03.1999",
-      education:"Kirklareli Univercity",
+      education:"Kirklareli University",
       image: "./DeveloperImages/bahadir.jpg",
       githubLink: "https://github.com/BahadirUnsall",
       linkedInLink: "https://www.linkedin.com/in/bahadirunsal/"
@@ -15,25 +15,25 @@ const AboutUsCardList = () => {
       firstName: "Bahadir",
       lastName: "Unsal",
       dayOfBirth: "07.03.1999",
-      education:"Kirklareli Univercity",
+      education:"Kirklareli University",
       image: "./DeveloperImages/bahadir.jpg",
       githubLink: "https://github.com/BahadirUnsall",
       linkedInLink: "https://www.linkedin.com/in/bahadirunsal/"
     },
     {
-      firstName: "Bahadir",
-      lastName: "Unsal",
-      dayOfBirth: "07.03.1999",
-      education:"Kirklareli Univercity",
-      image: "./DeveloperImages/bahadir.jpg",
-      githubLink: "https://github.com/BahadirUnsall",
-      linkedInLink: "https://www.linkedin.com/in/bahadirunsal/"
+      firstName: "Muhittin",
+      lastName: "Ülker",
+      dayOfBirth: "21.10.1992",
+      education:"Karabuk University",
+      image: "./DeveloperImages/muhittin.jpg",
+      githubLink: "https://https://github.com/MuhittinUlker",
+      linkedInLink: "https://www.linkedin.com/in/muhittinulker/"
     },
     {
-      firstName: "Bahadir",
-      lastName: "Unsal",
+      firstName: "Sertuğ",
+      lastName: "Özcan",
       dayOfBirth: "07.03.1999",
-      education:"Kirklareli Univercity",
+      education:"Kirklareli University",
       image: "./DeveloperImages/bahadir.jpg",
       githubLink: "https://github.com/BahadirUnsall",
       linkedInLink: "https://www.linkedin.com/in/bahadirunsal/"

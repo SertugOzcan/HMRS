@@ -2,33 +2,85 @@ import { useState, useEffect, useContext } from "react";
 import "./SupervisorPageCompanyData.css";
 import HolidayList from "../HolidayList";
 import { SupervisorPageAPIContext } from "../../context/SupervisorPageAPIContext";
+import { PieChart } from "@mui/x-charts/PieChart";
 
 const SupervisorPageCompanyData = () => {
   const { companyData } = useContext(SupervisorPageAPIContext);
-  const [totalIncome, setTotalIncome] = useState(0);
-  const [totalExpense, setTotalExpense] = useState(0);
-  const [profitOrLoss, setProfitOrLoss] = useState(0);
+  const [totalCurrentMonthIncome, setTotalCurrentMonthIncome] = useState(0);
+  const [totalNextMonthIncome, setTotalNextMonthIncome] = useState(0);
+  const [totalCurrentMonthExpense, setTotalCurrentMonthExpense] = useState(0);
+  const [totalNextMonthExpense, setTotalNextMonthExpense] = useState(0);
+  const [totalProfitOrLossCurrentMonth, setProfitOrLossCurrentMonth] =
+    useState(0);
+  const [totalProfitOrLossNextMonth, setProfitOrLossNextMonth] = useState(0);
+
+  console.log(companyData.incomes);
+  console.log(companyData.expenses);
+  console.log(companyData.holidays);
 
   useEffect(() => {
     calculateProfitLoss();
   }, [companyData]);
 
+  const date = new Date();
+  const currentDate = date.getMonth() + 1;
+  console.log(currentDate);
+
   const calculateProfitLoss = () => {
-    let calculatedIncome = 0;
-    companyData.incomes.forEach((income) => {
-      calculatedIncome += income.amount;
-    });
-    setTotalIncome(calculatedIncome);
+    const currentMonthIncomes = companyData.incomes.filter(
+      (income) => new Date(income.incomeDate).getMonth() === currentDate
+    );
 
-    let calculatedExpense = 0;
-    companyData.expenses.forEach((expense) => {
-      calculatedExpense += expense.amount;
-    });
-    setTotalExpense(calculatedExpense);
+    const nextMonthIncomes = companyData.incomes.filter(
+      (income) => income.incomeDate === currentDate + 1
+    );
 
-    const calculatedProfitLoss = calculatedIncome - calculatedExpense;
-    setProfitOrLoss(calculatedProfitLoss);
+    const totalCurrentMonthIncome = currentMonthIncomes.reduce(
+      (sum, income) => sum + income.amount,
+      0
+    );
+    const totalNextMonthIncome = nextMonthIncomes.reduce(
+      (sum, income) => sum + income.amount,
+      0
+    );
+
+    console.log("totalCurrentMonthIncome", totalCurrentMonthIncome);
+    console.log("totalNextMonthIncome", totalNextMonthIncome);
+
+    setTotalCurrentMonthIncome(totalCurrentMonthIncome);
+    setTotalNextMonthIncome(totalNextMonthIncome);
+
+    const currentMonthExpenses = companyData.expenses.filter(
+      (expense) => expense.expenseDate === currentDate
+    );
+
+    const nextMonthExpenses = companyData.expenses.filter(
+      (expense) => expense.expenseDate === currentDate
+    );
+
+    const totalCurrentMonthExpense = currentMonthExpenses.reduce(
+      (sum, expense) => sum + expense.amount,
+      0
+    );
+    const totalNextMonthExpense = nextMonthExpenses.reduce(
+      (sum, expense) => sum + expense.amount,
+      0
+    );
+
+    console.log("totalCurrentMonthExpense", totalCurrentMonthExpense);
+    console.log("totalNextMonthExpense", totalNextMonthExpense);
+
+    setTotalCurrentMonthExpense(totalCurrentMonthExpense);
+    setTotalNextMonthExpense(totalNextMonthExpense);
+
+    const profitLossCurrentMonth =
+      totalCurrentMonthIncome - totalCurrentMonthExpense;
+    const profitLossNextMonth = totalNextMonthIncome - totalNextMonthExpense;
+
+    setProfitOrLossCurrentMonth(profitLossCurrentMonth);
+    setProfitOrLossNextMonth(profitLossNextMonth);
   };
+
   return (
     <div className="company-data-major-container">
       <div className="finansal-bilgiler">
@@ -36,29 +88,61 @@ const SupervisorPageCompanyData = () => {
         <div className="finansal-kutular">
           <div className="finansal-kutu">
             <p>
-              <strong>Kar/Zarar Bilgileri:</strong> {profitOrLoss}
+              <strong>Kar/Zarar Bilgileri:</strong>{" "}
+              {totalProfitOrLossCurrentMonth}
+            </p>
+            <PieChart
+              colors={["cyan", "red"]}
+              series={[
+                {
+                  data: [
+                    { id: 0, value: totalCurrentMonthIncome, label: "Income" },
+                    {
+                      id: 1,
+                      value: totalCurrentMonthExpense,
+                      label: "Expense",
+                    },
+                  ],
+                },
+              ]}
+              width={600}
+              height={300}
+            />
+          </div>
+          <div className="finansal-kutu">
+            <p>
+              <strong>{currentDate}. Ay Toplam Gelir Bilgisi:</strong>{" "}
+              {totalCurrentMonthIncome}
             </p>
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>Toplam Gelir Bilgisi:</strong> {totalIncome}
+              <strong>{currentDate}. Ay Toplam Gider Bilgisi:</strong>{" "}
+              {totalCurrentMonthExpense}
             </p>
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>Toplam Gider Bilgisi:</strong> {totalExpense}
+              <strong>Yaklaşan Ödeme Bilgileri:</strong> {totalNextMonthExpense}
             </p>
           </div>
           <div className="finansal-kutu">
-            <p>
-              <strong>Yaklaşan Ödeme Bilgileri:</strong> {totalExpense}
-            </p>
-          </div>
-          <div className="finansal-kutu">
-            <p>
-              <strong>Resmi Tatil Bilgileri:</strong>{" "}
-              {<HolidayList holidays={companyData.holidays} />}
-            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Tarih</th>
+                  <th>Tatil Adı</th>
+                </tr>
+              </thead>
+              <tbody>
+                {companyData.holidays.map((holiday, index) => (
+                  <tr key={index}>
+                    <td>{holiday.date}</td>
+                    <td>{holiday.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
