@@ -77,27 +77,37 @@ const SupervisorPageSpendingRequestCard = ({ request }) => {
         <img src={request.image} alt="Personnel Image" />
       </div>
       <div className="spending-request-card-body">
-        <div className="spending-request-card-data-div">
-          <h3>NAME</h3>
-          <p>
-            {request.name} {request.lastName}
-          </p>
+        <div>
+          <div className="spending-request-card-data-div">
+            <h3>NAME</h3>
+            <p>
+              {request.name} {request.lastName}
+            </p>
+          </div>
+          <div className="spending-request-card-data-div">
+            <h3>REQUEST DATE</h3>
+            <p>{request.createdAt}</p>
+          </div>
         </div>
-        <div className="spending-request-card-data-div">
-          <h3>REQUEST DATE</h3>
-          <p>{request.createdAt}</p>
+        <div>
+          <div className="spending-request-card-data-div">
+            <h3>REASON</h3>
+            <p>{request.reason}</p>
+          </div>
+          <div className="spending-request-card-data-div">
+            <h3>DESCRIPTION</h3>
+            <p>{request.description}</p>
+          </div>
         </div>
-        <div className="spending-request-card-data-div">
-          <h3>REASON</h3>
-          <p>{request.reason}</p>
-        </div>
-        <div className="spending-request-card-data-div">
-          <h3>DESCRIPTION</h3>
-          <p>{request.description}</p>
-        </div>
-        <div className="spending-request-card-data-div">
-          <h3>AMOUNT</h3>
-          <p>{request.amount}</p>
+        <div>
+          <div className="spending-request-card-data-div">
+            <h3>AMOUNT</h3>
+            <p>{request.amount}</p>
+          </div>
+          <div className='advance-request-card-data-div'>
+            <h3>STATUS</h3>
+            <p>{request.requestStatus}</p>
+          </div>
         </div>
         <div className="spending-request-card-data-div">
           <h3>SPENDING FILES</h3>
@@ -113,10 +123,6 @@ const SupervisorPageSpendingRequestCard = ({ request }) => {
               </option>
             ))}
           </select>
-        </div>
-        <div className='advance-request-card-data-div'>
-          <h3>STATUS</h3>
-          <p>{request.requestStatus}</p>
         </div>
         {request.requestStatus === "PENDING" ? (
           <div className="spending-request-card-buttons">

@@ -50,29 +50,35 @@ const SupervisorPageAdvanceRequestCard = ({request}) => {
                 <img src={request.image} alt="Personnel Image" />
             </div>
             <div className="advance-request-card-body">
-                <div className='advance-request-card-data-div'>
-                    <h3>NAME</h3>
-                    <p>{request.name} {request.lastName}</p>
+                <div>
+                    <div className='advance-request-card-data-div'>
+                        <h3>NAME</h3>
+                        <p>{request.name} {request.lastName}</p>
+                    </div>
+                    <div className='advance-request-card-data-div'>
+                        <h3>REQUEST DATE</h3>
+                        <p>{request.createdAt}</p>
+                    </div>
                 </div>
-                <div className='advance-request-card-data-div'>
-                    <h3>REQUEST DATE</h3>
-                    <p>{request.createdAt}</p>
+                <div>
+                    <div className='advance-request-card-data-div'>
+                        <h3>DESCRIPTION</h3>
+                        <p>{request.description}</p>
+                    </div>
+                    <div className='advance-request-card-data-div'>
+                        <h3>AMOUNT</h3>
+                        <p>{request.amount} TL</p>
+                    </div>
                 </div>
-                <div className='advance-request-card-data-div'>
-                    <h3>DESCRIPTION</h3>
-                    <p>{request.description}</p>
-                </div>
-                <div className='advance-request-card-data-div'>
-                    <h3>AMOUNT</h3>
-                    <p>{request.amount} TL</p>
-                </div>
-                <div className='advance-request-card-data-div'>
-                    <h3>ADVANCE QUOTA</h3>
-                    <p>{request.advanceQuota} TL</p>
-                </div>
-                <div className='advance-request-card-data-div'>
-                    <h3>STATUS</h3>
-                    <p>{request.requestStatus}</p>
+                <div>
+                    <div className='advance-request-card-data-div'>
+                        <h3>ADVANCE QUOTA</h3>
+                        <p>{request.advanceQuota} TL</p>
+                    </div>
+                    <div className='advance-request-card-data-div'>
+                        <h3>STATUS</h3>
+                        <p>{request.requestStatus}</p>
+                    </div>
                 </div>
                 {/* <div className='advance-request-card-data-div'>
                     <button onClick={showCustomConfirm}>Show Custom Confirm</button>
