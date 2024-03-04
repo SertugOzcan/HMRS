@@ -7,11 +7,12 @@ const SupervisorPageDayOffRequestList = () => {
     const {dayOffRequests} = useContext(SupervisorPageDayOffAPIContext)
 
   return (
-    <div className='dayoff-request-list-container'>
+    // <div className='dayoff-request-list-container'>
+    <>
       {dayOffRequests.map((dayoffRequest)=>(
         <SupervisorPageDayOffRequestCard key={dayoffRequest.id} request={dayoffRequest}/>
       ))}
-    </div>
+    </>
   )
 }
 

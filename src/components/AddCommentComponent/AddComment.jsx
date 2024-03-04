@@ -4,12 +4,14 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import RatingComponent from "./RatingComponent";
 
-const AddComment = () => {
+const AddComment = ({setIsShowAddCard}) => {
     const {isAuthenticated} = useContext(AuthContext);
 
   const [content, setContent] = useState("");
   const [header, setHeader] = useState("");
   const [rating, setRating] = useState(1);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [visible, setVisible] = useState(false);
 
 
   const handleChangeContent = (e) => {
@@ -23,11 +25,16 @@ const AddComment = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if(!header.trim() || !content.trim()) {
+      alert("Header and content must not be empty!");
+      return;
+    }
   
     const newComment = {
       token: isAuthenticated.token,
-      header: header,
-      content: content,
+      header: header.trim(),
+      content: content.trim(),
       rating: rating
     };
   
@@ -35,15 +42,24 @@ const AddComment = () => {
       const response = await axios.post('http://localhost:80/comment/add', newComment);
 
       if (response.status === 200) {
-        console.log("Add Comment Successfull")
+        setIsSuccess(true);
       }
     } catch (error) {
       console.log("Error on creating new comment request! ", error);
+      setIsSuccess(false);
     }
   
     setContent('');
     setHeader('');
     setRating(1);
+
+    setVisible(true);
+
+    setTimeout(() => {
+      setVisible(false);
+    }, 4000);
+
+    // setIsShowAddCard(false)
   };
 
   return (
@@ -73,6 +89,11 @@ const AddComment = () => {
         <button onClick={handleSubmit} className="submit-button">
           Add Comment
         </button>
+        <span className={`add-comment-message ${visible ? "show" : ""} ${
+              isSuccess ? "success" : "error"
+            }`}>
+        {isSuccess ? "Comment added! Waiting for admin approval..." : "Comment add failed, please try again later..."}
+        </span>
       </div>
     </div>
   );

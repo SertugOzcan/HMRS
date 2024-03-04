@@ -43,6 +43,7 @@ import PersonnelSpendingRequestPage from "./components/PersonnelSpendingRequestP
 
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUsCardList from "./pages/AboutUsPage/AboutUsCardList";
+import MyCompany from "./components/MyCompany/MyCompany";
 
 
 function App() {
@@ -240,7 +241,7 @@ function App() {
               <PrivateRoute
                 element={
                   <PersonnelPageAPIContextProvider>
-                    <AddComment/>
+                        <MyCompany />
                   </PersonnelPageAPIContextProvider>
                 }
               />

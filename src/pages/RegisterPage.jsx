@@ -68,6 +68,16 @@ const RegisterPage = () => {
       hasError = true;
     }
 
+    if (identityNumber.startsWith("0")) {
+      setIdentityNumberError("Identity number can not start with number zero!");
+      hasError = true;
+    }
+
+    if (!phone.startsWith("0")) {
+      setPhoneNumberError("Phone number must start with number zero!");
+      hasError = true;
+    }
+
     if (hasError) {
       return;
     }
@@ -79,7 +89,11 @@ const RegisterPage = () => {
         surName: surName.trim(),
         email: email.trim(),
         password: password,
-        rePassword: rePassword,
+
+        
+
+
+        rePassword: rePassword,    
 
         identityNumber: identityNumber,
         dateOfBirth: date,

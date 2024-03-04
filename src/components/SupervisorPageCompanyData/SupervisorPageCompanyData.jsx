@@ -2,33 +2,85 @@ import { useState, useEffect, useContext } from "react";
 import "./SupervisorPageCompanyData.css";
 import HolidayList from "../HolidayList";
 import { SupervisorPageAPIContext } from "../../context/SupervisorPageAPIContext";
+import { PieChart } from "@mui/x-charts/PieChart";
 
 const SupervisorPageCompanyData = () => {
   const { companyData } = useContext(SupervisorPageAPIContext);
-  const [totalIncome, setTotalIncome] = useState(0);
-  const [totalExpense, setTotalExpense] = useState(0);
-  const [profitOrLoss, setProfitOrLoss] = useState(0);
+  const [totalCurrentMonthIncome, setTotalCurrentMonthIncome] = useState(0);
+  const [totalNextMonthIncome, setTotalNextMonthIncome] = useState(0);
+  const [totalCurrentMonthExpense, setTotalCurrentMonthExpense] = useState(0);
+  const [totalNextMonthExpense, setTotalNextMonthExpense] = useState(0);
+  const [totalProfitOrLossCurrentMonth, setProfitOrLossCurrentMonth] =
+    useState(0);
+  const [totalProfitOrLossNextMonth, setProfitOrLossNextMonth] = useState(0);
 
   useEffect(() => {
     calculateProfitLoss();
   }, [companyData]);
 
+  const date = new Date();
+  const currentDate = date.getMonth() + 1;
+
   const calculateProfitLoss = () => {
-    let calculatedIncome = 0;
-    companyData.incomes.forEach((income) => {
-      calculatedIncome += income.amount;
-    });
-    setTotalIncome(calculatedIncome);
+    const currentMonthIncomes = companyData.incomes.filter(
+      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])+1) === currentDate
+    );
 
-    let calculatedExpense = 0;
-    companyData.expenses.forEach((expense) => {
-      calculatedExpense += expense.amount;
-    });
-    setTotalExpense(calculatedExpense);
+    const nextMonthIncomes = companyData.incomes.filter(
+      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])+2) === currentDate + 1
+    );
 
-    const calculatedProfitLoss = calculatedIncome - calculatedExpense;
-    setProfitOrLoss(calculatedProfitLoss);
+    const totalCurrentMonthIncome = currentMonthIncomes.reduce(
+      (sum, income) => sum + income.amount,
+      0
+    );
+    const totalNextMonthIncome = nextMonthIncomes.reduce(
+      (sum, income) => sum + income.amount,
+      0
+    );
+
+    setTotalCurrentMonthIncome(totalCurrentMonthIncome);
+    setTotalNextMonthIncome(totalNextMonthIncome);
+
+    const currentMonthExpenses = companyData.expenses.filter(
+      (expense) => (Number(expense.expenseDate.split('-')[1].split('')[1])) === currentDate
+    );
+
+    const nextMonthExpenses = companyData.expenses.filter(
+      (expense) => (Number(expense.expenseDate.split('-')[1].split('')[1])+1) === currentDate + 1
+    );
+
+    const totalCurrentMonthExpense = currentMonthExpenses.reduce(
+      (sum, expense) => sum + expense.amount,
+      0
+    );
+    const totalNextMonthExpense = nextMonthExpenses.reduce(
+      (sum, expense) => sum + expense.amount,
+      0
+    );
+
+    setTotalCurrentMonthExpense(totalCurrentMonthExpense);
+    setTotalNextMonthExpense(totalNextMonthExpense);
+
+    const profitLossCurrentMonth =
+      totalCurrentMonthIncome - totalCurrentMonthExpense;
+    const profitLossNextMonth = totalNextMonthIncome - totalNextMonthExpense;
+
+    setProfitOrLossCurrentMonth(profitLossCurrentMonth);
+    setProfitOrLossNextMonth(profitLossNextMonth);
   };
+
+  const calculateHolidayDuration = (holiday) => {
+    const startDate = new Date(holiday.startDate);
+    const endDate = new Date(holiday.endDate);
+  
+    const oneDay = 24 * 60 * 60 * 1000;
+  
+    const durationInDays = Math.round((endDate - startDate) / oneDay) + 1;
+  
+    return durationInDays;
+  };
+
   return (
     <div className="company-data-major-container">
       <div className="finansal-bilgiler">
@@ -36,29 +88,65 @@ const SupervisorPageCompanyData = () => {
         <div className="finansal-kutular">
           <div className="finansal-kutu">
             <p>
-              <strong>Kar/Zarar Bilgileri:</strong> {profitOrLoss}
+              <strong>Kar/Zarar Bilgileri:</strong>{" "}
+              {totalProfitOrLossCurrentMonth}
+            </p>
+            <PieChart
+              colors={["cyan", "red"]}
+              series={[
+                {
+                  data: [
+                    { id: 0, value: totalCurrentMonthIncome, label: "Income" },
+                    {
+                      id: 1,
+                      value: totalCurrentMonthExpense,
+                      label: "Expense",
+                    },
+                  ],
+                },
+              ]}
+              width={600}
+              height={300}
+            />
+          </div>
+          <div className="finansal-kutu">
+            <p>
+              <strong>{currentDate}. Ay Toplam Gelir Bilgisi:</strong>{" "}
+              {totalCurrentMonthIncome}
             </p>
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>Toplam Gelir Bilgisi:</strong> {totalIncome}
+              <strong>{currentDate}. Ay Toplam Gider Bilgisi:</strong>{" "}
+              {totalCurrentMonthExpense}
             </p>
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>Toplam Gider Bilgisi:</strong> {totalExpense}
+              <strong>Yaklaşan Ödeme Bilgileri:</strong> {totalNextMonthExpense}
             </p>
           </div>
           <div className="finansal-kutu">
-            <p>
-              <strong>Yaklaşan Ödeme Bilgileri:</strong> {totalExpense}
-            </p>
-          </div>
-          <div className="finansal-kutu">
-            <p>
-              <strong>Resmi Tatil Bilgileri:</strong>{" "}
-              {<HolidayList holidays={companyData.holidays} />}
-            </p>
+            <table className="holiday-table">
+              <thead>
+                <tr>
+                  <th>Tatil Adı</th>
+                  <th>Tatil Baslangic</th>
+                  <th>Tatil Bitis</th>
+                  <th>Tarih Suresi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {companyData.holidays.map((holiday, index) => (
+                  <tr key={index}>
+                    <td>{holiday.name}</td>
+                    <td>{holiday.startDate}</td>
+                    <td>{holiday.endDate}</td>
+                    <td>{calculateHolidayDuration(holiday)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

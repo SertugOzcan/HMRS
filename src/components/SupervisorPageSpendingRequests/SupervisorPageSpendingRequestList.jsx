@@ -9,14 +9,15 @@ const SupervisorPageSpendingRequestList = () => {
   );
 
   return (
-    <div className="supervisor-page-spending-request-list-container">
+    // < className="supervisor-page-spending-request-list-container">
+    <>
       {spendingRequests.map((spendingRequest) => (
         <SupervisorPageSpendingRequestCard
           key={spendingRequest.id}
           request={spendingRequest}
         />
       ))}
-    </div>
+    </>
   );
 };
 

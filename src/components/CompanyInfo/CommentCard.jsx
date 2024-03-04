@@ -17,11 +17,12 @@ const CommentCard = ( {comment} ) => {
         <img src={image} alt="" />
       </div>
       <div className="comment-card-texts">
-        <h4>
+        <h3>
           {name} {surName}
-        </h4>
+        </h3>
+        <h4>{comment.header}</h4>
         <p>{comment.content}</p>
-        <p className="creation-date">{comment.creationDate}</p>
+        <p className="creation-date">Comment date: {comment.creationDate}</p>
       </div>
     </div>
   );
