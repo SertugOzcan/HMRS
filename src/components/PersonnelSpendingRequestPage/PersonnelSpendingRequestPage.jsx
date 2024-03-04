@@ -71,6 +71,7 @@ const PersonnelSpendingRequestPage = () => {
 
   return (
     <div className="personnel-spending-request-page-container">
+      <h2>You can find information about the expenditure request below..</h2>
       <div className="personnel-spending-page-upper">
         <strong>Spending Requests</strong>
         <button onClick={handleCreateButtonClick}>Create Request</button>

@@ -32,6 +32,7 @@ const PersonnelDayOffPage = () => {
   return (
     // SERTUĞA NOT: btn-container, edit-info-background,edit-info-content cssleri ayrıştırılabilir...
     <div className="personnel-day-off-page-container">
+      <h2>You can find information about your request days below..</h2>
       <div className="personnel-day-off-page-upper">
         <strong>DayOff Requests</strong>
         <div className="btn-container">

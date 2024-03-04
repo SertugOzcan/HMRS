@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import RatingComponent from "./RatingComponent";
 
-const AddComment = () => {
+const AddComment = ({setIsShowAddCard}) => {
     const {isAuthenticated} = useContext(AuthContext);
 
   const [content, setContent] = useState("");
@@ -44,6 +44,7 @@ const AddComment = () => {
     setContent('');
     setHeader('');
     setRating(1);
+    setIsShowAddCard(false)
   };
 
   return (
