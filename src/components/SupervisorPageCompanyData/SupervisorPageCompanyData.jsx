@@ -141,54 +141,62 @@ const SupervisorPageCompanyData = () => {
         <p>Explore essential details about the company's incomes, expenses, and personnel information. This page provides a comprehensive view of monthly financial insights, including approved spending and advance requests. You can also access information about company holidays, the number of departments, and the total personnel count.</p>
         <h4><em>Personnel salaries, accepted advance requests, and spending details are presented under the expenses section on this page.</em></h4>
         <div className="finansal-kutular">
-          <div className="finansal-kutu">
-            <p>
-              <strong>Current Month Income/Expense Amount:</strong>{" "}
-              {totalProfitOrLossCurrentMonth}
-            </p>
-            <PieChart
-              colors={["cyan", "red"]}
-              series={[
-                {
-                  data: [
-                    { id: 0, value: totalCurrentMonthIncome, label: "Incomes" },
+          <div className="finansal-charts">
+            
+              <div className="finansal-chart">
+                <p>
+                  <strong>Current Month Income/Expense Amount:</strong>{" "}
+                  {totalProfitOrLossCurrentMonth}
+                </p>
+                <PieChart
+                  colors={["cyan", "red"]}
+                  series={[
                     {
-                      id: 1,
-                      value: totalCurrentMonthExpense,
-                      label: "Expenses",
+                      data: [
+                        { id: 0, value: totalCurrentMonthIncome, label: "Incomes" },
+                        {
+                          id: 1,
+                          value: totalCurrentMonthExpense,
+                          label: "Expenses",
+                        },
+                      ],
                     },
-                  ],
-                },
-              ]}
-              width={600}
-              height={300}
-            />
-            <p>
-              <strong>Incomes in Detail:</strong>
-            </p>
-            <PieChart
-              colors={generateRandomColors(pieChartDataIncomes.length)}
-              series={[
-                {
-                  data: pieChartDataIncomes,
-                },
-              ]}
-              width={600}
-              height={300}
-            />
-            <p>
-              <strong>Expenses in Detail:</strong>
-            </p>
-            <PieChart
-              colors={generateRandomColors(pieChartDataExpenses.length)}
-              series={[
-                {
-                  data: pieChartDataExpenses,
-                },
-              ]}
-              width={600}
-              height={300}
-            />
+                  ]}
+                  width={400}
+                  height={200}
+                />
+              </div>
+              <div className="finansal-chart">
+                <p>
+                  <strong>Incomes in Detail:</strong>
+                </p>
+                <PieChart
+                  colors={generateRandomColors(pieChartDataIncomes.length)}
+                  series={[
+                    {
+                      data: pieChartDataIncomes,
+                    },
+                  ]}
+                  width={400}
+                  height={200}
+                />
+              </div>
+              <div className="finansal-chart">
+                <p>
+                  <strong>Expenses in Detail:</strong>
+                </p>
+                <PieChart
+                  colors={generateRandomColors(pieChartDataExpenses.length)}
+                  series={[
+                    {
+                      data: pieChartDataExpenses,
+                    },
+                  ]}
+                  width={400}
+                  height={200}
+                />
+              </div>
+            
           </div>
           <div className="finansal-kutu">
             <p>

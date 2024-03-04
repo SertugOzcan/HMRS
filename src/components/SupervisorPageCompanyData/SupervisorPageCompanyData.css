@@ -61,6 +61,17 @@
       flex-direction: column;
   }
   
+  .finansal-charts{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #585858;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+  }
+
   .finansal-bilgiler .finansal-kutu {
       background-color: #585858;
       border: 1px solid #ccc;
