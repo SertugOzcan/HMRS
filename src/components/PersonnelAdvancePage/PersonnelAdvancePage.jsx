@@ -23,6 +23,7 @@ const PersonnelAdvancePage = () => {
   return (
     // SERTUĞA NOT: btn-container, edit-info-background,edit-info-content cssleri ayrıştırılabilir...
     <div className="personnel-advance-page-container">
+      <h2>You can find information about the advance payment request below..</h2>
       <div className="personnel-advance-page-upper">
         <strong>Advance Requests</strong>
         <div className="btn-container">

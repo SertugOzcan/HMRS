@@ -3,12 +3,14 @@
     position: relative;
     left: 300px;
     top: 100px;
+    text-align: center;
 }
 
 .personnel-day-off-page-upper{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 30px;
 }
 
 .personnel-day-off-page-upper strong{
