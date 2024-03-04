@@ -81,6 +81,17 @@ const SupervisorPageCompanyData = () => {
     setProfitOrLossNextMonth(profitLossNextMonth);
   };
 
+  const calculateHolidayDuration = (holiday) => {
+    const startDate = new Date(holiday.startDate);
+    const endDate = new Date(holiday.endDate);
+  
+    const oneDay = 24 * 60 * 60 * 1000;
+  
+    const durationInDays = Math.round((endDate - startDate) / oneDay) + 1;
+  
+    return durationInDays;
+  };
+
   return (
     <div className="company-data-major-container">
       <div className="finansal-bilgiler">
@@ -127,18 +138,22 @@ const SupervisorPageCompanyData = () => {
             </p>
           </div>
           <div className="finansal-kutu">
-            <table>
+            <table className="holiday-table">
               <thead>
                 <tr>
-                  <th>Tarih</th>
                   <th>Tatil Adı</th>
+                  <th>Tatil Baslangic</th>
+                  <th>Tatil Bitis</th>
+                  <th>Tarih Suresi</th>
                 </tr>
               </thead>
               <tbody>
                 {companyData.holidays.map((holiday, index) => (
                   <tr key={index}>
-                    <td>{holiday.date}</td>
                     <td>{holiday.name}</td>
+                    <td>{holiday.startDate}</td>
+                    <td>{holiday.endDate}</td>
+                    <td>{calculateHolidayDuration(holiday)}</td>
                   </tr>
                 ))}
               </tbody>
