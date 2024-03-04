@@ -58,7 +58,7 @@ const LoginPage = () => {
   }, []);
 
   return (
-    <section>
+    <section className='sectionLogin'>
       <span></span> <span></span> <span></span> <span></span> <span></span>
       <span></span> <span></span> <span></span> <span></span> <span></span>
       <span></span> <span></span> <span></span> <span></span> <span></span>
