@@ -67,11 +67,12 @@
 
 /******************/
 
-.personnel-info{
-    width: 100%;
+.personnell-info{
+    width: 100%
 }
 .comment-info{
     width: 100%;
+    max-height: 430px;
     
 }
 

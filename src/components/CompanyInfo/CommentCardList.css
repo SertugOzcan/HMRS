@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 3px;
-    height: 400px; /* İstenilen sabit yükseklik */
+    height: 100%; /* İstenilen sabit yükseklik */
     overflow-y: auto;
 
     

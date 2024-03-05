@@ -1,11 +1,17 @@
 .comment-card-container{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 15px;
     padding: 20px;
     background-color: rgba(43, 153, 226, 0.048);
     position: relative;
     border: 1px solid #33333325;
     border-radius: 8px;
+}
+.comment-card-second-container{
+    display: flex;
+    gap: 7px;
 }
 .comment-card-img-div{
     width: 75px;
@@ -23,9 +29,16 @@
     gap: 5px;
 }
 .comment-card-texts p{
+    max-width: calc(100vw - 1370px);
+    font-size: small;
     overflow-wrap: break-word;
     word-break: break-all; 
     white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .creation-date{
     position: absolute;

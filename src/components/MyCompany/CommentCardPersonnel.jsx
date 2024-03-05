@@ -11,11 +11,11 @@ const CommentCardPersonnel = ({ comment }) => {
           <img src={image} alt="" />
         </div>
         <div className="comment-card-texts-personnel">
-          <h3>
+          <h4>
             {name} {surName}
-          </h3>
+          </h4>
           <div className="comment-card-texts-personnel-header-content">
-            <h4>{comment.header}</h4>
+            <h5>{comment.header}</h5>
             <p>{comment.content}</p>
           </div>
           <p className="creation-date-personnel">Comment date: {comment.creationDate}</p>

@@ -25,15 +25,21 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 10px;
+    gap: 7px;
     
 }
 .comment-card-texts-personnel p{
-    max-width: 950px;
+    max-width: calc(100vw - 660px);
     text-align: start;
     overflow-wrap: break-word;
     word-break: break-all; 
     white-space: normal;
+    font-size: small;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
 }
 .creation-date-personnel{
     position: absolute;
