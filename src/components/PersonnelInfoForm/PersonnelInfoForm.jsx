@@ -13,44 +13,15 @@ const PersonnelInfoForm = () => {
   const [holidays, setHolidays] = useState([]);
 
   useEffect(() => {
-    const mockHolidays = [
-      {
-        name: "New Year's Day",
-        startDate: "2024-01-01",
-        endDate: "2024-01-01",
-      },
-      {
-        name: "Labor Day",
-        startDate: "2024-05-01",
-        endDate: "2024-05-01",
-      },
-      {
-        name: "Independence Day",
-        startDate: "2024-07-04",
-        endDate: "2024-07-04",
-      },
-      {
-        name: "Christmas Day",
-        startDate: "2024-12-25",
-        endDate: "2024-12-25",
-      },
-    ];
+    const modifiedHolidays = personnel.companyHolidays.map(holiday => {
+      const currentEndDate = new Date(holiday.endTime);
+      const currentEndDateIncluded = new Date(currentEndDate);
+      currentEndDateIncluded.setDate(currentEndDate.getDate() + 1);
+      return {...holiday, endTime: currentEndDateIncluded.toISOString().split('T')[0]};
+    })
 
-    setHolidays(mockHolidays);
+    setHolidays(modifiedHolidays);
   }, []);
-
-  // useEffect(() => {
-  //   const fetchHolidays = async () => {
-  //     try {
-  //       const response = await axios.get('http://localhost:9095/api/v1/company/holidays');
-  //       setHolidays(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching holidays:', error);
-  //     }
-  //   };
-
-  //   fetchHolidays();
-  // }, []);
 
   const handleEditInfoClick = (e) => {
     e.preventDefault();
@@ -142,7 +113,7 @@ const PersonnelInfoForm = () => {
               <div className="personnel-hrinfo-container">
               <strong>HR Infos:</strong>
                 {personnel.hrInfos.map((hrInfo) => (
-                  <div>
+                  <div key={hrInfo.phone}>
                     <p key={hrInfo.email}>Mail:{hrInfo.email}</p>
                     <p key={hrInfo.phone}>Phone:{hrInfo.phone}</p>
                   </div>
@@ -153,20 +124,22 @@ const PersonnelInfoForm = () => {
         </div>
       </div>
       <div className="calendar-container">
-        <Calendar
-          className="holiday-calendar"
-          value={new Date()}
-          tileContent={({ date }) => {
-            const holiday = holidays.find(
-              (holiday) =>
-                new Date(holiday.startDate).toDateString() ===
-                date.toDateString()
-            );
-            return holiday ? (
-              <div className="holiday-day">{holiday.name}</div>
-            ) : null;
-          }}
-        />
+      <Calendar
+        className="holiday-calendar"
+        value={new Date()}
+        tileContent={({ date }) => {
+          const holiday = holidays.find((holiday) => {
+            const startDate = new Date(holiday.startTime);
+            startDate.setHours(0, 0, 0, 0);
+            const endDate = new Date(holiday.endTime);
+            endDate.setHours(0, 0, 0, 0);
+            return ((date >= startDate) && (date < endDate));
+          });
+          return holiday ? (
+            <div className="holiday-day">{holiday.name}</div>
+          ) : null;
+        }}
+      />
       </div>
     </div>
   );
