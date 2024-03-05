@@ -3,20 +3,20 @@ import "./AboutUsCardList.css";
 const AboutUsCardList = () => {
   const developerInfos = [
     {
-      firstName: "Ali Volkan",
+      firstName: "Ali Volkan",   // EDUCATION KISMI DEĞİŞTİRİLMELİ BENCE
       lastName: "Şahin",
-      dayOfBirth: "07.03.1999",
-      education:"Kirklareli University",
-      image: "./DeveloperImages/bahadir.jpg",
-      githubLink: "https://github.com/BahadirUnsall",
-      linkedInLink: "https://www.linkedin.com/in/bahadirunsal/"
+      dayOfBirth: "01.08.1994",
+      education:"Turk Hava Kurumu University",
+      image: "src\\pages\\AboutUsPage\\DeveloperImages\\alivolkan.jpg",
+      githubLink: "https://github.com/alivolkansahin",
+      linkedInLink: "https://www.linkedin.com/in/alivolkansahin/"
     },
     {
       firstName: "Bahadir",
       lastName: "Unsal",
       dayOfBirth: "07.03.1999",
       education:"Kirklareli University",
-      image: "./DeveloperImages/bahadir.jpg",
+      image: "src\\pages\\AboutUsPage\\DeveloperImages\\bahadir.jpg",
       githubLink: "https://github.com/BahadirUnsall",
       linkedInLink: "https://www.linkedin.com/in/bahadirunsal/"
     },
@@ -25,16 +25,16 @@ const AboutUsCardList = () => {
       lastName: "Ülker",
       dayOfBirth: "21.10.1992",
       education:"Karabuk University",
-      image: "./DeveloperImages/muhittin.jpg",
-      githubLink: "https://https://github.com/MuhittinUlker",
+      image: "src\\pages\\AboutUsPage\\DeveloperImages\\muhittin.jpg",
+      githubLink: "https://github.com/MuhittinUlker",
       linkedInLink: "https://www.linkedin.com/in/muhittinulker/"
     },
     {
-      firstName: "Sertuğ",
+      firstName: "Sertuğ", // SERTUĞ DOLDURACAK
       lastName: "Özcan",
       dayOfBirth: "07.03.1999",
       education:"Kirklareli University",
-      image: "./DeveloperImages/bahadir.jpg",
+      image: "src\\pages\\AboutUsPage\\DeveloperImages\\sertug.jpg",
       githubLink: "https://github.com/BahadirUnsall",
       linkedInLink: "https://www.linkedin.com/in/bahadirunsal/"
     }
@@ -45,10 +45,6 @@ const AboutUsCardList = () => {
       {developerInfos.map((developer, index) => (
         <AboutUsCard key={index} developer={developer} />
       ))}
-      {/* <AboutUsCard />
-      <AboutUsCard />
-      <AboutUsCard />
-      <AboutUsCard /> */}
     </div>
   );
 }

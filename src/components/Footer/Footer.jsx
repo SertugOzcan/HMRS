@@ -12,9 +12,9 @@ const Footer = ({theme}) => {
         <Link to="/about-us">
           <button>About Us</button>
         </Link>
-        <Link to="/contactus">
+        {/* <Link to="/contactus">
           <button>Contact Us</button>
-        </Link>
+        </Link> */}
       </div>
       <div className={`footer-right ${theme}`}>
         <p className="copyright text-center">
