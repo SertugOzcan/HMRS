@@ -170,9 +170,13 @@ function App() {
           <Route
             path="/ziyaretci-page"
             element={
-              <GuestPageAPIContextProvider>
-                <ZiyaretciPage />
-              </GuestPageAPIContextProvider>
+              <PrivateRoute
+                element={
+                  <GuestPageAPIContextProvider>
+                    <ZiyaretciPage />
+                  </GuestPageAPIContextProvider>
+                }
+              />
             }
           />
           <Route

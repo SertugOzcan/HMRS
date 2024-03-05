@@ -13,6 +13,11 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { logout, login } = useContext(AuthContext);
 
+  // VOLKAN: Üstten URL ile logine dönülünce sidebar ekranda kalıyordu, logout yaptırtarak bi çözüm buldum maalesef...
+  useEffect(() => {
+    logout();
+  },[]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {

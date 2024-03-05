@@ -193,6 +193,7 @@
         position: relative;
         left: 255px;
         top: 65px;
+        padding-bottom: 5rem;
     }
 
     .holiday-table {

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./NavBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import ThemeSlider from "../ThemeSlider";
@@ -15,7 +15,6 @@ const NavBar = ({theme}) => {
 
   const navigate = useNavigate();
 
-
   const handleLogin = () => {
     navigate("/login");
   }
@@ -28,6 +27,20 @@ const NavBar = ({theme}) => {
   const handleChange = () => {
     supervisorCurrentPage === "supervisor" ? setSupervisorCurrentPage("personnel") : setSupervisorCurrentPage("supervisor");
   }
+
+  // VOLKAN: BU DENEME BAŞARISIZ OLDU...
+  // useEffect(() => {
+  //   const storedPage = localStorage.getItem("supervisorCurrentPage");
+  //   if (storedPage) {
+  //     setSupervisorCurrentPage(storedPage);
+  //   } else {
+  //     localStorage.setItem("supervisorCurrentPage", supervisorCurrentPage);
+  //   }
+  // }, []);
+  
+  // useEffect(() => {
+  //   localStorage.setItem("supervisorCurrentPage", supervisorCurrentPage);
+  // }, [supervisorCurrentPage]);
 
   return (
     //loggedin

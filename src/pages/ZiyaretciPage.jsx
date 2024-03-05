@@ -20,24 +20,14 @@ const ZiyaretciPage = () => {
         </div>
         <div className='guest-img'>
           <img src="https://static.vecteezy.com/system/resources/previews/024/785/747/non_2x/3d-male-character-working-on-a-laptop-free-png.png" alt="" />
-      </div>
-    </div>
-
-    <div className='guest-companies-container'>
-        <h1>Companies Working With Us</h1>
-        <div>
-          <CompanyList />
         </div>
-        
-    </div>
-
-      {/*<h2>About Us</h2>
-      <div className="site-info">
-        <h3>Site Information</h3>
-        <p>Company: Musketeers</p>
-        <p>Administrator: John Doe</p>
-  <p>Platform Purpose: something something </p>
-      </div>*/}
+      </div>
+      <div className='guest-companies-container'>
+          <h1>Companies Working With Us</h1>
+          <div>
+            <CompanyList />
+          </div>        
+      </div>
     </div>
   );
 }
