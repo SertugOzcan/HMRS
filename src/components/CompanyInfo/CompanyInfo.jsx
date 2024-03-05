@@ -51,7 +51,7 @@ const CompanyInfo = ({ selectedCompanyInfo, setFilteredCompanies }) => {
                 </div>
               ))}
           </div>
-          <div className="personnel-info">
+          <div className="personnell-info">
             <SupervisorCardList selectedCompanyInfo={selectedCompanyInfo} />
           </div>
         </div>
