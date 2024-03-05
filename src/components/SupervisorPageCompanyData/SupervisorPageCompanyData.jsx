@@ -22,13 +22,53 @@ const SupervisorPageCompanyData = () => {
   const date = new Date();
   const currentDate = date.getMonth() + 1;
 
+
+  //  YEAR RELATED ACTIONS:
+  const allYearIncomes = companyData.incomes;
+  const allYearExpenses = companyData.expenses;
+  const totalYearIncome = allYearIncomes.reduce((sum, income) => sum + income.amount, 0);
+  const totalYearExpense = allYearExpenses.reduce((sum, expense) => sum + expense.amount, 0);
+  const totalProfitOrLossCurrentYear = totalYearIncome - totalYearExpense;
+
+  const combinedYearExpenses = {};
+  const combinedYearIncomes = {};
+
+  allYearExpenses.forEach((expense) => {
+    if (combinedYearExpenses[expense.description]) {
+      combinedYearExpenses[expense.description].value += expense.amount;
+    } else {
+      combinedYearExpenses[expense.description] = {
+        id: expense.id,
+        value: expense.amount,
+        label: expense.description,
+      };
+    }
+  });
+  
+  allYearIncomes.forEach((income) => {
+    if (combinedYearIncomes[income.description]) {
+      combinedYearIncomes[income.description].value += income.amount;
+    } else {
+      combinedYearIncomes[income.description] = {
+        id: income.id,
+        value: income.amount,
+        label: income.description,
+      };
+    }
+  });
+
+  const pieChartDataYearExpenses = Object.values(combinedYearExpenses);
+  const pieChartDataYearIncomes = Object.values(combinedYearIncomes);
+
+
+  //  MONTH RELATED ACTIONS:
   const calculateProfitLoss = () => {
     const currentMonthIncomes = companyData.incomes.filter(
       (income) => (Number(income.incomeDate.split('-')[1].split('')[1])) === currentDate
     );
 
     const nextMonthIncomes = companyData.incomes.filter(
-      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])+1) === currentDate + 1
+      (income) => (Number(income.incomeDate.split('-')[1].split('')[1])) === currentDate + 1
     );
 
     const totalCurrentMonthIncome = currentMonthIncomes.reduce(
@@ -122,6 +162,8 @@ const SupervisorPageCompanyData = () => {
   const pieChartDataExpenses = Object.values(combinedExpenses);
   const pieChartDataIncomes = Object.values(combinedIncomes);
 
+
+  // RANDOM COLOR GENERATOR FOR PIE CHART:
   const generateRandomColors = (count) => {
     const colors = [];
     for (let i = 0; i < count; i++) {
@@ -130,8 +172,6 @@ const SupervisorPageCompanyData = () => {
     return colors;
   };
 
- 
-  const generateRandomColor = () => randomColor();
 
   return (
     <div className="company-data-major-container">
@@ -142,11 +182,10 @@ const SupervisorPageCompanyData = () => {
         <h4><em>Personnel salaries, accepted advance requests, and spending details are presented under the expenses section on this page.</em></h4>
         <div className="finansal-kutular">
           <div className="finansal-charts">
-            
               <div className="finansal-chart">
                 <p>
-                  <strong>Current Month Income/Expense Amount:</strong>{" "}
-                  {totalProfitOrLossCurrentMonth}
+                  <strong>This Month Income/Expense Amount:</strong>{" "}
+                  {totalProfitOrLossCurrentMonth.toFixed(2)} TL
                 </p>
                 <PieChart
                   colors={["cyan", "red"]}
@@ -168,7 +207,8 @@ const SupervisorPageCompanyData = () => {
               </div>
               <div className="finansal-chart">
                 <p>
-                  <strong>Incomes in Detail:</strong>
+                  <strong>This Month Incomes in Detail:</strong>{" "}
+                  {totalCurrentMonthIncome.toFixed(2)} TL
                 </p>
                 <PieChart
                   colors={generateRandomColors(pieChartDataIncomes.length)}
@@ -183,7 +223,8 @@ const SupervisorPageCompanyData = () => {
               </div>
               <div className="finansal-chart">
                 <p>
-                  <strong>Expenses in Detail:</strong>
+                  <strong>This Month Expenses in Detail:</strong>{" "}
+                  {totalCurrentMonthExpense.toFixed(2)} TL
                 </p>
                 <PieChart
                   colors={generateRandomColors(pieChartDataExpenses.length)}
@@ -196,23 +237,94 @@ const SupervisorPageCompanyData = () => {
                   height={200}
                 />
               </div>
-            
           </div>
-          <div className="finansal-kutu">
+          {/* VOLKAN: ASAGIDAKI THIS YEAR DENEMESI */}
+          <div className="finansal-charts">
+              <div className="finansal-chart">
+                <p>
+                  <strong>This Year Income/Expense Amount:</strong>{" "}
+                  {totalProfitOrLossCurrentYear.toFixed(2)} TL
+                </p>
+                <PieChart
+                  colors={["cyan", "red"]}
+                  series={[
+                    {
+                      data: [
+                        { id: 0, value: totalYearIncome, label: "Incomes" },
+                        {
+                          id: 1,
+                          value: totalYearExpense,
+                          label: "Expenses",
+                        },
+                      ],
+                    },
+                  ]}
+                  width={400}
+                  height={200}
+                />
+              </div>
+              <div className="finansal-chart">
+                <p>
+                  <strong>This Year Incomes in Detail:</strong>{" "}
+                  {totalYearIncome.toFixed(2)} TL
+                </p>
+                <PieChart
+                  colors={generateRandomColors(pieChartDataYearIncomes.length)}
+                  series={[
+                    {
+                      data: pieChartDataYearIncomes,
+                    },
+                  ]}
+                  width={400}
+                  height={200}
+                />
+              </div>
+              <div className="finansal-chart">
+                <p>
+                  <strong>This Year Expenses in Detail:</strong>{" "}
+                  {totalYearExpense.toFixed(2)} TL
+                </p>
+                <PieChart
+                  colors={generateRandomColors(pieChartDataYearExpenses.length)}
+                  series={[
+                    {
+                      data: pieChartDataYearExpenses,
+                    },
+                  ]}
+                  width={400}
+                  height={200}
+                />
+              </div>
+          </div>        
+          {/* <div className="finansal-kutu">
             <p>
               <strong>Current Month Total Income Amount:</strong>{" "}
               {totalCurrentMonthIncome} TL
             </p>
-          </div>
+          </div> */}
           <div className="finansal-kutu">
             <p>
-              <strong>Current Month Total Expense Amount:</strong>{" "}
-              {totalCurrentMonthExpense} TL
+              <strong>Next Month Estimated Income Amount:</strong> {totalNextMonthIncome} TL
             </p>
           </div>
           <div className="finansal-kutu">
             <p>
               <strong>Next Month Estimated Expense Amount:</strong> {totalNextMonthExpense} TL
+            </p>
+          </div>
+          <div className="finansal-kutu">
+            <p>
+              <strong>Company have {companyData.departments.length} department</strong>
+            </p>
+          </div>
+          <div className="finansal-kutu">
+            <p>
+              <strong>Company have total number of {companyData.supervisors.length} supervisors & {companyData.departments.reduce((personnelCount, department) => {
+                if(department.personnel) {
+                  return personnelCount + department.personnel.length;
+                }
+                return personnelCount;            
+              }, 0)} personnel</strong>
             </p>
           </div>
           <div className="finansal-kutu">

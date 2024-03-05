@@ -72,6 +72,11 @@
       margin-bottom: 10px;
   }
 
+  .finansal-chart {
+    text-align: center;
+    /* cursor: pointer; */
+  }
+
   .finansal-bilgiler .finansal-kutu {
       background-color: #585858;
       border: 1px solid #ccc;
