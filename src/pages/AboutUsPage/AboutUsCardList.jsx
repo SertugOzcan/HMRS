@@ -1,6 +1,17 @@
+import { useContext, useEffect } from "react";
 import AboutUsCard from "./AboutUsCard";
 import "./AboutUsCardList.css";
+import { AuthContext } from "../../context/AuthContext";
 const AboutUsCardList = () => {
+
+  const { logout } = useContext(AuthContext);
+
+   // VOLKAN: Loginliyken tıklanılınca sidebar ekranda kalıyordu, logout yaptırtarak bi çözüm buldum maalesef...
+  useEffect(() => {
+    logout();
+  },[]);
+
+
   const developerInfos = [
     {
       firstName: "Ali Volkan",   // EDUCATION KISMI DEĞİŞTİRİLMELİ BENCE

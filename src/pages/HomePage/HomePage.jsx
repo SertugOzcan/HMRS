@@ -1,7 +1,15 @@
+import { useContext, useEffect } from "react";
 import "./HomePage.css"
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from "../../context/AuthContext";
 const HomePage = () => {
     const navigate = useNavigate();
+    const { logout } = useContext(AuthContext);
+
+     // VOLKAN: Loginliyken tıklanılınca sidebar ekranda kalıyordu, logout yaptırtarak bi çözüm buldum maalesef...
+    useEffect(() => {
+      logout();
+    },[]);
 
     const handleClickBtn = () =>{
         navigate('/login')
