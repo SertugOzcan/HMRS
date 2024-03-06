@@ -1,8 +1,13 @@
-FROM node:20-alpine
+FROM node:20.10.0
 
-WORKDIR C:\Users\muhit\OneDrive\Desktop\Dev\HRMS BABoost Bitirme Projesi Front\21-02-24\HMRS\src\App.jsx
+WORKDIR /app
+
 COPY package*.json ./
+
 RUN npm install
+
 COPY . .
+
+EXPOSE 5173
 
 CMD ["npm", "start"]

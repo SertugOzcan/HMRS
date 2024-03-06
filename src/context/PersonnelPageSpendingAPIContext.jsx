@@ -21,7 +21,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             try {
                 const response = await axios.get(`http://localhost:80/spending/get-all-my-requests/${isAuthenticated.token}`)
-                console.log("SPENDINGREQUESTS-DATA: ", response.data)
+                // console.log("SPENDINGREQUESTS-DATA: ", response.data)
                 setSpendingRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the spending requests data:", error);
@@ -76,7 +76,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
             "token": isAuthenticated.token,
             "requestId": requestId
         }
-        console.log("Hazırlanan cancel spending payload:", payload);
+        // console.log("Hazırlanan cancel spending payload:", payload);
         try {
             const response = await axios.patch("http://localhost:80/spending/cancel-request", payload)
             if (response.status === 200) {

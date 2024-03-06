@@ -16,7 +16,7 @@ const MyCompany = () => {
               const response2 = await axios.get(
                 `http://localhost:80/comment/get-all-by-company/${personnel.companyId}`
               );
-              console.log("Company active comments:", response2.data);
+              // console.log("Company active comments:", response2.data);
               if(response2.status === 200) {
                 setComments(response2.data);
               }

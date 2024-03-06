@@ -21,7 +21,7 @@ export const SupervisorPageAdvanceAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             try {
                 const response = await axios.get(`http://localhost:80/advance/get-all-requests/${isAuthenticated.token}`)
-                console.log("ADVANCEREQUESTS-DATA: ", response.data)
+                // console.log("ADVANCEREQUESTS-DATA: ", response.data)
                 setAdvanceRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the advance requests data:", error);

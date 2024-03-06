@@ -247,7 +247,7 @@ const SupervisorPageCompanyData = () => {
                 ]}
                 width={400}
                 height={200}
-                />
+              />
               }
             </div>
             <div className="finansal-chart">
@@ -255,6 +255,7 @@ const SupervisorPageCompanyData = () => {
                 <strong>This Month Expenses in Detail:</strong>{" "}
                 {totalCurrentMonthExpense.toFixed(2)} TL
               </p>
+              {pieChartDataExpenses.length===0 ? <h3>There is no expense this month</h3> : 
               <PieChart
                 colors={generateRandomColors(pieChartDataExpenses.length)}
                 series={[
@@ -265,6 +266,7 @@ const SupervisorPageCompanyData = () => {
                 width={400}
                 height={200}
               />
+              }
             </div>
           </div>
           {/* VOLKAN: ASAGIDAKI THIS YEAR DENEMESI */}
@@ -297,6 +299,7 @@ const SupervisorPageCompanyData = () => {
                 <strong>This Year Incomes in Detail:</strong>{" "}
                 {totalYearIncome.toFixed(2)} TL
               </p>
+              {pieChartDataYearIncomes.length===0 ? <h3>There is no income this year</h3> : 
               <PieChart
                 colors={generateRandomColors(pieChartDataYearIncomes.length)}
                 series={[
@@ -307,12 +310,14 @@ const SupervisorPageCompanyData = () => {
                 width={400}
                 height={200}
               />
+              }
             </div>
             <div className="finansal-chart">
               <p>
                 <strong>This Year Expenses in Detail:</strong>{" "}
                 {totalYearExpense.toFixed(2)} TL
               </p>
+              {pieChartDataYearExpenses.length===0 ? <h3>There is no expense this year</h3> : 
               <PieChart
                 colors={generateRandomColors(pieChartDataYearExpenses.length)}
                 series={[
@@ -323,6 +328,7 @@ const SupervisorPageCompanyData = () => {
                 width={400}
                 height={200}
               />
+              }
             </div>
           </div>
           {/* <div className="finansal-kutu">

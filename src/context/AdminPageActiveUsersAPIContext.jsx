@@ -21,7 +21,7 @@ export const AdminPageActiveUsersAPIContextProvider = ({children}) => {
             setIsLoading(true);
             try {
                 const response = await axios.get('http://localhost:80/auth/get-all-active')
-                console.log("GETALLACTIVE: ", response);
+                // console.log("GETALLACTIVE: ", response);
                 setActiveUsers(response.data)
             } catch (error) {
                 console.error("Error while fetching the get all active data:", error);

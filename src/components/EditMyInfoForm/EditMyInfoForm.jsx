@@ -23,12 +23,22 @@ const EditMyInfoForm = () => {
       phone.trim() === "" ? personnel.phones[0].phoneNumber : phone.trim();
 
     if (newPersonalPhone.length !== 11) {
-      alert("Check personnel's phone number!");
+      alert("Invalid phone number. Check your phone number!");
+      return;
+    }
+
+    if (!/^\d{11}$/.test(newPersonalPhone)) {
+      alert("Invalid characters in personnel's phone number!");
       return;
     }
 
     if (!newPersonalPhone.startsWith("0")) {
-      alert("Phone number must start with zero!");
+      alert("Invalid phone number. Phone number must start with zero!");
+      return;
+    }
+
+    if(!newEmail.contains("@")){
+      alert("Invalid email. Please check your email!")
       return;
     }
 

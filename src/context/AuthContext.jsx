@@ -19,7 +19,7 @@ export const AuthContextProvider = ({children}) => {
     const login = async (identity,password) => {
         try {
             const resData = await AuthService.loginService(identity,password)
-            console.log(resData);
+            // console.log(resData);
             if(resData.role){
                 setIsAuthenticated(AuthService.getCurrentUser())
             }

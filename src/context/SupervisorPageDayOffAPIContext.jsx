@@ -21,7 +21,7 @@ export const SupervisorPageDayOffAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             try {
                 const response = await axios.get(`http://localhost:80/day-off/get-all-requests/${isAuthenticated.token}`)
-                console.log("DAYOFFREQUESTS-DATA: ", response.data)
+                // console.log("DAYOFFREQUESTS-DATA: ", response.data)
                 setDayOffRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the dayoff requests data:", error);

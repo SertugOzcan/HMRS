@@ -16,9 +16,17 @@ const PersonnelDayOffRequestForm = () => {
 
   const handleDayOffSubmit = (e) => {
     e.preventDefault();
+    if(dayoffDescription.trim() === "") {
+      alert("Please add description for your day off request!");
+      return;
+    }
+    if(!dayoffStartDate || !dayoffEndDate) {
+      alert("Please check your request start and end date!");
+      return;
+    }
     const newRequest = {
         reason: reason,
-        description: dayoffDescription,
+        description: dayoffDescription.trim(),
         startDate: dayoffStartDate,
         endDate: dayoffEndDate
     }

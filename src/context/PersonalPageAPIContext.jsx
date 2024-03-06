@@ -27,7 +27,7 @@ export const PersonnelPageAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             try {
                 const response1 = await axios.get(`http://localhost:80/personnel/get/${isAuthenticated.token}`)
-                console.log("PERSONEL RESPONSE DÖNEN: ", response1.data);
+                // console.log("PERSONEL RESPONSE DÖNEN: ", response1.data);
                 setPersonnel(response1.data)
                 // const response2 = await axios.get(`http://localhost:9091/api/v1/personnel/get-all`)
                 // console.log("allpersonnel", response2.data);

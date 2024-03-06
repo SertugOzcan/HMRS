@@ -24,7 +24,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             try {
                 const response = await axios.get(`http://localhost:80/company/findbysupervizortoken/${isAuthenticated.token}`)
-                console.log("COMPANY-DATASI: ", response.data)
+                // console.log("COMPANY-DATASI: ", response.data)
                 setCompanyData(response.data);
                 if(response.data.companyStatus === "ACTIVE"){
                     setCompanyStatus("ACTIVE");
@@ -56,7 +56,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
         // console.log("HAZIRLANAN PAYLOAD: ", payload);
         try {
           const response = await axios.post("http://localhost:80/personnel/create", payload);
-          console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
+          // console.log("PERSONEL EKLE DÖNEN RESPONSE: ", response);
           if (response.status === 200) {
             // setEmployees(prevEmployees => [...prevEmployees, response.data]);
             setIsAddingEmployee(false);

@@ -302,7 +302,8 @@ left: 20px;
   overflow: hidden;
   font-size: 15px;
   cursor: pointer;
-  top: 497px;
+  /* top: 497px; */
+  bottom: -4px;
   left: 162px;
   
 }

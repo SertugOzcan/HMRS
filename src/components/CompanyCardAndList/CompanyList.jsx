@@ -24,11 +24,11 @@ const CompanyList = () => {
             `http://localhost:80/company/get-company-detailed-info-for-guest/${selectedCompanyId}`
           );
           setSelectedCompanyInfo(response1.data)
-          console.log("Company info:", response1.data);
+          // console.log("Company info:", response1.data);
           const response2 = await axios.get(
             `http://localhost:80/comment/get-all-by-company/${selectedCompanyId}`
           );
-          console.log("Company active comments:", response2.data);
+          // console.log("Company active comments:", response2.data);
           if(response2.status === 200) {
             setComments(response2.data);
           }

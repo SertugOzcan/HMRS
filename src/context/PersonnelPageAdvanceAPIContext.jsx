@@ -21,7 +21,7 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             try {
                 const response = await axios.get(`http://localhost:80/advance/get-all-my-requests/${isAuthenticated.token}`)
-                console.log("ADVANCEREQUESTS-DATA: ", response.data)
+                // console.log("ADVANCEREQUESTS-DATA: ", response.data)
                 setAdvanceRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the advance requests data:", error);
@@ -35,7 +35,7 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
     const handleSubmit = async (newRequest) => {
         setIsLoading(true);
         const payload = {...newRequest, token: isAuthenticated.token}
-        console.log("Hazırlanan new advance payload:", payload);
+        // console.log("Hazırlanan new advance payload:", payload);
         try {
             const response = await axios.post("http://localhost:80/advance/create-request", payload)
             if (response.status === 200) {
@@ -57,7 +57,7 @@ export const PersonnelPageAdvanceAPIContextProvider = ({children}) => {
             "token": isAuthenticated.token,
             "requestId": requestId
         }
-        console.log("Hazırlanan cancel advance payload:", payload);
+        // console.log("Hazırlanan cancel advance payload:", payload);
         try {
             const response = await axios.patch("http://localhost:80/advance/cancel-request", payload)
             if (response.status === 200) {

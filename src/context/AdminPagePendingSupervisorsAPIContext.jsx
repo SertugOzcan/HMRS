@@ -21,7 +21,7 @@ export const AdminPagePendingSupervisorsAPIContextProvider = ({children}) => {
             setIsLoading(true);
             try {
                 const response = await axios.get('http://localhost:80/admin/get-all-pending-supervisors')
-                console.log("GETALLPENDINGSUPERVISORS: ", response);
+                // console.log("GETALLPENDINGSUPERVISORS: ", response);
                 setPendingSupervisors(response.data)
             } catch (error) {
                 console.error("Error while fetching the get all pending supervisors data:", error);

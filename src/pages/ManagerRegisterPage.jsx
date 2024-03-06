@@ -113,6 +113,11 @@ const ManagerRegisterPage = () => {
       hasError = true;
     }
 
+    if (password.length < 8) {
+      setPasswordError("Password must be at least 8 characters long");
+      hasError = true;
+    }
+
     if (identityNumber.length !== 11) {
       setIdentityNumberError("Identity number must be 11 characters");
       hasError = true;
@@ -123,8 +128,18 @@ const ManagerRegisterPage = () => {
       hasError = true;
     }
 
+    if (!/^\d{11}$/.test(phone)) {
+      setPhoneNumberError("Invalid characters in personnel's phone number!");
+      hasError = true;
+    }
+
     if (identityNumber.startsWith("0")) {
       setIdentityNumberError("Identity number can not start with number zero!");
+      hasError = true;
+    }
+
+    if (!/^\d+$/.test(identityNumber)) {
+      setIdentityNumberError("Invalid characters in identity number!");
       hasError = true;
     }
 
@@ -187,7 +202,6 @@ const ManagerRegisterPage = () => {
       setMessage("Registration successful!");
       setIsSuccess(true);
 
-      // Reset form fields
       setName("");
       setSurName("");
       setEmail("");

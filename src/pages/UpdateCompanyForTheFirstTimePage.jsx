@@ -59,6 +59,27 @@ const UpdateCompanyForTheFirstTimePage = () => {
 
   const handleAddHRInfo = (e) => {
     e.preventDefault();
+    if(!hrInfoName.trim() || !hrInfoSurname.trim() || !hrInfoEmail.trim() || !hrInfoPhone.trim()){
+      alert("Please fill in all fields for the hr info!");
+      return;
+    }
+    if(!hrInfoEmail.includes("@")){
+      alert("Invalid email address for HR Info")
+      return;
+    }
+    if (hrInfoPhone.length !== 11) {
+      alert("Phone number must be 11 character");
+      return
+    }
+    if (!/^\d+$/.test(hrInfoPhone)) {
+      alert("Invalid characters in hr info's phone number!");
+      return
+    }
+    if (!hrInfoPhone.startsWith("0")) {
+      alert("Phone number must start with number zero!");
+      return
+    }
+
     setHrInfoList((prevhrinfolist) => [
       ...prevhrinfolist,
       {
@@ -78,12 +99,36 @@ const UpdateCompanyForTheFirstTimePage = () => {
 
   const handleAddDepartment = (e) => {
     e.preventDefault();
+    const regexTimeFormat = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+
+    const trimmedShiftStart = departmentShiftStart.trim();
+    const trimmedShiftEnd = departmentShiftEnd.trim();
+    const trimmedBreakStart = departmentBreakStart.trim();
+    const trimmedBreakEnd = departmentBreakEnd.trim();
+    if (
+      !trimmedShiftStart ||
+      !trimmedShiftEnd ||
+      !trimmedBreakStart ||
+      !trimmedBreakEnd
+    ) {
+      alert("Please fill in all fields for the department!");
+      return;
+    }
+    if (
+      !regexTimeFormat.test(trimmedShiftStart) ||
+      !regexTimeFormat.test(trimmedShiftEnd) ||
+      !regexTimeFormat.test(trimmedBreakStart) ||
+      !regexTimeFormat.test(trimmedBreakEnd)
+    ) {
+      alert("Please enter valid time formats (HH:mm) for all fields!");
+      return;
+    }
     setCompanyDepartments((prevDepartments) => [
       ...prevDepartments,
       {
         name: departmentName,
-        shiftHour: `${departmentShiftStart} - ${departmentShiftEnd}`,
-        breakHour: `${departmentBreakStart} - ${departmentBreakEnd}`,
+        shiftHour: `${trimmedShiftStart} - ${trimmedShiftEnd}`,
+        breakHour: `${trimmedBreakStart} - ${trimmedBreakEnd}`,
       },
     ]);
     setDepartmentName("");
@@ -110,10 +155,26 @@ const UpdateCompanyForTheFirstTimePage = () => {
 
   const handleAddIncome = (e) => {
     e.preventDefault();
+    if(!incomeDescription.trim()){
+      alert("Please add description for your income!")
+      return;
+    }
+    if(!incomeAmount) {
+      alert("Please add amount for your income!");
+      return;
+    }
+    if(!/^\d+$/.test(incomeAmount)) {
+      alert("Income amount can only be digits!");
+      return;
+    }
+    if(!incomeRecipeDate){
+      alert("Please add recipe date for your income!");
+      return;
+    }
     setCompanyIncomes((prevIncomes) => [
       ...prevIncomes,
       {
-        description: incomeDescription,
+        description: incomeDescription.trim(),
         amount: incomeAmount,
         incomeDate: incomeRecipeDate,
       },
@@ -125,10 +186,26 @@ const UpdateCompanyForTheFirstTimePage = () => {
 
   const handleAddExpense = (e) => {
     e.preventDefault();
+    if(!expenseDescription.trim()){
+      alert("Please add description for your expense!")
+      return;
+    }
+    if(!expenseAmount) {
+      alert("Please add amount for your expense!");
+      return;
+    }
+    if(!/^\d+$/.test(expenseAmount)) {
+      alert("Expense amount can only be digits!");
+      return;
+    }
+    if(!expenseRecipeDate){
+      alert("Please add recipe date for your expense!");
+      return;
+    }
     setCompanyExpenses((prevExpenses) => [
       ...prevExpenses,
       {
-        description: expenseDescription,
+        description: expenseDescription.trim(),
         amount: expenseAmount,
         expenseDate: expenseRecipeDate,
       },
@@ -150,6 +227,30 @@ const UpdateCompanyForTheFirstTimePage = () => {
     if (companyDepartments.length === 0) {
       alert("Please add at least one department.");
       setIsLoading(false); 
+      return;
+    }
+
+    if (companyIncomes.length === 0 && companyExpenses.length === 0) {
+      alert("Please add at least one income or expense data for a better experience on our site");
+      setIsLoading(false);
+      return;
+    }
+
+    if(hrInfoList.length === 0) {
+      alert("Please add at least one HR Info for a better experience on our site");
+      setIsLoading(false);
+      return;
+    }
+
+    if(establishmentDate === "") {
+      alert("Please add establishment date of your company");
+      setIsLoading(false);
+      return;
+    }
+
+    if (!companyLogo) {
+      alert("Please upload a company logo");
+      setIsLoading(false);
       return;
     }
 

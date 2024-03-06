@@ -21,7 +21,7 @@ export const AdminPagePendingCommentsAPIContextProvider = ({children}) => {
             setIsLoading(true);
             try {
                 const response = await axios.get('http://localhost:80/admin/get-all-pending-comments')
-                console.log("GETALLPENDINGCOMMENTS: ", response);
+                // console.log("GETALLPENDINGCOMMENTS: ", response);
                 setPendingComments(response.data)
             } catch (error) {
                 console.error("Error while fetching the get all pending comments data:", error);

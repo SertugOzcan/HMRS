@@ -14,9 +14,21 @@ const PersonnelAdvanceRequestForm = () => {
 
   const handleAdvanceSubmit = (e) => {
     e.preventDefault();
+    if(advanceDescription.trim() === "") {
+      alert("Please add description for your advance request!");
+      return;
+    }
+    if(!advanceAmount) {
+      alert("Please add amount for your advance request!");
+      return;
+    }
+    if(!/^\d+$/.test(advanceAmount)) {
+      alert("Amount can only be digits!");
+      return;
+    }
     const newRequest = {
         // reason: reason,
-        description: advanceDescription,
+        description: advanceDescription.trim(),
         amount: advanceAmount
     }
     handleSubmit(newRequest);

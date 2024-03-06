@@ -21,7 +21,7 @@ export const SupervisorPageSpendingAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             try {
                 const response = await axios.get(`http://localhost:80/spending/get-all-requests/${isAuthenticated.token}`)
-                console.log("SPENDINGREQUESTS-DATA: ", response.data)
+                // console.log("SPENDINGREQUESTS-DATA: ", response.data)
                 setSpendingRequests(response.data.reverse());
             } catch (error) {
                 console.error("Error while fetching the spending requests data:", error);

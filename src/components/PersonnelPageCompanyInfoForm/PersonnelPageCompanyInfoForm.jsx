@@ -15,7 +15,7 @@ const PersonnelPageCompanyInfoForm = ({ personnel }) => {
             <strong>Şirket İletişim Bilgileri:</strong>
             <div className="personnel-company-hr-info">
               {personnel.hrInfos.map((hrInfo) => (
-                <HRInfoCard hrInfo={hrInfo} />
+                <HRInfoCard key={hrInfo.phone} hrInfo={hrInfo} />
               ))}
             </div>
           </div>

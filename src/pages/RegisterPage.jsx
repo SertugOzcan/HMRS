@@ -58,6 +58,11 @@ const RegisterPage = () => {
       hasError = true;
     }
 
+    if (password.length < 8) {
+      setPasswordError("Password must be at least 8 characters long");
+      hasError = true;
+    }
+
     if (identityNumber.length !== 11) {
       setIdentityNumberError("Identity number must be 11 character");
       hasError = true;
@@ -68,8 +73,18 @@ const RegisterPage = () => {
       hasError = true;
     }
 
+    if (!/^\d+$/.test(phone)) {
+      setPhoneNumberError("Invalid characters in personnel's phone number!");
+      hasError = true;
+    }
+
     if (identityNumber.startsWith("0")) {
       setIdentityNumberError("Identity number can not start with number zero!");
+      hasError = true;
+    }
+
+    if (!/^\d+$/.test(identityNumber)) {
+      setIdentityNumberError("Invalid characters in identity number!");
       hasError = true;
     }
 
@@ -89,12 +104,7 @@ const RegisterPage = () => {
         surName: surName.trim(),
         email: email.trim(),
         password: password,
-
-        
-
-
         rePassword: rePassword,    
-
         identityNumber: identityNumber,
         dateOfBirth: date,
         gender: stringGender,
@@ -110,21 +120,19 @@ const RegisterPage = () => {
       setMessage("Registration successful!");
       setIsSuccess(true);
 
-      // Resetting the form fields
-      // setName("");
-      // setSurName("");
-      // setEmail("");
-      // setPhone("");          // FINAL VERSIYONUNDA OLACAK...
-      // setPassword("");
-      // setRePassword("");
-      // setGender(false);
-      // setIdentityNumber("");
-      // setAddress("");
-      // setCompanyName("");
-      // setDate(new Date());
-      // setStrength("");
-      // setPasswordError("");
-      // setIdentityNumberError("");
+      setName("");
+      setSurName("");
+      setEmail("");
+      setPhone("");          // FINAL VERSIYONUNDA OLACAK...
+      setPassword("");
+      setRePassword("");
+      setGender(false);
+      setIdentityNumber("");
+      setDate(new Date());
+      setStrength("");
+      setPasswordError("");
+      setIdentityNumberError("");
+      setPhoneNumberError("");
     } catch (error) {
       console.error("Registration error:", error);
       setPasswordError("");
@@ -185,13 +193,12 @@ const RegisterPage = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
-<i className="register-label">Phone</i>
+                <i className="register-label">Phone</i>
                 {phoneNumberError && (
                   <p className="registration-error-messages">
                     {phoneNumberError}
                   </p>
-                )}
-                
+                )}        
                 <input
                   type="text"
                   className="register_input"
@@ -199,13 +206,12 @@ const RegisterPage = () => {
                   onChange={(e) => setIdentityNumber(e.target.value)}
                   required
                 />
-
+                <i className="register-label">Identity Number</i>
                 {identityNumberError && (
                   <p className="registration-error-messages">
                     {identityNumberError}
                   </p>
                 )}
-                <i className="register-label">Identity Number</i>
                 <input
                   type="password"
                   spellCheck="false"
@@ -269,24 +275,24 @@ const RegisterPage = () => {
                     showMonthDropdown
                     scrollableMonthYearDropdown
                   /> <br />
-<div className="gender_selector">
-                  <input
-                    type="radio"
-                    name="radio"
-                    value="male"
-                    checked={!gender}
-                    onChange={() => setGender(false)}
-                  />
-                  <label className="gender_register">Male</label>
-                  <input
-                    type="radio"
-                    name="radio"
-                    value="female"
-                    checked={gender}
-                    onChange={() => setGender(true)}
-                  />
-                  <label className="gender_register">Female</label>
-</div><br />
+                  <div className="gender_selector">
+                    <input
+                      type="radio"
+                      name="radio"
+                      value="male"
+                      checked={!gender}
+                      onChange={() => setGender(false)}
+                    />
+                    <label className="gender_register">Male</label>
+                    <input
+                      type="radio"
+                      name="radio"
+                      value="female"
+                      checked={gender}
+                      onChange={() => setGender(true)}
+                    />
+                    <label className="gender_register">Female</label>
+                  </div><br />
                   <input
                     className="register_giris"
                     type="submit"

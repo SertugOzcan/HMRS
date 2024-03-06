@@ -27,9 +27,25 @@ const PersonnelSpendingRequestForm = () => {
 
   const handleSpendingSubmit = (e) => {
     e.preventDefault();
+    if(spendingDescription.trim() === "") {
+      alert("Please add description for your spending request!");
+      return;
+    }
+    if(!spendingAmount) {
+      alert("Please add amount for your spending request!");
+      return;
+    }
+    if(!/^\d+$/.test(spendingAmount)) {
+      alert("Amount can only be digits!");
+      return;
+    }
+    if(!spendingDate) {
+      alert("Please check your request date!");
+      return;
+    }
     const newRequest = {
         reason: reason,
-        description: spendingDescription,
+        description: spendingDescription.trim(),
         amount: spendingAmount,
         currency: spendingCurrency,
         spendingDate: spendingDate,

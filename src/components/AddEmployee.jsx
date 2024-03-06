@@ -38,13 +38,24 @@ const AddEmployeeForm = () => {
         alert("Check personnel's identity number!");
         return;
       }
+
       if (phone.length !== 11) {
         alert("Check personnel's phone number!");
         return;
       }
 
+      if (!/^\d{11}$/.test(phone)) {
+        alert("Invalid characters in personnel's phone number!");
+        return;
+      }
+
       if (identityNumber.startsWith("0")) {
         alert("Identity number can not start with number zero!");
+        return;
+      }
+
+      if (!/^\d+$/.test(identityNumber)) {
+        alert("Invalid characters in personnel's identity number!");
         return;
       }
 
