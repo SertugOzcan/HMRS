@@ -71,9 +71,11 @@ const PersonnelSpendingRequestPage = () => {
 
   return (
     <div className="personnel-spending-request-page-container">
-      <h2>Welcome to the Spending Request Page!</h2>
-      <br />
-      <p>Here, you can check make a spending request from your company and manage your spending requests. If your request is approved or rejected by the manager, the status will be updated here. Additionally, you will be notified via email about the decision.</p>
+      <main className="personnel-page-spending-main">
+        <h2>Spending Request Page</h2>
+        <br />
+        <p>Here, you can check make a spending request from your company and manage your spending requests. If your request is approved or rejected by the manager, the status will be updated here. Additionally, you will be notified via email about the decision.</p>
+      </main>
       <div className="personnel-spending-page-upper">
         <strong>Your Spending Requests History:</strong>
         <button className="create_request_button" onClick={(e) => handleCreateButtonClick(e)}>

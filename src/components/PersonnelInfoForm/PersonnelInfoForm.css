@@ -1,17 +1,21 @@
 .personnel-page-container {
+    width: 80%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding: 5.5rem 2.5rem 0.5rem 2.5rem;
     animation: fadeIn 0.75s ease-out forwards;
-    height: 1080px;
+    height: 100vh;
     padding-bottom: 5rem;
+    position: relative;
+    left: 250px;
+    top: -150px;
   }
   
   .personnel-page-main{
     width: 70%;
     position: relative;
-    left: 120px;
+    left: 350px;
+    top: 100px;
     background-color: rgba(47, 241, 255, 0.116);
     border-radius: 2rem;
     padding: 1rem;
@@ -45,8 +49,6 @@
     display: flex;
     flex-direction: row;
     width: 80%;
-    position: relative;
-    left: 120px;
     margin-top: 2rem;
     background-color: rgba(172, 255, 47, 0.116);
     border-radius: 2rem;
@@ -189,16 +191,17 @@
   } */
   
 .holiday-day {
-  text-decoration: line-through;
-  text-decoration-color: red;
+  color: blue ;
 }
 
 .personnel-company-info-container{
-  width: 20%;
+  width: 40%;
   height: auto;
   padding: 20px;
   border-radius: 20px;
   background-color: #007bff62;
+  position: relative;
+  right: 10px;
 }
 
 .personnel-company-img-and-company-name{
@@ -228,4 +231,8 @@
   align-items: flex-start;
   margin-top: 10px;
   gap: 10px;
+}
+
+.calendar-container{
+  margin-left: 20px;
 }

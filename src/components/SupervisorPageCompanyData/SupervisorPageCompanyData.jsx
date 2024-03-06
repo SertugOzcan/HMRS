@@ -176,7 +176,7 @@ const SupervisorPageCompanyData = () => {
   return (
     <div className="company-data-major-container">
       <div className="finansal-bilgiler">
-        <h2>Welcome to the Company Data Page!</h2>
+        <h2>Company Data Page</h2>
         <br />
         <p>Explore essential details about the company's incomes, expenses, and personnel information. This page provides a comprehensive view of monthly financial insights, including approved spending and advance requests. You can also access information about company holidays, the number of departments, and the total personnel count.</p>
         <h4><em>Personnel salaries, accepted advance requests, and spending details are presented under the expenses section on this page.</em></h4>

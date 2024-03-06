@@ -28,8 +28,7 @@ const PersonnelInfoForm = () => {
     setIsEditInfoClicked(true);
   };
 
-  return (
-    <div className="personnel-page-container">
+  return (<>
       <main className="personnel-page-main" id="main">
         <section className="personnel-page-main-section">
           <h1>
@@ -43,6 +42,7 @@ const PersonnelInfoForm = () => {
           </h4>
         </section>
       </main>
+    <div className="personnel-page-container">
       <div className="personnel-container">
         <div className="personnel-photo">
           <img src={personnel.image}></img>
@@ -82,18 +82,18 @@ const PersonnelInfoForm = () => {
             <button
               className="edit-info-button"
               onClick={(e) => handleEditInfoClick(e)}
-            >
+              >
               Edit My Info
             </button>
             {isEditInfoClicked && (
               <div
-                className="edit-info-background"
-                onClick={() => setIsEditInfoClicked(false)}
+              className="edit-info-background"
+              onClick={() => setIsEditInfoClicked(false)}
               >
                 <div
                   className="edit-info-content"
                   onClick={(e) => e.stopPropagation()}
-                >
+                  >
                   <EditMyInfoForm />
                 </div>
               </div>
@@ -137,11 +137,12 @@ const PersonnelInfoForm = () => {
           });
           return holiday ? (
             <div className="holiday-day">{holiday.name}</div>
-          ) : null;
-        }}
-      />
+            ) : null;
+          }}
+          />
       </div>
     </div>
+          </>
   );
 };
 

@@ -54,17 +54,19 @@ const PersonnelDayOffPage = () => {
   return (
     // SERTUĞA NOT: btn-container, edit-info-background,edit-info-content cssleri ayrıştırılabilir...
     <div className="personnel-day-off-page-container">
-      <h2>Welcome to the Day Off Request Page!</h2>
-      {availableDayOffCount !== null && (
-        <h3>
-          Explore and view your day off requests. Your current quota is: {availableDayOffCount}{" "}
-          {availableDayOffCount !== 1 && availableDayOffCount !== 0 && availableDayOffCount !== -1
-            ? "days"
-            : "day"}
-        </h3>
-      )}
-      <br />
-      <p>Here, you can check your current day off quota and manage your day off requests. If your request is approved or rejected by the manager, the status will be updated here. Additionally, you will be notified via email about the decision.</p>
+      <main className="personnel-page-day-off-main">
+        <h2>Day Off Request Page</h2>
+        {availableDayOffCount !== null && (
+          <h3>
+            Explore and view your day off requests. Your current quota is: {availableDayOffCount}{" "}
+            {availableDayOffCount !== 1 && availableDayOffCount !== 0 && availableDayOffCount !== -1
+              ? "days"
+              : "day"}
+          </h3>
+        )}
+        <br />
+        <p>Here, you can check your current day off quota and manage your day off requests. If your request is approved or rejected by the manager, the status will be updated here. Additionally, you will be notified via email about the decision.</p>
+      </main>
       <div className="personnel-day-off-page-upper">
         <strong>Your Day Off Requests History:</strong>
         <div className="btn-container">

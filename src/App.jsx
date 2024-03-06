@@ -12,7 +12,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { SupervisorPageAPIContextProvider } from "./context/SupervisorPageAPIContext";
 import { GuestPageAPIContextProvider } from "./context/GuestPageAPIContext";
-import { PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
+import { PersonnelPageAPIContext, PersonnelPageAPIContextProvider } from "./context/PersonalPageAPIContext";
 import HomePageSideBar from "./components/HomePageSideBar/HomePageSideBar";
 import NavBar from "./components/NavBar/NavBar";
 import RegisteredUsers from "./components/AdminComponents/RegisteredUsers/RegisteredUsers";
@@ -220,9 +220,12 @@ function App() {
             element={
               <PrivateRoute
                 element={
+                  <PersonnelPageAPIContextProvider>
+
                   <PersonnelPageAdvanceAPIContextProvider>
                     <PersonnelAdvancePage/>
                   </PersonnelPageAdvanceAPIContextProvider>
+                  </PersonnelPageAPIContextProvider>
                 }
               />
             }
