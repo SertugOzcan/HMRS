@@ -5,7 +5,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 100px auto;
+    margin: 40px auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -19,10 +19,10 @@
     margin-bottom: 20px;
 }
 
-.personnel-spending-request-reason strong {
+.personnel-spending-request-reason .spending_strong {
     margin-top: -15px;
-    width: 100%;
-    margin-right: 10px;
+    width: 80%;
+    text-align: left;
 }
 
 
@@ -46,7 +46,7 @@
 }
 
 .personnel-spending-request-description textarea {
-    width: 300px;
+    width: 360px;
     padding: 12px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -55,13 +55,11 @@
     height: 50px; 
 }
 
-.personnel-spending-request-currency strong {
-    margin-right: 10px;
-}
 
 .spending-date-picker-wrapper {
     width: 100%;
     margin-bottom: 20px; 
+    text-align: left;
 }
 
 .personnel-spending-request-form .spend_button {

@@ -1,6 +1,8 @@
-.comment-requests-container{
-    position: relative;
+.comment-requests-container {
+    position: fixed;
     left: 300px;
     top: 100px;
     padding-bottom: 5rem;
+    overflow-y: auto; 
+    max-height: calc(100vh - 100px); 
 }

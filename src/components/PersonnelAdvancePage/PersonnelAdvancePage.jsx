@@ -56,7 +56,10 @@ const PersonnelAdvancePage = () => {
       <div className="personnel-advance-page-upper">
         <strong>Your Advance Requests History:</strong>
         <div className="btn-container">
-          <button onClick={(e) => handleCreateButtonClick(e)}>Create Request</button>
+        <button className="create_request_button" onClick={(e) => handleCreateButtonClick(e)}>
+          <div className="sign_create_request">+</div>
+          <div className="text_create_request">Create Request</div>
+          </button>
           {isCreateButtonClicked && (
               <div
                 className="edit-info-background"

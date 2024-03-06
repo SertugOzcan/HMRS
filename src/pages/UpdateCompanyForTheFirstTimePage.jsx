@@ -48,6 +48,9 @@ const UpdateCompanyForTheFirstTimePage = () => {
   const [expenseRecipeDate, setExpenseRecipeDate] = useState();
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
+
+
   const [currentPage, setCurrentPage] = useState("coreInfo");
   const handlePageChange = (pageName) => {
     setCurrentPage(pageName);
@@ -142,8 +145,11 @@ const UpdateCompanyForTheFirstTimePage = () => {
   };
 
   const handleSubmit = async () => {
+    setIsLoading(true); 
+  
     if (companyDepartments.length === 0) {
       alert("Please add at least one department.");
+      setIsLoading(false); 
       return;
     }
 
@@ -166,8 +172,10 @@ const UpdateCompanyForTheFirstTimePage = () => {
     try {
       const response = await axios.post("https://api.cloudinary.com/v1_1/dhwpj4ze4/upload", formData);
       cloudinaryUrl = response.data.url;
+      setIsLoading(false);
     } catch (error) {
       console.error("Error while uploading image for updating company for the first time:", error);
+      setIsLoading(false);
     }
 
     const completePayload = {...beforePayload, companyLogoUrl: cloudinaryUrl}
@@ -184,6 +192,37 @@ const UpdateCompanyForTheFirstTimePage = () => {
 
   return (
     <div className="update-company-page">
+    {isLoading && (
+      <div className="loader">
+      <div className="box box0">
+        <div></div>
+      </div>
+      <div className="box box1">
+        <div></div>
+      </div>
+      <div className="box box2">
+        <div></div>
+      </div>
+      <div className="box box3">
+        <div></div>
+      </div>
+      <div className="box box4">
+        <div></div>
+      </div>
+      <div className="box box5">
+        <div></div>
+      </div>
+      <div className="box box6">
+        <div></div>
+      </div>
+      <div className="box box7">
+        <div></div>
+      </div>
+      <div className="ground">
+        <div></div>
+      </div>
+    </div>
+    )}
       <div className="sidebar">
         <button onClick={() => handlePageChange("coreInfo")}>Core Info</button>
         <button onClick={() => handlePageChange("hrInfo")}>HR Info</button>

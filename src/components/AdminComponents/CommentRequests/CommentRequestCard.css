@@ -1,6 +1,7 @@
-.comment-card-div{
+.comment-card-div {
     display: flex;
-    height: 10rem;
+    height: 10rem; /* Kartların istenen sabit yüksekliği */
+    width: 30rem;
     flex-direction: row;
     border: 2px solid rgba(211, 189, 64, 0.822);
     border-radius: 2%;
@@ -26,13 +27,20 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
+    width: calc(100% - 15rem); /* Resmin genişliğini düşür */
     height: 100%;
+    padding-left: 0.5rem; /* Sol padding ekle */
 }
 
 .comment-description-div {
-    justify-content: space-between
+    justify-content: space-between;
+    max-height: 6rem; /* Değişiklik: Metnin maksimum yüksekliği */
+    overflow: hidden; /* Değişiklik: Taşan metni gizle */
 }
+.comment-description-div.show-full {
+    max-height: none; /* Değişiklik: Tüm metni göster */
+}
+
 
 .comment-difficulty-div {
     display: flex;
@@ -93,3 +101,14 @@
     transition: 0.5s ease-in;
 }
 
+.read-more {
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Geçiş efekti: arkaplan rengi */
+    width: 110px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.read-more:hover {
+    background-color: lightgray; /* Fare üzerine gelindiğinde arkaplan rengini değiştir */
+}

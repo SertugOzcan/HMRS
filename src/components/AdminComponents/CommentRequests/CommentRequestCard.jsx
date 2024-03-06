@@ -1,21 +1,28 @@
 /* eslint-disable react/prop-types */
-import './CommentRequestCard.css'
-import { useContext } from 'react';
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import './CommentRequestCard.css';
+import { useContext,useState } from 'react';
 import { AdminPagePendingCommentsAPIContext } from '../../../context/AdminPagePendingCommentsAPIContext';
 
 const CommentRequestCard = ({request}) => {
-    const {handleCommentRequest} = useContext(AdminPagePendingCommentsAPIContext);
-    
-  return (
-    <div className='comment-card-div'>
+    const { handleCommentRequest } = useContext(AdminPagePendingCommentsAPIContext);
+    const [showFullText, setShowFullText] = useState(false);
+    const maxLength = 30; 
+    const handleShowFullText = () => {
+        alert(`Name: ${request.personnelName} ${request.personnelLastName}\nYorum Başlığı: ${request.header}\nKonu: ${request.content}`);
+    };
+
+    return (
+        <div className='comment-card-div'>
             <div className='comment-image-div'>
-                <img src={request.personnelImage} />
+                <img src={request.personnelImage} alt="personnel" />
             </div>
             <div className='comment-details-div'>
-                <div className='comment-description-div'>
-                    <p>Name:{request.personnelName} {request.personnelLastName}</p>
-                    <p>Yorum Basligi: {request.header}</p>
-                    <p>Konu: {request.content}</p>
+                <div className={`comment-description-div ${showFullText ? 'show-full' : ''}`}>
+                    <p>Name: {request.personnelName} {request.personnelLastName}</p>
+                    <p>Yorum Başlığı: {request.header}</p>
+                    <p>Konu: {showFullText ? request.content : request.content.slice(0, maxLength) + (request.content.length > maxLength ? '...' : '')}</p>
                 </div>
                 <div className='comment-difficulty-div'>              
                     <div className='comment-button-div'> 
@@ -27,9 +34,14 @@ const CommentRequestCard = ({request}) => {
                         </div>
                     </div>
                 </div>
+                {!showFullText && request.content.length > maxLength && (
+                    <div className="read-more" onClick={handleShowFullText}>
+                        <span>Devamını Gör</span>
+                    </div>
+                )}
             </div>
         </div>
-  )
+    );
 }
 
-export default CommentRequestCard
+export default CommentRequestCard;

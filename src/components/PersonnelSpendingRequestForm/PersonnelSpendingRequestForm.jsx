@@ -41,7 +41,7 @@ const PersonnelSpendingRequestForm = () => {
     <form className="personnel-spending-request-form">
       <h1>Spending Request Form</h1><br />
       <div className="personnel-spending-request-reason">
-        <strong>Spending Reason</strong>
+        <strong className="spending_strong">Spending Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
           <option value="TRAVEL">Travel Expense</option>
           <option value="TRAINING">Training Expense</option>

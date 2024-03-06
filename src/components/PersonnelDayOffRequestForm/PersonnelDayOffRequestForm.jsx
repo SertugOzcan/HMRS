@@ -29,7 +29,7 @@ const PersonnelDayOffRequestForm = () => {
     <form className="personnel-day-off-request-form">
       <h1>Day Off Request Form</h1><br />
       <div className="personnel-day-off-request-reason">
-        <strong>DayOff Reason</strong>
+        <strong className="dayoff_strong">DayOff Reason</strong>
         <select value={reason} onChange={handleReasonChange}>
           <option value="ANNUAL">Annual Leave</option>
           <option value="SICK">Sick Leave</option>

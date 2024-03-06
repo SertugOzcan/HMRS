@@ -9,6 +9,7 @@
     animation: fadeIn 0.2s ease-out forwards;
     gap: 2rem;
     /* border: 2px solid green; */
+    
 }
   
 @keyframes fadeIn {

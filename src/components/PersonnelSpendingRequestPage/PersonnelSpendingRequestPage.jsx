@@ -76,7 +76,10 @@ const PersonnelSpendingRequestPage = () => {
       <p>Here, you can check make a spending request from your company and manage your spending requests. If your request is approved or rejected by the manager, the status will be updated here. Additionally, you will be notified via email about the decision.</p>
       <div className="personnel-spending-page-upper">
         <strong>Your Spending Requests History:</strong>
-        <button onClick={handleCreateButtonClick}>Create Request</button>
+        <button className="create_request_button" onClick={(e) => handleCreateButtonClick(e)}>
+          <div className="sign_create_request">+</div>
+          <div className="text_create_request">Create Request</div>
+          </button>
       </div>
       {isCreateButtonClicked && (
         <div

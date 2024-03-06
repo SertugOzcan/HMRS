@@ -30,13 +30,13 @@ const AboutUsCardList = () => {
       linkedInLink: "https://www.linkedin.com/in/muhittinulker/"
     },
     {
-      firstName: "Sertuğ", // SERTUĞ DOLDURACAK
+      firstName: "Sertuğ", 
       lastName: "Özcan",
-      dayOfBirth: "07.03.1999",
-      education:"Kirklareli University",
+      dayOfBirth: "22.07.1999",
+      education:"Turk Hava Kurumu University",
       image: "src\\pages\\AboutUsPage\\DeveloperImages\\sertug.jpg",
-      githubLink: "https://github.com/BahadirUnsall",
-      linkedInLink: "https://www.linkedin.com/in/bahadirunsal/"
+      githubLink: "https://github.com/SertugOzcan",
+      linkedInLink: "https://www.linkedin.com/in/sertugozcan/"
     }
   ]
 
