@@ -46,7 +46,8 @@ const MyCompany = () => {
           </div>}
           <div className='my-company-container-header'>
               <h3>Comments made by company colleagues:</h3>
-              <button onClick={handleAddCommentBtn}>{!isShowAddCard ? "Add Comment" : "Close"}</button>
+              <button className="create_request_button" onClick={handleAddCommentBtn}><div className="sign_create_request">+</div>
+          <div className="text_create_request">{!isShowAddCard ? "Add Comment" : "Close"}</div></button>
           </div>
           <div>
               <CommentCardListPersonnel comments={comments}/>             

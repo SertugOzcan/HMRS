@@ -24,22 +24,7 @@
 .my-company-container-header h3{
     margin-left: 20px;
 }
-.my-company-container-header button{
-    margin-right: 20px;
-    
-    cursor: pointer;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.my-company-container-header button:hover{
-    background-color: #2980b9;
-}
+
 .my-company-add-comment{
     display: flex;
     justify-content: center;
