@@ -20,12 +20,30 @@ const CommentRequestCard = ({request}) => {
             </div>
             <div className='comment-details-div'>
                 <div className={`comment-description-div ${showFullText ? 'show-full' : ''}`}>
-                    <p>Name: {request.personnelName} {request.personnelLastName}</p>
-                    <p>Yorum Başlığı: {request.header}</p>
-                    <p>Konu: {showFullText ? request.content : request.content.slice(0, maxLength) + (request.content.length > maxLength ? '...' : '')}</p>
+                    <div className='text-div'>
+                        <h4>Name: </h4>
+                        <p>{request.personnelName} {request.personnelLastName}</p>
+                    </div>
+                    <div className='text-div'>
+                        <h4>Header: </h4>
+                        <p>{request.header}</p>
+                    </div>
+                    <div className='text-div'>
+                        <h4>Content: </h4>
+                        <p>{showFullText ? request.content : request.content.slice(0, maxLength) + (request.content.length > maxLength ? '...' : '')}</p>
+                    </div>
+                    
+                    
+                    
                 </div>
-                <div className='comment-difficulty-div'>              
-                    <div className='comment-button-div'> 
+                
+                {!showFullText && request.content.length > maxLength && (
+                    <div className="read-more" onClick={handleShowFullText}>
+                        <span>Devamını Gör</span>
+                    </div>
+                )}
+            </div>
+            <div className='comment-button-div'> 
                         <div className='comment-add-to-fav-div' onClick={() => handleCommentRequest(request.commentId, true)}>
                             <span className='comment-fav-span'>Approve</span>   
                         </div>
@@ -33,13 +51,6 @@ const CommentRequestCard = ({request}) => {
                             <span className='comment-fav-span'>Decline</span>   
                         </div>
                     </div>
-                </div>
-                {!showFullText && request.content.length > maxLength && (
-                    <div className="read-more" onClick={handleShowFullText}>
-                        <span>Devamını Gör</span>
-                    </div>
-                )}
-            </div>
         </div>
     );
 }
