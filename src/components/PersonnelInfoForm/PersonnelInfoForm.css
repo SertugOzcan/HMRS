@@ -1,158 +1,165 @@
 .personnel-page-container {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    padding: 5.5rem 2.5rem 0.5rem 2.5rem;
-    animation: fadeIn 0.75s ease-out forwards;
-    height: 100vh;
-    padding-bottom: 5rem;
-    position: relative;
-    left: 250px;
-    top: -150px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  padding: 5.5rem 2.5rem 0.5rem 2.5rem;
+  animation: fadeIn 0.75s ease-out forwards;
+  height: 100vh;
+  padding-bottom: 5rem;
+  position: relative;
+  left: 250px;
+  top: -150px;
+}
+
+.personnel-page-main {
+  width: 70%;
+  position: relative;
+  left: 350px;
+  top: 100px;
+  background-color: rgba(47, 241, 255, 0.116);
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+}
+
+.personnel-page-main-section > h1:first-child {
+  padding-top: 0.5rem;
+}
+
+.personnel-page-main-section > h1:first-child,
+h4 {
+  text-align: center;
+}
+
+.personnel-page-main-section > h4 {
+  margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .personnel-page-main{
-    width: 70%;
-    position: relative;
-    left: 350px;
-    top: 100px;
-    background-color: rgba(47, 241, 255, 0.116);
-    border-radius: 2rem;
-    padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+  to {
+    opacity: 1;
   }
-  
-  .personnel-page-main-section > h1:first-child {
-    padding-top: 0.5rem;
-  }
-  
-  .personnel-page-main-section > h1:first-child, h4 {
-    text-align: center;
-  }
-  
-  .personnel-page-main-section > h4 {
-    margin-bottom: 0.5rem;
-  }
-  
-  @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-  }
-  
-  .personnel-container {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    margin-top: 2rem;
-    background-color: rgba(172, 255, 47, 0.116);
-    border-radius: 2rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
-    align-items: center;
-  }
-  
-  .personnel-photo {
-    display: flex;
-    width: 300px;
-    height: 300px;
-    flex-direction: column;
-    margin-left: 5px;
-    margin-right: 5px;
-    }
-  
-  .personnel-photo > img {
-    
-    max-width: 100%;
-    max-height: 100%;
-    min-width: 90%;
-    min-height: 90%;
-    width: auto;
-    height: auto;
-    border-radius: 2rem;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    
-  }
-  
-  
-  .personnel-info {
-    margin-left: 20px;
-    width: 55%;
-    position: relative;
-    padding-top: 0.5rem;
-    font-size: large;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  
-  .personnel-info > p{
-    padding-bottom: 1rem;
-  }
-  
-  .btn-container{
-    display: flex;
-    gap: 5px;
-  }
-  .edit-info-button, .add-comment-button{
-    width: 150px;
-    height: 50px;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: large;
-  }
-  
-  .edit-info-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .edit-info-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
-  }
-  .add-comment-background{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .add-comment-content{
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  /* .personnel-info {
+}
+
+.personnel-container {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-top: 2rem;
+  background-color: rgba(172, 255, 47, 0.116);
+  border-radius: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+  align-items: center;
+}
+
+.personnel-photo {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.personnel-photo > img {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 90%;
+  min-height: 90%;
+  width: auto;
+  height: auto;
+  border-radius: 2rem;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.personnel-info {
+  margin-left: 20px;
+  width: 55%;
+  position: relative;
+  padding-top: 0.5rem;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.personnel-info > p {
+  padding-bottom: 1rem;
+}
+
+.btn-container {
+  display: flex;
+  gap: 5px;
+}
+.edit-info-button,
+.add-comment-button {
+  width: 150px;
+  height: 50px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: large;
+}
+
+.edit-info-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-info-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.add-comment-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-comment-content {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .personnel-info {
     width: 80%;
   } */
-  
-  /* .personel-info,
+
+/* .personel-info,
   .company-info,
   .personel-photo {
     width: 80%;
@@ -189,12 +196,36 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   } */
-  
+
 .holiday-day {
-  color: blue ;
+  color: blue;
+  height: 10px;
+  position: relative;
+  z-index: 1;
 }
 
-.personnel-company-info-container{
+.hidden-holiday-day {
+  position: relative;
+  top: -20;
+  left: -20;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: none;
+}
+.holiday-day-container:hover .holiday-day{
+  opacity: 0;
+  display: none;
+}
+.holiday-day-container:hover .hidden-holiday-day {
+  opacity: 1;
+  display: block;
+  overflow: visible;
+}
+
+.personnel-company-info-container {
   width: 40%;
   height: auto;
   padding: 20px;
@@ -204,27 +235,27 @@
   right: 10px;
 }
 
-.personnel-company-img-and-company-name{
+.personnel-company-img-and-company-name {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
 
-.personnel-company-name{
+.personnel-company-name {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.personnel-company-img-and-company-name img{
+.personnel-company-img-and-company-name img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
 
-.personnel-hrinfo-container{
+.personnel-hrinfo-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -233,6 +264,11 @@
   gap: 10px;
 }
 
-.calendar-container{
+.calendar-container {
   margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
