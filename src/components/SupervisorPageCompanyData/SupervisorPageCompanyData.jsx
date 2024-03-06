@@ -319,7 +319,7 @@ const SupervisorPageCompanyData = () => {
           </div>
           <div className="finansal-kutu">
             <p>
-              <strong>Company have total number of {companyData.supervisors.length} supervisors & {companyData.departments.reduce((personnelCount, department) => {
+              <strong>Company have total number of {companyData.supervisors.length} supervisor{companyData.supervisors.length > 1 ? "s" : ""} & {companyData.departments.reduce((personnelCount, department) => {
                 if(department.personnel) {
                   return personnelCount + department.personnel.length;
                 }
