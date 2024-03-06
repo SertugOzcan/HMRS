@@ -8,7 +8,6 @@ const PersonnelAdvancePage = () => {
   const {personnel} = useContext(PersonnelPageAPIContext)
   const { advanceRequests, handleCancelRequest } = useContext(PersonnelPageAdvanceAPIContext);
   console.log(personnel);
-  const [availableAdvanceQuota, setAvailableAdvanceQuota] = useState();
 
   const handleCreateButtonClick = (e) => {
     e.preventDefault();
@@ -21,38 +20,17 @@ const PersonnelAdvancePage = () => {
     if(confirmation) {
       handleCancelRequest(id);
     }
-  }
-
-  useEffect(() => {
-    const calculateAvailableAdvanceQuota = () => {
-      const initialQuota = (personnel.salary*2);
-      if (advanceRequests.length === 0) {
-        setAvailableAdvanceQuota(initialQuota);
-      } else {
-        const totalSpentAdvanceDuration = advanceRequests.reduce((spentAdvanceQuota, request) => {
-          if (request.requestStatus === "ACCEPTED") {
-            return spentAdvanceQuota + request.amount;
-          }
-          return spentAdvanceQuota;
-        }, 0);
-        const remainingQuota = initialQuota - totalSpentAdvanceDuration;
-        setAvailableAdvanceQuota(remainingQuota);
-      }
-    };
-
-    calculateAvailableAdvanceQuota();
-  }, [advanceRequests]);
+  }    
 
   return (
     // SERTUĞA NOT: btn-container, edit-info-background,edit-info-content cssleri ayrıştırılabilir...
     <div className="personnel-advance-page-container">
       <main className="personnel-page-advance-main" id="main">
         <h2>Advance Request Page</h2>
-        {availableAdvanceQuota !== null && (
           <h3>
-            Explore and view your advance requests. Your current quota is: {availableAdvanceQuota} TL
+            Explore and view your advance requests. Your current quota is: {personnel.advanceQuota} TL
           </h3>
-        )}
+       
         <br />
         <p>Here, you can check your current advance quota and manage your advance requests. If your request is approved or rejected by the manager, the status will be updated here. Additionally, you will be notified via email about the decision.</p>
       </main>
