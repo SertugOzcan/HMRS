@@ -1,217 +1,217 @@
-
 /* YONETİCİ PAGE  */
 
 .yonetici-container {
-    width: 80%;
-    position: relative;
-    left: 250px;
-    top: 100px;
-    padding: 20px;
-  }
-  
-  .yonetici-container h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-  }
-  
-  .employee-list-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .calisan-listesi,
-  .finansal-bilgiler {
-      background-color: #929292;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 15px;
-      margin-bottom: 20px;
-      color: #fff;
-  }
+  width: 80%;
+  position: relative;
+  left: 250px;
+  top: 100px;
+  padding: 20px;
+}
 
-  /* volkan */
-  .finansal-bilgiler > h2:first-child {
-    text-align: center;
-  }
+.yonetici-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
-  .finansal-bilgiler > p {
-    text-align: center;
-  }
+.company-data-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 
-  .finansal-bilgiler > h4:first-child {
-    text-align: center;
-  }
-  
-  .calisan-listesi h3,
-  .finansal-bilgiler h3 {
-      font-size: 16px;
-      text-align: center;
-      margin-bottom: 15px;
-  }
-  
-  .calisan-listesi p,
-  .finansal-bilgiler p {
-      margin-bottom: 5px;
-  }
-  
-  .finansal-bilgiler .finansal-kutular {
-      display: flex;
-      flex-direction: column;
-  }
-  
-  .finansal-charts{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #585858;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      margin-bottom: 10px;
-  }
+.finansal-kutular{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
 
-  .finansal-chart {
-    text-align: center;
-    /* cursor: pointer; */
-  }
+.finansal-bilgiler {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #000;
+}
 
-  .finansal-bilgiler .finansal-kutu {
-      background-color: #585858;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      margin-bottom: 10px;
-  }
-  
-  /* styles.css */
-  .modal-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Arkaplanı bulanıklaştırmak için renk ve opaklık */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  
-  .modal-content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .employee-list-upper-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .employee-list-upper-container button{
-    position: relative;
-    top: -7px;
-    right: -7px;
-  }
-  
-  .employee-list-upper-container h3{
-    position: relative;
-    left: 40%;
-  }
-  
-  .button-add-employee {
-      position: relative;
-      width: 160px;
-      height: 40px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      border: 1px solid #34974d;
-      background-color: #3aa856;
-    }
-    
-    .button-add-employee, .button-icon-add-employee, .button-text-add-employee {
-      transition: all 0.3s;
-    }
-    
-    .button-add-employee .button-text-add-employee {
-      transform: translateX(30px);
-      margin-left: -20px;
-      color: #fff;
-      font-weight: 600;
-    }
-    
-    .button-add-employee .button-icon-add-employee {
-      position: absolute;
-      transform: translateX(109px);
-      height: 100%;
-      width: 50px;
-      background-color: #34974d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .button-add-employee .svg {
-      width: 30px;
-      stroke: #fff;
-    }
-    
-    .button-add-employee:hover {
-      background: #34974d;
-    }
-    
-    .button-add-employee:hover .button-text-add-employee {
-      color: transparent;
-    }
-    
-    .button-add-employee:hover .button-icon-add-employee {
-      width: 148px;
-      transform: translateX(0);
-    }
-    
-    .button-add-employee:active .button-icon-add-employee {
-      background-color: #2e8644;
-    }
-    
-    .button-add-employee:active {
-      border: 1px solid #2e8644;
-    }
-  
-    .yonetici-page-container h1{
-      position: relative;
-      left: 45%;
-      top: 10%;
-    }
+.supervisor-page-company-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(47, 241, 255, 0.116);
+    border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+}
+/* volkan */
+.finansal-bilgiler > h2:first-child {
+  text-align: center;
+}
 
-    .company-data-major-container{
-        width: 85%;
-        height: fit-content;
-        position: relative;
-        left: 255px;
-        top: 65px;
-        padding-bottom: 5rem;
-    }
+.finansal-bilgiler > p {
+  text-align: center;
+}
 
-    .holiday-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    
-    .holiday-table th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    .holiday-table td {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    
+.finansal-bilgiler > h4:first-child {
+  text-align: center;
+}
+
+.calisan-listesi h3,
+.finansal-bilgiler h3 {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.calisan-listesi p,
+.finansal-bilgiler p {
+  margin-bottom: 5px;
+}
+
+.finansal-bilgiler .finansal-kutular {
+  display: flex;
+  flex-direction: column;
+}
+
+.finansal-charts {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  gap: 30px;
+}
+
+.finansal-chart {
+  width: 400px;
+  height: 300px;
+  text-align: center;
+  filter: drop-shadow(10px 7px 5px rgba(0, 0, 0, 0.1))
+}
+.finansal-chart h3{
+  position: relative;
+  top: 100px;
+}
+
+.finansal-bilgiler .finansal-kutu {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.employee-list-upper-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.employee-list-upper-container button {
+  position: relative;
+  top: -7px;
+  right: -7px;
+}
+
+.employee-list-upper-container h3 {
+  position: relative;
+  left: 40%;
+}
+
+.button-add-employee {
+  position: relative;
+  width: 160px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+}
+
+.button-add-employee,
+.button-icon-add-employee,
+.button-text-add-employee {
+  transition: all 0.3s;
+}
+
+.button-add-employee .button-text-add-employee {
+  transform: translateX(30px);
+  margin-left: -20px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.button-add-employee .button-icon-add-employee {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 50px;
+  background-color: #34974d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-add-employee .svg {
+  width: 30px;
+  stroke: #fff;
+}
+
+.button-add-employee:hover {
+  background: #34974d;
+}
+
+.button-add-employee:hover .button-text-add-employee {
+  color: transparent;
+}
+
+.button-add-employee:hover .button-icon-add-employee {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button-add-employee:active .button-icon-add-employee {
+  background-color: #2e8644;
+}
+
+.button-add-employee:active {
+  border: 1px solid #2e8644;
+}
+
+.yonetici-page-container h1 {
+  position: relative;
+  left: 45%;
+  top: 10%;
+}
+
+.company-data-major-container {
+  width: 85%;
+  height: fit-content;
+  position: relative;
+  left: 255px;
+  top: 65px;
+  padding-bottom: 5rem;
+}
+
+.holiday-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.holiday-table th {
+  border: 1px solid #333;
+  text-align: left;
+  padding: 8px;
+}
+
+.holiday-table td {
+  border: 1px solid #333;
+  text-align: left;
+  padding: 8px;
+}
