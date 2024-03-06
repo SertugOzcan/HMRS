@@ -6,7 +6,12 @@
     text-align: center;
     padding-bottom: 5rem;
 }
-
+.personnel-page-day-off-main{
+  background-color: rgba(47, 241, 255, 0.116);
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+}
 .personnel-day-off-page-upper{
     display: flex;
     justify-content: space-between;

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import "./YoneticiPage.css";
 import UpdateCompanyForTheFirstTimePage from "./UpdateCompanyForTheFirstTimePage";
 import { SupervisorPageAPIContext } from "../context/SupervisorPageAPIContext";
-import SupervisorPageEmployeeList from "../components/SupervisorPageEmployeeList/SupervisorPageEmployeeList";
+import SupervisorPageCompanyData from "../components/SupervisorPageCompanyData/SupervisorPageCompanyData";
 
 
 const YoneticiPage = () => {
@@ -17,7 +17,7 @@ const YoneticiPage = () => {
       ) : companyStatus === 'PENDING' ? (
         <UpdateCompanyForTheFirstTimePage />
       ) : (
-        <SupervisorPageEmployeeList />
+        <SupervisorPageCompanyData />
       )}
     </div>
   );

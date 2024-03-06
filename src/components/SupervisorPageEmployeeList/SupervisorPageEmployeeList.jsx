@@ -30,10 +30,9 @@ const SupervisorPageEmployeeList = () => {
 
     return (
         <div className='calisan-listesi-major-container'>
-            <h2 className='asdasd'>Welcome to the Company Overview Page!</h2>
             <div className="calisan-listesi">
                 <div className="employee-list-upper-container">
-                    <h3>Company Personnel Registered under Musketeers HMRS (ortalayamadım texti bi türlü)</h3>
+                    <p>Company Personnel Registered under Musketeers HMRS</p>
                     {!isAddingEmployee && (
                         <button
                             type="button"
