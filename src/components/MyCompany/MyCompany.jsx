@@ -35,9 +35,11 @@ const MyCompany = () => {
     <>
       
       <div className='my-company-container'>
-          <h2>Here, you can explore and view comments related to your own company.</h2>
-          <h3>Feel free to engage with the community by leaving your own comments and feedback about your company!</h3>
-          <h5><em>Other staff members and registered visitors can also access and engage with these comments :) </em></h5>
+          <main className="personnel-page-company-main">
+            <h2>Here, you can explore and view comments related to your own company.</h2>
+            <h3>Feel free to engage with the community by leaving your own comments and feedback about your company!</h3>
+            <h5><em>Other staff members and registered visitors can also access and engage with these comments :) </em></h5>
+          </main>
           {isShowAddCard &&
           <div>
             <AddComment setIsShowAddCard={setIsShowAddCard} />

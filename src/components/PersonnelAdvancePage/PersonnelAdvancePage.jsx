@@ -2,11 +2,12 @@ import { useContext, useEffect, useState} from "react";
 import PersonnelAdvanceRequestForm from "../PersonnelAdvanceRequestForm/PersonnelAdvanceRequestForm";
 import "./PersonnelAdvancePage.css";
 import { PersonnelPageAdvanceAPIContext } from "../../context/PersonnelPageAdvanceAPIContext";
+import { PersonnelPageAPIContext } from "../../context/PersonalPageAPIContext";
 const PersonnelAdvancePage = () => {
   const [isCreateButtonClicked, setIsCreateButtonClicked] = useState(false);
-
+  const {personnel} = useContext(PersonnelPageAPIContext)
   const { advanceRequests, handleCancelRequest } = useContext(PersonnelPageAdvanceAPIContext);
-
+  console.log(personnel);
   const [availableAdvanceQuota, setAvailableAdvanceQuota] = useState();
 
   const handleCreateButtonClick = (e) => {
@@ -24,7 +25,7 @@ const PersonnelAdvancePage = () => {
 
   useEffect(() => {
     const calculateAvailableAdvanceQuota = () => {
-      const initialQuota = 50000;
+      const initialQuota = (personnel.salary*2);
       if (advanceRequests.length === 0) {
         setAvailableAdvanceQuota(initialQuota);
       } else {
@@ -45,14 +46,16 @@ const PersonnelAdvancePage = () => {
   return (
     // SERTUĞA NOT: btn-container, edit-info-background,edit-info-content cssleri ayrıştırılabilir...
     <div className="personnel-advance-page-container">
-      <h2>Welcome to the Advance Request Page!</h2>
-      {availableAdvanceQuota !== null && (
-        <h3>
-          Explore and view your advance requests. Your current quota is: {availableAdvanceQuota} TL
-        </h3>
-      )}
-      <br />
-      <p>Here, you can check your current advance quota and manage your advance requests. If your request is approved or rejected by the manager, the status will be updated here. Additionally, you will be notified via email about the decision.</p>
+      <main className="personnel-page-advance-main" id="main">
+        <h2>Advance Request Page</h2>
+        {availableAdvanceQuota !== null && (
+          <h3>
+            Explore and view your advance requests. Your current quota is: {availableAdvanceQuota} TL
+          </h3>
+        )}
+        <br />
+        <p>Here, you can check your current advance quota and manage your advance requests. If your request is approved or rejected by the manager, the status will be updated here. Additionally, you will be notified via email about the decision.</p>
+      </main>
       <div className="personnel-advance-page-upper">
         <strong>Your Advance Requests History:</strong>
         <div className="btn-container">
