@@ -116,7 +116,7 @@ const RegisterPage = () => {
         payload
       );
 
-      console.log(response);
+      // console.log(response);
       setMessage("Registration successful!");
       setIsSuccess(true);
 
