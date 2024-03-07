@@ -195,7 +195,7 @@ const ManagerRegisterPage = () => {
       //   payload
       // );
       const response = await axios.post(
-        "http://localhost:80/auth/register-supervisor",
+        "http://34.75.226.10:80/auth/register-supervisor",
         payload
       );
 

@@ -38,7 +38,7 @@ const EditMyInfoForm = () => {
     }
 
     if(!newEmail.includes("@")){
-      alert("Invalid email. Please check your email!")
+      alert("Invalid email. Please check your email!");
       return;
     }
 
