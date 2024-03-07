@@ -2,8 +2,10 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import {AuthContext} from '../../context/AuthContext'
 import './HomePageSideBar.css'
+import { SidebarCheckForSupervisorContext } from '../../context/SidebarCheckForSupervisorContext'
 const HomePageSideBar = () => {
     const {isAuthenticated} = useContext(AuthContext);
+    const {showSidebar} = useContext(SidebarCheckForSupervisorContext);
     
     let content;
     switch (isAuthenticated.role) {
@@ -17,7 +19,9 @@ const HomePageSideBar = () => {
           </div>        
         break;
       case "SUPERVISOR":
-        content = <div>
+        content = 
+        showSidebar !== "5" ?
+        <div>
           <Link to='/yonetici-page/company-data'><button>Company Data</button></Link>
           <br />
           <Link to='/yonetici-page/employee-list'><button>Employee List</button></Link>
@@ -28,6 +32,8 @@ const HomePageSideBar = () => {
           <br />
           <Link to='/yonetici-page/spending-requests'><button>Spending Requests</button></Link>
         </div>
+        :
+        ""
         break;
       case "PERSONNEL":
         content = <div>

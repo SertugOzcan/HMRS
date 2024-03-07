@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { SidebarCheckForSupervisorContext } from "./SidebarCheckForSupervisorContext";
 
 export const SupervisorPageAPIContext = createContext();
 
@@ -13,6 +14,7 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
     const [isAddingEmployee, setIsAddingEmployee] = useState(false); // Yeni satır
     // const [employees, setEmployees] = useState([]);   // aynı galiba...
     const {isAuthenticated} = useContext(AuthContext);
+    const {setShowSidebar} = useContext(SidebarCheckForSupervisorContext);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -27,9 +29,11 @@ export const SupervisorPageAPIContextProvider = ({children}) => {
                 // console.log("COMPANY-DATASI: ", response.data)
                 setCompanyData(response.data);
                 if(response.data.companyStatus === "ACTIVE"){
-                    setCompanyStatus("ACTIVE");
-                    const response2 = await axios.get(`http://34.75.226.10:80/personnel/get-all-by-company/${isAuthenticated.token}`)
-                    setCompanyPersonnel(response2.data);
+                  setCompanyStatus("ACTIVE");
+                  const response2 = await axios.get(`http://34.75.226.10:80/personnel/get-all-by-company/${isAuthenticated.token}`)
+                  setCompanyPersonnel(response2.data);
+                } else if(response.data.companyStatus === "PENDING"){
+                  setShowSidebar("5");
                 }
             } catch (error) {
                 console.error("Error while fetching the company data:", error);
