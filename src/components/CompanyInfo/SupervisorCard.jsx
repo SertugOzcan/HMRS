@@ -4,7 +4,7 @@ import "./SupervisorCard.css"
 const SupervisorCard = ({ supervisor }) => {
   return (
     <div className="supervisor-card">
-      <h3>PERSONNEL</h3>
+      <h3>SUPERVISORS:</h3>
       <div className="supervisor-card-second-container">
         <img src={supervisor.image} alt="" />
         <div className="supervisor-card-texts">
