@@ -5,7 +5,7 @@ import { SupervisorPageAPIContext } from "../../context/SupervisorPageAPIContext
 import { PieChart } from "@mui/x-charts/PieChart";
 import randomColor from "randomcolor";
 
-const SupervisorPageCompanyData = () => {
+const SupervisorPageCompanyData = (theme) => {
   const { companyData } = useContext(SupervisorPageAPIContext);
   const [totalCurrentMonthIncome, setTotalCurrentMonthIncome] = useState(0);
   const [totalNextMonthIncome, setTotalNextMonthIncome] = useState(0);
@@ -184,7 +184,7 @@ const SupervisorPageCompanyData = () => {
 
   return (
     <div className="company-data-major-container">
-      <div className="finansal-bilgiler">
+      <div className={`finansal-bilgiler ${theme}`}>
         <main className="supervisor-page-company-main">
           <h2>Company Data Page</h2>
           <br />

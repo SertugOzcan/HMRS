@@ -233,6 +233,7 @@ h4 {
   background-color: #007bff62;
   position: relative;
   right: 10px;
+  z-index: 0;
 }
 
 .personnel-company-img-and-company-name {

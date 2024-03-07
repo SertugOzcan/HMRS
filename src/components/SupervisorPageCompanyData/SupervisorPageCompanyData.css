@@ -37,6 +37,11 @@
   color: #000;
 }
 
+.finansal-bilgiler.dark{
+  background-color: #000;
+  color: #fff;
+}
+
 .supervisor-page-company-main{
   display: flex;
   flex-direction: column;

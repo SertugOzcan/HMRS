@@ -4,7 +4,7 @@ import EmployeeList from "../EmployeeList";
 import AddEmployeeForm from "../AddEmployee";
 import { SupervisorPageAPIContext } from "../../context/SupervisorPageAPIContext";
 
-const SupervisorPageEmployeeList = () => {
+const SupervisorPageEmployeeList = (theme) => {
     const { isAddingEmployee, setIsAddingEmployee } = useContext(SupervisorPageAPIContext);
     const formRef = useRef(null);
 
@@ -30,7 +30,7 @@ const SupervisorPageEmployeeList = () => {
 
     return (
         <div className='calisan-listesi-major-container'>
-            <div className="calisan-listesi">
+            <div className={`calisan-listesi ${theme}`}>
                 <div className="employee-list-upper-container">
                     <p>Company Personnel Registered under Musketeers HMRS</p>
                     {!isAddingEmployee && (

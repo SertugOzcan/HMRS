@@ -113,7 +113,7 @@ function App() {
               <PrivateRoute
                 element={
                   <SupervisorPageAPIContextProvider>
-                    <SupervisorPageEmployeeList />
+                    <SupervisorPageEmployeeList theme={`${theme}`}/>
                   </SupervisorPageAPIContextProvider>
                 }
               />
@@ -125,7 +125,7 @@ function App() {
               <PrivateRoute
                 element={
                   <SupervisorPageAPIContextProvider>
-                    <SupervisorPageCompanyData />
+                    <SupervisorPageCompanyData theme={`${theme}`}/>
                   </SupervisorPageAPIContextProvider>
                 }
               />

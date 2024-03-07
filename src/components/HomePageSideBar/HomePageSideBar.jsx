@@ -42,9 +42,6 @@ const HomePageSideBar = () => {
           <Link to='/personnel-page/create-comment'><button>Comment To Company</button></Link>
         </div>
         break;
-      case "GUEST":
-        content = <div>Guest içeriği</div>
-        break;
       default:
         content = null;
     }

@@ -52,14 +52,12 @@
 }
 
 .CANCELLED{
-    background-color: rgba(134, 149, 172, 0.301);
+    background-color: rgb(54, 104, 179);
     height: 47px;
-    /* opacity: 0.6; */
 }
 
 .CANCELLED:hover{
-    background-color: rgba(192, 210, 236, 0.301);
-    /* opacity: 0.6; */
+    background-color: rgba(22, 92, 197, 0.918);
 }
 
 .DECLINED{

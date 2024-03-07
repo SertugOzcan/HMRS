@@ -18,6 +18,12 @@
   border: none;
 }
 
+.calisan-listesi.dark{
+  background-color: #000;
+  border: none;
+  color: #fff;
+}
+
 .calisan-listesi h3 {
   font-size: 16px;
   text-align: center;

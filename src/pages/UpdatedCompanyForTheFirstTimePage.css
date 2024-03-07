@@ -14,8 +14,9 @@
   width: 850px;
   max-height: auto;
   margin-bottom: 100px;
-  
+  padding-bottom: 5rem;
 }
+
 .sidebar {
   width: 180px;
   padding: 20px;
