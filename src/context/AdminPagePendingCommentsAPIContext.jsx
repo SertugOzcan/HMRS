@@ -20,7 +20,7 @@ export const AdminPagePendingCommentsAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:80/admin/get-all-pending-comments')
+                const response = await axios.get('http://34.75.226.10:80/admin/get-all-pending-comments')
                 // console.log("GETALLPENDINGCOMMENTS: ", response);
                 setPendingComments(response.data)
             } catch (error) {
@@ -39,7 +39,7 @@ export const AdminPagePendingCommentsAPIContextProvider = ({children}) => {
             "decision": decision.toString() 
         };
         try {
-            const response = await axios.post("http://localhost:80/admin/handle-pending-comment", payload)
+            const response = await axios.post("http://34.75.226.10:80/admin/handle-pending-comment", payload)
             if (response.status === 200) {
                 setPendingComments(prevRequest => 
                     prevRequest.filter(request => request.commentId !== commentId)

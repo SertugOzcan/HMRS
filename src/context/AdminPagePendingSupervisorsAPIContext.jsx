@@ -20,7 +20,7 @@ export const AdminPagePendingSupervisorsAPIContextProvider = ({children}) => {
         const getRequests = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:80/admin/get-all-pending-supervisors')
+                const response = await axios.get('http://34.75.226.10:80/admin/get-all-pending-supervisors')
                 // console.log("GETALLPENDINGSUPERVISORS: ", response);
                 setPendingSupervisors(response.data)
             } catch (error) {
@@ -40,7 +40,7 @@ export const AdminPagePendingSupervisorsAPIContextProvider = ({children}) => {
             "decision": decision.toString() 
         };
         try {
-            const response = await axios.post("http://localhost:80/admin/handle-supervisor-registration", payload)
+            const response = await axios.post("http://34.75.226.10:80/admin/handle-supervisor-registration", payload)
             if (response.status === 200) {
                 setPendingSupervisors(prevRequest => 
                     prevRequest.filter(request => request.authId !== authId)

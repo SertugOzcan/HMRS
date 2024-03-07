@@ -20,7 +20,7 @@ export const SupervisorPageSpendingAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response = await axios.get(`http://localhost:80/spending/get-all-requests/${isAuthenticated.token}`)
+                const response = await axios.get(`http://34.75.226.10:80/spending/get-all-requests/${isAuthenticated.token}`)
                 // console.log("SPENDINGREQUESTS-DATA: ", response.data)
                 setSpendingRequests(response.data.reverse());
             } catch (error) {
@@ -40,7 +40,7 @@ export const SupervisorPageSpendingAPIContextProvider = ({children}) => {
             "decision": decision.toString()
         };
         try {
-            const response = await axios.patch("http://localhost:80/spending/update-request", payload)
+            const response = await axios.patch("http://34.75.226.10:80/spending/update-request", payload)
             if (response.status === 200) {
               window.location.reload(true);
             }    

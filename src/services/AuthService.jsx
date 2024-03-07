@@ -3,7 +3,7 @@ import axios from 'axios'
 const AuthService = {
   
     loginService: async (identity, password) => {
-        const response = await axios.post("http://localhost:80/auth/login", {
+        const response = await axios.post("http://34.75.226.10:80/auth/login", {
             "identity": identity,
             "password": password
         })

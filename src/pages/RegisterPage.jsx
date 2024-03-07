@@ -112,7 +112,7 @@ const RegisterPage = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:80/auth/register-guest",
+        "http://34.75.226.10:80/auth/register-guest",
         payload
       );
 

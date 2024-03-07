@@ -14,7 +14,7 @@ const MyCompany = () => {
         const getCompanyInfo = async () => {
             try {
               const response2 = await axios.get(
-                `http://localhost:80/comment/get-all-by-company/${personnel.companyId}`
+                `http://34.75.226.10:80/comment/get-all-by-company/${personnel.companyId}`
               );
               // console.log("Company active comments:", response2.data);
               if(response2.status === 200) {

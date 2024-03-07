@@ -282,7 +282,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
     const completePayload = {...beforePayload, companyLogoUrl: cloudinaryUrl}
 
     try {
-      const response = await axios.put("http://localhost:80/company/update-for-the-first-time",completePayload);
+      const response = await axios.put("http://34.75.226.10:80/company/update-for-the-first-time",completePayload);
       if(response.status === 200) {
         window.location.reload(true);
       }

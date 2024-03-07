@@ -20,7 +20,7 @@ export const GuestPageAPIContextProvider = ({ children }) => {
       }
       try {
         const response = await axios.get(
-          'http://localhost:80/company/get-company-summary-info-for-guest/SEARCH_FIELD_EMPTY'
+          'http://34.75.226.10:80/company/get-company-summary-info-for-guest/SEARCH_FIELD_EMPTY'
         );
         setCompanyData(response.data);
       } catch (error) {

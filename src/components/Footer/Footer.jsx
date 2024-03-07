@@ -19,7 +19,7 @@ const Footer = ({theme}) => {
       <div className={`footer-right ${theme}`}>
         <p className="copyright text-center">
           © {new Date().getFullYear()}{"  "}
-          <Link className={`footer-link ${theme}`} to="http://localhost:5173">
+          <Link className={`footer-link ${theme}`} to="http://104.196.216.218:5173">
              Musketeers Human Resource Management System
           </Link>
         </p>

@@ -8,7 +8,7 @@ const PersonnelCardList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:80/personnel/get-all');
+                const response = await axios.get('http://34.75.226.10:80/personnel/get-all');
                 setPersonnelInfos(response.data);
             } catch (error) {
                 console.error('Error fetching HR infos:', error);

@@ -20,7 +20,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
         setIsLoading(true);
         const getRequests = async () => {
             try {
-                const response = await axios.get(`http://localhost:80/spending/get-all-my-requests/${isAuthenticated.token}`)
+                const response = await axios.get(`http://34.75.226.10:80/spending/get-all-my-requests/${isAuthenticated.token}`)
                 // console.log("SPENDINGREQUESTS-DATA: ", response.data)
                 setSpendingRequests(response.data.reverse());
             } catch (error) {
@@ -59,7 +59,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
         };
 
         try {
-            const response = await axios.post("http://localhost:80/spending/create-request", payload);
+            const response = await axios.post("http://34.75.226.10:80/spending/create-request", payload);
             if (response.status === 200) {
                 window.location.reload(true);
             }    
@@ -78,7 +78,7 @@ export const PersonnelPageSpendingAPIContextProvider = ({children}) => {
         }
         // console.log("Hazırlanan cancel spending payload:", payload);
         try {
-            const response = await axios.patch("http://localhost:80/spending/cancel-request", payload)
+            const response = await axios.patch("http://34.75.226.10:80/spending/cancel-request", payload)
             if (response.status === 200) {
                 window.location.reload(true);
             }    

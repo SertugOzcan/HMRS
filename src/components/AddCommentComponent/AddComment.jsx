@@ -39,7 +39,7 @@ const AddComment = ({setIsShowAddCard}) => {
     };
   
     try {
-      const response = await axios.post('http://localhost:80/comment/add', newComment);
+      const response = await axios.post('http://34.75.226.10:80/comment/add', newComment);
 
       if (response.status === 200) {
         setIsSuccess(true);
