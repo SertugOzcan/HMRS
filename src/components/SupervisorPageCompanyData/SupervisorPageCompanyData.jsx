@@ -202,7 +202,7 @@ const SupervisorPageCompanyData = (theme) => {
             </em>
           </h4>
         </main>
-        <div className="finansal-kutular">
+        <div className={`finansal-kutular ${theme}`}>
           <h2>Financial Charts</h2>
           <div className="finansal-charts">
             <div className="finansal-chart">

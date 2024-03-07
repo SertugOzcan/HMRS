@@ -29,6 +29,11 @@
   margin-top: 20px;
 }
 
+.finansal-kutular.dark{
+  background-color: #333;
+  color: #fff;
+}
+
 .finansal-bilgiler {
   background-color: #fff;
   border-radius: 5px;

@@ -18,6 +18,11 @@
   align-items: center;
 }
 
+.employee-list-container.dark, .employee-list-upper-container.dark{
+  background-color: #333;
+  color: #fff;
+}
+
 .calisan-listesi{
   background-color: #fff;
   border: none;

@@ -340,9 +340,9 @@ const UpdateCompanyForTheFirstTimePage = () => {
           <h2>Company Info</h2>
 
           <div className="company-core-info">
-            <label className="company-name-header">
-              {companyData.companyName}
-            </label>
+            <h2 className="company-name-header">
+              {companyData.companyName} Co.
+            </h2>
             <DatePicker
               className="est_date_picker"
               selected={establishmentDate}
