@@ -203,6 +203,11 @@
   padding-bottom: 5rem;
 }
 
+.company-data-major-container.dark{
+  background-color: #333;
+  color: #fff;
+}
+
 .holiday-table {
   width: 100%;
   border-collapse: collapse;

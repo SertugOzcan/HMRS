@@ -6,6 +6,11 @@
   top: 65px;
 }
 
+.calisan-listesi-major-container.dark{
+  background-color: #333;
+  color: #fff;
+}
+
 .employee-list-container {
   display: flex;
   flex-wrap: wrap;

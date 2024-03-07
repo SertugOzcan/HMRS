@@ -183,7 +183,7 @@ const SupervisorPageCompanyData = (theme) => {
   };
 
   return (
-    <div className="company-data-major-container">
+    <div className={`company-data-major-container ${theme}`}>
       <div className={`finansal-bilgiler ${theme}`}>
         <main className="supervisor-page-company-main">
           <h2>Company Data Page</h2>

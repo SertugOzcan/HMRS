@@ -9,6 +9,7 @@
   position: relative;
   left: 250px;
   top: -150px;
+  z-index: -2;
 }
 
 .personnel-page-main {
@@ -233,7 +234,7 @@ h4 {
   background-color: #007bff62;
   position: relative;
   right: 10px;
-  z-index: 0;
+  z-index: -1;
 }
 
 .personnel-company-img-and-company-name {

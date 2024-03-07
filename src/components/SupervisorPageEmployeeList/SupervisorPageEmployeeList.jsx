@@ -29,7 +29,7 @@ const SupervisorPageEmployeeList = (theme) => {
     }, [formRef, setIsAddingEmployee]);
 
     return (
-        <div className='calisan-listesi-major-container'>
+        <div className={`calisan-listesi-major-container ${theme}`}>
             <div className={`calisan-listesi ${theme}`}>
                 <div className="employee-list-upper-container">
                     <p>Company Personnel Registered under Musketeers HMRS</p>

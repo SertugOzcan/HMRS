@@ -17,6 +17,10 @@
   padding-bottom: 5rem;
 }
 
+.update-company-page h2{
+  text-align: center;
+}
+
 .sidebar {
   width: 180px;
   padding: 20px;
@@ -67,18 +71,9 @@
 
 .company-name-header{
   padding: auto;
-  border: 1px solid;
-  border-color: #000000;
-  border-radius: 5px;
   text-align: center;
-  background: #a9abaa;
-  color: white;
   font-size: 30px;
-  
 }
-
-
-
 
 /* Form elementleri */
 .company-core-info,

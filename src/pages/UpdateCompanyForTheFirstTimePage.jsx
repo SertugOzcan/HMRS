@@ -325,7 +325,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
     </div>
     )}
       <div className="sidebar">
-        <button onClick={() => handlePageChange("coreInfo")}>Core Info</button>
+        <button onClick={() => handlePageChange("coreInfo")}>Company Info</button>
         <button onClick={() => handlePageChange("hrInfo")}>HR Info</button>
         <button onClick={() => handlePageChange("department")}>
           Department
@@ -337,7 +337,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
       </div>
       <div className="update-company-form">
         <div id="coreInfo" className="section">
-          <h2>Core Info</h2>
+          <h2>Company Info</h2>
 
           <div className="company-core-info">
             <label className="company-name-header">
