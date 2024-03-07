@@ -46,6 +46,8 @@ const HomePageSideBar = () => {
         content = null;
     }
   return (
+    <>
+    {isAuthenticated.role !== "GUEST" ? 
     <div className='side-bar-container'>
         <div className="side-bar-upper-part">
             <span>{isAuthenticated.role} PAGE</span>
@@ -55,7 +57,10 @@ const HomePageSideBar = () => {
             {content}
           </div>
         </div>
-    </div>
+    </div> 
+    : 
+    ""}
+    </>
   )
 }
 
