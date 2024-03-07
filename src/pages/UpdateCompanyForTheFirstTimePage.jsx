@@ -338,11 +338,7 @@ const UpdateCompanyForTheFirstTimePage = () => {
       <div className="update-company-form">
         <div id="coreInfo" className="section">
           <h2>Company Info</h2>
-
           <div className="company-core-info">
-            <h2 className="company-name-header">
-              {companyData.companyName} Co.
-            </h2>
             <DatePicker
               className="est_date_picker"
               selected={establishmentDate}
@@ -604,7 +600,6 @@ const UpdateCompanyForTheFirstTimePage = () => {
                 />
               </div>
               <div className="income-amount">
-                <label>Income Amount:</label>
                 <input
                   className="input"
                   placeholder="Income Amount"

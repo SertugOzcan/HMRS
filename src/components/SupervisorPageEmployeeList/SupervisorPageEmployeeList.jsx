@@ -31,7 +31,7 @@ const SupervisorPageEmployeeList = (theme) => {
     return (
         <div className={`calisan-listesi-major-container ${theme}`}>
             <div className={`calisan-listesi ${theme}`}>
-                <div className="employee-list-upper-container">
+                <div className={`employee-list-upper-container ${theme}`}>
                     <p>Company Personnel Registered under Musketeers HMRS</p>
                     {!isAddingEmployee && (
                         <button

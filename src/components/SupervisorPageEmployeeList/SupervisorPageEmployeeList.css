@@ -6,7 +6,7 @@
   top: 65px;
 }
 
-.calisan-listesi-major-container.dark{
+.calisan-listesi-major-container .dark{
   background-color: #333;
   color: #fff;
 }
@@ -18,7 +18,7 @@
   align-items: center;
 }
 
-.employee-list-container.dark, .employee-list-upper-container.dark{
+.employee-list-container .dark, .employee-list-upper-container .dark{
   background-color: #333;
   color: #fff;
 }
@@ -28,7 +28,7 @@
   border: none;
 }
 
-.calisan-listesi.dark{
+.calisan-listesi .dark{
   background-color: #000;
   border: none;
   color: #fff;
@@ -74,6 +74,11 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.employee-list-upper-container .dark{
+  background-color: #333;
+  color: #fff;
 }
 
 .employee-list-upper-container p{

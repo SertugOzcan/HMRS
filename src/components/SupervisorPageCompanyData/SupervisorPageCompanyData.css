@@ -29,7 +29,7 @@
   margin-top: 20px;
 }
 
-.finansal-kutular.dark{
+.finansal-kutular .dark{
   background-color: #333;
   color: #fff;
 }
@@ -42,7 +42,7 @@
   color: #000;
 }
 
-.finansal-bilgiler.dark{
+.finansal-bilgiler .dark{
   background-color: #000;
   color: #fff;
 }
@@ -208,7 +208,7 @@
   padding-bottom: 5rem;
 }
 
-.company-data-major-container.dark{
+.company-data-major-container .dark{
   background-color: #333;
   color: #fff;
 }

@@ -186,7 +186,7 @@ const SupervisorPageCompanyData = (theme) => {
     <div className={`company-data-major-container ${theme}`}>
       <div className={`finansal-bilgiler ${theme}`}>
         <main className="supervisor-page-company-main">
-          <h2>Company Data Page</h2>
+          <h2>{companyData.companyName} Page</h2>
           <br />
           <p>
             Explore essential details about the company's incomes, expenses, and
