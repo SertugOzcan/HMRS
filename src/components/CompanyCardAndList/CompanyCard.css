@@ -12,11 +12,11 @@
     cursor: pointer;
 }
 .company-card-img-div{
-    border: 2px solid #333;
     border-radius: 100%;
 }
 .company-card-img-div img{
     width: 125px;
+    height: 125px;
     border-radius: 100%;
 }
 .company-card-container h5{
